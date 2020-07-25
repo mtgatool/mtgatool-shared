@@ -11,12 +11,12 @@
     "proto:eslint": "eslint src/types/greTypes.ts --fix",
     "proto": "npm-run-all proto:model proto:greTypes proto:eslint",
     "build": "tsc",
-    "prepublish": "npm run tsc",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Manuel Etchegaray",
-  "license": "ISC",
+  "license": "ISC", 
   "dependencies": {
     "lodash": "^4.17.19",
     "mathjs": "^7.1.0"
