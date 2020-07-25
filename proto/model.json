@@ -1,0 +1,7851 @@
+{
+  "nested": {
+    "AIConfig": {
+      "fields": {
+        "matchConfig": {
+          "type": "MatchConfig",
+          "id": 1
+        },
+        "defaultSettings": {
+          "type": "SettingsMessage",
+          "id": 2
+        },
+        "deckConfigs": {
+          "rule": "repeated",
+          "type": "DeckConfig",
+          "id": 3
+        }
+      }
+    },
+    "AIConfigData": {
+      "fields": {
+        "mode": {
+          "type": "AIMode",
+          "id": 1
+        },
+        "tracingEnabled": {
+          "type": "AIConfigOption",
+          "id": 2
+        },
+        "viewOpponentHand": {
+          "type": "AIConfigOption",
+          "id": 3
+        },
+        "viewOpponentLibrary": {
+          "type": "uint32",
+          "id": 4
+        },
+        "maximumDepth": {
+          "type": "uint32",
+          "id": 5
+        },
+        "maximumBreadth": {
+          "type": "uint32",
+          "id": 6
+        },
+        "maximumNodeExpansion": {
+          "type": "uint32",
+          "id": 7
+        },
+        "timeoutInMilliseconds": {
+          "type": "uint32",
+          "id": 8
+        },
+        "transpositionTableSizeInKB": {
+          "type": "uint32",
+          "id": 9
+        },
+        "randomSeed": {
+          "type": "uint32",
+          "id": 10
+        },
+        "configureValueHeuristics": {
+          "rule": "repeated",
+          "type": "ValueHeuristicDefinition",
+          "id": 11
+        },
+        "configureOrderingHeuristics": {
+          "rule": "repeated",
+          "type": "OrderingHeuristicDefinition",
+          "id": 12
+        },
+        "configureHistoryOn": {
+          "type": "AIConfigOption",
+          "id": 13
+        },
+        "allowOpponentUndo": {
+          "type": "AIConfigYesNo",
+          "id": 14
+        },
+        "allowOpponentControl": {
+          "type": "AIConfigYesNo",
+          "id": 15
+        },
+        "valueHeuristicParameters": {
+          "rule": "repeated",
+          "type": "ValueHeuristicParameter",
+          "id": 16
+        },
+        "orderingHeuristicParameters": {
+          "rule": "repeated",
+          "type": "OrderingHeuristicParameter",
+          "id": 17
+        },
+        "diagnosticMode": {
+          "type": "uint32",
+          "id": 18
+        },
+        "randomOrderingRange": {
+          "type": "uint32",
+          "id": 19
+        },
+        "transEnable": {
+          "type": "bool",
+          "id": 20
+        },
+        "concedeOnException": {
+          "type": "bool",
+          "id": 21
+        }
+      }
+    },
+    "AIConfigOption": {
+      "values": {
+        "AIConfigOption_None": 0,
+        "AIConfigOption_Inactive": 1,
+        "AIConfigOption_Active": 2
+      }
+    },
+    "AIConfigYesNo": {
+      "values": {
+        "AIConfigYesNo_None": 0,
+        "AIConfigYesNo_No": 1,
+        "AIConfigYesNo_Yes": 2
+      }
+    },
+    "AIMode": {
+      "values": {
+        "AIMode_None": 0,
+        "AIMode_Goldfish": 1,
+        "AIMode_Gameplay": 2,
+        "AIMode_Random": 3
+      }
+    },
+    "AIReconfigureData": {
+      "fields": {
+        "tracingEnabled": {
+          "type": "AIConfigOption",
+          "id": 1
+        },
+        "maximumDepth": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maximumBreadth": {
+          "type": "uint32",
+          "id": 3
+        },
+        "maximumNodeExpansion": {
+          "type": "uint32",
+          "id": 4
+        },
+        "transpositionTableSizeInKB": {
+          "type": "uint32",
+          "id": 5
+        },
+        "randomSeed": {
+          "type": "uint32",
+          "id": 6
+        },
+        "configureValueHeuristics": {
+          "rule": "repeated",
+          "type": "ValueHeuristicDefinition",
+          "id": 7
+        },
+        "configureOrderingHeuristics": {
+          "rule": "repeated",
+          "type": "OrderingHeuristicDefinition",
+          "id": 8
+        },
+        "valueHeuristicParameters": {
+          "rule": "repeated",
+          "type": "ValueHeuristicParameter",
+          "id": 9
+        },
+        "orderingHeuristicParameters": {
+          "rule": "repeated",
+          "type": "OrderingHeuristicParameter",
+          "id": 10
+        },
+        "transEnable": {
+          "type": "bool",
+          "id": 11
+        },
+        "concedeOnException": {
+          "type": "bool",
+          "id": 12
+        }
+      }
+    },
+    "AbilityType": {
+      "values": {
+        "AbilityType_None": 0,
+        "AbilityType_Deathtouch": 1,
+        "AbilityType_Defender": 2,
+        "AbilityType_DoubleStrike": 3,
+        "AbilityType_Enchant": 4,
+        "AbilityType_Equip": 5,
+        "AbilityType_FirstStrike": 6,
+        "AbilityType_Flash": 7,
+        "AbilityType_Flying": 8,
+        "AbilityType_Haste": 9,
+        "AbilityType_Hexproof": 10,
+        "AbilityType_Intimidate": 11,
+        "AbilityType_Lifelink": 12,
+        "AbilityType_Reach": 13,
+        "AbilityType_Trample": 14,
+        "AbilityType_Vigilance": 15,
+        "AbilityType_Landwalk": 16,
+        "AbilityType_ProtectionFrom": 21,
+        "AbilityType_Shroud": 22,
+        "AbilityType_Banding": 23,
+        "AbilityType_Rampage": 24,
+        "AbilityType_CumulativeUpkeep": 25,
+        "AbilityType_Flanking": 26,
+        "AbilityType_Phasing": 27,
+        "AbilityType_Buyback": 28,
+        "AbilityType_Shadow": 29,
+        "AbilityType_Cycling": 30,
+        "AbilityType_Echo": 31,
+        "AbilityType_Horsemanship": 32,
+        "AbilityType_Fading": 33,
+        "AbilityType_Kicker": 34,
+        "AbilityType_Flashback": 35,
+        "AbilityType_Madness": 36,
+        "AbilityType_Morph": 37,
+        "AbilityType_Fear": 38,
+        "AbilityType_Amplify": 39,
+        "AbilityType_Provoke": 40,
+        "AbilityType_Storm": 41,
+        "AbilityType_AffinityFor": 42,
+        "AbilityType_Entwine": 43,
+        "AbilityType_Modular": 44,
+        "AbilityType_Sunburst": 45,
+        "AbilityType_Bushido": 46,
+        "AbilityType_Soulshift": 47,
+        "AbilityType_Splice": 48,
+        "AbilityType_Offering": 49,
+        "AbilityType_Ninjitsu": 50,
+        "AbilityType_Epic": 51,
+        "AbilityType_Convoke": 52,
+        "AbilityType_Dredge": 53,
+        "AbilityType_Transmute": 54,
+        "AbilityType_Bloodthirst": 55,
+        "AbilityType_Haunt": 56,
+        "AbilityType_Replicate": 57,
+        "AbilityType_Forecast": 58,
+        "AbilityType_Graft": 59,
+        "AbilityType_Recover": 60,
+        "AbilityType_Ripple": 61,
+        "AbilityType_SplitSecond": 62,
+        "AbilityType_Suspend": 63,
+        "AbilityType_Vanishing": 64,
+        "AbilityType_Absorb": 65,
+        "AbilityType_AuraSwap": 66,
+        "AbilityType_Delve": 67,
+        "AbilityType_Fortify": 68,
+        "AbilityType_Frenzy": 69,
+        "AbilityType_Gravestorm": 70,
+        "AbilityType_Poisonous": 71,
+        "AbilityType_Transfigure": 72,
+        "AbilityType_Champion": 73,
+        "AbilityType_Changeling": 74,
+        "AbilityType_Evoke": 75,
+        "AbilityType_Hideaway": 76,
+        "AbilityType_Prowl": 77,
+        "AbilityType_Reinforce": 78,
+        "AbilityType_Conspire": 79,
+        "AbilityType_Persist": 80,
+        "AbilityType_Wither": 81,
+        "AbilityType_Retrace": 82,
+        "AbilityType_Devour": 83,
+        "AbilityType_Exalted": 84,
+        "AbilityType_Unearth": 85,
+        "AbilityType_Cascade": 86,
+        "AbilityType_Annihilator": 87,
+        "AbilityType_LevelUp": 88,
+        "AbilityType_Rebound": 89,
+        "AbilityType_TotemArmor": 90,
+        "AbilityType_Infect": 91,
+        "AbilityType_BattleCry": 92,
+        "AbilityType_LivingWeapon": 93,
+        "AbilityType_Undying": 94,
+        "AbilityType_Miracle": 95,
+        "AbilityType_Soulbond": 96,
+        "AbilityType_Overload": 97,
+        "AbilityType_Scavenge": 98,
+        "AbilityType_Unleash": 99,
+        "AbilityType_Cipher": 100,
+        "AbilityType_Evolve": 101,
+        "AbilityType_Extort": 102,
+        "AbilityType_Fuse": 103,
+        "AbilityType_Indestructible": 104,
+        "AbilityType_Regenerate": 105,
+        "AbilityType_EnterZone_Tapped": 106,
+        "AbilityType_EnterZone_Controlled": 107,
+        "AbilityType_EnterZone_Attached": 108,
+        "AbilityType_Level": 109,
+        "AbilityType_EnterZone_WithCounters": 110,
+        "AbilityType_TurnFaceUp_WithCounters": 111,
+        "AbilityType_PlaneswalkerLoyaltyReplacement": 114,
+        "AbilityType_CastCommanderFromCommandZone": 115,
+        "AbilityType_CommanderZoneTransferReplacement": 116,
+        "AbilityType_Multikicker": 122,
+        "AbilityType_BasicLandcycling": 123,
+        "AbilityType_Forestcycling": 124,
+        "AbilityType_Islandcycling": 125,
+        "AbilityType_Mountaincycling": 126,
+        "AbilityType_Plainscycling": 127,
+        "AbilityType_Slivercycling": 128,
+        "AbilityType_Swampcycling": 129,
+        "AbilityType_Wizardcycling": 130,
+        "AbilityType_Monstrosity": 134,
+        "AbilityType_Tribute": 135,
+        "AbilityType_Outlast": 136,
+        "AbilityType_Prowess": 137,
+        "AbilityType_Bolster": 138,
+        "AbilityType_PlaneswalkerDamageRedirection": 139,
+        "AbilityType_OrderObjectsEnteringGraveyard": 140,
+        "AbilityType_OrderObjectsEnteringLibrary": 141,
+        "AbilityType_Menace": 142,
+        "AbilityType_Skulk": 143,
+        "AbilityType_Ingest": 144,
+        "AbilityType_Manifest": 145,
+        "AbilityType_Emerge": 147,
+        "AbilityType_Deliverance": 148,
+        "AbilityType_CastWithoutPayingManaCost": 149,
+        "AbilityType_Megamorph": 150,
+        "AbilityType_Devoid": 151,
+        "AbilityType_SacrificeClue": 152,
+        "AbilityType_Escalate": 153,
+        "AbilityType_Fabricate": 154,
+        "AbilityType_Crew": 156,
+        "AbilityType_Improvise": 157,
+        "AbilityType_ChooseZoneForMutuallyExclusiveZoneTransfers": 158,
+        "AbilityType_Aftermath": 159,
+        "AbilityType_Embalm": 160,
+        "AbilityType_TapForImprovise": 161,
+        "AbilityType_Exert": 162,
+        "AbilityType_Eternalize": 163,
+        "AbilityType_Afflict": 164,
+        "AbilityType_Ascend": 165,
+        "AbilityType_SagaChapter": 166,
+        "AbilityType_SagaLoreReplacement": 167,
+        "AbilityType_SagaLoreTurn": 168,
+        "AbilityType_Surveil": 169,
+        "AbilityType_Jumpstart": 170,
+        "AbilityType_Mentor": 171,
+        "AbilityType_TapForConvoke": 172,
+        "AbilityType_Afterlife": 173,
+        "AbilityType_Spectacle": 174,
+        "AbilityType_Riot": 175,
+        "AbilityType_Adapt": 176,
+        "AbilityType_AffinityForArtifacts": 177,
+        "AbilityType_Scry1": 178,
+        "AbilityType_Scry2": 179,
+        "AbilityType_Scry3": 180,
+        "AbilityType_Scry4": 181,
+        "AbilityType_ScryX": 182,
+        "AbilityType_SacrificeTreasure": 183,
+        "AbilityType_ProtectionFromChosenColor": 184,
+        "AbilityType_ProtectionFromW": 185,
+        "AbilityType_ProtectionFromU": 186,
+        "AbilityType_ProtectionFromB": 187,
+        "AbilityType_ProtectionFromR": 188,
+        "AbilityType_ProtectionFromG": 189,
+        "AbilityType_HexproofFromChosen": 190,
+        "AbilityType_HexproofFromW": 191,
+        "AbilityType_HexproofFromU": 192,
+        "AbilityType_HexproofFromB": 193,
+        "AbilityType_HexproofFromR": 194,
+        "AbilityType_HexproofFromG": 195,
+        "AbilityType_Adventure": 196,
+        "AbilityType_SacrificeFood": 197,
+        "AbilityType_SacrificeGold": 198,
+        "AbilityType_Escape": 199,
+        "AbilityType_Fight": 200,
+        "AbilityType_UntapOptional": 201,
+        "AbilityType_Companion": 202,
+        "AbilityType_Mutate": 203,
+        "AbilityType_ProtectionFromDogs": 204,
+        "AbilityType_Mill": 205,
+        "AbilityType_ProtectionFromChosenName": 206,
+        "AbilityType_Placeholder1": 207,
+        "AbilityType_Placeholder2": 208,
+        "AbilityType_Placeholder3": 209,
+        "AbilityType_Placeholder4": 210,
+        "AbilityType_Placeholder5": 211,
+        "AbilityType_GildCards_Test": 988,
+        "AbilityType_Twiddle_Test": 989,
+        "AbilityType_Donate_Test": 990,
+        "AbilityType_Bounce_Test": 991,
+        "AbilityType_DrawCard_Test": 992,
+        "AbilityType_AddCost_Test": 993,
+        "AbilityType_DeployBears_Test": 994,
+        "AbilityType_EndTurn_Test": 995,
+        "AbilityType_Wish_Test": 996,
+        "AbilityType_PutLibrary_Test": 997,
+        "AbilityType_GainHaste_Test": 998,
+        "AbilityType_AddWUBRG_Test": 999,
+        "AbilityType_IntrinsicMana_W": 1001,
+        "AbilityType_IntrinsicMana_U": 1002,
+        "AbilityType_IntrinsicMana_B": 1003,
+        "AbilityType_IntrinsicMana_R": 1004,
+        "AbilityType_IntrinsicMana_G": 1005,
+        "AbilityType_AutoGen": 1006
+      }
+    },
+    "Action": {
+      "fields": {
+        "actionType": {
+          "type": "ActionType",
+          "id": 1
+        },
+        "grpId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "instanceId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 6
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 8
+        },
+        "alternativeGrpId": {
+          "type": "uint32",
+          "id": 9
+        },
+        "manaPaymentOptions": {
+          "rule": "repeated",
+          "type": "ManaPaymentOption",
+          "id": 10
+        },
+        "manaCost": {
+          "rule": "repeated",
+          "type": "ManaRequirement",
+          "id": 11
+        },
+        "shouldStop": {
+          "type": "bool",
+          "id": 12
+        },
+        "disqualifyingSourceId": {
+          "type": "uint32",
+          "id": 13
+        },
+        "selectionType": {
+          "type": "uint32",
+          "id": 14
+        },
+        "selection": {
+          "type": "uint32",
+          "id": 15
+        },
+        "alternativeSourceZcid": {
+          "type": "uint32",
+          "id": 17
+        },
+        "visibility": {
+          "type": "Visibility",
+          "id": 18
+        },
+        "targets": {
+          "rule": "repeated",
+          "type": "TargetSelection",
+          "id": 19
+        },
+        "manaPaymentConditions": {
+          "rule": "repeated",
+          "type": "ManaPaymentCondition",
+          "id": 20
+        },
+        "autoTapSolution": {
+          "type": "AutoTapSolution",
+          "id": 21
+        },
+        "costSelectionIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 22
+        },
+        "costCounters": {
+          "rule": "repeated",
+          "type": "Counter",
+          "id": 23
+        },
+        "maxActivations": {
+          "type": "uint32",
+          "id": 24
+        },
+        "isBatchable": {
+          "type": "bool",
+          "id": 25
+        }
+      }
+    },
+    "ActionInfo": {
+      "fields": {
+        "actionId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "seatId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "action": {
+          "type": "Action",
+          "id": 3
+        }
+      }
+    },
+    "ActionType": {
+      "values": {
+        "ActionType_None": 0,
+        "ActionType_Cast": 1,
+        "ActionType_Activate": 2,
+        "ActionType_Play": 3,
+        "ActionType_Activate_Mana": 4,
+        "ActionType_Pass": 5,
+        "ActionType_Activate_Test": 6,
+        "ActionType_Special": 7,
+        "ActionType_Special_TurnFaceUp": 8,
+        "ActionType_ResolutionCost": 9,
+        "ActionType_CastLeft": 10,
+        "ActionType_CastRight": 11,
+        "ActionType_Make_Payment": 12,
+        "ActionType_CastingTimeOption": 13,
+        "ActionType_CombatCost": 14,
+        "ActionType_OpeningHandAction": 15,
+        "ActionType_CastAdventure": 16,
+        "ActionType_FloatMana": 17,
+        "ActionType_Placeholder1": 18,
+        "ActionType_Placeholder2": 19,
+        "ActionType_Placeholder3": 20,
+        "ActionType_Placeholder4": 21,
+        "ActionType_Placeholder5": 22
+      }
+    },
+    "ActionsAvailableReq": {
+      "fields": {
+        "actions": {
+          "rule": "repeated",
+          "type": "Action",
+          "id": 1
+        },
+        "inactiveActions": {
+          "rule": "repeated",
+          "type": "Action",
+          "id": 2
+        }
+      }
+    },
+    "AllowCancel": {
+      "values": {
+        "AllowCancel_None": 0,
+        "AllowCancel_Continue": 1,
+        "AllowCancel_Abort": 2,
+        "AllowCancel_No": 3
+      }
+    },
+    "AnnotationInfo": {
+      "fields": {
+        "id": {
+          "type": "uint32",
+          "id": 1
+        },
+        "affectorId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "affectedIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 3
+        },
+        "type": {
+          "rule": "repeated",
+          "type": "AnnotationType",
+          "id": 4
+        },
+        "details": {
+          "rule": "repeated",
+          "type": "KeyValuePairInfo",
+          "id": 6
+        },
+        "allowRedaction": {
+          "type": "bool",
+          "id": 7
+        },
+        "ignoreForSeatIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 8
+        },
+        "redactAffected": {
+          "type": "bool",
+          "id": 9
+        }
+      }
+    },
+    "AnnotationType": {
+      "values": {
+        "AnnotationType_None": 0,
+        "AnnotationType_ZoneTransfer": 1,
+        "AnnotationType_LossOfGame": 2,
+        "AnnotationType_DamageDealt": 3,
+        "AnnotationType_TappedUntappedPermanent": 4,
+        "AnnotationType_ModifiedPower": 5,
+        "AnnotationType_ModifiedToughness": 6,
+        "AnnotationType_ModifiedColor": 7,
+        "AnnotationType_PhaseOrStepModified": 8,
+        "AnnotationType_AddAbility": 9,
+        "AnnotationType_ModifiedLife": 10,
+        "AnnotationType_CreateAttachment": 11,
+        "AnnotationType_RemoveAttachment": 12,
+        "AnnotationType_ObjectIdChanged": 13,
+        "AnnotationType_Counter": 14,
+        "AnnotationType_ControllerChanged": 15,
+        "AnnotationType_CounterAdded": 16,
+        "AnnotationType_CounterRemoved": 17,
+        "AnnotationType_LayeredEffectCreated": 18,
+        "AnnotationType_LayeredEffectDestroyed": 19,
+        "AnnotationType_Attachment": 20,
+        "AnnotationType_Haunt": 21,
+        "AnnotationType_CopiedObject": 22,
+        "AnnotationType_RemoveAbility": 23,
+        "AnnotationType_WinTheGame": 24,
+        "AnnotationType_ModifiedType": 25,
+        "AnnotationType_TargetSpec": 26,
+        "AnnotationType_TextChange": 27,
+        "AnnotationType_FaceDown": 28,
+        "AnnotationType_TurnPermanent": 29,
+        "AnnotationType_DynamicAbility": 30,
+        "AnnotationType_ObjectsSelected": 31,
+        "AnnotationType_TriggeringObject": 32,
+        "AnnotationType_DamageSource": 33,
+        "AnnotationType_ManaPaid": 34,
+        "AnnotationType_TokenCreated": 35,
+        "AnnotationType_AbilityInstanceCreated": 36,
+        "AnnotationType_AbilityInstanceDeleted": 37,
+        "AnnotationType_DisplayCardUnderCard": 38,
+        "AnnotationType_AbilityWordActive": 39,
+        "AnnotationType_LinkInfo": 40,
+        "AnnotationType_TokenDeleted": 41,
+        "AnnotationType_Qualification": 42,
+        "AnnotationType_ResolutionStart": 43,
+        "AnnotationType_ResolutionComplete": 44,
+        "AnnotationType_Designation": 45,
+        "AnnotationType_GainDesignation": 46,
+        "AnnotationType_CardRevealed": 47,
+        "AnnotationType_NewTurnStarted": 48,
+        "AnnotationType_ManaDetails": 49,
+        "AnnotationType_DisqualifiedEffect": 50,
+        "AnnotationType_LayeredEffect": 51,
+        "AnnotationType_MiscContinuousEffect": 52,
+        "AnnotationType_ShouldntPlay": 53,
+        "AnnotationType_UseOrCostsManaCost": 54,
+        "AnnotationType_RemainingSelections": 55,
+        "AnnotationType_Shuffle": 56,
+        "AnnotationType_CoinFlip": 57,
+        "AnnotationType_ChoiceResult": 58,
+        "AnnotationType_RevealedCardCreated": 59,
+        "AnnotationType_RevealedCardDeleted": 60,
+        "AnnotationType_SuspendLike": 61,
+        "AnnotationType_ReplacementEffect": 62,
+        "AnnotationType_EnteredZoneThisTurn": 63,
+        "AnnotationType_CastingTimeOption": 64,
+        "AnnotationType_Scry": 65,
+        "AnnotationType_PredictedDirectDamage": 66,
+        "AnnotationType_SwitchPowerToughness": 67,
+        "AnnotationType_SupplementalText": 68,
+        "AnnotationType_PendingEffect": 69,
+        "AnnotationType_AttachmentCreated": 70,
+        "AnnotationType_PowerToughnessModCreated": 71,
+        "AnnotationType_SyntheticEvent": 72,
+        "AnnotationType_UserActionTaken": 73,
+        "AnnotationType_DelayedTriggerAffectees": 74,
+        "AnnotationType_InstanceRevealedToOpponent": 75,
+        "AnnotationType_ModifiedName": 76,
+        "AnnotationType_ReplacementEffectApplied": 77,
+        "AnnotationType_ReferencedObjects": 78,
+        "AnnotationType_ChoosingAttachments": 79,
+        "AnnotationType_TemporaryPermanent": 80,
+        "AnnotationType_GamewideHistoryCount": 81
+      }
+    },
+    "Answer": {
+      "values": {
+        "Answer_None": 0,
+        "Answer_Yes": 1,
+        "Answer_No": 2
+      }
+    },
+    "AnyMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "serverToGREMessage",
+            "gREToServerMessage",
+            "clientToGREMessage",
+            "gREToClientMessage"
+          ]
+        }
+      },
+      "fields": {
+        "timestamp": {
+          "type": "int64",
+          "id": 1
+        },
+        "serverToGREMessage": {
+          "type": "ServerToGREMessage",
+          "id": 2
+        },
+        "gREToServerMessage": {
+          "type": "GREToServerMessage",
+          "id": 3
+        },
+        "clientToGREMessage": {
+          "type": "ClientToGREMessage",
+          "id": 4
+        },
+        "gREToClientMessage": {
+          "type": "GREToClientMessage",
+          "id": 5
+        }
+      }
+    },
+    "AnyToGREMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "serverToGREMessage",
+            "clientToGREMessage"
+          ]
+        }
+      },
+      "fields": {
+        "timestamp": {
+          "type": "int64",
+          "id": 1
+        },
+        "serverToGREMessage": {
+          "type": "ServerToGREMessage",
+          "id": 2
+        },
+        "clientToGREMessage": {
+          "type": "ClientToGREMessage",
+          "id": 3
+        }
+      }
+    },
+    "AssignDamageConfirmation": {
+      "fields": {
+        "result": {
+          "type": "ResultCode",
+          "id": 1
+        }
+      }
+    },
+    "AssignDamageReq": {
+      "fields": {
+        "damageAssigners": {
+          "rule": "repeated",
+          "type": "DamageAssigner",
+          "id": 1
+        }
+      }
+    },
+    "AssignDamageResp": {
+      "fields": {
+        "assigners": {
+          "rule": "repeated",
+          "type": "DamageAssigner",
+          "id": 1
+        }
+      }
+    },
+    "AttackInfo": {
+      "fields": {
+        "targetId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "damageOrdered": {
+          "type": "bool",
+          "id": 2
+        },
+        "damageAssigned": {
+          "type": "bool",
+          "id": 3
+        },
+        "orderedBlockers": {
+          "rule": "repeated",
+          "type": "OrderedDamageAssignment",
+          "id": 4
+        },
+        "alternativeGrpId": {
+          "type": "uint32",
+          "id": 5
+        }
+      }
+    },
+    "AttackState": {
+      "values": {
+        "AttackState_None": 0,
+        "AttackState_Declared": 1,
+        "AttackState_Attacking": 2
+      }
+    },
+    "AttackWarning": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "type": {
+          "type": "AttackWarningType",
+          "id": 2
+        },
+        "warningPromptId": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "AttackWarningType": {
+      "values": {
+        "AttackWarningType_None": 0,
+        "AttackWarningType_MustAttackWithAtLeastOne": 1,
+        "AttackWarningType_CannotAttackAlone": 2,
+        "AttackWarningType_MustAttack": 3
+      }
+    },
+    "Attacker": {
+      "fields": {
+        "attackerInstanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "legalDamageRecipients": {
+          "rule": "repeated",
+          "type": "DamageRecipient",
+          "id": 2
+        },
+        "selectedDamageRecipient": {
+          "type": "DamageRecipient",
+          "id": 3
+        },
+        "alternativeGrpId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "autoAttacked": {
+          "type": "bool",
+          "id": 5
+        },
+        "mustAttack": {
+          "type": "bool",
+          "id": 6
+        }
+      }
+    },
+    "AuthenticateRequest": {
+      "fields": {
+        "clientId": {
+          "type": "string",
+          "id": 1
+        },
+        "clientAuthToken": {
+          "type": "bytes",
+          "id": 2
+        },
+        "playerName": {
+          "type": "string",
+          "id": 3
+        },
+        "playFabSessionTicket": {
+          "type": "string",
+          "id": 4
+        },
+        "inactivityTimeoutMs": {
+          "type": "int32",
+          "id": 5
+        },
+        "clientInfo": {
+          "type": "ClientInfo",
+          "id": 10
+        }
+      }
+    },
+    "AuthenticateResponse": {
+      "fields": {
+        "clientId": {
+          "type": "string",
+          "id": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "id": 2
+        },
+        "screenName": {
+          "type": "string",
+          "id": 10
+        }
+      }
+    },
+    "AutoAnswer": {
+      "fields": {
+        "promptGrpId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "cardTitleId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "appliesTo": {
+          "type": "SettingScope",
+          "id": 4
+        },
+        "status": {
+          "type": "SettingStatus",
+          "id": 5
+        },
+        "answer": {
+          "type": "Answer",
+          "id": 6
+        }
+      }
+    },
+    "AutoPassOption": {
+      "values": {
+        "AutoPassOption_None": 0,
+        "AutoPassOption_Turn": 1,
+        "AutoPassOption_UnlessAction": 2,
+        "AutoPassOption_EndStep": 3,
+        "AutoPassOption_Clear": 4,
+        "AutoPassOption_UnlessOpponentAction": 5,
+        "AutoPassOption_ResolveMyStackEffects": 6,
+        "AutoPassOption_FullControl": 7,
+        "AutoPassOption_ArenaDefault": 8
+      }
+    },
+    "AutoPassPriority": {
+      "values": {
+        "AutoPassPriority_None": 0,
+        "AutoPassPriority_No": 1,
+        "AutoPassPriority_Yes": 2
+      }
+    },
+    "AutoRespondPermission": {
+      "fields": {
+        "seatIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "AutoTapAction": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "manaId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "manaPaymentOption": {
+          "type": "ManaPaymentOption",
+          "id": 4
+        },
+        "costCategory": {
+          "type": "CostCategory",
+          "id": 5
+        }
+      }
+    },
+    "AutoTapActionsAvailableReq": {
+      "fields": {
+        "autoTapSolutions": {
+          "rule": "repeated",
+          "type": "AutoTapSolution",
+          "id": 2
+        }
+      }
+    },
+    "AutoTapSolution": {
+      "fields": {
+        "autoTapActions": {
+          "rule": "repeated",
+          "type": "AutoTapAction",
+          "id": 1
+        },
+        "manaPaymentConditions": {
+          "rule": "repeated",
+          "type": "ManaPaymentCondition",
+          "id": 2
+        }
+      }
+    },
+    "AutoTapStopsSetting": {
+      "values": {
+        "AutoTapStopsSetting_None": 0,
+        "AutoTapStopsSetting_Enable": 1,
+        "AutoTapStopsSetting_Disable": 2
+      }
+    },
+    "AutoYield": {
+      "fields": {
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "cardTitleId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "appliesTo": {
+          "type": "SettingScope",
+          "id": 3
+        },
+        "status": {
+          "type": "SettingStatus",
+          "id": 4
+        }
+      }
+    },
+    "BinaryGameState": {
+      "fields": {
+        "gameStateMsg": {
+          "type": "GameStateMessage",
+          "id": 1
+        },
+        "instanceData": {
+          "type": "bytes",
+          "id": 2
+        },
+        "internalGREData": {
+          "type": "bytes",
+          "id": 4
+        }
+      }
+    },
+    "BlockInfo": {
+      "fields": {
+        "attackerIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "damageOrdered": {
+          "type": "bool",
+          "id": 2
+        },
+        "damageAssigned": {
+          "type": "bool",
+          "id": 3
+        },
+        "orderedAttackers": {
+          "rule": "repeated",
+          "type": "OrderedDamageAssignment",
+          "id": 4
+        }
+      }
+    },
+    "BlockState": {
+      "values": {
+        "BlockState_None": 0,
+        "BlockState_Declared": 1,
+        "BlockState_Blocking": 2,
+        "BlockState_Blocked": 3,
+        "BlockState_Unblocked": 4
+      }
+    },
+    "BlockWarning": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "type": {
+          "type": "BlockWarningType",
+          "id": 2
+        },
+        "warningPromptId": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "BlockWarningType": {
+      "values": {
+        "BlockWarningType_None": 0,
+        "BlockWarningType_InsufficientBlockers": 1,
+        "BlockWarningType_CannotBlockAlone": 2,
+        "BlockWarningType_MustBeBlocked": 3,
+        "BlockWarningType_MustBlock": 4,
+        "BlockWarningType_MustBeBlockedByAll": 5
+      }
+    },
+    "Blocker": {
+      "fields": {
+        "blockerInstanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "attackerInstanceIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "selectedAttackerInstanceIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 3
+        },
+        "minAttackers": {
+          "type": "uint32",
+          "id": 4
+        },
+        "maxAttackers": {
+          "type": "uint32",
+          "id": 5
+        },
+        "mustBlock": {
+          "type": "bool",
+          "id": 6
+        }
+      }
+    },
+    "CLIPSConfiguration": {
+      "fields": {
+        "enableWatch": {
+          "type": "bool",
+          "id": 1
+        },
+        "enableMetrics": {
+          "type": "bool",
+          "id": 2
+        },
+        "enableLogging": {
+          "type": "bool",
+          "id": 3
+        },
+        "initFile": {
+          "type": "string",
+          "id": 4
+        },
+        "maxFiringLimit": {
+          "type": "int32",
+          "id": 5
+        },
+        "warningFiringLimit": {
+          "type": "int32",
+          "id": 6
+        },
+        "metricsFile": {
+          "type": "string",
+          "id": 7
+        },
+        "logFile": {
+          "type": "string",
+          "id": 8
+        }
+      }
+    },
+    "CancelActionReq": {
+      "fields": {}
+    },
+    "CardColor": {
+      "values": {
+        "CardColor_Colorless": 0,
+        "CardColor_White": 1,
+        "CardColor_Blue": 2,
+        "CardColor_Black": 3,
+        "CardColor_Red": 4,
+        "CardColor_Green": 5,
+        "CardColor_Land": 6,
+        "CardColor_Artifact": 7
+      }
+    },
+    "CardConfig": {
+      "fields": {
+        "count": {
+          "type": "uint32",
+          "id": 1
+        },
+        "title": {
+          "type": "string",
+          "id": 2
+        },
+        "expansionCode": {
+          "type": "string",
+          "id": 3
+        }
+      }
+    },
+    "CardMechanicType": {
+      "values": {
+        "CardMechanicType_None": 0,
+        "CardMechanicType_AddAbility": 2,
+        "CardMechanicType_AddAttachment": 3,
+        "CardMechanicType_DealDamage": 4,
+        "CardMechanicType_DestroyPermanent": 5,
+        "CardMechanicType_Discard": 6,
+        "CardMechanicType_DrawCard": 7,
+        "CardMechanicType_LossOfGame": 8,
+        "CardMechanicType_SetColor": 9,
+        "CardMechanicType_ModifyLife": 10,
+        "CardMechanicType_ModifyPower": 11,
+        "CardMechanicType_ModifyToughness": 12,
+        "CardMechanicType_PhaseOrStepTransition": 13,
+        "CardMechanicType_PutCounterOnObject": 14,
+        "CardMechanicType_CreateToken": 15,
+        "CardMechanicType_RemoveCounterFromObject": 16,
+        "CardMechanicType_ResolveAbility": 17,
+        "CardMechanicType_Reveal": 18,
+        "CardMechanicType_TapPermanent": 19,
+        "CardMechanicType_UntapPermanent": 21,
+        "CardMechanicType_ZoneTransfer": 22,
+        "CardMechanicType_RegeneratePermanent": 23,
+        "CardMechanicType_SacrificePermanent": 24,
+        "CardMechanicType_SetController": 25,
+        "CardMechanicType_DeclaredAttacker": 26,
+        "CardMechanicType_DeclaredBlocker": 27,
+        "CardMechanicType_BecomeTarget": 28,
+        "CardMechanicType_AddToManaPool": 29,
+        "CardMechanicType_EnterZone": 30,
+        "CardMechanicType_ShuffleLibrary": 31,
+        "CardMechanicType_CounterObjectOnStack": 32,
+        "CardMechanicType_ExileGameObject": 33,
+        "CardMechanicType_DamageDealt": 34,
+        "CardMechanicType_PhaseInPermanent": 35,
+        "CardMechanicType_PhaseOutPermanent": 36,
+        "CardMechanicType_AttackerBlocked": 37,
+        "CardMechanicType_AttackersSubmitted": 38,
+        "CardMechanicType_BlockersDetermined": 39,
+        "CardMechanicType_SetPower": 40,
+        "CardMechanicType_SetToughness": 41,
+        "CardMechanicType_BeginTurn": 42,
+        "CardMechanicType_TurnFaceUp": 43,
+        "CardMechanicType_Transform": 44,
+        "CardMechanicType_Dredge": 45,
+        "CardMechanicType_Explore": 46,
+        "CardMechanicType_Provoke": 47,
+        "CardMechanicType_Riot": 48,
+        "CardMechanicType_Mutate": 49,
+        "CardMechanicType_GraveyardExile": 50,
+        "CardMechanicType_Placeholder1": 51,
+        "CardMechanicType_Placeholder2": 52,
+        "CardMechanicType_Placeholder3": 53,
+        "CardMechanicType_Placeholder4": 54,
+        "CardMechanicType_Placeholder5": 55
+      }
+    },
+    "CardSkinTuple": {
+      "fields": {
+        "catalogId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "skinCode": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "CardType": {
+      "values": {
+        "CardType_None": 0,
+        "CardType_Artifact": 1,
+        "CardType_Creature": 2,
+        "CardType_Enchantment": 3,
+        "CardType_Instant": 4,
+        "CardType_Land": 5,
+        "CardType_Phenomenon": 6,
+        "CardType_Plane": 7,
+        "CardType_Planeswalker": 8,
+        "CardType_Scheme": 9,
+        "CardType_Sorcery": 10,
+        "CardType_Tribal": 11,
+        "CardType_Vanguard": 12
+      }
+    },
+    "CastingTimeOptionReq": {
+      "fields": {
+        "ctoId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "castingTimeOptionType": {
+          "type": "CastingTimeOptionType",
+          "id": 2
+        },
+        "affectedId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "affectorId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "grpId": {
+          "type": "uint32",
+          "id": 5
+        },
+        "playerIdToPrompt": {
+          "type": "uint32",
+          "id": 6
+        },
+        "isRequired": {
+          "type": "bool",
+          "id": 7
+        },
+        "prompt": {
+          "type": "Prompt",
+          "id": 8
+        },
+        "numericInputReq": {
+          "type": "NumericInputReq",
+          "id": 9
+        },
+        "selectManaTypeReq": {
+          "type": "SelectManaTypeReq",
+          "id": 10
+        },
+        "modalReq": {
+          "type": "ModalReq",
+          "id": 11
+        },
+        "selectNReq": {
+          "type": "SelectNReq",
+          "id": 12
+        },
+        "manaCost": {
+          "rule": "repeated",
+          "type": "ManaRequirement",
+          "id": 13
+        },
+        "autoTapSolution": {
+          "type": "AutoTapSolution",
+          "id": 15
+        }
+      }
+    },
+    "CastingTimeOptionResp": {
+      "fields": {
+        "ctoId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "castingTimeOptionType": {
+          "type": "CastingTimeOptionType",
+          "id": 2
+        },
+        "numericInputResp": {
+          "type": "NumericInputResp",
+          "id": 3
+        },
+        "selectManaTypeResp": {
+          "type": "SelectManaTypeResp",
+          "id": 4
+        },
+        "chooseModalResp": {
+          "type": "ChooseModalResp",
+          "id": 5
+        },
+        "selectNResp": {
+          "type": "SelectNResp",
+          "id": 6
+        }
+      }
+    },
+    "CastingTimeOptionType": {
+      "values": {
+        "CastingTimeOptionType_None": 0,
+        "CastingTimeOptionType_Done": 1,
+        "CastingTimeOptionType_ChooseX": 2,
+        "CastingTimeOptionType_Kicker": 3,
+        "CastingTimeOptionType_Multikicker": 4,
+        "CastingTimeOptionType_AdditionalCost": 5,
+        "CastingTimeOptionType_OptionalCost": 6,
+        "CastingTimeOptionType_Replicate": 7,
+        "CastingTimeOptionType_Conspire": 8,
+        "CastingTimeOptionType_ManaType": 9,
+        "CastingTimeOptionType_Modal": 10,
+        "CastingTimeOptionType_ChooseOrCost": 11,
+        "CastingTimeOptionType_Selection": 12,
+        "CastingTimeOptionType_CastThroughAbility": 13
+      }
+    },
+    "CastingTimeOptionsReq": {
+      "fields": {
+        "castingTimeOptionReq": {
+          "rule": "repeated",
+          "type": "CastingTimeOptionReq",
+          "id": 1
+        }
+      }
+    },
+    "CastingTimeOptionsResp": {
+      "fields": {
+        "castingTimeOptionResp": {
+          "type": "CastingTimeOptionResp",
+          "id": 1
+        }
+      }
+    },
+    "CheckpointConfiguration": {
+      "fields": {
+        "enabled": {
+          "type": "bool",
+          "id": 1
+        }
+      }
+    },
+    "ChoicePersistence": {
+      "values": {
+        "ChoicePersistence_None": 0,
+        "ChoicePersistence_ChooseOnce": 1,
+        "ChoicePersistence_ChooseAlways": 2
+      }
+    },
+    "ChooseModalResp": {
+      "fields": {
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "grpIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "ChooseStartingPlayerReq": {
+      "fields": {
+        "teamType": {
+          "type": "TeamType",
+          "id": 1
+        },
+        "systemSeatIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "teamIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 3
+        },
+        "prompt": {
+          "type": "Prompt",
+          "id": 4
+        }
+      }
+    },
+    "ChooseStartingPlayerResp": {
+      "fields": {
+        "teamType": {
+          "type": "TeamType",
+          "id": 1
+        },
+        "systemSeatId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "teamId": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "ClientInfo": {
+      "fields": {
+        "clientId": {
+          "type": "string",
+          "id": 1
+        },
+        "clientType": {
+          "type": "ClientType",
+          "id": 2
+        },
+        "clientVersion": {
+          "type": "string",
+          "id": 10
+        },
+        "clientLocation": {
+          "type": "string",
+          "id": 11
+        },
+        "clientLanguage": {
+          "type": "string",
+          "id": 12
+        }
+      }
+    },
+    "ClientMessageType": {
+      "values": {
+        "ClientMessageType_None": 0,
+        "ClientMessageType_ConnectReq": 1,
+        "ClientMessageType_CancelActionReq": 5,
+        "ClientMessageType_ConcedeReq": 7,
+        "ClientMessageType_EnterSideboardingReq": 8,
+        "ClientMessageType_ForceDrawReq": 9,
+        "ClientMessageType_GetSettingsReq": 11,
+        "ClientMessageType_GroupResp": 12,
+        "ClientMessageType_MulliganResp": 13,
+        "ClientMessageType_OrderResp": 14,
+        "ClientMessageType_PerformActionResp": 15,
+        "ClientMessageType_ControlReq": 17,
+        "ClientMessageType_SelectNResp": 18,
+        "ClientMessageType_SetSettingsReq": 20,
+        "ClientMessageType_UndoReq": 22,
+        "ClientMessageType_ChooseStartingPlayerResp": 24,
+        "ClientMessageType_OptionalActionResp": 25,
+        "ClientMessageType_AllowForceDrawResp": 26,
+        "ClientMessageType_RevealHandResp": 28,
+        "ClientMessageType_DeclareAttackersResp": 30,
+        "ClientMessageType_SubmitAttackersReq": 31,
+        "ClientMessageType_DeclareBlockersResp": 32,
+        "ClientMessageType_SubmitBlockersReq": 33,
+        "ClientMessageType_OrderCombatDamageResp": 34,
+        "ClientMessageType_AssignDamageResp": 35,
+        "ClientMessageType_SelectTargetsResp": 36,
+        "ClientMessageType_SubmitTargetsReq": 37,
+        "ClientMessageType_DrawCardResp": 38,
+        "ClientMessageType_SelectReplacementResp": 39,
+        "ClientMessageType_SelectNGroupResp": 40,
+        "ClientMessageType_DistributionResp": 42,
+        "ClientMessageType_NumericInputResp": 43,
+        "ClientMessageType_SearchResp": 44,
+        "ClientMessageType_EffectCostResp": 45,
+        "ClientMessageType_CastingTimeOptionsResp": 46,
+        "ClientMessageType_SelectFromGroupsResp": 48,
+        "ClientMessageType_SearchFromGroupsResp": 49,
+        "ClientMessageType_GatherResp": 50,
+        "ClientMessageType_SubmitPaymentResp": 51,
+        "ClientMessageType_AutoResp": 52,
+        "ClientMessageType_UIMessage": 53,
+        "ClientMessageType_SubmitDeckResp": 54,
+        "ClientMessageType_TakeTimeoutReq": 55,
+        "ClientMessageType_PerformAutoTapActionsResp": 56
+      }
+    },
+    "ClientSessionInfo": {
+      "fields": {
+        "clientId": {
+          "type": "string",
+          "id": 1
+        },
+        "sessionId": {
+          "type": "string",
+          "id": 2
+        },
+        "roles": {
+          "rule": "repeated",
+          "type": "string",
+          "id": 3
+        },
+        "userName": {
+          "type": "string",
+          "id": 4
+        },
+        "screenName": {
+          "type": "string",
+          "id": 5
+        },
+        "clientInfo": {
+          "type": "ClientInfo",
+          "id": 10
+        }
+      }
+    },
+    "ClientToGREMessage": {
+      "fields": {
+        "type": {
+          "type": "ClientMessageType",
+          "id": 1
+        },
+        "systemSeatId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "gameStateId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "respId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "connectReq": {
+          "type": "ConnectReq",
+          "id": 5
+        },
+        "cancelActionReq": {
+          "type": "CancelActionReq",
+          "id": 6
+        },
+        "concedeReq": {
+          "type": "ConcedeReq",
+          "id": 8
+        },
+        "forceDrawReq": {
+          "type": "ForceDrawReq",
+          "id": 9
+        },
+        "groupResp": {
+          "type": "GroupResp",
+          "id": 10
+        },
+        "mulliganResp": {
+          "type": "MulliganResp",
+          "id": 11
+        },
+        "optionalResp": {
+          "type": "OptionalResp",
+          "id": 12
+        },
+        "orderResp": {
+          "type": "OrderResp",
+          "id": 13
+        },
+        "performActionResp": {
+          "type": "PerformActionResp",
+          "id": 14
+        },
+        "selectNResp": {
+          "type": "SelectNResp",
+          "id": 15
+        },
+        "setSettingsReq": {
+          "type": "SetSettingsReq",
+          "id": 16
+        },
+        "chooseStartingPlayerResp": {
+          "type": "ChooseStartingPlayerResp",
+          "id": 21
+        },
+        "declareAttackersResp": {
+          "type": "DeclareAttackersResp",
+          "id": 22
+        },
+        "declareBlockersResp": {
+          "type": "DeclareBlockersResp",
+          "id": 23
+        },
+        "orderCombatDamageResp": {
+          "type": "OrderCombatDamageResp",
+          "id": 24
+        },
+        "assignDamageResp": {
+          "type": "AssignDamageResp",
+          "id": 25
+        },
+        "selectTargetsResp": {
+          "type": "SelectTargetsResp",
+          "id": 26
+        },
+        "selectReplacementResp": {
+          "type": "SelectReplacementResp",
+          "id": 27
+        },
+        "selectNGroupResp": {
+          "type": "SelectNGroupResp",
+          "id": 28
+        },
+        "distributionResp": {
+          "type": "DistributionResp",
+          "id": 30
+        },
+        "numericInputResp": {
+          "type": "NumericInputResp",
+          "id": 31
+        },
+        "searchResp": {
+          "type": "SearchResp",
+          "id": 32
+        },
+        "effectCostResp": {
+          "type": "EffectCostResp",
+          "id": 33
+        },
+        "castingTimeOptionsResp": {
+          "type": "CastingTimeOptionsResp",
+          "id": 34
+        },
+        "selectFromGroupsResp": {
+          "type": "SelectFromGroupsResp",
+          "id": 36
+        },
+        "searchFromGroupsResp": {
+          "type": "SearchFromGroupsResp",
+          "id": 37
+        },
+        "gatherResp": {
+          "type": "GatherResp",
+          "id": 38
+        },
+        "submitPaymentResp": {
+          "type": "SubmitPaymentResp",
+          "id": 39
+        },
+        "uiMessage": {
+          "type": "UIMessage",
+          "id": 40
+        },
+        "submitDeckResp": {
+          "type": "SubmitDeckResp",
+          "id": 41
+        },
+        "controlReq": {
+          "type": "ControlReq",
+          "id": 42
+        },
+        "performAutoTapActionsResp": {
+          "type": "PerformAutoTapActionsResp",
+          "id": 43
+        },
+        "timerId": {
+          "type": "uint32",
+          "id": 100
+        }
+      }
+    },
+    "ClientToMatchDoorConnectRequest": {
+      "fields": {
+        "matchId": {
+          "type": "string",
+          "id": 1
+        },
+        "mcFabricUri": {
+          "type": "string",
+          "id": 2
+        },
+        "clientToGreMessageBytes": {
+          "type": "bytes",
+          "id": 10
+        }
+      }
+    },
+    "ClientToMatchServiceMessage": {
+      "fields": {
+        "requestId": {
+          "type": "int32",
+          "id": 1
+        },
+        "clientToMatchServiceMessageType": {
+          "type": "ClientToMatchServiceMessageType",
+          "id": 2
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 3
+        },
+        "transactionId": {
+          "type": "string",
+          "id": 4
+        },
+        "payload": {
+          "type": "bytes",
+          "id": 100
+        }
+      }
+    },
+    "ClientToMatchServiceMessageType": {
+      "values": {
+        "ClientToMatchServiceMessageType_None": 0,
+        "ClientToMatchServiceMessageType_ClientToMatchDoorConnectRequest": 1,
+        "ClientToMatchServiceMessageType_ClientToGREMessage": 2,
+        "ClientToMatchServiceMessageType_ClientToGREUIMessage": 3,
+        "ClientToMatchServiceMessageType_AuthenticateRequest": 4,
+        "ClientToMatchServiceMessageType_CreateMatchGameRoomRequest": 5,
+        "ClientToMatchServiceMessageType_EchoRequest": 8
+      }
+    },
+    "ClientType": {
+      "values": {
+        "ClientType_Invalid": 0,
+        "ClientType_User": 1,
+        "ClientType_Service": 2,
+        "ClientType_Familiar": 3
+      }
+    },
+    "CombatDamageOrder": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "recipients": {
+          "type": "OrderReq",
+          "id": 2
+        },
+        "decisionPrompt": {
+          "type": "Prompt",
+          "id": 3
+        }
+      }
+    },
+    "CombatDamageOrderAssignment": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "recipients": {
+          "type": "OrderResp",
+          "id": 2
+        },
+        "decisionPrompt": {
+          "type": "Prompt",
+          "id": 3
+        }
+      }
+    },
+    "ConcedeReq": {
+      "fields": {
+        "scope": {
+          "type": "MatchScope",
+          "id": 1
+        },
+        "gameNumber": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "ConnectReq": {
+      "fields": {
+        "majorVer": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minorVer": {
+          "type": "uint32",
+          "id": 2
+        },
+        "revisionVer": {
+          "type": "uint32",
+          "id": 3
+        },
+        "buildVer": {
+          "type": "uint32",
+          "id": 4
+        },
+        "defaultSettings": {
+          "type": "SettingsMessage",
+          "id": 5
+        },
+        "protoVer": {
+          "type": "ProtoVersion",
+          "id": 6
+        },
+        "seatId": {
+          "type": "uint32",
+          "id": 7
+        }
+      }
+    },
+    "ConnectResp": {
+      "fields": {
+        "status": {
+          "type": "ConnectionStatus",
+          "id": 1
+        },
+        "majorVer": {
+          "type": "uint32",
+          "id": 2
+        },
+        "minorVer": {
+          "type": "uint32",
+          "id": 3
+        },
+        "revisionVer": {
+          "type": "uint32",
+          "id": 4
+        },
+        "buildVer": {
+          "type": "uint32",
+          "id": 5
+        },
+        "protoVer": {
+          "type": "ProtoVersion",
+          "id": 6
+        },
+        "seatId": {
+          "type": "uint32",
+          "id": 7
+        },
+        "settings": {
+          "type": "SettingsMessage",
+          "id": 8
+        },
+        "deckMessage": {
+          "type": "DeckMessage",
+          "id": 9
+        }
+      }
+    },
+    "ConnectionState": {
+      "values": {
+        "ConnectionState_Invalid": 0,
+        "ConnectionState_Open": 1,
+        "ConnectionState_Closed": 2,
+        "ConnectionState_Connecting": 3,
+        "ConnectionState_Closing": 4
+      }
+    },
+    "ConnectionStateChangedEventType": {
+      "values": {
+        "ConnectionStateChangedEventType_Invalid": 0,
+        "ConnectionStateChangedEventType_Connected": 1,
+        "ConnectionStateChangedEventType_Disconnected": 2
+      }
+    },
+    "ConnectionStatus": {
+      "values": {
+        "ConnectionStatus_None": 0,
+        "ConnectionStatus_Success": 1,
+        "ConnectionStatus_GRPVersionIncompat": 2,
+        "ConnectionStatus_ProtoVersionIncompat": 3
+      }
+    },
+    "ContinuationToken": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "timestamp"
+          ]
+        }
+      },
+      "fields": {
+        "timestamp": {
+          "type": "int64",
+          "id": 5
+        }
+      }
+    },
+    "ControlReq": {
+      "fields": {
+        "type": {
+          "type": "ControllerType",
+          "id": 1
+        },
+        "controllerId": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "ControllerType": {
+      "values": {
+        "ControllerType_None": 0,
+        "ControllerType_Player": 1,
+        "ControllerType_AI": 2,
+        "ControllerType_AI_Goldfish": 3,
+        "ControllerType_AI_PetRock": 4
+      }
+    },
+    "CorrelationInfo": {
+      "fields": {
+        "correlationId": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "CosmeticConfig": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "data": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "CosmeticInfo": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "data": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "CostCategory": {
+      "values": {
+        "CostCategory_None": 0,
+        "CostCategory_Automatic": 1,
+        "CostCategory_Confirmation": 2,
+        "CostCategory_Manual": 3
+      }
+    },
+    "Counter": {
+      "fields": {
+        "id": {
+          "type": "uint32",
+          "id": 1
+        },
+        "type": {
+          "type": "CounterType",
+          "id": 2
+        },
+        "count": {
+          "type": "uint32",
+          "id": 3
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 4
+        }
+      }
+    },
+    "CounterPair": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "counterType": {
+          "type": "CounterType",
+          "id": 2
+        }
+      }
+    },
+    "CounterType": {
+      "values": {
+        "CounterType_None": 0,
+        "CounterType_P1P1": 1,
+        "CounterType_M1M1": 2,
+        "CounterType_Poison": 3,
+        "CounterType_Wind": 4,
+        "CounterType_Time": 5,
+        "CounterType_Fade": 6,
+        "CounterType_Loyalty": 7,
+        "CounterType_Wish": 8,
+        "CounterType_Age": 9,
+        "CounterType_Aim": 10,
+        "CounterType_Arrow": 11,
+        "CounterType_Arrowhead": 12,
+        "CounterType_Awakening": 13,
+        "CounterType_Blaze": 14,
+        "CounterType_Blood": 15,
+        "CounterType_Bounty": 16,
+        "CounterType_Bribery": 17,
+        "CounterType_Carrion": 18,
+        "CounterType_Charge": 19,
+        "CounterType_Control": 20,
+        "CounterType_Corpse": 21,
+        "CounterType_Credit": 22,
+        "CounterType_Cube": 23,
+        "CounterType_Currency": 24,
+        "CounterType_Death": 25,
+        "CounterType_Delay": 26,
+        "CounterType_Depletion": 27,
+        "CounterType_Despair": 28,
+        "CounterType_Devotion": 29,
+        "CounterType_Divinity": 30,
+        "CounterType_Doom": 31,
+        "CounterType_Dream": 32,
+        "CounterType_Echo": 33,
+        "CounterType_Elixir": 34,
+        "CounterType_Energy": 35,
+        "CounterType_Eon": 36,
+        "CounterType_Eyeball": 37,
+        "CounterType_Fate": 38,
+        "CounterType_Feather": 39,
+        "CounterType_Filibuster": 40,
+        "CounterType_Flame": 41,
+        "CounterType_Flood": 42,
+        "CounterType_Fungus": 43,
+        "CounterType_Fuse": 44,
+        "CounterType_Glyph": 45,
+        "CounterType_Gold": 46,
+        "CounterType_Growth": 47,
+        "CounterType_Hatchling": 48,
+        "CounterType_Healing": 49,
+        "CounterType_Hoofprint": 50,
+        "CounterType_Hourglass": 51,
+        "CounterType_Hunger": 52,
+        "CounterType_Ice": 53,
+        "CounterType_Infection": 54,
+        "CounterType_Intervention": 55,
+        "CounterType_Javelin": 56,
+        "CounterType_Ki": 57,
+        "CounterType_Level": 58,
+        "CounterType_Luck": 59,
+        "CounterType_Magnet": 60,
+        "CounterType_Mannequin": 61,
+        "CounterType_Matrix": 62,
+        "CounterType_May": 63,
+        "CounterType_Mine": 64,
+        "CounterType_Mining": 65,
+        "CounterType_Mire": 66,
+        "CounterType_Muster": 67,
+        "CounterType_Net": 68,
+        "CounterType_Omen": 69,
+        "CounterType_Ore": 70,
+        "CounterType_Page": 71,
+        "CounterType_Pain": 72,
+        "CounterType_Paralyzation": 73,
+        "CounterType_Petal": 74,
+        "CounterType_Petrification": 75,
+        "CounterType_Phylactery": 76,
+        "CounterType_Pin": 77,
+        "CounterType_Plague": 78,
+        "CounterType_Polyp": 79,
+        "CounterType_Pressure": 80,
+        "CounterType_Pupa": 81,
+        "CounterType_Quest": 82,
+        "CounterType_Scream": 83,
+        "CounterType_Scroll": 84,
+        "CounterType_Shell": 85,
+        "CounterType_Shield": 86,
+        "CounterType_Shred": 87,
+        "CounterType_Sleep": 88,
+        "CounterType_Sleight": 89,
+        "CounterType_Slime": 90,
+        "CounterType_Soot": 91,
+        "CounterType_Spell": 92,
+        "CounterType_Spore": 93,
+        "CounterType_Storage": 94,
+        "CounterType_Strife": 95,
+        "CounterType_Study": 96,
+        "CounterType_Theft": 97,
+        "CounterType_Tide": 98,
+        "CounterType_Tower": 100,
+        "CounterType_Training": 101,
+        "CounterType_Trap": 102,
+        "CounterType_Treasure": 103,
+        "CounterType_Verse": 104,
+        "CounterType_Vitality": 105,
+        "CounterType_Wage": 106,
+        "CounterType_Winch": 107,
+        "CounterType_Lore": 108,
+        "CounterType_P1P2": 109,
+        "CounterType_P0P1": 110,
+        "CounterType_P0P2": 111,
+        "CounterType_P1P0": 112,
+        "CounterType_P2P2": 113,
+        "CounterType_M0M1": 114,
+        "CounterType_M0M2": 115,
+        "CounterType_M1M0": 116,
+        "CounterType_M2M1": 117,
+        "CounterType_M2M2": 118,
+        "CounterType_Manifestation": 119,
+        "CounterType_Gem": 120,
+        "CounterType_Crystal": 121,
+        "CounterType_Isolation": 122,
+        "CounterType_Hour": 123,
+        "CounterType_Unity": 124,
+        "CounterType_Velocity": 125,
+        "CounterType_Brick": 126,
+        "CounterType_Landmark": 127,
+        "CounterType_Prey": 128,
+        "CounterType_Silver": 129,
+        "CounterType_Egg": 130,
+        "CounterType_Hit": 131,
+        "CounterType_Knowledge": 132,
+        "CounterType_Task": 133,
+        "CounterType_Coin": 134,
+        "CounterType_Deathtouch": 135,
+        "CounterType_FirstStrike": 136,
+        "CounterType_Flying": 137,
+        "CounterType_Hexproof": 138,
+        "CounterType_Lifelink": 139,
+        "CounterType_Menace": 140,
+        "CounterType_Reach": 141,
+        "CounterType_Trample": 142,
+        "CounterType_Vigilance": 143,
+        "CounterType_Foreshadow": 144,
+        "CounterType_Incarnation": 145,
+        "CounterType_Soul": 146,
+        "CounterType_PlaceholderCounterType15": 147,
+        "CounterType_PlaceholderCounterType1": 148,
+        "CounterType_PlaceholderCounterType2": 149,
+        "CounterType_PlaceholderCounterType3": 150,
+        "CounterType_PlaceholderCounterType4": 151,
+        "CounterType_PlaceholderCounterType5": 152,
+        "CounterType_PlaceholderCounterType6": 153,
+        "CounterType_PlaceholderCounterType7": 154,
+        "CounterType_PlaceholderCounterType8": 155,
+        "CounterType_PlaceholderCounterType9": 156,
+        "CounterType_PlaceholderCounterType10": 157,
+        "CounterType_PlaceholderCounterType11": 158,
+        "CounterType_PlaceholderCounterType12": 159
+      }
+    },
+    "CreateMatchGameRoomRequest": {
+      "fields": {
+        "gameRoomConfig": {
+          "type": "MatchGameRoomConfig",
+          "id": 1
+        }
+      }
+    },
+    "CreateMatchGameRoomResponse": {
+      "fields": {
+        "gameRoomInfo": {
+          "type": "MatchGameRoomInfo",
+          "id": 1
+        }
+      }
+    },
+    "CreateMatchGameRoomResponseV2": {
+      "fields": {
+        "mcFabricUri": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "DamageAssigner": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "totalDamage": {
+          "type": "uint32",
+          "id": 2
+        },
+        "assignments": {
+          "rule": "repeated",
+          "type": "DamageAssignment",
+          "id": 3
+        },
+        "decisionPrompt": {
+          "type": "Prompt",
+          "id": 4
+        },
+        "canIgnoreBlockers": {
+          "type": "bool",
+          "id": 5
+        },
+        "forcePromptAssignment": {
+          "type": "bool",
+          "id": 6
+        }
+      }
+    },
+    "DamageAssignment": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minDamage": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxDamage": {
+          "type": "uint32",
+          "id": 3
+        },
+        "assignedDamage": {
+          "type": "uint32",
+          "id": 4
+        }
+      }
+    },
+    "DamageRecType": {
+      "values": {
+        "DamageRecType_None": 0,
+        "DamageRecType_Team": 1,
+        "DamageRecType_Player": 2,
+        "DamageRecType_PlanesWalker": 3
+      }
+    },
+    "DamageRecipient": {
+      "fields": {
+        "type": {
+          "type": "DamageRecType",
+          "id": 1
+        },
+        "teamId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "playerSystemSeatId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "planeswalkerInstanceId": {
+          "type": "uint32",
+          "id": 4
+        }
+      }
+    },
+    "DeckConfig": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "deckCards": {
+          "rule": "repeated",
+          "type": "CardConfig",
+          "id": 2
+        },
+        "sideboardCards": {
+          "rule": "repeated",
+          "type": "CardConfig",
+          "id": 3
+        },
+        "commanderCards": {
+          "rule": "repeated",
+          "type": "CardConfig",
+          "id": 4
+        },
+        "deckFilePath": {
+          "type": "string",
+          "id": 5
+        }
+      }
+    },
+    "DeckConstraintInfo": {
+      "fields": {
+        "minDeckSize": {
+          "type": "uint32",
+          "id": 1
+        },
+        "maxDeckSize": {
+          "type": "uint32",
+          "id": 2
+        },
+        "minSideboardSize": {
+          "type": "uint32",
+          "id": 3
+        },
+        "maxSideboardSize": {
+          "type": "uint32",
+          "id": 4
+        },
+        "minCommanderSize": {
+          "type": "uint32",
+          "id": 5
+        },
+        "maxCommanderSize": {
+          "type": "uint32",
+          "id": 6
+        }
+      }
+    },
+    "DeckMessage": {
+      "fields": {
+        "deckCards": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "sideboardCards": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "commanderCards": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 3
+        },
+        "deckMessageFieldFour": {
+          "type": "uint32",
+          "id": 4
+        }
+      }
+    },
+    "DeclareAttackersReq": {
+      "fields": {
+        "attackers": {
+          "rule": "repeated",
+          "type": "Attacker",
+          "id": 1
+        },
+        "hasRequirements": {
+          "type": "bool",
+          "id": 2
+        },
+        "hasRestrictions": {
+          "type": "bool",
+          "id": 3
+        },
+        "attackWarnings": {
+          "rule": "repeated",
+          "type": "AttackWarning",
+          "id": 4
+        },
+        "manaCost": {
+          "rule": "repeated",
+          "type": "ManaRequirement",
+          "id": 5
+        },
+        "autoAttackers": {
+          "rule": "repeated",
+          "type": "Attacker",
+          "id": 6
+        },
+        "qualifiedAttackers": {
+          "rule": "repeated",
+          "type": "Attacker",
+          "id": 7
+        }
+      }
+    },
+    "DeclareAttackersResp": {
+      "fields": {
+        "selectedAttackers": {
+          "rule": "repeated",
+          "type": "Attacker",
+          "id": 1
+        },
+        "autoDeclare": {
+          "type": "bool",
+          "id": 2
+        },
+        "autoDeclareDamageRecipient": {
+          "type": "DamageRecipient",
+          "id": 3
+        }
+      }
+    },
+    "DeclareBlockersReq": {
+      "fields": {
+        "blockers": {
+          "rule": "repeated",
+          "type": "Blocker",
+          "id": 1
+        },
+        "hasRequirements": {
+          "type": "bool",
+          "id": 2
+        },
+        "hasRestrictions": {
+          "type": "bool",
+          "id": 3
+        },
+        "blockWarnings": {
+          "rule": "repeated",
+          "type": "BlockWarning",
+          "id": 4
+        }
+      }
+    },
+    "DeclareBlockersResp": {
+      "fields": {
+        "selectedBlockers": {
+          "rule": "repeated",
+          "type": "Blocker",
+          "id": 1
+        }
+      }
+    },
+    "DieRollResultsResp": {
+      "fields": {
+        "playerDieRolls": {
+          "rule": "repeated",
+          "type": "PlayerDieRoll",
+          "id": 1
+        }
+      }
+    },
+    "Distribution": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "amount": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "DistributionReq": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minAmount": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxAmount": {
+          "type": "uint32",
+          "id": 3
+        },
+        "minPerTarget": {
+          "type": "uint32",
+          "id": 4
+        },
+        "targetIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 5
+        },
+        "existingDistributionValues": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 6
+        },
+        "requiredDistributionValues": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 7
+        },
+        "validSelectedTargetIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 8
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 9
+        }
+      }
+    },
+    "DistributionResp": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "distributions": {
+          "rule": "repeated",
+          "type": "Distribution",
+          "id": 2
+        }
+      }
+    },
+    "DraftGameRoomConfig": {
+      "fields": {
+        "gameRoomId": {
+          "type": "string",
+          "id": 1
+        },
+        "eventId": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "DraftGameRoomInfo": {
+      "fields": {}
+    },
+    "EchoRequest": {
+      "fields": {
+        "message": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "EchoResponse": {
+      "fields": {
+        "message": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "EdictalMessage": {
+      "fields": {
+        "edictMessage": {
+          "type": "ClientToGREMessage",
+          "id": 1
+        }
+      }
+    },
+    "EffectCostReq": {
+      "fields": {
+        "index": {
+          "type": "uint32",
+          "id": 1
+        },
+        "effectCostType": {
+          "type": "EffectCostType",
+          "id": 3
+        },
+        "costSelection": {
+          "type": "SelectNReq",
+          "id": 4
+        },
+        "counterSelection": {
+          "type": "SelectCountersReq",
+          "id": 5
+        },
+        "groupSelection": {
+          "type": "SelectFromGroupsReq",
+          "id": 6
+        }
+      }
+    },
+    "EffectCostResp": {
+      "fields": {
+        "index": {
+          "type": "uint32",
+          "id": 1
+        },
+        "effectCostType": {
+          "type": "EffectCostType",
+          "id": 2
+        },
+        "costSelection": {
+          "type": "SelectNResp",
+          "id": 3
+        },
+        "counterSelection": {
+          "type": "SelectCountersResp",
+          "id": 4
+        },
+        "groupSelection": {
+          "type": "SelectFromGroupsResp",
+          "id": 5
+        }
+      }
+    },
+    "EffectCostType": {
+      "values": {
+        "EffectCostType_None": 0,
+        "EffectCostType_Select": 1,
+        "EffectCostType_SelectCounter": 2,
+        "EffectCostType_Autoselect": 3,
+        "EffectCostType_SelectFromGroups": 4
+      }
+    },
+    "FailureReason": {
+      "values": {
+        "FailureReason_None": 0,
+        "FailureReason_Expired": 1,
+        "FailureReason_OutOfTurn": 2,
+        "FailureReason_ReqRespMismatch": 3,
+        "FailureReason_ActionNotBatchable": 4,
+        "FailureReason_ActionInvalid": 5,
+        "FailureReason_IncompleteMessage": 6,
+        "FailureReason_IllegalOption": 7,
+        "FailureReason_UnrecognizedValue": 8,
+        "FailureReason_TargetsUnavailable": 9,
+        "FailureReason_TargetIndexOutOfRange": 10,
+        "FailureReason_TargetIllegal": 11,
+        "FailureReason_UnrecognizedManaId": 12,
+        "FailureReason_InvalidOptionSelection": 13,
+        "FailureReason_UnexpectedMessage": 14,
+        "FailureReason_LimitViolation": 15,
+        "FailureReason_RestrictionViolated": 16,
+        "FailureReason_RequirementViolated": 17,
+        "FailureReason_UnpayableCost": 18,
+        "FailureReason_InvalidSeatId": 19,
+        "FailureReason_InvalidTeamId": 20,
+        "FailureReason_InvalidMatchState": 21,
+        "FailureReason_InvalidMatchScope": 22,
+        "FailureReason_InvalidDeck": 23,
+        "FailureReason_InvalidCancelState": 24,
+        "FailureReason_InvalidUndoState": 25,
+        "FailureReason_PermissionDenied": 26,
+        "FailureReason_NoTimeout": 27,
+        "FailureReason_InvalidColor": 28,
+        "FailureReason_InvalidManaColor": 29,
+        "FailureReason_InvalidCoinFace": 30,
+        "FailureReason_InvalidCard": 31,
+        "FailureReason_InvalidCardName": 32,
+        "FailureReason_InvalidCardType": 33,
+        "FailureReason_InvalidSubType": 34,
+        "FailureReason_InvalidSuperType": 35,
+        "FailureReason_InvalidCounterType": 36,
+        "FailureReason_InvalidAbilityType": 37,
+        "FailureReason_InvalidBasicLandType": 38,
+        "FailureReason_InvalidOptionIndex": 39,
+        "FailureReason_InvalidOptionContext": 40,
+        "FailureReason_InvalidSideboard": 41,
+        "FailureReason_InvalidCommander": 42,
+        "FailureReason_DuplicateAttacker": 43,
+        "FailureReason_UnexpectedDamageRecipient": 44,
+        "FailureReason_InvalidAttacker": 45,
+        "FailureReason_RedundantAttacker": 46,
+        "FailureReason_InvalidBatchAttack": 47,
+        "FailureReason_MissingDamageRecipient": 48,
+        "FailureReason_InvalidDamageRecipient": 49,
+        "FailureReason_InvalidObjective": 50,
+        "FailureReason_InvalidAlternativeAttack": 51,
+        "FailureReason_MissingAttackers": 52,
+        "FailureReason_UnexpectedAttackers": 53,
+        "FailureReason_InvalidParity": 54,
+        "FailureReason_InvalidAlternativeAttackModification": 55
+      }
+    },
+    "FinalMatchResult": {
+      "fields": {
+        "matchId": {
+          "type": "string",
+          "id": 1
+        },
+        "matchForceResult": {
+          "type": "ResultSpec",
+          "id": 2
+        },
+        "matchCompletedReason": {
+          "type": "MatchCompletedReasonType",
+          "id": 3
+        },
+        "resultList": {
+          "rule": "repeated",
+          "type": "ResultSpec",
+          "id": 5
+        },
+        "errorMessage": {
+          "type": "string",
+          "id": 10
+        }
+      }
+    },
+    "ForceDrawReq": {
+      "fields": {
+        "scope": {
+          "type": "MatchScope",
+          "id": 1
+        }
+      }
+    },
+    "GRECancelScheduledMessage": {
+      "fields": {
+        "timerId": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "GRECheckpointRequest": {
+      "fields": {}
+    },
+    "GREConfigRequest": {
+      "fields": {
+        "greConfiguration": {
+          "type": "GREConfiguration",
+          "id": 1
+        }
+      }
+    },
+    "GREConfiguration": {
+      "fields": {
+        "gameStateRedactorConfiguration": {
+          "type": "GameStateRedactorConfiguration",
+          "id": 1
+        },
+        "clipsConfiguration": {
+          "type": "CLIPSConfiguration",
+          "id": 2
+        },
+        "checkpointConfiguration": {
+          "type": "CheckpointConfiguration",
+          "id": 3
+        }
+      }
+    },
+    "GRECreateRequest": {
+      "fields": {
+        "greID": {
+          "type": "uint32",
+          "id": 1
+        },
+        "matchID": {
+          "type": "string",
+          "id": 2
+        },
+        "gameID": {
+          "type": "uint32",
+          "id": 3
+        },
+        "majorVer": {
+          "type": "uint32",
+          "id": 4
+        },
+        "minorVer": {
+          "type": "uint32",
+          "id": 5
+        },
+        "revisionVer": {
+          "type": "uint32",
+          "id": 6
+        },
+        "buildVer": {
+          "type": "uint32",
+          "id": 7
+        }
+      }
+    },
+    "GRECreateResponse": {
+      "fields": {
+        "greID": {
+          "type": "uint32",
+          "id": 1
+        },
+        "result": {
+          "type": "GRETHHostErrorCode",
+          "id": 2
+        }
+      }
+    },
+    "GREDestroyRequest": {
+      "fields": {
+        "greID": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "GREDestroyResponse": {
+      "fields": {
+        "greID": {
+          "type": "uint32",
+          "id": 1
+        },
+        "result": {
+          "type": "GRETHHostErrorCode",
+          "id": 2
+        }
+      }
+    },
+    "GREElapseTimeRequest": {
+      "fields": {
+        "timerId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "timeMs": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "GREExpireTimerRequest": {
+      "fields": {
+        "timerId": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "GREForceResultRequest": {
+      "fields": {
+        "result": {
+          "type": "ResultSpec",
+          "id": 1
+        }
+      }
+    },
+    "GREInterpretRequest": {
+      "fields": {
+        "clips": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "GREMessageType": {
+      "values": {
+        "GREMessageType_None": 0,
+        "GREMessageType_GameStateMessage": 1,
+        "GREMessageType_ActionsAvailableReq": 2,
+        "GREMessageType_ChooseStartingPlayerReq": 6,
+        "GREMessageType_ConnectResp": 7,
+        "GREMessageType_GetSettingsResp": 9,
+        "GREMessageType_SetSettingsResp": 10,
+        "GREMessageType_GroupReq": 11,
+        "GREMessageType_IllegalRequest": 12,
+        "GREMessageType_MulliganReq": 15,
+        "GREMessageType_OrderReq": 17,
+        "GREMessageType_PromptReq": 18,
+        "GREMessageType_RevealHandReq": 21,
+        "GREMessageType_SelectNReq": 22,
+        "GREMessageType_AllowForceDraw": 24,
+        "GREMessageType_BinaryGameState": 25,
+        "GREMessageType_DeclareAttackersReq": 26,
+        "GREMessageType_SubmitAttackersResp": 27,
+        "GREMessageType_DeclareBlockersReq": 28,
+        "GREMessageType_SubmitBlockersResp": 29,
+        "GREMessageType_AssignDamageReq": 30,
+        "GREMessageType_AssignDamageConfirmation": 31,
+        "GREMessageType_OrderCombatDamageReq": 32,
+        "GREMessageType_OrderDamageConfirmation": 33,
+        "GREMessageType_SelectTargetsReq": 34,
+        "GREMessageType_SubmitTargetsResp": 35,
+        "GREMessageType_PayCostsReq": 36,
+        "GREMessageType_IntermissionReq": 37,
+        "GREMessageType_DieRollResultsResp": 38,
+        "GREMessageType_SelectReplacementReq": 39,
+        "GREMessageType_SelectNGroupReq": 40,
+        "GREMessageType_DistributionReq": 42,
+        "GREMessageType_NumericInputReq": 43,
+        "GREMessageType_SearchReq": 44,
+        "GREMessageType_OptionalActionMessage": 45,
+        "GREMessageType_CastingTimeOptionsReq": 46,
+        "GREMessageType_SelectFromGroupsReq": 48,
+        "GREMessageType_SearchFromGroupsReq": 49,
+        "GREMessageType_GatherReq": 50,
+        "GREMessageType_QueuedGameStateMessage": 51,
+        "GREMessageType_UIMessage": 52,
+        "GREMessageType_SubmitDeckReq": 53,
+        "GREMessageType_EdictalMessage": 54,
+        "GREMessageType_TimeoutMessage": 55,
+        "GREMessageType_TimerStateMessage": 56
+      }
+    },
+    "GREResumeMatchRequest": {
+      "fields": {
+        "binaryGameState": {
+          "type": "BinaryGameState",
+          "id": 1
+        }
+      }
+    },
+    "GREScheduledMessage": {
+      "fields": {
+        "timerId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "delayMs": {
+          "type": "int32",
+          "id": 2
+        },
+        "message": {
+          "type": "ServerToGREMessage",
+          "id": 3
+        }
+      }
+    },
+    "GREStartDelayedTimerMessage": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "GREStartMatchRequest": {
+      "fields": {
+        "matchConfig": {
+          "type": "MatchConfig",
+          "id": 1
+        }
+      }
+    },
+    "GRETHHostEmulatorLaunch": {
+      "fields": {
+        "programName": {
+          "type": "string",
+          "id": 1
+        },
+        "executablePath": {
+          "type": "string",
+          "id": 2
+        },
+        "sharedLibraryFilename": {
+          "type": "string",
+          "id": 3
+        },
+        "greIRFilename": {
+          "type": "string",
+          "id": 4
+        },
+        "linkID": {
+          "type": "uint32",
+          "id": 5
+        },
+        "hostID": {
+          "type": "uint32",
+          "id": 6
+        },
+        "sutID": {
+          "type": "uint32",
+          "id": 7
+        },
+        "logFilename": {
+          "type": "string",
+          "id": 8
+        },
+        "syslogIPAddress": {
+          "type": "string",
+          "id": 9
+        },
+        "syslogTCPPort": {
+          "type": "string",
+          "id": 10
+        },
+        "syslogProcID": {
+          "type": "string",
+          "id": 11
+        },
+        "outFilename": {
+          "type": "string",
+          "id": 12
+        },
+        "enableRedaction": {
+          "type": "bool",
+          "id": 13
+        }
+      }
+    },
+    "GRETHHostEmulatorLaunchResp": {
+      "fields": {
+        "result": {
+          "type": "uint32",
+          "id": 1
+        },
+        "hostID": {
+          "type": "uint32",
+          "id": 2
+        },
+        "pID": {
+          "type": "int32",
+          "id": 3
+        }
+      }
+    },
+    "GRETHHostEmulatorShutdown": {
+      "fields": {
+        "shutdownHostID": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "GRETHHostEmulatorShutdownResp": {
+      "fields": {
+        "result": {
+          "type": "uint32",
+          "id": 1
+        },
+        "shutdownHostID": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "GRETHHostErrorCode": {
+      "values": {
+        "GRETHHostErrorCode_Success": 0,
+        "GRETHHostErrorCode_NullPayload": 1,
+        "GRETHHostErrorCode_ParseFailed": 2,
+        "GRETHHostErrorCode_IncompletePayload": 3,
+        "GRETHHostErrorCode_GreCreateFailed": 4,
+        "GRETHHostErrorCode_GreDestroyFailed": 5,
+        "GRETHHostErrorCode_AICreateFailed": 6,
+        "GRETHHostErrorCode_AIDestroyFailed": 7,
+        "GRETHHostErrorCode_UnrecognizedGreID": 8,
+        "GRETHHostErrorCode_InvalidPointer": 9,
+        "GRETHHostErrorCode_UnknownError": 10
+      }
+    },
+    "GRETickMessage": {
+      "fields": {}
+    },
+    "GRETimeoutMessage": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "type": {
+          "type": "TimeoutType",
+          "id": 2
+        }
+      }
+    },
+    "GRETimerExpiredMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "serverToGREMessage",
+            "clientToGREMessage"
+          ]
+        }
+      },
+      "fields": {
+        "expiredTimerId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "serverToGREMessage": {
+          "type": "ServerToGREMessage",
+          "id": 2
+        },
+        "clientToGREMessage": {
+          "type": "ClientToGREMessage",
+          "id": 3
+        }
+      }
+    },
+    "GREToAnyMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "gREToServerMessage",
+            "gREToClientMessage"
+          ]
+        }
+      },
+      "fields": {
+        "timestamp": {
+          "type": "int64",
+          "id": 1
+        },
+        "gREToServerMessage": {
+          "type": "GREToServerMessage",
+          "id": 2
+        },
+        "gREToClientMessage": {
+          "type": "GREToClientMessage",
+          "id": 3
+        }
+      }
+    },
+    "GREToClientMessage": {
+      "fields": {
+        "type": {
+          "type": "GREMessageType",
+          "id": 1
+        },
+        "systemSeatIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "msgId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "gameStateId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "gameStateMessage": {
+          "type": "GameStateMessage",
+          "id": 5
+        },
+        "prompt": {
+          "type": "Prompt",
+          "id": 6
+        },
+        "chooseStartingPlayerReq": {
+          "type": "ChooseStartingPlayerReq",
+          "id": 7
+        },
+        "optionalActionMessage": {
+          "type": "OptionalActionMessage",
+          "id": 8
+        },
+        "actionsAvailableReq": {
+          "type": "ActionsAvailableReq",
+          "id": 9
+        },
+        "orderReq": {
+          "type": "OrderReq",
+          "id": 10
+        },
+        "groupReq": {
+          "type": "GroupReq",
+          "id": 11
+        },
+        "selectNReq": {
+          "type": "SelectNReq",
+          "id": 12
+        },
+        "mulliganReq": {
+          "type": "MulliganReq",
+          "id": 14
+        },
+        "getSettingsResp": {
+          "type": "GetSettingsResp",
+          "id": 16
+        },
+        "setSettingsResp": {
+          "type": "SetSettingsResp",
+          "id": 17
+        },
+        "connectResp": {
+          "type": "ConnectResp",
+          "id": 18
+        },
+        "illegalRequestMessage": {
+          "type": "IllegalRequestMessage",
+          "id": 19
+        },
+        "binaryGameState": {
+          "type": "BinaryGameState",
+          "id": 23
+        },
+        "declareAttackersReq": {
+          "type": "DeclareAttackersReq",
+          "id": 24
+        },
+        "submitAttackersResp": {
+          "type": "SubmitAttackersResp",
+          "id": 25
+        },
+        "declareBlockersReq": {
+          "type": "DeclareBlockersReq",
+          "id": 26
+        },
+        "submitBlockersResp": {
+          "type": "SubmitBlockersResp",
+          "id": 27
+        },
+        "assignDamageReq": {
+          "type": "AssignDamageReq",
+          "id": 28
+        },
+        "assignDamageConfirmation": {
+          "type": "AssignDamageConfirmation",
+          "id": 29
+        },
+        "orderCombatDamageReq": {
+          "type": "OrderCombatDamageReq",
+          "id": 30
+        },
+        "orderDamageConfirmation": {
+          "type": "OrderDamageConfirmation",
+          "id": 31
+        },
+        "selectTargetsReq": {
+          "type": "SelectTargetsReq",
+          "id": 32
+        },
+        "submitTargetsResp": {
+          "type": "SubmitTargetsResp",
+          "id": 33
+        },
+        "payCostsReq": {
+          "type": "PayCostsReq",
+          "id": 34
+        },
+        "nonDecisionPlayerPrompt": {
+          "type": "Prompt",
+          "id": 35
+        },
+        "intermissionReq": {
+          "type": "IntermissionReq",
+          "id": 36
+        },
+        "dieRollResultsResp": {
+          "type": "DieRollResultsResp",
+          "id": 37
+        },
+        "selectReplacementReq": {
+          "type": "SelectReplacementReq",
+          "id": 38
+        },
+        "selectNGroupReq": {
+          "type": "SelectNGroupReq",
+          "id": 39
+        },
+        "distributionReq": {
+          "type": "DistributionReq",
+          "id": 41
+        },
+        "numericInputReq": {
+          "type": "NumericInputReq",
+          "id": 42
+        },
+        "searchReq": {
+          "type": "SearchReq",
+          "id": 43
+        },
+        "castingTimeOptionsReq": {
+          "type": "CastingTimeOptionsReq",
+          "id": 44
+        },
+        "informationalUseOnly": {
+          "type": "bool",
+          "id": 45
+        },
+        "selectFromGroupsReq": {
+          "type": "SelectFromGroupsReq",
+          "id": 47
+        },
+        "searchFromGroupsReq": {
+          "type": "SearchFromGroupsReq",
+          "id": 48
+        },
+        "gatherReq": {
+          "type": "GatherReq",
+          "id": 49
+        },
+        "allowCancel": {
+          "type": "AllowCancel",
+          "id": 50
+        },
+        "uiMessage": {
+          "type": "UIMessage",
+          "id": 51
+        },
+        "submitDeckReq": {
+          "type": "SubmitDeckReq",
+          "id": 52
+        },
+        "edictalMessage": {
+          "type": "EdictalMessage",
+          "id": 53
+        },
+        "timeoutMessage": {
+          "type": "TimeoutMessage",
+          "id": 54
+        },
+        "timerStateMessage": {
+          "type": "TimerStateMessage",
+          "id": 55
+        },
+        "allowUndo": {
+          "type": "bool",
+          "id": 56
+        }
+      }
+    },
+    "GREToServerMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "binaryGameState",
+            "reportResultMessage",
+            "scheduledMessage",
+            "cancelScheduledMessage",
+            "gameMetrics"
+          ]
+        }
+      },
+      "fields": {
+        "msgId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "binaryGameState": {
+          "type": "BinaryGameState",
+          "id": 2
+        },
+        "reportResultMessage": {
+          "type": "ReportResultMessage",
+          "id": 3
+        },
+        "scheduledMessage": {
+          "type": "GREScheduledMessage",
+          "id": 4
+        },
+        "cancelScheduledMessage": {
+          "type": "GRECancelScheduledMessage",
+          "id": 5
+        },
+        "gameMetrics": {
+          "type": "GameMetrics",
+          "id": 6
+        }
+      }
+    },
+    "GameInfo": {
+      "fields": {
+        "matchID": {
+          "type": "string",
+          "id": 1
+        },
+        "gameNumber": {
+          "type": "uint32",
+          "id": 3
+        },
+        "stage": {
+          "type": "GameStage",
+          "id": 5
+        },
+        "type": {
+          "type": "GameType",
+          "id": 6
+        },
+        "variant": {
+          "type": "GameVariant",
+          "id": 7
+        },
+        "matchState": {
+          "type": "MatchState",
+          "id": 8
+        },
+        "matchWinCondition": {
+          "type": "MatchWinCondition",
+          "id": 9
+        },
+        "maxTimeoutCount": {
+          "type": "uint32",
+          "id": 10
+        },
+        "maxPipCount": {
+          "type": "uint32",
+          "id": 11
+        },
+        "timeoutDurationSec": {
+          "type": "uint32",
+          "id": 12
+        },
+        "results": {
+          "rule": "repeated",
+          "type": "ResultSpec",
+          "id": 13
+        },
+        "superFormat": {
+          "type": "SuperFormat",
+          "id": 14
+        },
+        "mulliganType": {
+          "type": "MulliganType",
+          "id": 15
+        },
+        "freeMulliganCount": {
+          "type": "uint32",
+          "id": 16
+        },
+        "deckConstraintInfo": {
+          "type": "DeckConstraintInfo",
+          "id": 17
+        }
+      }
+    },
+    "GameMetrics": {
+      "fields": {
+        "playerMetrics": {
+          "rule": "repeated",
+          "type": "PlayerMetrics",
+          "id": 1
+        }
+      }
+    },
+    "GameObjectInfo": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "grpId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "type": {
+          "type": "GameObjectType",
+          "id": 4
+        },
+        "zoneId": {
+          "type": "uint32",
+          "id": 5
+        },
+        "visibility": {
+          "type": "Visibility",
+          "id": 6
+        },
+        "ownerSeatId": {
+          "type": "uint32",
+          "id": 7
+        },
+        "controllerSeatId": {
+          "type": "uint32",
+          "id": 8
+        },
+        "superTypes": {
+          "rule": "repeated",
+          "type": "SuperType",
+          "id": 9
+        },
+        "cardTypes": {
+          "rule": "repeated",
+          "type": "CardType",
+          "id": 10
+        },
+        "subtypes": {
+          "rule": "repeated",
+          "type": "SubType",
+          "id": 11
+        },
+        "color": {
+          "rule": "repeated",
+          "type": "CardColor",
+          "id": 12
+        },
+        "power": {
+          "type": "Int32Value",
+          "id": 13
+        },
+        "toughness": {
+          "type": "Int32Value",
+          "id": 14
+        },
+        "isCopy": {
+          "type": "bool",
+          "id": 16
+        },
+        "isTapped": {
+          "type": "bool",
+          "id": 17
+        },
+        "hasSummoningSickness": {
+          "type": "bool",
+          "id": 18
+        },
+        "attackState": {
+          "type": "AttackState",
+          "id": 19
+        },
+        "blockState": {
+          "type": "BlockState",
+          "id": 20
+        },
+        "damage": {
+          "type": "uint32",
+          "id": 23
+        },
+        "attackInfo": {
+          "type": "AttackInfo",
+          "id": 24
+        },
+        "blockInfo": {
+          "type": "BlockInfo",
+          "id": 25
+        },
+        "viewers": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 26
+        },
+        "loyalty": {
+          "type": "UInt32Value",
+          "id": 27
+        },
+        "objectSourceGrpId": {
+          "type": "uint32",
+          "id": 28
+        },
+        "name": {
+          "type": "uint32",
+          "id": 29
+        },
+        "abilities": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 30
+        },
+        "parentId": {
+          "type": "uint32",
+          "id": 31
+        },
+        "overlayGrpId": {
+          "type": "uint32",
+          "id": 32
+        },
+        "isFacedown": {
+          "type": "bool",
+          "id": 33
+        },
+        "skinCode": {
+          "type": "string",
+          "id": 34
+        },
+        "loyaltyUsed": {
+          "type": "UInt32Value",
+          "id": 35
+        },
+        "abilityOriginalCardGrpIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 36
+        },
+        "baseSkinCode": {
+          "type": "string",
+          "id": 37
+        }
+      }
+    },
+    "GameObjectType": {
+      "values": {
+        "GameObjectType_None": 0,
+        "GameObjectType_Card": 1,
+        "GameObjectType_Token": 2,
+        "GameObjectType_Ability": 3,
+        "GameObjectType_Emblem": 4,
+        "GameObjectType_SplitCard": 5,
+        "GameObjectType_SplitLeft": 6,
+        "GameObjectType_SplitRight": 7,
+        "GameObjectType_RevealedCard": 8,
+        "GameObjectType_TriggerHolder": 9,
+        "GameObjectType_Adventure": 10
+      }
+    },
+    "GameRoomType": {
+      "values": {
+        "GameRoomType_Invalid": 0,
+        "GameRoomType_Match": 1,
+        "GameRoomType_Draft": 2
+      }
+    },
+    "GameStage": {
+      "values": {
+        "GameStage_None": 0,
+        "GameStage_Start": 1,
+        "GameStage_Play": 2,
+        "GameStage_GameOver": 3
+      }
+    },
+    "GameStateMessage": {
+      "fields": {
+        "type": {
+          "type": "GameStateType",
+          "id": 1
+        },
+        "gameStateId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "gameInfo": {
+          "type": "GameInfo",
+          "id": 3
+        },
+        "teams": {
+          "rule": "repeated",
+          "type": "TeamInfo",
+          "id": 4
+        },
+        "players": {
+          "rule": "repeated",
+          "type": "PlayerInfo",
+          "id": 5
+        },
+        "turnInfo": {
+          "type": "TurnInfo",
+          "id": 6
+        },
+        "zones": {
+          "rule": "repeated",
+          "type": "ZoneInfo",
+          "id": 7
+        },
+        "gameObjects": {
+          "rule": "repeated",
+          "type": "GameObjectInfo",
+          "id": 8
+        },
+        "annotations": {
+          "rule": "repeated",
+          "type": "AnnotationInfo",
+          "id": 9
+        },
+        "diffDeletedInstanceIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 10
+        },
+        "pendingMessageCount": {
+          "type": "uint32",
+          "id": 11
+        },
+        "prevGameStateId": {
+          "type": "uint32",
+          "id": 12
+        },
+        "timers": {
+          "rule": "repeated",
+          "type": "TimerInfo",
+          "id": 13
+        },
+        "update": {
+          "type": "GameStateUpdate",
+          "id": 14
+        },
+        "actions": {
+          "rule": "repeated",
+          "type": "ActionInfo",
+          "id": 15
+        }
+      }
+    },
+    "GameStateRedactorConfiguration": {
+      "fields": {
+        "enableRedaction": {
+          "type": "bool",
+          "id": 1
+        },
+        "enableForceDiff": {
+          "type": "bool",
+          "id": 2
+        },
+        "enableZoneRedaction": {
+          "type": "bool",
+          "id": 3
+        }
+      }
+    },
+    "GameStateType": {
+      "values": {
+        "GameStateType_None": 0,
+        "GameStateType_Full": 1,
+        "GameStateType_Diff": 2,
+        "GameStateType_Binary": 3
+      }
+    },
+    "GameStateUpdate": {
+      "values": {
+        "GameStateUpdate_None": 0,
+        "GameStateUpdate_Send": 1,
+        "GameStateUpdate_SendAndRecord": 2,
+        "GameStateUpdate_SendHiFi": 3,
+        "GameStateUpdate_Undo": 4,
+        "GameStateUpdate_Restore": 5
+      }
+    },
+    "GameType": {
+      "values": {
+        "GameType_None": 0,
+        "GameType_Duel": 1,
+        "GameType_MultiPlayer": 2,
+        "GameType_Solitaire": 3
+      }
+    },
+    "GameVariant": {
+      "values": {
+        "GameVariant_None": 0,
+        "GameVariant_Normal": 1,
+        "GameVariant_Planechase": 2,
+        "GameVariant_Vanguard": 3,
+        "GameVariant_Commander": 4,
+        "GameVariant_Archenemy": 5,
+        "GameVariant_TeamVsTeam": 6,
+        "GameVariant_TwoHeadedGiant": 7,
+        "GameVariant_Brawl": 8,
+        "GameVariant_Placeholder1": 9,
+        "GameVariant_Placeholder2": 10,
+        "GameVariant_Placeholder3": 11,
+        "GameVariant_Placeholder4": 12,
+        "GameVariant_Placeholder5": 13
+      }
+    },
+    "GatherReq": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "destinationId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "sources": {
+          "rule": "repeated",
+          "type": "GatherSource",
+          "id": 3
+        }
+      }
+    },
+    "GatherResp": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "gatherings": {
+          "rule": "repeated",
+          "type": "Gathering",
+          "id": 2
+        }
+      }
+    },
+    "GatherSource": {
+      "fields": {
+        "sourceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minAmount": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxAmount": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "Gathering": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "amount": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "GetGameRoomIdsRequest": {
+      "fields": {
+        "eventId": {
+          "type": "string",
+          "id": 1
+        },
+        "gameRoomType": {
+          "type": "GameRoomType",
+          "id": 2
+        },
+        "gameRoomStateTypeFilter": {
+          "rule": "repeated",
+          "type": "MatchGameRoomStateType",
+          "id": 5
+        },
+        "includeInvisibleRooms": {
+          "type": "bool",
+          "id": 7
+        },
+        "includeReservedRooms": {
+          "type": "bool",
+          "id": 8
+        },
+        "sortFilterPagingOptions": {
+          "type": "SortFilterPagingOptions",
+          "id": 10
+        }
+      }
+    },
+    "GetGameRoomIdsResponse": {
+      "fields": {
+        "gameRoomIds": {
+          "rule": "repeated",
+          "type": "string",
+          "id": 1
+        },
+        "continuationToken": {
+          "type": "ContinuationToken",
+          "id": 10
+        }
+      }
+    },
+    "GetGameRoomInfoRequest": {
+      "fields": {
+        "gameRoomId": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "GetGameRoomInfoResponse": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "matchRoomInfo",
+            "draftRoomInfo"
+          ]
+        }
+      },
+      "fields": {
+        "matchRoomInfo": {
+          "type": "MatchGameRoomInfo",
+          "id": 1
+        },
+        "draftRoomInfo": {
+          "type": "DraftGameRoomInfo",
+          "id": 2
+        }
+      }
+    },
+    "GetSettingsResp": {
+      "fields": {
+        "settings": {
+          "type": "SettingsMessage",
+          "id": 1
+        }
+      }
+    },
+    "GreToClientEvent": {
+      "fields": {
+        "greToClientMessages": {
+          "rule": "repeated",
+          "type": "GREToClientMessage",
+          "id": 1
+        }
+      }
+    },
+    "Group": {
+      "fields": {
+        "ids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "groupId": {
+          "type": "int32",
+          "id": 2
+        },
+        "zoneType": {
+          "type": "ZoneType",
+          "id": 3
+        },
+        "subZoneType": {
+          "type": "SubZoneType",
+          "id": 4
+        },
+        "minSelect": {
+          "type": "int32",
+          "id": 5
+        },
+        "maxSelect": {
+          "type": "int32",
+          "id": 6
+        },
+        "isFacedown": {
+          "type": "bool",
+          "id": 7
+        }
+      }
+    },
+    "GroupReq": {
+      "fields": {
+        "instanceIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "groupSpecs": {
+          "rule": "repeated",
+          "type": "GroupSpecification",
+          "id": 2
+        },
+        "totalSelected": {
+          "type": "uint32",
+          "id": 3
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 4
+        },
+        "groupType": {
+          "type": "GroupType",
+          "id": 5
+        },
+        "context": {
+          "type": "GroupingContext",
+          "id": 6
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 7
+        }
+      }
+    },
+    "GroupResp": {
+      "fields": {
+        "groups": {
+          "rule": "repeated",
+          "type": "Group",
+          "id": 1
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 2
+        },
+        "groupType": {
+          "type": "GroupType",
+          "id": 3
+        }
+      }
+    },
+    "GroupSpecification": {
+      "fields": {
+        "lowerBound": {
+          "type": "uint32",
+          "id": 1
+        },
+        "upperBound": {
+          "type": "uint32",
+          "id": 2
+        },
+        "zoneType": {
+          "type": "ZoneType",
+          "id": 3
+        },
+        "subZoneType": {
+          "type": "SubZoneType",
+          "id": 4
+        },
+        "prompt": {
+          "type": "Prompt",
+          "id": 5
+        },
+        "isFacedown": {
+          "type": "bool",
+          "id": 6
+        }
+      }
+    },
+    "GroupType": {
+      "values": {
+        "GroupType_None": 0,
+        "GroupType_Ordered": 1,
+        "GroupType_Arbitrary": 2
+      }
+    },
+    "GroupingContext": {
+      "values": {
+        "GroupingContext_None": 0,
+        "GroupingContext_Scry": 1,
+        "GroupingContext_Surveil": 2,
+        "GroupingContext_LondonMulligan": 3
+      }
+    },
+    "GroupingStyle": {
+      "values": {
+        "GroupingStyle_None": 0,
+        "GroupingStyle_SingleGroup": 1,
+        "GroupingStyle_AllGroups": 2,
+        "GroupingStyle_Mixed": 3
+      }
+    },
+    "HighlightType": {
+      "values": {
+        "HighlightType_None": 0,
+        "HighlightType_Cold": 1,
+        "HighlightType_Tepid": 2,
+        "HighlightType_Hot": 3,
+        "HighlightType_Counterspell": 4,
+        "HighlightType_Random": 5
+      }
+    },
+    "IRLoaderConfiguration": {
+      "fields": {
+        "enableLimitedIRLoading": {
+          "type": "bool",
+          "id": 1
+        }
+      }
+    },
+    "IdType": {
+      "values": {
+        "IdType_None": 0,
+        "IdType_InstanceId": 1,
+        "IdType_PromptParameterIndex": 2,
+        "IdType_ZoneInstanceId": 3
+      }
+    },
+    "IllegalRequestMessage": {
+      "fields": {
+        "invalidMessage": {
+          "type": "ClientToGREMessage",
+          "id": 1
+        },
+        "reason": {
+          "type": "FailureReason",
+          "id": 2
+        }
+      }
+    },
+    "Int32Value": {
+      "fields": {
+        "value": {
+          "type": "int32",
+          "id": 1
+        }
+      }
+    },
+    "IntermissionReq": {
+      "fields": {
+        "options": {
+          "rule": "repeated",
+          "type": "UserOption",
+          "id": 1
+        },
+        "intermissionPrompt": {
+          "type": "Prompt",
+          "id": 2
+        },
+        "gameResultType": {
+          "type": "ResultType",
+          "id": 3
+        },
+        "winningTeamId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "result": {
+          "type": "ResultSpec",
+          "id": 5
+        }
+      }
+    },
+    "JoinMatchGameRoomRequest": {
+      "fields": {
+        "gameRoomId": {
+          "type": "string",
+          "id": 1
+        },
+        "gameRoomPassword": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "JoinMatchGameRoomResponse": {
+      "fields": {
+        "gameRoomInfo": {
+          "type": "MatchGameRoomInfo",
+          "id": 1
+        }
+      }
+    },
+    "JoinMatchGameRoomResponseV2": {
+      "fields": {
+        "seatId": {
+          "type": "int32",
+          "id": 1
+        }
+      }
+    },
+    "KeyValuePairInfo": {
+      "fields": {
+        "key": {
+          "type": "string",
+          "id": 1
+        },
+        "type": {
+          "type": "KeyValuePairValueType",
+          "id": 2
+        },
+        "valueUint32": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 3
+        },
+        "valueInt32": {
+          "rule": "repeated",
+          "type": "int32",
+          "id": 4
+        },
+        "valueUint64": {
+          "rule": "repeated",
+          "type": "uint64",
+          "id": 5
+        },
+        "valueInt64": {
+          "rule": "repeated",
+          "type": "int64",
+          "id": 6
+        },
+        "valueBool": {
+          "rule": "repeated",
+          "type": "bool",
+          "id": 7
+        },
+        "valueString": {
+          "rule": "repeated",
+          "type": "string",
+          "id": 8
+        },
+        "valueFloat": {
+          "rule": "repeated",
+          "type": "float",
+          "id": 9
+        },
+        "valueDouble": {
+          "rule": "repeated",
+          "type": "double",
+          "id": 10
+        }
+      }
+    },
+    "KeyValuePairValueType": {
+      "values": {
+        "KeyValuePairValueType_None": 0,
+        "KeyValuePairValueType_uint32": 1,
+        "KeyValuePairValueType_int32": 2,
+        "KeyValuePairValueType_uint64": 3,
+        "KeyValuePairValueType_int64": 4,
+        "KeyValuePairValueType_bool": 5,
+        "KeyValuePairValueType_string": 6,
+        "KeyValuePairValueType_float": 7,
+        "KeyValuePairValueType_double": 8
+      }
+    },
+    "ManaColor": {
+      "values": {
+        "ManaColor_None": 0,
+        "ManaColor_White": 1,
+        "ManaColor_Blue": 2,
+        "ManaColor_Black": 3,
+        "ManaColor_Red": 4,
+        "ManaColor_Green": 5,
+        "ManaColor_Phyrexian": 6,
+        "ManaColor_Generic": 7,
+        "ManaColor_X": 8,
+        "ManaColor_Y": 9,
+        "ManaColor_TwoGeneric": 10,
+        "ManaColor_AnyColor": 11,
+        "ManaColor_Colorless": 12
+      }
+    },
+    "ManaInfo": {
+      "fields": {
+        "manaId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "color": {
+          "type": "ManaColor",
+          "id": 2
+        },
+        "srcInstanceId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "specs": {
+          "rule": "repeated",
+          "type": "Spec",
+          "id": 4
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 5
+        },
+        "linkedSelections": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 6
+        }
+      },
+      "nested": {
+        "Spec": {
+          "fields": {
+            "type": {
+              "type": "ManaSpecType",
+              "id": 1
+            }
+          }
+        }
+      }
+    },
+    "ManaPaymentCondition": {
+      "fields": {
+        "colors": {
+          "rule": "repeated",
+          "type": "ManaColor",
+          "id": 1
+        },
+        "specs": {
+          "rule": "repeated",
+          "type": "ManaSpecType",
+          "id": 2
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "ManaPaymentOption": {
+      "fields": {
+        "mana": {
+          "rule": "repeated",
+          "type": "ManaInfo",
+          "id": 2
+        },
+        "optionIndex": {
+          "type": "uint32",
+          "id": 4
+        },
+        "haveReplacementsBeenApplied": {
+          "type": "bool",
+          "id": 5
+        },
+        "haveTriggersBeenApplied": {
+          "type": "bool",
+          "id": 6
+        },
+        "isUnpredictable": {
+          "type": "bool",
+          "id": 7
+        }
+      }
+    },
+    "ManaPaymentStrategyType": {
+      "values": {
+        "ManaPaymentStrategyType_None": 0,
+        "ManaPaymentStrategyType_Auto": 1,
+        "ManaPaymentStrategyType_Manual": 2,
+        "ManaPaymentStrategyType_Legacy": 3
+      }
+    },
+    "ManaRequirement": {
+      "fields": {
+        "color": {
+          "rule": "repeated",
+          "type": "ManaColor",
+          "id": 1
+        },
+        "count": {
+          "type": "int32",
+          "id": 2
+        },
+        "costId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "objectId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 5
+        }
+      }
+    },
+    "ManaSelectionType": {
+      "values": {
+        "ManaSelectionType_None": 0,
+        "ManaSelectionType_Auto": 1,
+        "ManaSelectionType_Manual": 2
+      }
+    },
+    "ManaSpecType": {
+      "values": {
+        "ManaSpecType_None": 0,
+        "ManaSpecType_FromBasic": 1,
+        "ManaSpecType_Predictive": 2,
+        "ManaSpecType_Restricted": 3,
+        "ManaSpecType_Trigger": 4,
+        "ManaSpecType_FromCreature": 5,
+        "ManaSpecType_FromSnow": 6,
+        "ManaSpecType_DoesNotEmpty": 7,
+        "ManaSpecType_AdditionalEffect": 8
+      }
+    },
+    "MatchCompletedReasonType": {
+      "values": {
+        "MatchCompletedReasonType_Invalid": 0,
+        "MatchCompletedReasonType_Success": 1,
+        "MatchCompletedReasonType_ForceResultRequest": 2,
+        "MatchCompletedReasonType_Canceled": 3,
+        "MatchCompletedReasonType_PlayerJoinTimeout": 10,
+        "MatchCompletedReasonType_PlayerInactivityTimeout": 11,
+        "MatchCompletedReasonType_PlayerDisconnectTimeout": 12,
+        "MatchCompletedReasonType_SystemShutdown": 30,
+        "MatchCompletedReasonType_GreError": 31,
+        "MatchCompletedReasonType_ServiceFabricError": 33,
+        "MatchCompletedReasonType_CodeContractError": 34,
+        "MatchCompletedReasonType_UnknownServerError": 40
+      }
+    },
+    "MatchConfig": {
+      "fields": {
+        "gameType": {
+          "type": "GameType",
+          "id": 1
+        },
+        "gameVariant": {
+          "type": "GameVariant",
+          "id": 2
+        },
+        "winCondition": {
+          "type": "MatchWinCondition",
+          "id": 3
+        },
+        "maxPlayerHandSize": {
+          "type": "uint32",
+          "id": 5
+        },
+        "teams": {
+          "rule": "repeated",
+          "type": "TeamConfig",
+          "id": 6
+        },
+        "testConfig": {
+          "type": "TestConfig",
+          "id": 9
+        },
+        "mulliganType": {
+          "type": "MulliganType",
+          "id": 10
+        },
+        "timerConfigs": {
+          "rule": "repeated",
+          "type": "TimerConfig",
+          "id": 11
+        },
+        "timerPackage": {
+          "type": "TimerPackage",
+          "id": 12
+        },
+        "timeoutConfig": {
+          "type": "TimeoutConfig",
+          "id": 13
+        },
+        "cosmeticConfigs": {
+          "rule": "repeated",
+          "type": "CosmeticConfig",
+          "id": 14
+        },
+        "superFormat": {
+          "type": "SuperFormat",
+          "id": 15
+        },
+        "deckConstraintInfo": {
+          "type": "DeckConstraintInfo",
+          "id": 16
+        }
+      }
+    },
+    "MatchControllerClientSessionSettings": {
+      "fields": {
+        "subscribedEventTypes": {
+          "rule": "repeated",
+          "type": "MatchControllerEventType",
+          "id": 10
+        }
+      }
+    },
+    "MatchControllerEventType": {
+      "values": {
+        "MatchControllerEventType_Invalid": 0,
+        "MatchControllerEventType_MatchGameRoomStateChanged": 1,
+        "MatchControllerEventType_MatchControllerStateChanged": 2,
+        "MatchControllerEventType_MatchControllerHealthReport": 3
+      }
+    },
+    "MatchControllerGetSettingsRequest": {
+      "fields": {
+        "propertyNames": {
+          "rule": "repeated",
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "MatchControllerGetSettingsResponse": {
+      "fields": {
+        "matchControllerSettings": {
+          "type": "MatchControllerSettings",
+          "id": 1
+        },
+        "clientSessionSettings": {
+          "type": "MatchControllerClientSessionSettings",
+          "id": 2
+        }
+      }
+    },
+    "MatchControllerHealthReport": {
+      "fields": {
+        "serviceInfo": {
+          "type": "MatchControllerServiceInfo",
+          "id": 1
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 2
+        }
+      }
+    },
+    "MatchControllerServiceInfo": {
+      "fields": {
+        "serviceFabricServiceInfo": {
+          "type": "ServiceFabricServiceInfo",
+          "id": 1
+        },
+        "environmentId": {
+          "type": "string",
+          "id": 2
+        },
+        "matchControllerState": {
+          "type": "MatchControllerState",
+          "id": 3
+        }
+      }
+    },
+    "MatchControllerSetSettingsRequest": {
+      "fields": {
+        "settings": {
+          "type": "MatchControllerSettings",
+          "id": 1
+        },
+        "clientSessionSettings": {
+          "type": "MatchControllerClientSessionSettings",
+          "id": 2
+        }
+      }
+    },
+    "MatchControllerSetSettingsResponse": {
+      "fields": {
+        "settings": {
+          "type": "MatchControllerSettings",
+          "id": 1
+        },
+        "clientSessionSettings": {
+          "type": "MatchControllerClientSessionSettings",
+          "id": 2
+        }
+      }
+    },
+    "MatchControllerSettings": {
+      "fields": {
+        "greIrBin": {
+          "type": "string",
+          "id": 5
+        },
+        "grpdXml": {
+          "type": "string",
+          "id": 6
+        },
+        "currentSeason": {
+          "type": "string",
+          "id": 20
+        }
+      }
+    },
+    "MatchControllerState": {
+      "values": {
+        "MatchControllerState_Invalid": 0,
+        "MatchControllerState_Opening": 1,
+        "MatchControllerState_Running": 2,
+        "MatchControllerState_Recovering": 3,
+        "MatchControllerState_Draining": 4,
+        "MatchControllerState_Closing": 20,
+        "MatchControllerState_Closed": 21
+      }
+    },
+    "MatchControllerStateChangedEvent": {
+      "fields": {
+        "serviceInfo": {
+          "type": "MatchControllerServiceInfo",
+          "id": 1
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 2
+        }
+      }
+    },
+    "MatchGameRoomConfig": {
+      "fields": {
+        "gameRoomId": {
+          "type": "string",
+          "id": 1
+        },
+        "eventId": {
+          "type": "string",
+          "id": 2
+        },
+        "reservedPlayers": {
+          "rule": "repeated",
+          "type": "MatchGameRoomPlayerInfo",
+          "id": 8
+        },
+        "matchId": {
+          "type": "string",
+          "id": 11
+        },
+        "matchConfig": {
+          "type": "MatchConfig",
+          "id": 12
+        },
+        "greConfig": {
+          "type": "GREConfiguration",
+          "id": 13
+        },
+        "isVisible": {
+          "type": "bool",
+          "id": 20
+        },
+        "password": {
+          "type": "string",
+          "id": 21
+        },
+        "greIrBinPath": {
+          "type": "string",
+          "id": 30
+        },
+        "greHostLoggerLevel": {
+          "type": "string",
+          "id": 31
+        },
+        "greRecorderConfig": {
+          "type": "string",
+          "id": 32
+        },
+        "joinRoomTimeoutSecs": {
+          "type": "int32",
+          "id": 35
+        },
+        "playerDisconnectTimeoutSecs": {
+          "type": "int32",
+          "id": 36
+        }
+      }
+    },
+    "MatchGameRoomInfo": {
+      "fields": {
+        "gameRoomId": {
+          "type": "string",
+          "id": 1
+        },
+        "gameRoomConfig": {
+          "type": "MatchGameRoomConfig",
+          "id": 2
+        },
+        "stateType": {
+          "type": "MatchGameRoomStateType",
+          "id": 3
+        },
+        "finalMatchResult": {
+          "type": "FinalMatchResult",
+          "id": 4
+        },
+        "interimMatchResultList": {
+          "rule": "repeated",
+          "type": "ResultSpec",
+          "id": 5
+        },
+        "players": {
+          "rule": "repeated",
+          "type": "MatchGameRoomPlayerInfo",
+          "id": 6
+        },
+        "playerMetrics": {
+          "rule": "repeated",
+          "type": "MatchPlayerMetrics",
+          "id": 7
+        },
+        "matchControllerUri": {
+          "type": "string",
+          "id": 8
+        },
+        "matchClusterUri": {
+          "type": "string",
+          "id": 9
+        },
+        "createdTimestamp": {
+          "type": "int64",
+          "id": 10
+        },
+        "updatedTimestamp": {
+          "type": "int64",
+          "id": 11
+        },
+        "matchResultSavedTimestamp": {
+          "type": "int64",
+          "id": 12
+        },
+        "creatorClientType": {
+          "type": "ClientType",
+          "id": 20
+        },
+        "creatorId": {
+          "type": "string",
+          "id": 21
+        }
+      }
+    },
+    "MatchGameRoomOpponentConnectionStateChangedEvent": {
+      "fields": {
+        "matchId": {
+          "type": "string",
+          "id": 1
+        },
+        "systemSeatId": {
+          "type": "int32",
+          "id": 2
+        },
+        "eventType": {
+          "type": "ConnectionStateChangedEventType",
+          "id": 3
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 10
+        }
+      }
+    },
+    "MatchGameRoomPlayerInfo": {
+      "fields": {
+        "userId": {
+          "type": "string",
+          "id": 1
+        },
+        "playerName": {
+          "type": "string",
+          "id": 2
+        },
+        "systemSeatId": {
+          "type": "int32",
+          "id": 3
+        },
+        "teamId": {
+          "type": "int32",
+          "id": 4
+        },
+        "connectionInfo": {
+          "type": "UserConnectionInfo",
+          "id": 5
+        },
+        "courseId": {
+          "type": "string",
+          "id": 10
+        },
+        "deckId": {
+          "type": "string",
+          "id": 11
+        },
+        "clientAuthToken": {
+          "type": "string",
+          "id": 12
+        },
+        "joinTimestamp": {
+          "type": "int64",
+          "id": 20
+        },
+        "inactivityTimeoutTimestamp": {
+          "type": "int64",
+          "id": 21
+        },
+        "disconnectTimeoutTimestamp": {
+          "type": "int64",
+          "id": 22
+        }
+      }
+    },
+    "MatchGameRoomStateChangedEvent": {
+      "fields": {
+        "gameRoomInfo": {
+          "type": "MatchGameRoomInfo",
+          "id": 1
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 2
+        }
+      }
+    },
+    "MatchGameRoomStateType": {
+      "values": {
+        "MatchGameRoomStateType_Invalid": 0,
+        "MatchGameRoomStateType_WaitingForPlayersToJoin": 1,
+        "MatchGameRoomStateType_StartPending": 2,
+        "MatchGameRoomStateType_WaitingForGreConnections": 3,
+        "MatchGameRoomStateType_Playing": 5,
+        "MatchGameRoomStateType_MatchCompleted": 15,
+        "MatchGameRoomStateType_MatchResultsProcessed": 20,
+        "MatchGameRoomStateType_GameRoomClosing": 21,
+        "MatchGameRoomStateType_GameRoomClosed": 22
+      }
+    },
+    "MatchPlayerMetrics": {
+      "fields": {
+        "userId": {
+          "type": "string",
+          "id": 1
+        },
+        "metrics": {
+          "rule": "repeated",
+          "type": "PlayerMetricKeyValuePair",
+          "id": 2
+        }
+      }
+    },
+    "MatchResultSaved": {
+      "fields": {
+        "matchId": {
+          "type": "string",
+          "id": 1
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 10
+        }
+      }
+    },
+    "MatchScope": {
+      "values": {
+        "MatchScope_None": 0,
+        "MatchScope_Game": 1,
+        "MatchScope_Match": 2
+      }
+    },
+    "MatchServiceError": {
+      "fields": {
+        "errorCode": {
+          "type": "MatchServiceErrorCode",
+          "id": 2
+        },
+        "errorMessage": {
+          "type": "string",
+          "id": 3
+        }
+      }
+    },
+    "MatchServiceErrorCode": {
+      "values": {
+        "MatchServiceErrorCode_Invalid": 0,
+        "MatchServiceErrorCode_Success": 1,
+        "MatchServiceErrorCode_GreError": 100,
+        "MatchServiceErrorCode_OperationCanceled": 101,
+        "MatchServiceErrorCode_InvalidUser": 102,
+        "MatchServiceErrorCode_InvalidState": 103,
+        "MatchServiceErrorCode_CreateRoomFailed": 104,
+        "MatchServiceErrorCode_AuthRequired": 105,
+        "MatchServiceErrorCode_NotFound": 106,
+        "MatchServiceErrorCode_ServiceFabricTransactionError": 107,
+        "MatchServiceErrorCode_BadRequest": 108,
+        "MatchServiceErrorCode_GameRoomFull": 110,
+        "MatchServiceErrorCode_NotAuthorized": 111,
+        "MatchServiceErrorCode_BufferOverflow": 112,
+        "MatchServiceErrorCode_ImmutableProperty": 113,
+        "MatchServiceErrorCode_ServerBusy": 114,
+        "MatchServiceErrorCode_RequestQueueOverflow": 115,
+        "MatchServiceErrorCode_UnknownServerError": 500
+      }
+    },
+    "MatchServiceToClientMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "error",
+            "greToClientEvent",
+            "matchGameRoomStateChangedEvent",
+            "matchControllerStateChangedEvent",
+            "matchControllerHealthReport",
+            "opponentConnectionStateChangedEvent",
+            "authenticateResponse",
+            "serviceInfoResponse",
+            "getSettingsResponse",
+            "setSettingsResponse",
+            "createMatchGameRoomResponse",
+            "createMatchGameRoomResponseV2",
+            "joinMatchGameRoomResponse",
+            "joinMatchGameRoomResponseV2",
+            "getGameRoomIdsResponse",
+            "getGameRoomInfoResponse",
+            "echoResponse"
+          ]
+        }
+      },
+      "fields": {
+        "transactionId": {
+          "type": "string",
+          "id": 1
+        },
+        "requestId": {
+          "type": "int32",
+          "id": 3
+        },
+        "timestamp": {
+          "type": "int64",
+          "id": 4
+        },
+        "error": {
+          "type": "MatchServiceError",
+          "id": 7
+        },
+        "greToClientEvent": {
+          "type": "GreToClientEvent",
+          "id": 8
+        },
+        "matchGameRoomStateChangedEvent": {
+          "type": "MatchGameRoomStateChangedEvent",
+          "id": 9
+        },
+        "matchControllerStateChangedEvent": {
+          "type": "MatchControllerStateChangedEvent",
+          "id": 10
+        },
+        "matchControllerHealthReport": {
+          "type": "MatchControllerHealthReport",
+          "id": 11
+        },
+        "opponentConnectionStateChangedEvent": {
+          "type": "MatchGameRoomOpponentConnectionStateChangedEvent",
+          "id": 12
+        },
+        "authenticateResponse": {
+          "type": "AuthenticateResponse",
+          "id": 100
+        },
+        "serviceInfoResponse": {
+          "type": "MatchControllerServiceInfo",
+          "id": 101
+        },
+        "getSettingsResponse": {
+          "type": "MatchControllerGetSettingsResponse",
+          "id": 110
+        },
+        "setSettingsResponse": {
+          "type": "MatchControllerSetSettingsResponse",
+          "id": 111
+        },
+        "createMatchGameRoomResponse": {
+          "type": "CreateMatchGameRoomResponse",
+          "id": 200
+        },
+        "createMatchGameRoomResponseV2": {
+          "type": "CreateMatchGameRoomResponseV2",
+          "id": 201
+        },
+        "joinMatchGameRoomResponse": {
+          "type": "JoinMatchGameRoomResponse",
+          "id": 210
+        },
+        "joinMatchGameRoomResponseV2": {
+          "type": "JoinMatchGameRoomResponseV2",
+          "id": 211
+        },
+        "getGameRoomIdsResponse": {
+          "type": "GetGameRoomIdsResponse",
+          "id": 240
+        },
+        "getGameRoomInfoResponse": {
+          "type": "GetGameRoomInfoResponse",
+          "id": 241
+        },
+        "echoResponse": {
+          "type": "EchoResponse",
+          "id": 1000
+        }
+      }
+    },
+    "MatchState": {
+      "values": {
+        "MatchState_None": 0,
+        "MatchState_GameInProgress": 1,
+        "MatchState_GameComplete": 2,
+        "MatchState_MatchComplete": 3,
+        "MatchState_Sideboarding": 4
+      }
+    },
+    "MatchWinCondition": {
+      "values": {
+        "MatchWinCondition_None": 0,
+        "MatchWinCondition_SingleElimination": 1,
+        "MatchWinCondition_Best2of3": 2,
+        "MatchWinCondition_Best3of5": 3
+      }
+    },
+    "MechanicType": {
+      "values": {
+        "MechanicType_None": 0,
+        "MechanicType_CombatEnhancingSorcery": 1,
+        "MechanicType_CombatEnhancingInstant": 2,
+        "MechanicType_Haste": 3,
+        "MechanicType_Flash": 4,
+        "MechanicType_ReplaceOpponentBeginningPhase": 5,
+        "MechanicType_ReplaceAIBeginningPhase": 6,
+        "MechanicType_DirectDamagePlayer": 7,
+        "MechanicType_Evasion": 9,
+        "MechanicType_MustAttack": 10,
+        "MechanicType_MustBlock": 11,
+        "MechanicType_CombatEnhancingAbility": 12,
+        "MechanicType_Main2Creature": 13,
+        "MechanicType_DirectDamageCreature_Sorcery": 14,
+        "MechanicType_DirectDamageCreature_Instant": 15,
+        "MechanicType_Placeholder1": 16,
+        "MechanicType_Placeholder2": 17,
+        "MechanicType_Placeholder3": 18,
+        "MechanicType_Placeholder4": 19,
+        "MechanicType_Placeholder5": 20
+      }
+    },
+    "ModalOption": {
+      "fields": {
+        "grpId": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "ModalReq": {
+      "fields": {
+        "modalOptions": {
+          "rule": "repeated",
+          "type": "ModalOption",
+          "id": 1
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "minSel": {
+          "type": "uint32",
+          "id": 3
+        },
+        "maxSel": {
+          "type": "uint32",
+          "id": 4
+        },
+        "repeatedSelectAllowed": {
+          "type": "bool",
+          "id": 5
+        },
+        "excludedOptions": {
+          "rule": "repeated",
+          "type": "ModalOption",
+          "id": 6
+        }
+      }
+    },
+    "MulliganOption": {
+      "values": {
+        "MulliganOption_None": 0,
+        "MulliganOption_Mulligan": 1,
+        "MulliganOption_AcceptHand": 2
+      }
+    },
+    "MulliganReq": {
+      "fields": {
+        "mulliganType": {
+          "type": "MulliganType",
+          "id": 1
+        },
+        "freeMulliganCount": {
+          "type": "uint32",
+          "id": 2
+        },
+        "mulliganCount": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "MulliganResp": {
+      "fields": {
+        "decision": {
+          "type": "MulliganOption",
+          "id": 1
+        }
+      }
+    },
+    "MulliganType": {
+      "values": {
+        "MulliganType_None": 0,
+        "MulliganType_Paris": 1,
+        "MulliganType_Vancouver": 2,
+        "MulliganType_London": 3
+      }
+    },
+    "NumericInputReq": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minValue": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxValue": {
+          "type": "uint32",
+          "id": 3
+        },
+        "stepSize": {
+          "type": "uint32",
+          "id": 4
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 5
+        }
+      }
+    },
+    "NumericInputResp": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "numericInputValue": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "OnChat": {
+      "fields": {
+        "text": {
+          "type": "string",
+          "id": 1
+        }
+      }
+    },
+    "OnGenericEvent": {
+      "fields": {
+        "category": {
+          "type": "string",
+          "id": 1
+        },
+        "payload": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "OnHover": {
+      "fields": {
+        "objectId": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "OnSelect": {
+      "fields": {
+        "objectId": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "OnShuffle": {
+      "fields": {
+        "objectIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "OptionContext": {
+      "values": {
+        "OptionContext_None": 0,
+        "OptionContext_ManaAbility": 1,
+        "OptionContext_Payment": 2,
+        "OptionContext_Stacking": 3,
+        "OptionContext_Targeting": 4,
+        "OptionContext_Resolution": 5,
+        "OptionContext_TurnBased": 6,
+        "OptionContext_Replacement": 7,
+        "OptionContext_ActivateCast": 8,
+        "OptionContext_TurnFaceUp": 9
+      }
+    },
+    "OptionResponse": {
+      "values": {
+        "OptionResponse_None": 0,
+        "OptionResponse_Allow_Yes": 1,
+        "OptionResponse_Cancel_No": 2
+      }
+    },
+    "OptionType": {
+      "values": {
+        "OptionType_None": 0,
+        "OptionType_Modal": 1,
+        "OptionType_Splice": 2,
+        "OptionType_AlternativeCost": 3,
+        "OptionType_Numeric": 4,
+        "OptionType_VariableCost": 5,
+        "OptionType_ManaType": 6,
+        "OptionType_Order": 7,
+        "OptionType_Search": 8,
+        "OptionType_Group": 9,
+        "OptionType_Select": 10,
+        "OptionType_SelectGroup": 11,
+        "OptionType_Distribution": 12,
+        "OptionType_OptionalAction": 13,
+        "OptionType_ActionsAvailable": 14,
+        "OptionType_SelectFromGroups": 15,
+        "OptionType_SearchFromGroups": 16,
+        "OptionType_Gathering": 17
+      }
+    },
+    "OptionalActionMessage": {
+      "fields": {
+        "prompt": {
+          "type": "Prompt",
+          "id": 1
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "optionalActionTypes": {
+          "rule": "repeated",
+          "type": "CardMechanicType",
+          "id": 4
+        },
+        "recipientIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 5
+        },
+        "highlight": {
+          "type": "HighlightType",
+          "id": 6
+        }
+      }
+    },
+    "OptionalResp": {
+      "fields": {
+        "response": {
+          "type": "OptionResponse",
+          "id": 1
+        },
+        "persistence": {
+          "type": "ChoicePersistence",
+          "id": 2
+        },
+        "appliesTo": {
+          "type": "SettingScope",
+          "id": 3
+        },
+        "mapTo": {
+          "type": "SettingKey",
+          "id": 4
+        }
+      }
+    },
+    "OrderCombatDamageReq": {
+      "fields": {
+        "orderDamageType": {
+          "type": "OrderCombatDamageType",
+          "id": 1
+        },
+        "orders": {
+          "rule": "repeated",
+          "type": "CombatDamageOrder",
+          "id": 2
+        }
+      }
+    },
+    "OrderCombatDamageResp": {
+      "fields": {
+        "orderDamageType": {
+          "type": "OrderCombatDamageType",
+          "id": 1
+        },
+        "orders": {
+          "rule": "repeated",
+          "type": "CombatDamageOrderAssignment",
+          "id": 2
+        }
+      }
+    },
+    "OrderCombatDamageType": {
+      "values": {
+        "OrderCombatDamageType_None": 0,
+        "OrderCombatDamageType_Attacker": 1,
+        "OrderCombatDamageType_Blocker": 2
+      }
+    },
+    "OrderDamageConfirmation": {
+      "fields": {
+        "result": {
+          "type": "ResultCode",
+          "id": 1
+        },
+        "orderDamageType": {
+          "type": "OrderCombatDamageType",
+          "id": 2
+        }
+      }
+    },
+    "OrderKey": {
+      "fields": {
+        "activePlayer": {
+          "type": "PlayerIs",
+          "id": 1
+        },
+        "turnPhase": {
+          "type": "Phase",
+          "id": 2
+        },
+        "phaseStep": {
+          "type": "Step",
+          "id": 3
+        },
+        "requestType": {
+          "type": "GREMessageType",
+          "id": 4
+        },
+        "context": {
+          "type": "int32",
+          "id": 5
+        }
+      }
+    },
+    "OrderReq": {
+      "fields": {
+        "ids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 2
+        },
+        "orderingContext": {
+          "type": "OrderingContext",
+          "id": 3
+        }
+      }
+    },
+    "OrderResp": {
+      "fields": {
+        "ids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "ordering": {
+          "type": "OrderingType",
+          "id": 2
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "OrderedDamageAssignment": {
+      "fields": {
+        "instanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "assignedDamage": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "OrderingContext": {
+      "values": {
+        "OrderingContext_None": 0,
+        "OrderingContext_OrderingForBottom": 1,
+        "OrderingContext_OrderingForTop": 2
+      }
+    },
+    "OrderingFunctionType": {
+      "values": {
+        "OrderingFunctionType_None": 0,
+        "OrderingFunctionType_ConstantValue": 1,
+        "OrderingFunctionType_ObjectScore": 2,
+        "OrderingFunctionType_CheckCardMechanic": 3,
+        "OrderingFunctionType_CheckBlockers": 4,
+        "OrderingFunctionType_CheckAttackers": 5,
+        "OrderingFunctionType_CheckCardMechanicIfNoAttackers": 6,
+        "OrderingFunctionType_CheckAbilityMechanic": 7,
+        "OrderingFunctionType_CheckAbilityMechanicIfNoAttackers": 8,
+        "OrderingFunctionType_CheckPredefinedCardMechanics": 9,
+        "OrderingFunctionType_CheckPredefinedAbilityMechanics": 10,
+        "OrderingFunctionType_CheckPredefinedCardMechanicsIfNoAttackers": 11,
+        "OrderingFunctionType_CheckPredefinedAbilityMechanicsIfNoAttackers": 12,
+        "OrderingFunctionType_Mulligan": 13,
+        "OrderingFunctionType_PlayLand": 14,
+        "OrderingFunctionType_CheckHasAbility": 15,
+        "OrderingFunctionType_ManaSelect": 16
+      }
+    },
+    "OrderingHeuristicDefinition": {
+      "fields": {
+        "id": {
+          "type": "string",
+          "id": 1
+        },
+        "priority": {
+          "type": "uint32",
+          "id": 2
+        },
+        "weight": {
+          "type": "uint32",
+          "id": 3
+        },
+        "orderKey": {
+          "type": "OrderKey",
+          "id": 4
+        },
+        "functionType": {
+          "type": "OrderingFunctionType",
+          "id": 5
+        },
+        "mechanicType": {
+          "type": "MechanicType",
+          "id": 10
+        },
+        "withMechanic": {
+          "type": "bool",
+          "id": 11
+        },
+        "abilityType": {
+          "type": "AbilityType",
+          "id": 12
+        },
+        "sortOrder": {
+          "type": "SortBy",
+          "id": 20
+        }
+      }
+    },
+    "OrderingHeuristicParameter": {
+      "fields": {
+        "paramId": {
+          "type": "OrderingParameterId",
+          "id": 1
+        },
+        "paramValue": {
+          "type": "int32",
+          "id": 2
+        }
+      }
+    },
+    "OrderingParameterId": {
+      "values": {
+        "OrderingParameterId_None": 0,
+        "OrderingParameterId_BestSingleBlock": 1,
+        "OrderingParameterId_GoodSingleBlock": 2,
+        "OrderingParameterId_GoodSingleTrade": 3,
+        "OrderingParameterId_GoodMultiTrade": 4,
+        "OrderingParameterId_ChumpBlock": 5,
+        "OrderingParameterId_PlayerDeath": 6,
+        "OrderingParameterId_MustBlock": 7,
+        "OrderingParameterId_AttackWithEvasion": 9,
+        "OrderingParameterId_MustAttack": 10,
+        "OrderingParameterId_FavorableTrade": 11,
+        "OrderingParameterId_UnfavorableTrade": 12,
+        "OrderingParameterId_OpponentDamage": 13
+      }
+    },
+    "OrderingType": {
+      "values": {
+        "OrderingType_None": 0,
+        "OrderingType_OrderAsIndicated": 1,
+        "OrderingType_OrderArbitraryOnce": 2,
+        "OrderingType_OrderArbitraryAlways": 3,
+        "OrderingType_PromptAlways": 4
+      }
+    },
+    "ParameterType": {
+      "values": {
+        "ParameterType_None": 0,
+        "ParameterType_NonLocalizedString": 1,
+        "ParameterType_Number": 2,
+        "ParameterType_Reference": 3,
+        "ParameterType_PromptId": 5
+      }
+    },
+    "PayCostsReq": {
+      "fields": {
+        "manaCost": {
+          "rule": "repeated",
+          "type": "ManaRequirement",
+          "id": 1
+        },
+        "paymentActions": {
+          "type": "ActionsAvailableReq",
+          "id": 2
+        },
+        "paymentSelection": {
+          "type": "SelectNReq",
+          "id": 3
+        },
+        "effectCostReq": {
+          "type": "EffectCostReq",
+          "id": 4
+        },
+        "submitPaymentReq": {
+          "type": "SubmitPaymentReq",
+          "id": 5
+        },
+        "autoTapActionsReq": {
+          "type": "AutoTapActionsAvailableReq",
+          "id": 6
+        }
+      }
+    },
+    "PerformActionResp": {
+      "fields": {
+        "actions": {
+          "rule": "repeated",
+          "type": "Action",
+          "id": 1
+        },
+        "autoPassPriority": {
+          "type": "AutoPassPriority",
+          "id": 2
+        },
+        "setYield": {
+          "type": "SettingStatus",
+          "id": 3
+        },
+        "appliesTo": {
+          "type": "SettingScope",
+          "id": 4
+        },
+        "mapTo": {
+          "type": "SettingKey",
+          "id": 5
+        }
+      }
+    },
+    "PerformAutoTapActionsResp": {
+      "fields": {
+        "index": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "Phase": {
+      "values": {
+        "Phase_None": 0,
+        "Phase_Beginning": 1,
+        "Phase_Main1": 2,
+        "Phase_Combat": 3,
+        "Phase_Main2": 4,
+        "Phase_Ending": 5
+      }
+    },
+    "PlayerConfig": {
+      "fields": {
+        "systemSeatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "deckCards": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "sideboardCards": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 3
+        },
+        "startingLifeTotal": {
+          "type": "uint32",
+          "id": 6
+        },
+        "startingHandSizeSpecified": {
+          "type": "bool",
+          "id": 7
+        },
+        "startingHandSize": {
+          "type": "uint32",
+          "id": 8
+        },
+        "commandEmblems": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 9
+        },
+        "jazzMusicians": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 10
+        },
+        "skins": {
+          "rule": "repeated",
+          "type": "CardSkinTuple",
+          "id": 11
+        },
+        "shuffleRestriction": {
+          "type": "ShuffleRestriction",
+          "id": 12
+        },
+        "playerConfigFieldThirteen": {
+          "type": "uint32",
+          "id": 13
+        }
+      }
+    },
+    "PlayerDieRoll": {
+      "fields": {
+        "systemSeatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "rollValue": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "PlayerInfo": {
+      "fields": {
+        "lifeTotal": {
+          "type": "int32",
+          "id": 1
+        },
+        "systemSeatNumber": {
+          "type": "uint32",
+          "id": 2
+        },
+        "manaPool": {
+          "rule": "repeated",
+          "type": "ManaInfo",
+          "id": 6
+        },
+        "maxHandSize": {
+          "type": "uint32",
+          "id": 7
+        },
+        "mulliganCount": {
+          "type": "uint32",
+          "id": 8
+        },
+        "turnNumber": {
+          "type": "uint32",
+          "id": 9
+        },
+        "teamId": {
+          "type": "uint32",
+          "id": 10
+        },
+        "timerIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 11
+        },
+        "controllerSeatId": {
+          "type": "uint32",
+          "id": 12
+        },
+        "controllerType": {
+          "type": "ControllerType",
+          "id": 13
+        },
+        "timeoutCount": {
+          "type": "uint32",
+          "id": 14
+        },
+        "pipCount": {
+          "type": "uint32",
+          "id": 15
+        },
+        "pendingMessageType": {
+          "type": "ClientMessageType",
+          "id": 16
+        },
+        "startingLifeTotal": {
+          "type": "uint32",
+          "id": 17
+        }
+      }
+    },
+    "PlayerIs": {
+      "values": {
+        "PlayerIs_None": 0,
+        "PlayerIs_DontCare": 1,
+        "PlayerIs_AI": 2,
+        "PlayerIs_Opponent": 3
+      }
+    },
+    "PlayerMetricKeyValuePair": {
+      "fields": {
+        "key": {
+          "type": "string",
+          "id": 1
+        },
+        "value": {
+          "type": "int32",
+          "id": 2
+        }
+      }
+    },
+    "PlayerMetrics": {
+      "fields": {
+        "playerId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "metrics": {
+          "rule": "repeated",
+          "type": "KeyValuePairInfo",
+          "id": 2
+        }
+      }
+    },
+    "Prompt": {
+      "fields": {
+        "promptId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "parameters": {
+          "rule": "repeated",
+          "type": "PromptParameter",
+          "id": 2
+        }
+      }
+    },
+    "PromptParameter": {
+      "fields": {
+        "parameterName": {
+          "type": "string",
+          "id": 1
+        },
+        "type": {
+          "type": "ParameterType",
+          "id": 2
+        },
+        "reference": {
+          "type": "Reference",
+          "id": 3
+        },
+        "stringValue": {
+          "type": "string",
+          "id": 4
+        },
+        "numberValue": {
+          "type": "int32",
+          "id": 5
+        },
+        "repeatedNumbers": {
+          "rule": "repeated",
+          "type": "int32",
+          "id": 6
+        },
+        "promptId": {
+          "type": "int32",
+          "id": 7
+        }
+      }
+    },
+    "ProtoVersion": {
+      "values": {
+        "ProtoVersion_None": 0,
+        "ProtoVersion_HiFiGameStates": 1,
+        "ProtoVersion_PreviousGameStateId": 2,
+        "ProtoVersion_Timers": 3,
+        "ProtoVersion_ManaRequirement": 4,
+        "ProtoVersion_AutoTapActions": 5,
+        "ProtoVersion_UIMessages": 6,
+        "ProtoVersion_AutoTapStopsSetting": 7,
+        "ProtoVersion_Sideboarding": 8,
+        "ProtoVersion_AutoOptionalPaymentCancellationSetting": 9,
+        "ProtoVersion_CostCategory": 10,
+        "ProtoVersion_TimersV2": 11,
+        "ProtoVersion_Control": 12,
+        "ProtoVersion_TimersV3": 13,
+        "ProtoVersion_AutoAcceptHand": 14,
+        "ProtoVersion_TimersV4": 15,
+        "ProtoVersion_TimersV5": 16,
+        "ProtoVersion_ManaPaymentStrategyType": 17,
+        "ProtoVersion_TimersV6": 18,
+        "ProtoVersion_TimersV7": 19,
+        "ProtoVersion_TimersV8": 20,
+        "ProtoVersion_TransientStops": 21,
+        "ProtoVersion_Cosmetics": 22,
+        "ProtoVersion_ResultSpec": 23,
+        "ProtoVersion_ResultReason": 24,
+        "ProtoVersion_SuperFormat": 25,
+        "ProtoVersion_AutoSelectReplacementSetting": 26,
+        "ProtoVersion_MulliganType": 27,
+        "ProtoVersion_PendingMessageType": 28,
+        "ProtoVersion_AutoDeclareAttackersThatMustAttackSetting": 29,
+        "ProtoVersion_DeceptiveActions": 30,
+        "ProtoVersion_PerformAutoTapActions": 31,
+        "ProtoVersion_MulliganReq": 32,
+        "ProtoVersion_AutoTapSolution": 33,
+        "ProtoVersion_ManaPaymentDeprecated": 34,
+        "ProtoVersion_SelectFromGroupRespGroups": 35
+      }
+    },
+    "Reference": {
+      "fields": {
+        "type": {
+          "type": "ReferenceType",
+          "id": 1
+        },
+        "id": {
+          "type": "uint32",
+          "id": 2
+        },
+        "field": {
+          "type": "string",
+          "id": 3
+        },
+        "debugValue": {
+          "type": "string",
+          "id": 4
+        }
+      }
+    },
+    "ReferenceType": {
+      "values": {
+        "ReferenceType_None": 0,
+        "ReferenceType_InstanceId": 1,
+        "ReferenceType_CatalogId": 2,
+        "ReferenceType_LocalizationId": 3,
+        "ReferenceType_PlayerSeatId": 4
+      }
+    },
+    "ReplacementEffect": {
+      "fields": {
+        "objectInstance": {
+          "type": "uint32",
+          "id": 1
+        },
+        "uniqueAbilityId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "affectedObject": {
+          "type": "uint32",
+          "id": 5
+        },
+        "replacementEffectId": {
+          "type": "uint32",
+          "id": 6
+        }
+      }
+    },
+    "ReportResultMessage": {
+      "fields": {
+        "result": {
+          "type": "ResultSpec",
+          "id": 1
+        }
+      }
+    },
+    "ResultCode": {
+      "values": {
+        "ResultCode_None": 0,
+        "ResultCode_Success": 1,
+        "ResultCode_Failure": 2,
+        "ResultCode_CannotAttack": 3,
+        "ResultCode_AttackCostUnpaid": 4,
+        "ResultCode_CannotBlock": 5,
+        "ResultCode_IllegalBlock": 6,
+        "ResultCode_OrderMismatch": 7,
+        "ResultCode_MissingDamageSource": 8,
+        "ResultCode_InvalidDamageSource": 9,
+        "ResultCode_NonlethalAssignment": 10,
+        "ResultCode_InvalidAssignment": 11,
+        "ResultCode_TooManyTargets": 12,
+        "ResultCode_NotEnoughTargets": 13,
+        "ResultCode_IllegalTarget": 14,
+        "ResultCode_RestrictionViolated": 15,
+        "ResultCode_RequirementViolated": 16
+      }
+    },
+    "ResultReason": {
+      "values": {
+        "ResultReason_None": 0,
+        "ResultReason_Game": 1,
+        "ResultReason_Concede": 2,
+        "ResultReason_Timeout": 3,
+        "ResultReason_Loop": 4,
+        "ResultReason_Force": 5
+      }
+    },
+    "ResultSpec": {
+      "fields": {
+        "scope": {
+          "type": "MatchScope",
+          "id": 1
+        },
+        "result": {
+          "type": "ResultType",
+          "id": 2
+        },
+        "winningTeamId": {
+          "type": "uint32",
+          "id": 3
+        },
+        "reason": {
+          "type": "ResultReason",
+          "id": 4
+        }
+      }
+    },
+    "ResultType": {
+      "values": {
+        "ResultType_None": 0,
+        "ResultType_Suspended": 1,
+        "ResultType_Draw": 2,
+        "ResultType_WinLoss": 3
+      }
+    },
+    "SearchFromGroupsReq": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minFind": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxFind": {
+          "type": "uint32",
+          "id": 3
+        },
+        "zonesToSearch": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 4
+        },
+        "groups": {
+          "rule": "repeated",
+          "type": "Group",
+          "id": 5
+        },
+        "groupingStyle": {
+          "type": "GroupingStyle",
+          "id": 6
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 7
+        }
+      }
+    },
+    "SearchFromGroupsResp": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "itemsFound": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "groups": {
+          "rule": "repeated",
+          "type": "Group",
+          "id": 3
+        }
+      }
+    },
+    "SearchReq": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "minFind": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxFind": {
+          "type": "uint32",
+          "id": 3
+        },
+        "zonesToSearch": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 4
+        },
+        "itemsToSearch": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 5
+        },
+        "itemsSought": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 6
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 7
+        },
+        "additionalZones": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 8
+        }
+      }
+    },
+    "SearchResp": {
+      "fields": {
+        "optionIndex": {
+          "type": "uint32",
+          "id": 1
+        },
+        "itemsFound": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "addZoneToSearchScope": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "SelectAction": {
+      "values": {
+        "SelectAction_None": 0,
+        "SelectAction_Select": 1,
+        "SelectAction_Unselect": 2
+      }
+    },
+    "SelectCountersReq": {
+      "fields": {
+        "minSel": {
+          "type": "uint32",
+          "id": 1
+        },
+        "maxSel": {
+          "type": "uint32",
+          "id": 2
+        },
+        "context": {
+          "type": "SelectionContext",
+          "id": 3
+        },
+        "optionType": {
+          "type": "OptionType",
+          "id": 4
+        },
+        "optionContext": {
+          "type": "OptionContext",
+          "id": 5
+        },
+        "listType": {
+          "type": "SelectionListType",
+          "id": 6
+        },
+        "counterPairs": {
+          "rule": "repeated",
+          "type": "CounterPair",
+          "id": 7
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 8
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 9
+        }
+      }
+    },
+    "SelectCountersResp": {
+      "fields": {
+        "idx": {
+          "type": "uint32",
+          "id": 1
+        },
+        "context": {
+          "type": "SelectionContext",
+          "id": 2
+        },
+        "optionContext": {
+          "type": "OptionContext",
+          "id": 3
+        },
+        "optionType": {
+          "type": "OptionType",
+          "id": 4
+        },
+        "selections": {
+          "rule": "repeated",
+          "type": "CounterPair",
+          "id": 5
+        }
+      }
+    },
+    "SelectFromGroupsReq": {
+      "fields": {
+        "groups": {
+          "rule": "repeated",
+          "type": "Group",
+          "id": 3
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 4
+        },
+        "minTotalSel": {
+          "type": "uint32",
+          "id": 5
+        },
+        "maxTotalSel": {
+          "type": "uint32",
+          "id": 6
+        },
+        "groupingStyle": {
+          "type": "GroupingStyle",
+          "id": 7
+        },
+        "unfilteredIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 8
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 9
+        }
+      }
+    },
+    "SelectFromGroupsResp": {
+      "fields": {
+        "idx": {
+          "type": "uint32",
+          "id": 1
+        },
+        "ids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        },
+        "groups": {
+          "rule": "repeated",
+          "type": "Group",
+          "id": 3
+        }
+      }
+    },
+    "SelectManaTypeReq": {
+      "fields": {
+        "index": {
+          "type": "uint32",
+          "id": 1
+        },
+        "manaColors": {
+          "rule": "repeated",
+          "type": "ManaColor",
+          "id": 2
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "SelectManaTypeResp": {
+      "fields": {
+        "index": {
+          "type": "uint32",
+          "id": 1
+        },
+        "manaColor": {
+          "type": "ManaColor",
+          "id": 3
+        }
+      }
+    },
+    "SelectNGroupReq": {
+      "fields": {
+        "minSel": {
+          "type": "uint32",
+          "id": 1
+        },
+        "maxSel": {
+          "type": "uint32",
+          "id": 2
+        },
+        "groups": {
+          "rule": "repeated",
+          "type": "Group",
+          "id": 3
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 4
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 5
+        }
+      }
+    },
+    "SelectNGroupResp": {
+      "fields": {
+        "idx": {
+          "type": "uint32",
+          "id": 1
+        },
+        "selectedgroupids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "SelectNReq": {
+      "fields": {
+        "minSel": {
+          "type": "int32",
+          "id": 1
+        },
+        "maxSel": {
+          "type": "uint32",
+          "id": 2
+        },
+        "context": {
+          "type": "SelectionContext",
+          "id": 3
+        },
+        "optionType": {
+          "type": "OptionType",
+          "id": 4
+        },
+        "optionContext": {
+          "type": "OptionContext",
+          "id": 5
+        },
+        "listType": {
+          "type": "SelectionListType",
+          "id": 6
+        },
+        "ids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 7
+        },
+        "weights": {
+          "rule": "repeated",
+          "type": "int32",
+          "id": 8
+        },
+        "staticList": {
+          "type": "StaticList",
+          "id": 9
+        },
+        "idx": {
+          "type": "uint32",
+          "id": 10
+        },
+        "prompt": {
+          "type": "Prompt",
+          "id": 11
+        },
+        "idType": {
+          "type": "IdType",
+          "id": 12
+        },
+        "choicesAreRepeatable": {
+          "type": "bool",
+          "id": 13
+        },
+        "unfilteredIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 14
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 15
+        },
+        "hotIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 16
+        },
+        "validationType": {
+          "type": "SelectionValidationType",
+          "id": 17
+        },
+        "zoneIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 18
+        }
+      }
+    },
+    "SelectNResp": {
+      "fields": {
+        "idx": {
+          "type": "uint32",
+          "id": 1
+        },
+        "context": {
+          "type": "SelectionContext",
+          "id": 2
+        },
+        "optionContext": {
+          "type": "OptionContext",
+          "id": 3
+        },
+        "optionType": {
+          "type": "OptionType",
+          "id": 4
+        },
+        "ids": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 5
+        },
+        "useArbitrary": {
+          "type": "OrderingType",
+          "id": 6
+        }
+      }
+    },
+    "SelectReplacementReq": {
+      "fields": {
+        "replacements": {
+          "rule": "repeated",
+          "type": "ReplacementEffect",
+          "id": 1
+        },
+        "isOptional": {
+          "type": "bool",
+          "id": 2
+        }
+      }
+    },
+    "SelectReplacementResp": {
+      "fields": {
+        "replacement": {
+          "type": "ReplacementEffect",
+          "id": 1
+        }
+      }
+    },
+    "SelectTargetsReq": {
+      "fields": {
+        "targets": {
+          "rule": "repeated",
+          "type": "TargetSelection",
+          "id": 1
+        },
+        "sourceId": {
+          "type": "uint32",
+          "id": 2
+        },
+        "abilityGrpId": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "SelectTargetsResp": {
+      "fields": {
+        "target": {
+          "type": "TargetSelection",
+          "id": 1
+        },
+        "action": {
+          "type": "SelectAction",
+          "id": 2
+        }
+      }
+    },
+    "SelectionContext": {
+      "values": {
+        "SelectionContext_None": 0,
+        "SelectionContext_Discard": 1,
+        "SelectionContext_ManaPool": 2,
+        "SelectionContext_Resolution": 3,
+        "SelectionContext_TriggeredAbility": 4,
+        "SelectionContext_Modal": 5,
+        "SelectionContext_Replacement": 6,
+        "SelectionContext_NonMana_Payment": 7,
+        "SelectionContext_ManaFromAbility": 8
+      }
+    },
+    "SelectionListType": {
+      "values": {
+        "SelectionListType_None": 0,
+        "SelectionListType_Static": 1,
+        "SelectionListType_Dynamic": 2,
+        "SelectionListType_StaticSubset": 3
+      }
+    },
+    "SelectionValidationType": {
+      "values": {
+        "SelectionValidationType_None": 0,
+        "SelectionValidationType_NonRepeatable": 1,
+        "SelectionValidationType_ArbitraryRepeats": 2,
+        "SelectionValidationType_ConstrainedRepeats": 3
+      }
+    },
+    "ServerToGREMessage": {
+      "oneofs": {
+        "message": {
+          "oneof": [
+            "createRequest",
+            "configRequest",
+            "startMatchRequest",
+            "resumeMatchRequest",
+            "checkpointRequest",
+            "forceResultRequest",
+            "destroyRequest",
+            "timerExpired",
+            "tick",
+            "timeout",
+            "interpretRequest",
+            "expireTimerRequest",
+            "elapseTimeRequest",
+            "startDelayedTimerMessage"
+          ]
+        }
+      },
+      "fields": {
+        "createRequest": {
+          "type": "GRECreateRequest",
+          "id": 1
+        },
+        "configRequest": {
+          "type": "GREConfigRequest",
+          "id": 2
+        },
+        "startMatchRequest": {
+          "type": "GREStartMatchRequest",
+          "id": 3
+        },
+        "resumeMatchRequest": {
+          "type": "GREResumeMatchRequest",
+          "id": 4
+        },
+        "checkpointRequest": {
+          "type": "GRECheckpointRequest",
+          "id": 5
+        },
+        "forceResultRequest": {
+          "type": "GREForceResultRequest",
+          "id": 6
+        },
+        "destroyRequest": {
+          "type": "GREDestroyRequest",
+          "id": 7
+        },
+        "timerExpired": {
+          "type": "GRETimerExpiredMessage",
+          "id": 8
+        },
+        "tick": {
+          "type": "GRETickMessage",
+          "id": 9
+        },
+        "timeout": {
+          "type": "GRETimeoutMessage",
+          "id": 10
+        },
+        "interpretRequest": {
+          "type": "GREInterpretRequest",
+          "id": 11
+        },
+        "expireTimerRequest": {
+          "type": "GREExpireTimerRequest",
+          "id": 12
+        },
+        "elapseTimeRequest": {
+          "type": "GREElapseTimeRequest",
+          "id": 13
+        },
+        "startDelayedTimerMessage": {
+          "type": "GREStartDelayedTimerMessage",
+          "id": 14
+        }
+      }
+    },
+    "ServiceFabricConfigPackageInfo": {
+      "fields": {
+        "packageName": {
+          "type": "string",
+          "id": 1
+        },
+        "packageVersion": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+    "ServiceFabricServiceInfo": {
+      "fields": {
+        "serviceName": {
+          "type": "string",
+          "id": 1
+        },
+        "serviceTypeName": {
+          "type": "string",
+          "id": 2
+        },
+        "replicaOrInstanceId": {
+          "type": "int64",
+          "id": 3
+        },
+        "partitionId": {
+          "type": "string",
+          "id": 4
+        },
+        "nodeName": {
+          "type": "string",
+          "id": 5
+        },
+        "codePackageVersion": {
+          "type": "string",
+          "id": 6
+        },
+        "configPackages": {
+          "rule": "repeated",
+          "type": "ServiceFabricConfigPackageInfo",
+          "id": 7
+        },
+        "exeAssemblyVersion": {
+          "type": "string",
+          "id": 10
+        },
+        "gatewayUrl": {
+          "type": "string",
+          "id": 20
+        }
+      }
+    },
+    "ServiceInfoRequest": {
+      "fields": {}
+    },
+    "SetSettingsReq": {
+      "fields": {
+        "settings": {
+          "type": "SettingsMessage",
+          "id": 1
+        },
+        "turnNumber": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "SetSettingsResp": {
+      "fields": {
+        "settings": {
+          "type": "SettingsMessage",
+          "id": 1
+        }
+      }
+    },
+    "Setting": {
+      "values": {
+        "Setting_None": 0,
+        "Setting_Enable": 1,
+        "Setting_Disable": 2
+      }
+    },
+    "SettingKey": {
+      "values": {
+        "SettingKey_None": 0,
+        "SettingKey_ByAbility": 1,
+        "SettingKey_ByCardTitle": 2
+      }
+    },
+    "SettingScope": {
+      "values": {
+        "SettingScope_None": 0,
+        "SettingScope_AnyPlayer": 1,
+        "SettingScope_Opponents": 2,
+        "SettingScope_Team": 3
+      }
+    },
+    "SettingStatus": {
+      "values": {
+        "SettingStatus_None": 0,
+        "SettingStatus_Set": 1,
+        "SettingStatus_Clear": 2
+      }
+    },
+    "SettingsConfig": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "defaultSettings": {
+          "type": "SettingsMessage",
+          "id": 2
+        },
+        "settingsFilePath": {
+          "type": "string",
+          "id": 3
+        }
+      }
+    },
+    "SettingsMessage": {
+      "fields": {
+        "stops": {
+          "rule": "repeated",
+          "type": "Stop",
+          "id": 1
+        },
+        "yields": {
+          "rule": "repeated",
+          "type": "AutoYield",
+          "id": 2
+        },
+        "answers": {
+          "rule": "repeated",
+          "type": "AutoAnswer",
+          "id": 3
+        },
+        "autoPassOption": {
+          "type": "AutoPassOption",
+          "id": 4
+        },
+        "graveyardOrder": {
+          "type": "OrderingType",
+          "id": 5
+        },
+        "clearAllStops": {
+          "type": "SettingStatus",
+          "id": 6
+        },
+        "clearAllYields": {
+          "type": "SettingStatus",
+          "id": 7
+        },
+        "clearAllAnswers": {
+          "type": "SettingStatus",
+          "id": 8
+        },
+        "manaSelectionType": {
+          "type": "ManaSelectionType",
+          "id": 9
+        },
+        "defaultAutoPassOption": {
+          "type": "AutoPassOption",
+          "id": 10
+        },
+        "smartStopsSetting": {
+          "type": "SmartStopsSetting",
+          "id": 11
+        },
+        "autoTapStopsSetting": {
+          "type": "AutoTapStopsSetting",
+          "id": 12
+        },
+        "autoOptionalPaymentCancellationSetting": {
+          "type": "Setting",
+          "id": 13
+        },
+        "manaPaymentStrategyType": {
+          "type": "ManaPaymentStrategyType",
+          "id": 14
+        },
+        "transientStops": {
+          "rule": "repeated",
+          "type": "Stop",
+          "id": 15
+        },
+        "cosmetics": {
+          "rule": "repeated",
+          "type": "CosmeticInfo",
+          "id": 16
+        },
+        "autoSelectReplacementSetting": {
+          "type": "Setting",
+          "id": 17
+        },
+        "autoDeclareAttackersThatMustAttackSetting": {
+          "type": "Setting",
+          "id": 18
+        }
+      }
+    },
+    "ShuffleRestriction": {
+      "values": {
+        "ShuffleRestriction_None": 0,
+        "ShuffleRestriction_OpeningHand": 1,
+        "ShuffleRestriction_All": 2
+      }
+    },
+    "SmartStopsSetting": {
+      "values": {
+        "SmartStopsSetting_None": 0,
+        "SmartStopsSetting_Enable": 1,
+        "SmartStopsSetting_Disable": 2
+      }
+    },
+    "SortBy": {
+      "values": {
+        "SortBy_None": 0,
+        "SortBy_HighToLow": 1,
+        "SortBy_LowToHigh": 2
+      }
+    },
+    "SortFilterPagingOptions": {
+      "fields": {
+        "sort": {
+          "type": "string",
+          "id": 1
+        },
+        "filter": {
+          "type": "string",
+          "id": 2
+        },
+        "top": {
+          "type": "int32",
+          "id": 5
+        },
+        "skip": {
+          "type": "int32",
+          "id": 6
+        },
+        "continuationToken": {
+          "type": "ContinuationToken",
+          "id": 10
+        }
+      }
+    },
+    "StaticList": {
+      "values": {
+        "StaticList_None": 0,
+        "StaticList_CardColors": 1,
+        "StaticList_ManaColors": 2,
+        "StaticList_SuperTypes": 3,
+        "StaticList_CardTypes": 4,
+        "StaticList_SubTypes": 5,
+        "StaticList_Colors": 6,
+        "StaticList_CoinFaces": 7,
+        "StaticList_WishCards": 8,
+        "StaticList_BasicLandTypes": 9,
+        "StaticList_CreatureTypes": 10,
+        "StaticList_CounterTypes": 11,
+        "StaticList_Keywords": 12,
+        "StaticList_CardNames": 13,
+        "StaticList_Parities": 14
+      }
+    },
+    "Step": {
+      "values": {
+        "Step_None": 0,
+        "Step_Untap": 1,
+        "Step_Upkeep": 2,
+        "Step_Draw": 3,
+        "Step_BeginCombat": 4,
+        "Step_DeclareAttack": 5,
+        "Step_DeclareBlock": 6,
+        "Step_CombatDamage": 7,
+        "Step_EndCombat": 8,
+        "Step_End": 9,
+        "Step_Cleanup": 10,
+        "Step_FirstStrikeDamage": 11
+      }
+    },
+    "Stop": {
+      "fields": {
+        "stopType": {
+          "type": "StopType",
+          "id": 1
+        },
+        "appliesTo": {
+          "type": "SettingScope",
+          "id": 2
+        },
+        "status": {
+          "type": "SettingStatus",
+          "id": 3
+        }
+      }
+    },
+    "StopType": {
+      "values": {
+        "StopType_None": 0,
+        "StopType_UpkeepStep": 1,
+        "StopType_DrawStep": 2,
+        "StopType_PrecombatMainPhase": 3,
+        "StopType_BeginCombatStep": 4,
+        "StopType_DeclareAttackersStep": 5,
+        "StopType_DeclareBlockersStep": 6,
+        "StopType_CombatDamageStep": 7,
+        "StopType_EndCombatStep": 8,
+        "StopType_PostcombatMainPhase": 9,
+        "StopType_EndStep": 10,
+        "StopType_FirstStrikeDamageStep": 11
+      }
+    },
+    "SubType": {
+      "values": {
+        "SubType_None": 0,
+        "SubType_Angel": 1,
+        "SubType_Archer": 2,
+        "SubType_Archon": 3,
+        "SubType_Artificer": 4,
+        "SubType_Assassin": 5,
+        "SubType_Aura": 6,
+        "SubType_Basilisk": 7,
+        "SubType_Bat": 8,
+        "SubType_Bear": 9,
+        "SubType_Beast": 10,
+        "SubType_Berserker": 11,
+        "SubType_Bird": 12,
+        "SubType_Boar": 13,
+        "SubType_Cat": 14,
+        "SubType_Chandra": 15,
+        "SubType_Cleric": 16,
+        "SubType_Construct": 17,
+        "SubType_Crocodile": 18,
+        "SubType_Demon": 19,
+        "SubType_Djinn": 20,
+        "SubType_Dragon": 21,
+        "SubType_Drake": 22,
+        "SubType_Druid": 23,
+        "SubType_Fish": 24,
+        "SubType_Elemental": 25,
+        "SubType_Elephant": 26,
+        "SubType_Elf": 27,
+        "SubType_Equipment": 28,
+        "SubType_Forest": 29,
+        "SubType_Garruk": 30,
+        "SubType_Gate": 31,
+        "SubType_Giant": 32,
+        "SubType_Gideon": 33,
+        "SubType_Goblin": 34,
+        "SubType_Golem": 35,
+        "SubType_Griffin": 36,
+        "SubType_Horse": 37,
+        "SubType_Human": 39,
+        "SubType_Hydra": 40,
+        "SubType_Illusion": 41,
+        "SubType_Insect": 42,
+        "SubType_Island": 43,
+        "SubType_Jace": 44,
+        "SubType_Knight": 45,
+        "SubType_Merfolk": 46,
+        "SubType_Minotaur": 47,
+        "SubType_Monk": 48,
+        "SubType_Mountain": 49,
+        "SubType_Ogre": 50,
+        "SubType_Ooze": 51,
+        "SubType_Pegasus": 52,
+        "SubType_Phoenix": 53,
+        "SubType_Plains": 54,
+        "SubType_Rhino": 55,
+        "SubType_Rogue": 56,
+        "SubType_Salamander": 57,
+        "SubType_Scout": 58,
+        "SubType_Serpent": 59,
+        "SubType_Shade": 60,
+        "SubType_Shaman": 61,
+        "SubType_Siren": 62,
+        "SubType_Skeleton": 63,
+        "SubType_Soldier": 64,
+        "SubType_Sorin": 65,
+        "SubType_Sphinx": 66,
+        "SubType_Spider": 67,
+        "SubType_Spirit": 68,
+        "SubType_Swamp": 69,
+        "SubType_Tower": 70,
+        "SubType_Treefolk": 71,
+        "SubType_Troll": 72,
+        "SubType_Urzas": 73,
+        "SubType_Vampire": 74,
+        "SubType_Vedalken": 75,
+        "SubType_Wall": 76,
+        "SubType_Warrior": 77,
+        "SubType_Wizard": 78,
+        "SubType_Wolf": 79,
+        "SubType_Wurm": 80,
+        "SubType_Zombie": 81,
+        "SubType_Mine": 82,
+        "SubType_Power_Plant": 83,
+        "SubType_Saproling": 84,
+        "SubType_Avatar": 85,
+        "SubType_Sliver": 86,
+        "SubType_Samurai": 87,
+        "SubType_Pest": 88,
+        "SubType_Thalakos": 89,
+        "SubType_Dauthi": 90,
+        "SubType_Minion": 91,
+        "SubType_Advisor": 92,
+        "SubType_Ajani": 93,
+        "SubType_Alara": 94,
+        "SubType_Ally": 95,
+        "SubType_Antelope": 97,
+        "SubType_Ape": 98,
+        "SubType_Arcane": 99,
+        "SubType_Arkhos": 100,
+        "SubType_Ashiok": 101,
+        "SubType_AssemblyWorker": 102,
+        "SubType_Atog": 103,
+        "SubType_Aurochs": 104,
+        "SubType_Azgol": 105,
+        "SubType_Badger": 106,
+        "SubType_Barbarian": 107,
+        "SubType_Beeble": 108,
+        "SubType_Belenon": 109,
+        "SubType_Bolas": 110,
+        "SubType_Bolass": 111,
+        "SubType_Bringer": 112,
+        "SubType_Brushwagg": 113,
+        "SubType_Camel": 114,
+        "SubType_Carrier": 115,
+        "SubType_Centaur": 116,
+        "SubType_Cephalid": 117,
+        "SubType_Chimera": 118,
+        "SubType_Cockatrice": 119,
+        "SubType_Crab": 120,
+        "SubType_Curse": 121,
+        "SubType_Cyclops": 122,
+        "SubType_Desert": 123,
+        "SubType_Devil": 124,
+        "SubType_Dominaria": 125,
+        "SubType_Domri": 126,
+        "SubType_Dreadnought": 127,
+        "SubType_Drone": 128,
+        "SubType_Dryad": 129,
+        "SubType_Dwarf": 130,
+        "SubType_Efreet": 131,
+        "SubType_Elder": 132,
+        "SubType_Eldrazi": 133,
+        "SubType_Elk": 134,
+        "SubType_Elspeth": 135,
+        "SubType_Equilor": 136,
+        "SubType_Ergamon": 137,
+        "SubType_Eye": 138,
+        "SubType_Fabacin": 139,
+        "SubType_Faerie": 140,
+        "SubType_Ferret": 141,
+        "SubType_Flagbearer": 142,
+        "SubType_Fortification": 143,
+        "SubType_Fox": 144,
+        "SubType_Frog": 145,
+        "SubType_Fungus": 146,
+        "SubType_Gargoyle": 147,
+        "SubType_Gnome": 148,
+        "SubType_Goat": 149,
+        "SubType_God": 150,
+        "SubType_Gorgon": 151,
+        "SubType_Gremlin": 152,
+        "SubType_Hag": 153,
+        "SubType_Harpy": 154,
+        "SubType_Hellion": 155,
+        "SubType_Hippo": 156,
+        "SubType_Hippogriff": 157,
+        "SubType_Homarid": 158,
+        "SubType_Homunculus": 159,
+        "SubType_Horror": 160,
+        "SubType_Hyena": 161,
+        "SubType_Imp": 162,
+        "SubType_Incarnation": 163,
+        "SubType_Innistrad": 164,
+        "SubType_Iquatana": 165,
+        "SubType_Ir": 166,
+        "SubType_Jellyfish": 167,
+        "SubType_Juggernaut": 168,
+        "SubType_Kaldheim": 169,
+        "SubType_Kamigawa": 170,
+        "SubType_Karn": 171,
+        "SubType_Karsus": 172,
+        "SubType_Kavu": 173,
+        "SubType_Kephalai": 174,
+        "SubType_Kirin": 175,
+        "SubType_Kithkin": 176,
+        "SubType_Kobold": 177,
+        "SubType_Kolbahan": 178,
+        "SubType_Kor": 179,
+        "SubType_Koth": 180,
+        "SubType_Kraken": 181,
+        "SubType_Kyneth": 182,
+        "SubType_Lair": 183,
+        "SubType_Lammasu": 184,
+        "SubType_Leech": 185,
+        "SubType_Leviathan": 186,
+        "SubType_Lhurgoyf": 187,
+        "SubType_Licid": 188,
+        "SubType_Liliana": 189,
+        "SubType_Lizard": 190,
+        "SubType_Locus": 191,
+        "SubType_Lorwyn": 192,
+        "SubType_Luvion": 193,
+        "SubType_Manticore": 194,
+        "SubType_Masticore": 195,
+        "SubType_Meditation": 196,
+        "SubType_Mercadia": 197,
+        "SubType_Mercenary": 198,
+        "SubType_Metathran": 199,
+        "SubType_Mirrodin": 200,
+        "SubType_Moag": 201,
+        "SubType_Monger": 202,
+        "SubType_Mongoose": 203,
+        "SubType_Mongseng": 204,
+        "SubType_Moonfolk": 205,
+        "SubType_Muraganda": 206,
+        "SubType_Mutant": 207,
+        "SubType_Myr": 208,
+        "SubType_Mystic": 209,
+        "SubType_Nautilus": 210,
+        "SubType_Nephilim": 211,
+        "SubType_New": 212,
+        "SubType_Nightmare": 213,
+        "SubType_Nightstalker": 214,
+        "SubType_Ninja": 215,
+        "SubType_Nissa": 216,
+        "SubType_Noggle": 217,
+        "SubType_Nomad": 218,
+        "SubType_Nymph": 219,
+        "SubType_Octopus": 220,
+        "SubType_Orc": 221,
+        "SubType_Orgg": 222,
+        "SubType_Ouphe": 223,
+        "SubType_Ox": 224,
+        "SubType_Oyster": 225,
+        "SubType_Phelddagrif": 226,
+        "SubType_Phyrexia": 227,
+        "SubType_Pirate": 228,
+        "SubType_Plant": 229,
+        "SubType_Praetor": 230,
+        "SubType_Pyrulea": 231,
+        "SubType_Rabbit": 232,
+        "SubType_Rabiah": 233,
+        "SubType_Ral": 234,
+        "SubType_Rat": 235,
+        "SubType_Rath": 236,
+        "SubType_Ravnica": 237,
+        "SubType_Realm": 238,
+        "SubType_Rebel": 239,
+        "SubType_Regatha": 240,
+        "SubType_Rigger": 241,
+        "SubType_Sable": 242,
+        "SubType_Sarkhan": 243,
+        "SubType_Satyr": 244,
+        "SubType_Scarecrow": 245,
+        "SubType_Scorpion": 246,
+        "SubType_Segovia": 247,
+        "SubType_Serras": 248,
+        "SubType_Shadowmoor": 249,
+        "SubType_Shandalar": 250,
+        "SubType_Shapeshifter": 251,
+        "SubType_Sheep": 252,
+        "SubType_Shrine": 253,
+        "SubType_Slith": 254,
+        "SubType_Slug": 255,
+        "SubType_Snake": 256,
+        "SubType_Soltari": 257,
+        "SubType_Spawn": 258,
+        "SubType_Specter": 259,
+        "SubType_Spellshaper": 260,
+        "SubType_Spike": 261,
+        "SubType_Sponge": 262,
+        "SubType_Squid": 263,
+        "SubType_Squirrel": 264,
+        "SubType_Starfish": 265,
+        "SubType_Surrakar": 266,
+        "SubType_Tamiyo": 267,
+        "SubType_Tezzeret": 268,
+        "SubType_Thopter": 269,
+        "SubType_Thrull": 270,
+        "SubType_Tibalt": 271,
+        "SubType_Trap": 272,
+        "SubType_Turtle": 273,
+        "SubType_Ulgrotha": 274,
+        "SubType_Unicorn": 275,
+        "SubType_Valla": 276,
+        "SubType_Venser": 277,
+        "SubType_Viashino": 278,
+        "SubType_Volver": 279,
+        "SubType_Vraska": 280,
+        "SubType_Vryn": 281,
+        "SubType_Weird": 282,
+        "SubType_Werewolf": 283,
+        "SubType_Whale": 284,
+        "SubType_Wildfire": 285,
+        "SubType_Wolverine": 286,
+        "SubType_Wombat": 287,
+        "SubType_Worm": 288,
+        "SubType_Wraith": 289,
+        "SubType_Xenagos": 290,
+        "SubType_Xerex": 291,
+        "SubType_Yeti": 292,
+        "SubType_Zendikar": 293,
+        "SubType_Zubera": 294,
+        "SubType_Germ": 295,
+        "SubType_Contraption": 296,
+        "SubType_Citizen": 297,
+        "SubType_Coward": 298,
+        "SubType_Deserter": 299,
+        "SubType_Prism": 300,
+        "SubType_Reflection": 301,
+        "SubType_Sand": 302,
+        "SubType_Serf": 303,
+        "SubType_Dack": 304,
+        "SubType_Kiora": 305,
+        "SubType_AllCreatureTypes": 306,
+        "SubType_Blinkmoth": 307,
+        "SubType_Camarid": 308,
+        "SubType_Caribou": 309,
+        "SubType_Graveborn": 310,
+        "SubType_Lamia": 311,
+        "SubType_Orb": 312,
+        "SubType_Pentavite": 313,
+        "SubType_Pincher": 314,
+        "SubType_Splinter": 315,
+        "SubType_Survivor": 316,
+        "SubType_Tetravite": 317,
+        "SubType_Triskelavite": 318,
+        "SubType_Scion": 319,
+        "SubType_Processor": 320,
+        "SubType_Arlinn": 321,
+        "SubType_Mole": 322,
+        "SubType_Nahiri": 323,
+        "SubType_Clue": 324,
+        "SubType_Teferi": 325,
+        "SubType_Daretti": 326,
+        "SubType_Freyalise": 327,
+        "SubType_Nixilis": 328,
+        "SubType_Narset": 329,
+        "SubType_Ugin": 330,
+        "SubType_Vehicle": 331,
+        "SubType_Servo": 332,
+        "SubType_Dovin": 333,
+        "SubType_Saheeli": 334,
+        "SubType_Monkey": 335,
+        "SubType_Aetherborn": 336,
+        "SubType_Pilot": 337,
+        "SubType_Jackal": 338,
+        "SubType_Naga": 339,
+        "SubType_Cartouche": 340,
+        "SubType_Samut": 341,
+        "SubType_Dinosaur": 342,
+        "SubType_Treasure": 343,
+        "SubType_Huatli": 344,
+        "SubType_Angrath": 345,
+        "SubType_Trilobite": 346,
+        "SubType_Saga": 347,
+        "SubType_Jaya": 348,
+        "SubType_Vivien": 349,
+        "SubType_Egg": 350,
+        "SubType_Kaya": 351,
+        "SubType_Aminatou": 352,
+        "SubType_Estrid": 353,
+        "SubType_Rowan": 354,
+        "SubType_Will": 355,
+        "SubType_Windgrace": 356,
+        "SubType_Yanggu": 357,
+        "SubType_Yanling": 358,
+        "SubType_Army": 359,
+        "SubType_Teyo": 360,
+        "SubType_Kasmina": 361,
+        "SubType_Davriel": 362,
+        "SubType_Food": 363,
+        "SubType_Mouse": 364,
+        "SubType_Noble": 365,
+        "SubType_Peasant": 366,
+        "SubType_Oko": 367,
+        "SubType_Warlock": 368,
+        "SubType_Adventure": 369,
+        "SubType_Demigod": 370,
+        "SubType_Gold": 371,
+        "SubType_Tentacle": 372,
+        "SubType_Azra": 373,
+        "SubType_Pangolin": 374,
+        "SubType_Calix": 375,
+        "SubType_Lukka": 376,
+        "SubType_Otter": 377,
+        "SubType_Shark": 378,
+        "SubType_Dog": 379,
+        "SubType_Basri": 380,
+        "SubType_PlaceholderSubType3": 381,
+        "SubType_PlaceholderSubType4": 382,
+        "SubType_PlaceholderSubType5": 383,
+        "SubType_PlaceholderSubType6": 384,
+        "SubType_PlaceholderSubType10": 385
+      }
+    },
+    "SubZoneType": {
+      "values": {
+        "SubZoneType_None": 0,
+        "SubZoneType_Top": 1,
+        "SubZoneType_Bottom": 2
+      }
+    },
+    "SubmitAttackersResp": {
+      "fields": {
+        "result": {
+          "type": "ResultCode",
+          "id": 1
+        }
+      }
+    },
+    "SubmitBlockersResp": {
+      "fields": {
+        "result": {
+          "type": "ResultCode",
+          "id": 1
+        }
+      }
+    },
+    "SubmitDeckReq": {
+      "fields": {
+        "deck": {
+          "type": "DeckMessage",
+          "id": 1
+        }
+      }
+    },
+    "SubmitDeckResp": {
+      "fields": {
+        "deck": {
+          "type": "DeckMessage",
+          "id": 1
+        }
+      }
+    },
+    "SubmitPaymentReq": {
+      "fields": {}
+    },
+    "SubmitPaymentResp": {
+      "fields": {}
+    },
+    "SubmitTargetsResp": {
+      "fields": {
+        "result": {
+          "type": "ResultCode",
+          "id": 1
+        }
+      }
+    },
+    "SuperFormat": {
+      "values": {
+        "SuperFormat_None": 0,
+        "SuperFormat_Limited": 1,
+        "SuperFormat_Constructed": 2
+      }
+    },
+    "SuperType": {
+      "values": {
+        "SuperType_None": 0,
+        "SuperType_Basic": 1,
+        "SuperType_Legendary": 2,
+        "SuperType_Ongoing": 3,
+        "SuperType_Snow": 4,
+        "SuperType_World": 5
+      }
+    },
+    "Target": {
+      "fields": {
+        "targetInstanceId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "legalAction": {
+          "type": "SelectAction",
+          "id": 2
+        },
+        "highlight": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "TargetInfo": {
+      "fields": {
+        "targetType": {
+          "type": "TargetType",
+          "id": 1
+        },
+        "targetId": {
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "TargetSelection": {
+      "fields": {
+        "targetIdx": {
+          "type": "uint32",
+          "id": 1
+        },
+        "targets": {
+          "rule": "repeated",
+          "type": "Target",
+          "id": 2
+        },
+        "minTargets": {
+          "type": "uint32",
+          "id": 3
+        },
+        "maxTargets": {
+          "type": "uint32",
+          "id": 4
+        },
+        "selectedTargets": {
+          "type": "uint32",
+          "id": 5
+        },
+        "prompt": {
+          "type": "Prompt",
+          "id": 6
+        }
+      }
+    },
+    "TargetType": {
+      "values": {
+        "TargetType_None": 0,
+        "TargetType_Player": 1,
+        "TargetType_GameObject": 2
+      }
+    },
+    "TeamConfig": {
+      "fields": {
+        "teamID": {
+          "type": "uint32",
+          "id": 1
+        },
+        "players": {
+          "rule": "repeated",
+          "type": "PlayerConfig",
+          "id": 2
+        }
+      }
+    },
+    "TeamInfo": {
+      "fields": {
+        "id": {
+          "type": "uint32",
+          "id": 1
+        },
+        "playerIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 2
+        }
+      }
+    },
+    "TeamType": {
+      "values": {
+        "TeamType_None": 0,
+        "TeamType_Individual": 1,
+        "TeamType_SharedTeam": 2
+      }
+    },
+    "TestConfig": {
+      "fields": {
+        "shuffleRestriction": {
+          "type": "ShuffleRestriction",
+          "id": 1
+        },
+        "startingPlayer": {
+          "type": "uint32",
+          "id": 2
+        },
+        "useSpecifiedSeed": {
+          "type": "bool",
+          "id": 3
+        },
+        "randomSeed": {
+          "type": "uint32",
+          "id": 4
+        },
+        "useZeroManaCostForCasting": {
+          "type": "bool",
+          "id": 5
+        },
+        "useMaxLandsPerTurn": {
+          "type": "uint32",
+          "id": 6
+        },
+        "treeOfCongress": {
+          "type": "TreeOfCongress",
+          "id": 7
+        },
+        "disableGameStateQueueingDuringCancelableActions": {
+          "type": "bool",
+          "id": 10
+        },
+        "disableHiFiGameStates": {
+          "type": "bool",
+          "id": 11
+        },
+        "disableTimers": {
+          "type": "bool",
+          "id": 12
+        },
+        "randomSeeds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 13
+        },
+        "freeMulliganCount": {
+          "type": "uint32",
+          "id": 14
+        },
+        "randomDrawCount": {
+          "type": "uint32",
+          "id": 15
+        },
+        "minRandomDrawDistance": {
+          "type": "float",
+          "id": 16
+        },
+        "maxRandomDrawDistance": {
+          "type": "float",
+          "id": 17
+        },
+        "enableAutoAcceptHand": {
+          "type": "bool",
+          "id": 18
+        },
+        "enableAutoPlay": {
+          "type": "bool",
+          "id": 19
+        },
+        "disableUnexpectedMessageRecovery": {
+          "type": "bool",
+          "id": 20
+        },
+        "disableSideboarding": {
+          "type": "bool",
+          "id": 21
+        },
+        "candidateShuffleCount": {
+          "type": "uint32",
+          "id": 22
+        },
+        "bestCandidateShuffleCount": {
+          "type": "uint32",
+          "id": 23
+        },
+        "autoRespondPermission": {
+          "type": "AutoRespondPermission",
+          "id": 24
+        },
+        "disableDeferredActionCostPayment": {
+          "type": "bool",
+          "id": 25
+        },
+        "disableIndividualDamageAssignments": {
+          "type": "bool",
+          "id": 26
+        }
+      }
+    },
+    "TimeoutConfig": {
+      "fields": {
+        "maxTimeoutCount": {
+          "type": "uint32",
+          "id": 1
+        },
+        "startingTimeoutCount": {
+          "type": "uint32",
+          "id": 2
+        },
+        "maxPipCount": {
+          "type": "uint32",
+          "id": 3
+        },
+        "startingPipCount": {
+          "type": "uint32",
+          "id": 4
+        },
+        "durationSec": {
+          "type": "uint32",
+          "id": 5
+        }
+      }
+    },
+    "TimeoutMessage": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "timeoutCount": {
+          "type": "uint32",
+          "id": 2
+        },
+        "timer": {
+          "type": "TimerInfo",
+          "id": 3
+        }
+      }
+    },
+    "TimeoutType": {
+      "values": {
+        "TimeoutType_None": 0,
+        "TimeoutType_ChessClock": 1,
+        "TimeoutType_Inactivity": 2
+      }
+    },
+    "TimerBehavior": {
+      "values": {
+        "TimerBehavior_None": 0,
+        "TimerBehavior_Timeout": 1,
+        "TimerBehavior_AutoRespond": 2,
+        "TimerBehavior_TakeControl": 3,
+        "TimerBehavior_ReleaseControl": 4,
+        "TimerBehavior_Start": 5,
+        "TimerBehavior_Restart": 6,
+        "TimerBehavior_Stop": 7,
+        "TimerBehavior_Reset": 8,
+        "TimerBehavior_Activate": 9,
+        "TimerBehavior_Deactivate": 10,
+        "TimerBehavior_StartDelayedTimer": 11
+      }
+    },
+    "TimerConfig": {
+      "fields": {
+        "type": {
+          "type": "TimerType",
+          "id": 1
+        },
+        "durationSec": {
+          "type": "uint32",
+          "id": 4
+        },
+        "behavior": {
+          "type": "TimerBehavior",
+          "id": 5
+        },
+        "controls": {
+          "rule": "repeated",
+          "type": "TimerControl",
+          "id": 6
+        },
+        "warningThresholdSec": {
+          "type": "uint32",
+          "id": 7
+        },
+        "maxDurationSec": {
+          "type": "uint32",
+          "id": 8
+        }
+      }
+    },
+    "TimerControl": {
+      "fields": {
+        "event": {
+          "type": "TimerEvent",
+          "id": 1
+        },
+        "behavior": {
+          "type": "TimerBehavior",
+          "id": 2
+        }
+      }
+    },
+    "TimerEvent": {
+      "values": {
+        "TimerEvent_None": 0,
+        "TimerEvent_OnRequestSent": 1,
+        "TimerEvent_OnResponseReceived": 2,
+        "TimerEvent_OnExpiration": 3,
+        "TimerEvent_OnMatchStart": 4,
+        "TimerEvent_OnGameStart": 5,
+        "TimerEvent_OnPlayStart": 6,
+        "TimerEvent_OnTurnChanged": 7,
+        "TimerEvent_OnActivePlayer": 8,
+        "TimerEvent_OnNonActivePlayer": 9,
+        "TimerEvent_Beginning": 10,
+        "TimerEvent_Main1": 11,
+        "TimerEvent_Combat": 12,
+        "TimerEvent_Main2": 13,
+        "TimerEvent_Ending": 14,
+        "TimerEvent_OnWin": 15,
+        "TimerEvent_OnLoss": 16,
+        "TimerEvent_OnDraw": 17,
+        "TimerEvent_OnGameOver": 18,
+        "TimerEvent_OnMatchOver": 19,
+        "TimerEvent_OnTurnOver": 20,
+        "TimerEvent_Upkeep": 21,
+        "TimerEvent_Draw": 22,
+        "TimerEvent_BeginCombat": 23,
+        "TimerEvent_DeclareAttack": 24,
+        "TimerEvent_DeclareBlock": 25,
+        "TimerEvent_CombatDamage": 26,
+        "TimerEvent_EndCombat": 27,
+        "TimerEvent_End": 28,
+        "TimerEvent_Cleanup": 29,
+        "TimerEvent_FirstStrikeDamage": 30
+      }
+    },
+    "TimerInfo": {
+      "fields": {
+        "timerId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "type": {
+          "type": "TimerType",
+          "id": 2
+        },
+        "durationSec": {
+          "type": "uint32",
+          "id": 3
+        },
+        "elapsedSec": {
+          "type": "uint32",
+          "id": 4
+        },
+        "running": {
+          "type": "bool",
+          "id": 5
+        },
+        "behavior": {
+          "type": "TimerBehavior",
+          "id": 6
+        },
+        "warningThresholdSec": {
+          "type": "uint32",
+          "id": 7
+        },
+        "elapsedMs": {
+          "type": "uint32",
+          "id": 8
+        }
+      }
+    },
+    "TimerPackage": {
+      "values": {
+        "TimerPackage_None": 0,
+        "TimerPackage_V1": 1,
+        "TimerPackage_V2": 2,
+        "TimerPackage_V3": 3,
+        "TimerPackage_V4": 4,
+        "TimerPackage_V5": 5,
+        "TimerPackage_DirectChallenge": 6,
+        "TimerPackage_Default": 7,
+        "TimerPackage_BestOfThree": 8
+      }
+    },
+    "TimerStateMessage": {
+      "fields": {
+        "seatId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "timers": {
+          "rule": "repeated",
+          "type": "TimerInfo",
+          "id": 2
+        }
+      }
+    },
+    "TimerType": {
+      "values": {
+        "TimerType_None": 0,
+        "TimerType_Decision": 1,
+        "TimerType_Inactivity": 2,
+        "TimerType_ActivePlayer": 3,
+        "TimerType_NonActivePlayer": 4,
+        "TimerType_Prologue": 5,
+        "TimerType_Epilogue": 6,
+        "TimerType_Delay": 7,
+        "TimerType_MatchClock": 8
+      }
+    },
+    "TreeOfCongress": {
+      "fields": {
+        "systemSeatId": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "TurnInfo": {
+      "fields": {
+        "phase": {
+          "type": "Phase",
+          "id": 1
+        },
+        "step": {
+          "type": "Step",
+          "id": 2
+        },
+        "turnNumber": {
+          "type": "uint32",
+          "id": 3
+        },
+        "activePlayer": {
+          "type": "uint32",
+          "id": 4
+        },
+        "priorityPlayer": {
+          "type": "uint32",
+          "id": 5
+        },
+        "decisionPlayer": {
+          "type": "uint32",
+          "id": 6
+        },
+        "nextPhase": {
+          "type": "Phase",
+          "id": 8
+        },
+        "nextStep": {
+          "type": "Step",
+          "id": 9
+        }
+      }
+    },
+    "UIMessage": {
+      "fields": {
+        "seatIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 1
+        },
+        "onSelect": {
+          "type": "OnSelect",
+          "id": 2
+        },
+        "onHover": {
+          "type": "OnHover",
+          "id": 3
+        },
+        "onShuffle": {
+          "type": "OnShuffle",
+          "id": 4
+        },
+        "onChat": {
+          "type": "OnChat",
+          "id": 5
+        },
+        "onGenericEvent": {
+          "type": "OnGenericEvent",
+          "id": 6
+        }
+      }
+    },
+    "UInt32Value": {
+      "fields": {
+        "value": {
+          "type": "uint32",
+          "id": 1
+        }
+      }
+    },
+    "UserConnectionInfo": {
+      "fields": {
+        "connectionState": {
+          "type": "ConnectionState",
+          "id": 1
+        },
+        "lastConnectTimestamp": {
+          "type": "int64",
+          "id": 10
+        },
+        "lastDisconnectTimestamp": {
+          "type": "int64",
+          "id": 11
+        }
+      }
+    },
+    "UserOption": {
+      "fields": {
+        "optionPrompt": {
+          "type": "Prompt",
+          "id": 1
+        },
+        "responseType": {
+          "type": "ClientMessageType",
+          "id": 2
+        }
+      }
+    },
+    "ValueHeuristicDefinition": {
+      "fields": {
+        "id": {
+          "type": "string",
+          "id": 1
+        },
+        "priority": {
+          "type": "uint32",
+          "id": 2
+        },
+        "weight": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+    "ValueHeuristicParameter": {
+      "fields": {
+        "id": {
+          "type": "string",
+          "id": 1
+        },
+        "paramValue": {
+          "type": "int32",
+          "id": 2
+        }
+      }
+    },
+    "Visibility": {
+      "values": {
+        "Visibility_None": 0,
+        "Visibility_Public": 1,
+        "Visibility_Private": 2,
+        "Visibility_Hidden": 3,
+        "Visibility_Deceptive": 4
+      }
+    },
+    "ZoneInfo": {
+      "fields": {
+        "zoneId": {
+          "type": "uint32",
+          "id": 1
+        },
+        "type": {
+          "type": "ZoneType",
+          "id": 2
+        },
+        "visibility": {
+          "type": "Visibility",
+          "id": 3
+        },
+        "ownerSeatId": {
+          "type": "uint32",
+          "id": 4
+        },
+        "objectInstanceIds": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 5
+        },
+        "viewers": {
+          "rule": "repeated",
+          "type": "uint32",
+          "id": 6
+        }
+      }
+    },
+    "ZoneType": {
+      "values": {
+        "ZoneType_None": 0,
+        "ZoneType_Library": 1,
+        "ZoneType_Hand": 2,
+        "ZoneType_Battlefield": 3,
+        "ZoneType_Stack": 4,
+        "ZoneType_Graveyard": 5,
+        "ZoneType_Exile": 6,
+        "ZoneType_Command": 7,
+        "ZoneType_Revealed": 8,
+        "ZoneType_Limbo": 9,
+        "ZoneType_Sideboard": 10,
+        "ZoneType_Pending": 11,
+        "ZoneType_PhasedOut": 12,
+        "ZoneType_Suppressed": 13
+      }
+    }
+  }
+}
