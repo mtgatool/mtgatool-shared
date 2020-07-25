@@ -2,13 +2,15 @@
   "name": "mtgatool-shared",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "eslint:fix": "eslint --fix . --ext .ts,.tsx",
     "proto:model": "node node_modules/protobufjs/bin/pbjs proto/messages.proto > proto/model.json",
     "proto:GreTypes": "node proto/proto2typescript/index.js",
     "proto:eslint": "eslint types/GreTypes.ts --fix",
     "proto": "npm-run-all proto:model proto:GreTypes proto:eslint",
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
