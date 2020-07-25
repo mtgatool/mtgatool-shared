@@ -742,6 +742,17 @@ export const CARD_TYPE_CODES = [
   "pla",
 ] as const;
 
+export const CARD_SUPERTYPES = [
+  "Basic Land",
+  "Land",
+  "Creature",
+  "Artifact",
+  "Enchantment",
+  "Instant",
+  "Sorcery",
+  "Planeswalker",
+];
+
 export const CARD_TYPES = [
   "Creatures",
   "Lands",

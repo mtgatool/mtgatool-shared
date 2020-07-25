@@ -1,4 +1,5 @@
 import calculateDeviation from "./shared/utils/calculateDeviation";
+import { cardHasType, cardType } from "./shared/utils/cardTypes";
 import compareCards from "./shared/utils/compareCards";
 import convertDraftToV2 from "./shared/utils/convertDraftToV2";
 import countValues from "./shared/utils/countValues";
@@ -19,14 +20,16 @@ import getSetInEventId from "./shared/utils/getSetInEventId";
 import objectClone from "./shared/utils/objectClone";
 import sha1 from "./shared/utils/sha1";
 import useSet from "./shared/utils/useSet";
-import cardsList from "./shared/cardsList";
-import colors from "./shared/colors";
+import CardsList from "./shared/cardsList";
+import Colors from "./shared/colors";
 import * as constants from "./shared/constants";
 import database from "./shared/database";
-import deck from "./shared/deck";
+import Deck from "./shared/deck";
 
 export {
   calculateDeviation,
+  cardHasType,
+  cardType,
   compareCards,
   convertDraftToV2,
   countValues,
@@ -47,9 +50,9 @@ export {
   objectClone,
   sha1,
   useSet,
-  cardsList,
-  colors,
+  CardsList,
+  Colors,
   constants,
   database,
-  deck,
+  Deck,
 };
