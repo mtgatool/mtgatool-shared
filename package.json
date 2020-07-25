@@ -1,6 +1,6 @@
 {
   "name": "mtgatool-shared",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "Manuel Etchegaray",
-  "license": "ISC", 
+  "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.19",
     "mathjs": "^7.1.0"
