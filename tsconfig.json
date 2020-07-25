@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-      "module": "commonjs",
-      "lib": [
-          "ES2018"
-      ],
+      "target": "es2018",
+      "moduleResolution": "node",
+      "isolatedModules": true,
+      "esModuleInterop": true,
       "noImplicitAny": true,
       "noImplicitThis": true,
       "strictNullChecks": true,
       "strictFunctionTypes": true,
       "types": [],
-      "noEmit": true,
       "forceConsistentCasingInFileNames": true
   },
   "include": [

@@ -38,7 +38,7 @@ class Database {
     if (this.metadata && this.metadata.cards) {
       const keys = Object.keys(this.metadata.cards);
       for (let index = 0; index < keys.length; index++) {
-        const card = this.metadata.cards[keys[index]];
+        const card = this.metadata.cards[parseInt(keys[index])];
         if (card.name == name) {
           return card;
         }
@@ -60,7 +60,7 @@ class Database {
 
     return _.pickBy(
       this.metadata.sets,
-      (set, setName) => set && setName && set.code
+      (set: CardSet, setName: string) => set && setName && set.code
     );
   }
 
