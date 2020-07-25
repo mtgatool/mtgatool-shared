@@ -8,7 +8,7 @@ export default function getDeckColorsAmmount(deck: Deck): ColorsAmmount {
   deck
     .getMainboard()
     .get()
-    .forEach(function(card: CardObject) {
+    .forEach(function (card: CardObject) {
       if (card.quantity > 0) {
         database.card(card.id)?.cost.forEach((c: string) => {
           if (c.indexOf("w") !== -1) {

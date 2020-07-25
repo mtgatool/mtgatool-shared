@@ -1,7 +1,80 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { InternalDeck } from "./Deck";
-import { Result } from "./greInterpreter";
-import { MatchGameStats } from "./currentMatch";
-import { matchStateObject } from "../shared/store/currentMatchStore";
+import { Result, GameObject } from "./greInterpreter";
+import { MatchGameStats, PriorityTimers, CardCast } from "./currentMatch";
+import {
+  PlayerInfo,
+  TurnInfo,
+  GameInfo,
+  GREToClientMessage,
+  AnnotationInfo,
+  ZoneInfo,
+  Phase,
+} from "./GreTypes";
+import { Chances } from "./Chances";
+import Deck from "../shared/deck";
+
+export interface Heat {
+  seat: number;
+  value: number;
+  turn: number | undefined;
+  phase: Phase;
+}
+
+export interface MatchState {
+  matchId: string;
+  eventId: string;
+  onThePlay: number;
+  msgId: number;
+  playerSeat: number;
+  oppSeat: number;
+  opponent: InternalPlayer;
+  gameWinner: number;
+  statsHeatMap: Heat[];
+  totalTurns: number;
+  playerStats: {
+    lifeGained: number;
+    lifeLost: number;
+    manaUsed: number;
+    damage: Record<string, number>;
+    lifeTotals: number[];
+  };
+  oppStats: {
+    lifeGained: number;
+    lifeLost: number;
+    manaUsed: number;
+    damage: Record<string, number>;
+    lifeTotals: number[];
+  };
+  // Decks
+  currentDeck: Deck;
+  originalDeck: Deck;
+  cardsLeft: Deck;
+  cardsFromSideboard: number[];
+  cardsBottom: number[];
+  // Info
+  player: InternalPlayer;
+  players: PlayerInfo[];
+  turnInfo: TurnInfo;
+  gameInfo: GameInfo;
+  // Time stuff
+  beginTime: Date;
+  priorityTimers: PriorityTimers;
+  currentPriority: number;
+  // Zones, objects, annotations, ids tracking
+  GREtoClient: GREToClientMessage[];
+  zones: Record<number, ZoneInfo>;
+  annotations: Record<number, AnnotationInfo>;
+  processedAnnotations: number[];
+  gameObjects: Record<number, GameObject>;
+  initialLibraryInstanceIds: number[];
+  instanceToCardIdMap: Record<number, number>;
+  idChanges: Record<number, number>;
+  cardsCast: CardCast[];
+  handsDrawn: number[][];
+  matchGameStats: MatchGameStats[];
+  cardsOdds: Chances;
+}
 
 interface ReservedPlayer {
   userId: string;
@@ -84,8 +157,6 @@ export interface InternalPlayer {
   companionGRPId: number;
   cardsUsed: number[];
 }
-
-type MatchState = typeof matchStateObject;
 
 export interface InternalMatch {
   draws: number;

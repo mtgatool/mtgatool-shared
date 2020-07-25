@@ -24,7 +24,7 @@ const months = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 
 export default function getEventPrettyName(event: string): string {

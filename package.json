@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "eslint:fix": "eslint --fix . --ext .ts,.tsx",
     "proto:model": "node node_modules/protobufjs/bin/pbjs proto/messages.proto > proto/model.json",
     "proto:GreTypes": "node proto/proto2typescript/index.js",
     "proto:eslint": "eslint types/GreTypes.ts --fix",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@types/bytebuffer": "^5.0.41",
+    "@types/lodash": "^4.14.158",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
     "eslint": "^7.5.0",
@@ -27,7 +29,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "proto2typescript": "^2.2.0",
-    "protobufjs": "^6.10.1",
+    "protobufjs": "~5.0.3",
     "typescript": "^3.9.7"
   }
 }

@@ -16,7 +16,7 @@ export default function getBestArchetype(
   deck
     .getMainboard()
     .get()
-    .forEach(card => {
+    .forEach((card) => {
       const deviation = card.quantity;
       mainDeviations.push(deviation * deviation);
     });
@@ -28,7 +28,7 @@ export default function getBestArchetype(
     deck
       .getMainboard()
       .get()
-      .forEach(card => {
+      .forEach((card) => {
         const cardData = database.card(card.id);
         if (!cardData) return;
         //let q = card.quantity;

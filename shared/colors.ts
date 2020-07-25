@@ -5,7 +5,7 @@ import {
   RED,
   GREEN,
   MULTI,
-  COLORLESS
+  COLORLESS,
 } from "../shared/constants";
 const colorFlags = {
   NONE: 0,
@@ -13,7 +13,7 @@ const colorFlags = {
   U: 2,
   B: 4,
   R: 8,
-  G: 16
+  G: 16,
 };
 
 class Colors {
@@ -94,7 +94,7 @@ class Colors {
    * Adds a string mana cost to this class.
    */
   addFromCost(cost: string[]): Colors {
-    cost.forEach(symbol => {
+    cost.forEach((symbol) => {
       for (const c of symbol) {
         switch (c) {
           case "w":
@@ -123,7 +123,7 @@ class Colors {
    * Adds an array mana cost to this one.
    */
   addFromArray(cost: number[]): Colors {
-    cost.forEach(color => {
+    cost.forEach((color) => {
       switch (color) {
         case WHITE:
           this.w += 1;

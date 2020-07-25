@@ -33,7 +33,7 @@ export const MULTI = 7;
 // Magic constant to represent auth token in form
 export const HIDDEN_PW = "********";
 
-const CounterType: Record<string, string> = {
+export const CounterType: Record<string, string> = {
   "1": "+1/+1",
   "2": "-1/-1",
   "3": "Poison",
@@ -168,18 +168,18 @@ const CounterType: Record<string, string> = {
   "133": "PlaceholderCounterType2",
   "134": "PlaceholderCounterType3",
   "135": "PlaceholderCounterType4",
-  "136": "PlaceholderCounterType5"
+  "136": "PlaceholderCounterType5",
 } as const;
 
-const SuperType: Record<string, string> = {
+export const SuperType: Record<string, string> = {
   "1": "Basic",
   "2": "Legendary",
   "3": "Ongoing",
   "4": "Snow",
-  "5": "World"
+  "5": "World",
 } as const;
 
-const ResultCode: Record<string, string> = {
+export const ResultCode: Record<string, string> = {
   "0": "",
   "1": "Success",
   "2": "Failure",
@@ -194,10 +194,10 @@ const ResultCode: Record<string, string> = {
     "Attempt to assign damage such that non-lethal damage is assigned to anything other than the last recipient in the order",
   "12": "Too many targets selected",
   "13": "Not enough targets selected",
-  "14": "Selected target is not valid"
+  "14": "Selected target is not valid",
 } as const;
 
-const SubType: Record<string, string> = {
+export const SubType: Record<string, string> = {
   "1": "Angel",
   "2": "Archer",
   "3": "Archon",
@@ -551,10 +551,10 @@ const SubType: Record<string, string> = {
   "352": "PlaceholderSubType2",
   "353": "PlaceholderSubType3",
   "354": "PlaceholderSubType4",
-  "355": "PlaceholderSubType5"
+  "355": "PlaceholderSubType5",
 } as const;
 
-const FailureReason: Record<string, string> = {
+export const FailureReason: Record<string, string> = {
   "0": "",
   "1": "Request made with out of date game state.",
   "2": "Player has acted out of turn.",
@@ -573,27 +573,27 @@ const FailureReason: Record<string, string> = {
   "13": "Specified option selection is not valid.",
   "14": "The message received was not expected by the GRE.",
   "15":
-    "Player input is below a specified minimum or above a specified maximum."
+    "Player input is below a specified minimum or above a specified maximum.",
 } as const;
 
-const Phase: Record<string, string> = {
+export const Phase: Record<string, string> = {
   "0": "",
   "1": "Beginning",
   "2": "1st Main",
   "3": "Combat",
   "4": "2nd Main",
-  "5": "Ending"
+  "5": "Ending",
 } as const;
 
-const MatchState: Record<string, string> = {
+export const MatchState: Record<string, string> = {
   "0": "",
   "1": "Game In Progress",
   "2": "Game Complete, Match In Progress",
   "3": "Match Complete",
-  "4": "Sideboarding"
+  "4": "Sideboarding",
 } as const;
 
-const Step: Record<string, string> = {
+export const Step: Record<string, string> = {
   "0": "",
   "1": "Untap",
   "2": "Upkeep",
@@ -605,10 +605,10 @@ const Step: Record<string, string> = {
   "8": "End Combat",
   "9": "End",
   "10": "Cleanup",
-  "11": "First Strike Damage"
+  "11": "First Strike Damage",
 } as const;
 
-const CardType: Record<string, string> = {
+export const CardType: Record<string, string> = {
   "1": "Artifact",
   "2": "Creature",
   "3": "Enchantment",
@@ -620,15 +620,15 @@ const CardType: Record<string, string> = {
   "9": "Scheme",
   "10": "Sorcery",
   "11": "Tribal",
-  "12": "Vanguard"
+  "12": "Vanguard",
 } as const;
 
-const Color: Record<string, string> = {
+export const Color: Record<string, string> = {
   "1": "White",
   "2": "Blue",
   "3": "Black",
   "4": "Red",
-  "5": "Green"
+  "5": "Green",
 } as const;
 
 export const LANDS_HACK = -100;
@@ -660,7 +660,7 @@ export const FORMATS: Record<string, string> = {
   Ravnica: "Ravnica Block",
   Ixalan: "Ixalan Block",
   GRN: "Ravnica Constructed",
-  XLN: "Ixalan Constructed"
+  XLN: "Ixalan Constructed",
 };
 // TODO use a label handler for PlayerInventory.GetFormats instead of this manual constant
 export const STANDARD_CUTOFF_DATE = "2018-10-04"; // day before GRN release
@@ -674,7 +674,7 @@ export const COLORS_LONG = [
   "red",
   "green",
   "colorless",
-  "multi"
+  "multi",
 ] as const;
 export const RANKS = [
   "Bronze",
@@ -682,7 +682,7 @@ export const RANKS = [
   "Gold",
   "Platinum",
   "Diamond",
-  "Mythic"
+  "Mythic",
 ] as const;
 export const OVERLAY_FULL = 0;
 export const OVERLAY_LEFT = 1;
@@ -712,7 +712,7 @@ export const DRAFT_RANKS = [
   "B+",
   "A-",
   "A",
-  "A+"
+  "A+",
 ] as const;
 
 export const DRAFT_RANKS_LOLA = [
@@ -729,7 +729,7 @@ export const DRAFT_RANKS_LOLA = [
   "D+",
   "D",
   "D-",
-  "F"
+  "F",
 ];
 
 export const CARD_TYPE_CODES = [
@@ -739,7 +739,7 @@ export const CARD_TYPE_CODES = [
   "sor",
   "enc",
   "art",
-  "pla"
+  "pla",
 ] as const;
 
 export const CARD_TYPES = [
@@ -749,10 +749,15 @@ export const CARD_TYPES = [
   "Sorceries",
   "Enchantments",
   "Artifacts",
-  "Planeswalkers"
+  "Planeswalkers",
 ] as const;
 
-export const WILDCARD_RARITIES = ["common", "uncommon", "rare", "mythic"];
+export const WILDCARD_RARITIES = [
+  "common",
+  "uncommon",
+  "rare",
+  "mythic",
+] as const;
 
 export const CARD_RARITIES = [
   "token",
@@ -760,7 +765,7 @@ export const CARD_RARITIES = [
   "uncommon",
   "rare",
   "mythic",
-  "land"
+  "land",
 ] as const;
 
 export const MANA_COLORS = [
@@ -769,7 +774,7 @@ export const MANA_COLORS = [
   "#A18E87",
   "#DD8263",
   "#B7C89E",
-  "#E3E3E3"
+  "#E3E3E3",
 ] as const;
 
 export const MANA: { [key: number]: string } = {
@@ -781,17 +786,17 @@ export const MANA: { [key: number]: string } = {
   5: "green",
   6: "colorless",
   7: "",
-  8: "x"
+  8: "x",
 } as const;
 
-const RANKS_SORT: Record<string, number> = {
+export const RANKS_SORT: Record<string, number> = {
   Begginer: 0,
   Bronze: 1,
   Silver: 2,
   Gold: 3,
   Platinum: 4,
   Diamond: 5,
-  Mythic: 6
+  Mythic: 6,
 } as const;
 
 export const DEFAULT_PACK_SIZE = 14;
@@ -799,7 +804,7 @@ export const DEFAULT_PACK_SIZE = 14;
 export const PACK_SIZES: Record<string, number> = {
   "Ravnica Allegiance": 14,
   "Guilds of Ravnica": 14,
-  "Core Set 2020": 15
+  "Core Set 2020": 15,
 } as const;
 
 export const DEFAULT_TILE = 67003;
@@ -832,7 +837,7 @@ export const SHORTCUT_NAMES: Record<string, string> = {
   shortcut_overlay_5: "Toggle Overlay 5",
   shortcut_editmode: "Toggle Edit Overlay Positions",
   shortcut_devtools_main: "Toggle Developer Tools (main)",
-  shortcut_devtools_overlay: "Toggle Developer Tools (overlays)"
+  shortcut_devtools_overlay: "Toggle Developer Tools (overlays)",
 } as const;
 
 export const SETTINGS_BEHAVIOUR = 1;
@@ -869,7 +874,7 @@ export const DECKS_TABLE_MODE = "Table View";
 export const DECKS_TABLE_MODES = [
   DECKS_LIST_MODE,
   DECKS_ART_MODE,
-  DECKS_TABLE_MODE
+  DECKS_TABLE_MODE,
 ];
 
 export const COLLECTION_CARD_MODE = "Card View";

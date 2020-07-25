@@ -4,6 +4,6 @@ export default function formatPercent(
 ): string {
   return value.toLocaleString([], {
     style: "percent",
-    ...config
+    ...config,
   });
 }

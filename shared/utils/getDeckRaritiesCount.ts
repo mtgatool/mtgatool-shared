@@ -12,7 +12,7 @@ interface RaritiesCount {
 export default function getDeckRaritiesCount(deck: Deck): RaritiesCount {
   const rarities: RaritiesCount = { c: 0, u: 0, r: 0, m: 0 };
   const cards = [...deck.getMainboard().get(), ...deck.getSideboard().get()];
-  cards.forEach(function(c: CardObject) {
+  cards.forEach(function (c: CardObject) {
     const quantity = c.quantity;
     const card = db.card(c.id);
     if (quantity > 0 && card) {

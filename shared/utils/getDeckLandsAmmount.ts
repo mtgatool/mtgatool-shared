@@ -8,7 +8,7 @@ export default function getDeckLandsAmmount(deck: Deck): ColorsAmmount {
   deck
     .getMainboard()
     .get()
-    .forEach(function(c: CardObject) {
+    .forEach(function (c: CardObject) {
       const quantity = c.quantity;
       const card = database.card(c.id);
       if (quantity > 0 && card) {
@@ -17,7 +17,7 @@ export default function getDeckLandsAmmount(deck: Deck): ColorsAmmount {
           card.type.indexOf("land") != -1
         ) {
           if (card.frame.length < 5) {
-            card.frame.forEach(function(c) {
+            card.frame.forEach(function (c) {
               if (c == 1) {
                 colors.w += quantity;
                 colors.total += quantity;

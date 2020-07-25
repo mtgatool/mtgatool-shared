@@ -86,6 +86,9 @@ export interface ColorsAmmount {
   c: number;
 }
 
-// Formats can be added to the logs cosntantly
-// and there are more than just these
-//export type Format = "" | "Standard" | "Draft" | "precon" | "Brawl";
+export interface MissingWildcards {
+  rare: number;
+  common: number;
+  uncommon: number;
+  mythic: number;
+}
