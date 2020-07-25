@@ -1,5 +1,5 @@
-import * as ChancesTypes from "./types/chances";
-import * as CurrentMatchTypes from "./types/currentMatch";
+import * as ChancesTypes from "./chances";
+import * as CurrentMatchTypes from "./currentMatch";
 import * as DeckTypes from "./deck";
 import * as DraftTypes from "./draft";
 import * as EventTypes from "./event";
