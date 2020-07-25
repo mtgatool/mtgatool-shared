@@ -1,4 +1,4 @@
-import { ArenaV3Deck, InternalDeck } from "./Deck";
+import { ArenaV3Deck, InternalDeck } from "./deck";
 
 export interface EventInstanceData {
   CurrentWins: number;

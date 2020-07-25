@@ -1,6 +1,6 @@
 import Deck from "../deck";
 import calculateDeviation from "./calculateDeviation";
-import { Archetype } from "../../types/Metadata";
+import { Archetype } from "../../types/metadata";
 import database from "../database";
 
 export default function getBestArchetype(

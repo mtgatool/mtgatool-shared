@@ -1,4 +1,4 @@
-import { Chances } from "./Chances";
+import { Chances } from "./chances";
 import Deck from "../shared/deck";
 import {
   GameObject,
@@ -12,8 +12,8 @@ import {
   AnnotationInfo,
   TurnInfo,
   GameInfo,
-} from "./GreTypes";
-import { InternalDeck } from "./Deck";
+} from "./greTypes";
+import { InternalDeck } from "./deck";
 
 export interface MatchPlayer {
   seat: number;

@@ -6,15 +6,16 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "eslint:fix": "eslint --fix . --ext .ts,.tsx",
-    "proto:model": "node node_modules/protobufjs/bin/pbjs proto/messages.proto > proto/model.json",
-    "proto:GreTypes": "node proto/proto2typescript/index.js",
-    "proto:eslint": "eslint types/GreTypes.ts --fix",
-    "proto": "npm-run-all proto:model proto:GreTypes proto:eslint",
-    "tsc": "tsc",
+    "proto:model": "node node_modules/protobufjs/bin/pbjs src/proto/messages.proto > src/proto/model.json",
+    "proto:greTypes": "node src/proto/proto2typescript/index.js",
+    "proto:eslint": "eslint src/types/greTypes.ts --fix",
+    "proto": "npm-run-all proto:model proto:greTypes proto:eslint",
+    "build": "tsc",
+    "prepublish": "npm run tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Manuel Etchegaray",
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.19",

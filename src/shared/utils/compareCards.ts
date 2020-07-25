@@ -1,6 +1,6 @@
-import { CardObject } from "../../types/Deck";
+import { CardObject } from "../../types/deck";
 import database from "../database";
-import { getCardTypeSort } from "./getCardTypeSort";
+import getCardTypeSort from "./getCardTypeSort";
 
 export default function compareCards(a: CardObject, b: CardObject): number {
   // Yeah this is lazy.. I know

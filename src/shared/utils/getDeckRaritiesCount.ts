@@ -1,6 +1,6 @@
 import db from "../database";
 import Deck from "../deck";
-import { CardObject } from "../../types/Deck";
+import { CardObject } from "../../types/deck";
 
 interface RaritiesCount {
   c: number;

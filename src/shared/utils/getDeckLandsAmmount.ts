@@ -1,5 +1,5 @@
 import database from "../database";
-import { CardObject, ColorsAmmount } from "../../types/Deck";
+import { CardObject, ColorsAmmount } from "../../types/deck";
 import Deck from "../deck";
 
 export default function getDeckLandsAmmount(deck: Deck): ColorsAmmount {

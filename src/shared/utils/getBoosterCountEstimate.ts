@@ -1,5 +1,5 @@
 import { WILDCARD_RARITIES } from "../constants";
-import { MissingWildcards } from "../../types/Deck";
+import { MissingWildcards } from "../../types/deck";
 
 export default function getBoosterCountEstimate(
   neededWildcards: MissingWildcards

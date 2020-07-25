@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
+      "module": "CommonJS",
       "target": "es2018",
+      "declaration": true,
       "moduleResolution": "node",
       "isolatedModules": true,
       "esModuleInterop": true,
@@ -9,10 +11,14 @@
       "strictNullChecks": true,
       "strictFunctionTypes": true,
       "types": [],
+      "outDir": "./dist", 
       "forceConsistentCasingInFileNames": true
   },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
   "include": [
-    "types",
-    "shared",
+    "src",
   ]
 }

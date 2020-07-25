@@ -1,5 +1,5 @@
 import { ModuleInstanceData } from "./event";
-import { InternalDeck } from "./Deck";
+import { InternalDeck } from "./deck";
 
 export interface DraftStatus {
   DraftId: string;

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Metadata, DbCardData, CardSet } from "../types/Metadata";
+import { Metadata, DbCardData, CardSet } from "../types/metadata";
 
 class Database {
   private static instance: Database;

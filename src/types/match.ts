@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { InternalDeck } from "./Deck";
+import { InternalDeck } from "./deck";
 import { Result, GameObject } from "./greInterpreter";
 import { MatchGameStats, PriorityTimers, CardCast } from "./currentMatch";
 import {
@@ -10,8 +10,8 @@ import {
   AnnotationInfo,
   ZoneInfo,
   Phase,
-} from "./GreTypes";
-import { Chances } from "./Chances";
+} from "./greTypes";
+import { Chances } from "./chances";
 import Deck from "../shared/deck";
 
 export interface Heat {

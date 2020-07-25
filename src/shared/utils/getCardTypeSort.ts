@@ -1,4 +1,4 @@
-export function getCardTypeSort(a?: string): number {
+export default function getCardTypeSort(a?: string): number {
   if (a == undefined) return 0;
   if (a.includes("Creature", 0)) return 1;
   if (a.includes("Planeswalker", 0)) return 2;

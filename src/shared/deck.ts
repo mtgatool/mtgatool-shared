@@ -4,8 +4,8 @@ import {
   InternalDeck,
   isV2CardsList,
   v2cardsList,
-} from "../types/Deck";
-import { DbCardData } from "../types/Metadata";
+} from "../types/deck";
+import { DbCardData } from "../types/metadata";
 import CardsList from "./cardsList";
 import Colors from "./colors";
 import { DEFAULT_TILE } from "../shared/constants";
