@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Metadata, DbCardData, CardSet } from "../types/metadata";
+import { Metadata, DbCardData, CardSet, Archetype } from "../types/metadata";
 
 export class DatabaseClass {
   private static instance: DatabaseClass;
@@ -47,10 +47,71 @@ export class DatabaseClass {
     return undefined;
   }
 
+  cardFromArt(artId: number | string): DbCardData | undefined {
+    const numArtId = typeof artId === "number" ? artId : parseInt(artId);
+    if (this.metadata && this.metadata.cards) {
+      const keys = Object.keys(this.metadata.cards);
+      for (let index = 0; index < keys.length; index++) {
+        const card = this.metadata.cards[parseInt(keys[index])];
+        if (card.artid == numArtId) {
+          return card;
+        }
+      }
+    }
+
+    return undefined;
+  }
+
   ability(abId: number): string | undefined {
     return this.metadata && this.metadata.abilities
       ? this.metadata.abilities[abId]
       : undefined;
+  }
+
+  get abilities(): { [id: number]: string } {
+    return this.metadata ? this.metadata.abilities : {};
+  }
+
+  get archetypes(): Archetype[] {
+    return this.metadata ? this.metadata.archetypes : [];
+  }
+
+  get cards(): { [id: number]: DbCardData } {
+    return this.metadata !== undefined ? this.metadata.cards : {};
+  }
+
+  get cardList(): DbCardData[] {
+    return this.cards ? Object.values(this.cards) : ([] as DbCardData[]);
+  }
+
+  get events(): { [id: string]: string } {
+    return this.metadata ? this.metadata.events : {};
+  }
+
+  get eventIds(): string[] {
+    return this.metadata ? Object.keys(this.metadata.events) : ([] as string[]);
+  }
+
+  get eventList(): string[] {
+    return this.metadata
+      ? Object.values(this.metadata.events)
+      : ([] as string[]);
+  }
+
+  get events_format(): { [id: string]: string } {
+    return this.metadata ? this.metadata.events_format : {};
+  }
+
+  get limited_ranked_events(): string[] {
+    return this.metadata ? this.metadata.limited_ranked_events : [];
+  }
+
+  get standard_ranked_events(): string[] {
+    return this.metadata ? this.metadata.standard_ranked_events : [];
+  }
+
+  get single_match_events(): string[] {
+    return this.metadata ? this.metadata.single_match_events : [];
   }
 
   get sets(): { [id: string]: CardSet } {
@@ -64,8 +125,22 @@ export class DatabaseClass {
     );
   }
 
+  get sortedSetCodes(): string[] {
+    const setCodes = Object.keys(this.sets);
+    setCodes.sort(
+      (a, b) =>
+        new Date(this.sets[b].release).getTime() -
+        new Date(this.sets[a].release).getTime()
+    );
+    return setCodes;
+  }
+
   get version(): number {
     return this.metadata ? this.metadata.version : 0;
+  }
+
+  get lang(): string {
+    return this.metadata ? this.metadata.language : "en";
   }
 
   event(id: string): string | undefined {
