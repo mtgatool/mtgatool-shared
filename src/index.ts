@@ -12,6 +12,9 @@ import getDeckColorsAmmount from "./shared/utils/getDeckColorsAmmount";
 import getDeckLandsAmmount from "./shared/utils/getDeckLandsAmmount";
 import getDeckRaritiesCount from "./shared/utils/getDeckRaritiesCount";
 import getEventPrettyName from "./shared/utils/getEventPrettyName";
+import getJumpstartThemes, {
+  themeCards,
+} from "./shared/utils/getJumpstartThemes";
 import getRankIndex from "./shared/utils/getRankIndex";
 import getRankIndex16 from "./shared/utils/getRankIndex16";
 import getRaritySortValue from "./shared/utils/getRaritySortValue";
@@ -23,7 +26,7 @@ import useSet from "./shared/utils/useSet";
 import CardsList from "./shared/cardsList";
 import Colors from "./shared/colors";
 import * as constants from "./shared/constants";
-import database from "./shared/database";
+import database, { DatabaseClass } from "./shared/database";
 import Deck from "./shared/deck";
 import * as Types from "./types";
 
@@ -43,6 +46,8 @@ export {
   getDeckLandsAmmount,
   getDeckRaritiesCount,
   getEventPrettyName,
+  themeCards,
+  getJumpstartThemes,
   getRankIndex,
   getRankIndex16,
   getRaritySortValue,
@@ -55,6 +60,7 @@ export {
   Colors,
   constants,
   database,
+  DatabaseClass,
   Deck,
   Types,
 };

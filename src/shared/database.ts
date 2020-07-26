@@ -1,8 +1,8 @@
 import _ from "lodash";
 import { Metadata, DbCardData, CardSet } from "../types/metadata";
 
-class Database {
-  private static instance: Database;
+export class DatabaseClass {
+  private static instance: DatabaseClass;
   public metadata: Metadata | undefined;
 
   constructor() {
@@ -12,12 +12,12 @@ class Database {
     this.eventName = this.eventName.bind(this);
   }
 
-  static getInstance(): Database {
-    if (!Database.instance) {
-      Database.instance = new Database();
+  static getInstance(): DatabaseClass {
+    if (!DatabaseClass.instance) {
+      DatabaseClass.instance = new DatabaseClass();
     }
 
-    return Database.instance;
+    return DatabaseClass.instance;
   }
 
   setDatabase(arg: string): void {
@@ -77,4 +77,4 @@ class Database {
   }
 }
 
-export default Database.getInstance();
+export default DatabaseClass.getInstance();

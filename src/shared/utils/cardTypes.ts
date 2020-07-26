@@ -5,7 +5,7 @@ import { CARD_SUPERTYPES } from "../constants";
 export function cardHasType(card: DbCardData, type: string): boolean {
   if (!_.has(card, "type"))
     throw new Error("The specified card object does not have a type property");
-  return card.type.includes(type + " ");
+  return card.type.toLowerCase().includes(type.toLowerCase() + " ");
 }
 
 export const cardType = (card: DbCardData): string => {
