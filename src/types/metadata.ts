@@ -3,7 +3,7 @@ import { CARD_RARITIES } from "../shared/constants";
 export interface Metadata {
   cards: { [id: number]: DbCardData };
   ok: boolean;
-  version: number;
+  version: string;
   language: string;
   updated: number;
   events: { [id: string]: string };

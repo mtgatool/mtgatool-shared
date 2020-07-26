@@ -7,6 +7,7 @@ export class DatabaseClass {
 
   constructor() {
     this.setDatabase = this.setDatabase.bind(this);
+    this.setDatabaseUnsafely = this.setDatabaseUnsafely.bind(this);
     this.card = this.card.bind(this);
     this.ability = this.ability.bind(this);
     this.eventName = this.eventName.bind(this);
@@ -25,6 +26,14 @@ export class DatabaseClass {
       this.metadata = JSON.parse(arg);
     } catch (e) {
       console.log("Error parsing metadata", e);
+    }
+  }
+
+  setDatabaseUnsafely(arg: Metadata): void {
+    try {
+      this.metadata = arg;
+    } catch (e) {
+      console.log("Error assigning metadata", e);
     }
   }
 
@@ -136,7 +145,7 @@ export class DatabaseClass {
   }
 
   get version(): number {
-    return this.metadata ? this.metadata.version : 0;
+    return this.metadata ? parseInt(this.metadata.version) : 0;
   }
 
   get lang(): string {
