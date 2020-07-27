@@ -1,31 +1,19 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
     "target": "es2018",
+    "declaration": true,
     "moduleResolution": "node",
-    "allowJs": true,
-    "checkJs": false,
-    "strict": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
-    "declaration": true,
-    // Import non-ES modules as default imports.
     "esModuleInterop": true,
-    "downlevelIteration": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "types": ["jest"],
-    // other defaults         
-    "pretty": true,
-    "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "skipLibCheck": true,
     "outDir": "./dist",
-    "lib": ["dom", "es2020.string"],
+    "forceConsistentCasingInFileNames": true
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "include": [
-    "src",
-  ]
+  "include": ["src"]
 }
