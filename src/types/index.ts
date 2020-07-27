@@ -1,33 +1,15 @@
-import * as ChancesTypes from "./chances";
-import * as CurrentMatchTypes from "./currentMatch";
-import * as DeckTypes from "./deck";
-import * as DraftTypes from "./draft";
-import * as EventTypes from "./event";
-import * as GreInterpreterTypes from "./greInterpreter";
-import * as InventoryTypes from "./inventory";
-import * as JumpstartTypes from "./jumpstart";
-import * as LogDecoderTypes from "./logDecoder";
-import * as MatchTypes from "./match";
-import * as MetadataTypes from "./metadata";
-import * as PostmatchTypes from "./postmatch";
-import * as ProgressionTypes from "./progression";
-import * as RankTypes from "./rank";
-import * as SeasonTypes from "./season";
-
-export {
-  ChancesTypes,
-  CurrentMatchTypes,
-  DeckTypes,
-  DraftTypes,
-  EventTypes,
-  GreInterpreterTypes,
-  InventoryTypes,
-  JumpstartTypes,
-  LogDecoderTypes,
-  MatchTypes,
-  MetadataTypes,
-  PostmatchTypes,
-  ProgressionTypes,
-  RankTypes,
-  SeasonTypes,
-};
+export * from "./chances";
+export * from "./currentMatch";
+export * from "./deck";
+export * from "./draft";
+export * from "./event";
+export * from "./greInterpreter";
+export * from "./inventory";
+export * from "./jumpstart";
+export * from "./logDecoder";
+export * from "./match";
+export * from "./metadata";
+export * from "./postmatch";
+export * from "./progression";
+export * from "./rank";
+export * from "./season";
