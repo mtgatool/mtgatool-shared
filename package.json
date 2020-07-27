@@ -26,10 +26,8 @@
     "mathjs": "^7.1.0"
   },
   "devDependencies": {
-    "jest": "^26.1.0",
-    "ts-jest": "^26.1.3",
-    "@types/jest": "^26.0.7",
     "@types/bytebuffer": "^5.0.41",
+    "@types/jest": "^26.0.7",
     "@types/lodash": "^4.14.158",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
@@ -37,9 +35,11 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.1.0",
     "prettier": "^2.0.5",
     "proto2typescript": "^2.2.0",
     "protobufjs": "~5.0.3",
+    "ts-jest": "^26.1.3",
     "typescript": "^3.9.7"
   }
 }
