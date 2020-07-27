@@ -1,6 +1,6 @@
 import database from "../database";
 
-export default function getSetCodeInEventId(
+export default function getSetInEventId(
   eventId: string | undefined
 ): string | undefined {
   if (!eventId) {

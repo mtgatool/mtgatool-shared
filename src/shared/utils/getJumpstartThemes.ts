@@ -1,167 +1,53 @@
 import Deck from "../deck";
 import { JumpstartThemes } from "../../types/jumpstart";
 
-function isDeckOf(deckString: string, cards: string[]): boolean {
-  let ret = false;
-  cards.forEach((name) => {
-    if (deckString.indexOf(name) !== -1) ret = true;
-  });
-  return ret;
-}
-
-export const themeCards: Record<JumpstartThemes, string[]> = {
-  Basri: ["Basri Ket", "Basri's Lieutenant"],
-  Unicorns: ["Blessed Sanctuary", "Emiel the Blessed"],
-  Teferi: ["Teferi, Master of Time", "Teferi's Ageless Insight"],
-  Mill: ["Bruvac the Grandiloquent"],
-  Liliana: ["Liliana, Waker of the Dead", "Liliana's Standard Bearer"],
-  Phyrexian: ["Sheoldred, Whispering One", "Carnifex Demon"],
-  Chandra: ["Chandra, Heart of Fire", "Chandra's Incinerator"],
-  Seismic: ["Grim Lavamancer", "Magmaquake"],
-  Garruk: ["Garruk, Unleashed", "Garruk's Harbinger"],
-  Walls: ["Assault Formation", "Towering Titan"],
-  Rainbow: ["Chamber Sentry", "Maelstrom Archangel"],
-  Angels: [
-    "Angelic Arbiter",
-    "Baneslayer Angel",
-    "Linvala, Keeper of Silence",
-    "Serra’s Guardian",
-  ],
-  Dogs: ["Isamaru, Hound of Konda", "Pack Leader"],
-  Enchanted: [
-    "Ajani's Chosen",
-    "Celestial Mantle",
-    "Kor Spiritdancer",
-    "Archon of Sun’s Grace",
-  ],
-  Pirates: ["Corsair Captain"],
-  Spirits: ["Rattlechains", "Shacklegeist"],
-  "Under the Sea": ["Pursued Whale", "Whelming Wave"],
-  Discarding: ["Liliana's Reaver", "Nyxathid", "Tinybones", "Trinket Thief"],
-  Rogues: ["Gonti, Lord of Luxury", "Thieves' Guild Enforcer"],
-  Witchcraft: ["Bogbrew Witch", "Witch of the Moors"],
-  Dragons: [
-    "Gadrak, the Crown-Scourge",
-    "Lathliss, Dragon Queen",
-    "Terror of the Peaks",
-  ],
-  Lightning: ["Ball Lightning", "Lightning Phoenix", "Lightning Serpent"],
-  Minotaurs: ["Rageblood Shaman", "Sethron, Hurloon General"],
-  Cats: ["Feline Sovereign", "Lurking Predators"],
-  Elves: ["Allosaurus Shepherd", "Craterhoof Behemoth", "Elvish Archdruid"],
-  Lands: ["Oracle of Mul Daya", "Ulvenwald Hydra"],
-  Doctor: [
-    "Cradle of Vitality",
-    "Path of Bravery",
-    "Rhox Faithmender",
-    "Speaker of the Heavens",
-  ],
-  "Feathered Friends": [
-    "Angel of the Dire Hour",
-    "Archon of Justice",
-    "Archon of Redemption",
-    "Steel-Plume Marshal",
-  ],
-  "Heavily Armored": [
-    "Cathars' Crusade",
-    "Duelist's Heritage",
-    "High Sentinels of Arashin",
-    "Mikaeus, the Lunarch",
-  ],
-  Legion: [
-    "Blessed Sanctuary",
-    "Glorious Anthem",
-    "Mentor of the Meek",
-    "Lena, Selfless Champion",
-  ],
-  "Above the Clouds": [
-    "Inniaz, the Gale Force",
-    "Kira, Great Glass-Spinner",
-    "Serendib Efreet",
-    "Windreader Sphinx",
-  ],
-  Archaeology: [
-    "Scarecrone",
-    "Scholar of the Lost Trove",
-    "Sharding Sphinx",
-    "Vedalken Archmage",
-  ],
-  "Well-Read": [
-    "Mystic Archaeologist",
-    "Ormos, Archive Keeper",
-    "Read the Runes",
-    "Rhystic Study",
-    "Gadwick, the Wizened",
-    "Teferi’s Ageless Insight",
-  ],
-  Wizards: [
-    "Barrin, Tolarian Archmage",
-    "Talrand, Sky Summoner",
-    "Riptide Laboratory",
-  ],
-  Minions: ["Kels, Fight Fixer", "Ghoulcaller Gisa", "Phyrexian Tower"],
-  Reanimated: [
-    "Gravewaker",
-    "Reanimate",
-    "Rise of the Dark Realms",
-    "Scourge of Nel Toth",
-    "Doomed Necromancer",
-    "Woe Strider",
-  ],
-  Spooky: ["Black Market", "Harvester of Souls", "Languish", "Ogre Slumlord"],
-  Vampires: [
-    "Drana, Liberator of Malakir",
-    "Exquisite Blood",
-    "Sangromancer",
-    "Vito, Thorn of the Dusk Rose",
-  ],
-  Devilish: [
-    "Brash Taunter",
-    "Hellrider",
-    "Sin Prodder",
-    "Zurzoth, Chaos Rider",
-  ],
-  Goblins: [
-    "Goblin Chieftain",
-    "Goblin Goon",
-    "Krenko, Mob Boss",
-    "Muxus, Goblin Grandee",
-  ],
-  Smashing: [
-    "Etali, Primal Storm",
-    "Hamletback Goliath",
-    "Sarkhan's Unsealing",
-    "Volcanic Salvo",
-  ],
-  Spellcasting: [
-    "Charmbreaker Devils",
-    "Double Vision",
-    "Dualcaster Mage",
-    "Immolating Gyre",
-  ],
-  Dinosaurs: [
-    "Ghalta, Primal Hunger",
-    "Primal Might",
-    "Rampaging Brontodon",
-    "Selvala, Heart of the Wilds",
-  ],
-  "Plus One": [
-    "Branching Evolution",
-    "Champion of Lambholt",
-    "Primeval Bounty",
-    "Rishkar, Peema Renegade",
-  ],
-  Predatory: [
-    "Momentous Fall",
-    "Neyith of the Dire Hunt",
-    "Ravenous Baloth, Thragtusk",
-  ],
-  "Tree-Hugging": [
-    "Jolrael, Mwonvuli Recluse",
-    "Primordial Sage",
-    "Soul of the Harvest",
-    "Verdant Embrace",
-  ],
+export const themeCards: Record<JumpstartThemes, number> = {
+  Basri: 74641,
+  Unicorns: 72561,
+  Teferi: 74642,
+  Mill: 72570,
+  Liliana: 74643,
+  Phyrexian: 72578,
+  Chandra: 74644,
+  Seismic: 72584,
+  Garruk: 74645,
+  Walls: 72595,
+  Rainbow: 72598,
+  Angels: 72560,
+  Dogs: 72565,
+  Enchanted: 72562,
+  Pirates: 72572,
+  Spirits: 72571,
+  "Under the Sea": 72566,
+  Discarding: 72575,
+  Rogues: 72577,
+  Witchcraft: 72579,
+  Dragons: 72582,
+  Lightning: 72588,
+  Minotaurs: 72589,
+  Cats: 72594,
+  Elves: 72597,
+  Lands: 72591,
+  Doctor: 72559,
+  "Feathered Friends": 72564,
+  "Heavily Armored": 72563,
+  Legion: 72558,
+  "Above the Clouds": 72568,
+  Archaeology: 72569,
+  "Well-Read": 72573,
+  Wizards: 72567,
+  Minions: 72574,
+  Reanimated: 72576,
+  Spooky: 72581,
+  Vampires: 72580,
+  Devilish: 72583,
+  Goblins: 72585,
+  Smashing: 72587,
+  Spellcasting: 72586,
+  Dinosaurs: 72593,
+  "Plus One": 72592,
+  Predatory: 72596,
+  "Tree-Hugging": 72590,
 };
 
 export default function getJumpstartThemes(deck: Deck): JumpstartThemes[] {
@@ -169,14 +55,15 @@ export default function getJumpstartThemes(deck: Deck): JumpstartThemes[] {
   deck.getSideboard().removeDuplicates(true);
   deck.getMainboard().removeZeros(true);
   deck.getSideboard().removeZeros(true);
-  const deckString = deck.getExportArena();
+  const deckString = deck.getUniqueString();
 
   const themes: JumpstartThemes[] = [];
 
   Object.keys(themeCards).forEach((key) => {
     const theme = key as JumpstartThemes;
-    if (isDeckOf(deckString, themeCards[theme])) themes.push(theme);
+    if (deckString.indexOf(themeCards[theme] + "") !== -1) {
+      themes.push(theme);
+    }
   });
-
   return themes.sort();
 }
