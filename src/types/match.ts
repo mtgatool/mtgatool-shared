@@ -165,7 +165,7 @@ export interface InternalMatch {
   oppDeck: InternalDeck;
   tags: any;
   date: string;
-  lastPushedDate: string;
+  lastPushedDate?: string; // not set until match is successfully pushed
   onThePlay: number;
   eventId: string;
   bestOf: number;
@@ -177,6 +177,7 @@ export interface InternalMatch {
   };
   gameStats: MatchGameStats[];
   toolVersion: number;
+  lastPushedByVersion?: number; // not set until match is successfully pushed
   toolRunFromSource: boolean;
   id: string;
   duration: number;
