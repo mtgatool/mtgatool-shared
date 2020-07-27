@@ -9,6 +9,7 @@ export interface SeasonalRankData {
   oldLevel: number;
   oldStep: number;
   owner: string;
+  arenaId: string;
   player: string;
   playerId: string;
   rankUpdateType: string;
