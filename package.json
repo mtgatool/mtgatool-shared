@@ -13,6 +13,7 @@
     "build": "tsc",
     "prepublish": "npm run build",
     "jest:clear": "jest --clearCache",
+    "jest:watch": "jest --watch",
     "test": "jest src/"
   },
   "keywords": [],

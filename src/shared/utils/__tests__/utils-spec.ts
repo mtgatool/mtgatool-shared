@@ -4,10 +4,54 @@ import getEventPrettyName from "../getEventPrettyName";
 import { cardHasType, cardType } from "../cardTypes";
 import getSetCodeInEventId from "../getSetInEventId";
 import loadDbFromCache from "../loadDbFromCache";
+import sha1 from "../sha1";
+import countValues from "../countValues";
+import CardsList from "../../cardsList";
 
 loadDbFromCache();
 
 describe("utils", () => {
+  it("SHA1 hashes", () => {
+    expect(sha1("AVeryTestfulHash!!??..0__dodo")).toBe(
+      "1188e086458a6cbdc3442755f78b2f80b59f7e3b"
+    );
+  });
+
+  it("Counts values", () => {
+    const valA = [
+      { a: true },
+      { a: false },
+      { a: true },
+      { c: false },
+      { d: true },
+    ];
+    expect(countValues(valA, { a: true })).toBe(2);
+    const valB = [1, 2, 3, 4, 3, 6];
+    expect(countValues(valB, 3)).toBe(2);
+    const valC = new CardsList([
+      69235,
+      70640,
+      70640,
+      70640,
+      73132,
+      73132,
+      69235,
+      70262,
+      70262,
+      68570,
+      70262,
+      70390,
+    ]);
+    expect(
+      countValues(valC.get(), {
+        quantity: 3,
+        id: 70640,
+        measurable: true,
+        chance: 0,
+      })
+    ).toBe(1);
+  });
+
   it("Set codes are detected preperly", () => {
     expect(getSetCodeInEventId("Ladder")).toBeUndefined();
     expect(getSetCodeInEventId("Historic_Shakeup_20200606")).toBeUndefined();
