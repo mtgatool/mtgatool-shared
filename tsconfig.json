@@ -7,6 +7,7 @@
     "strict": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
+    "declaration": true,
     // Import non-ES modules as default imports.
     "esModuleInterop": true,
     "downlevelIteration": true,
