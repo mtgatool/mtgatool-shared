@@ -15,3 +15,4 @@ export * from "./postmatch";
 export * from "./progression";
 export * from "./rank";
 export * from "./season";
+export * from "./settings";

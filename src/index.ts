@@ -1,7 +1,9 @@
 import calculateDeviation from "./shared/utils/calculateDeviation";
 import { cardHasType, cardType } from "./shared/utils/cardTypes";
 import compareCards from "./shared/utils/compareCards";
+import convertDeckFromV3 from "./shared/utils/convertDeckFromV3";
 import convertDraftToV2 from "./shared/utils/convertDraftToV2";
+import convertV3ListToV2 from "./shared/utils/convertV3ListToV2";
 import countValues from "./shared/utils/countValues";
 import formatPercent from "./shared/utils/formatPercent";
 import getBestArchetype from "./shared/utils/getBestArchetype";
@@ -35,7 +37,9 @@ export {
   cardHasType,
   cardType,
   compareCards,
+  convertDeckFromV3,
   convertDraftToV2,
+  convertV3ListToV2,
   countValues,
   formatPercent,
   getBestArchetype,
