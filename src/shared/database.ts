@@ -1,6 +1,5 @@
 import _ from "lodash";
 import { Metadata, DbCardData, CardSet } from "../types/metadata";
-import { Archetype } from "../types/metagame";
 
 export class DatabaseClass {
   private static instance: DatabaseClass;
@@ -82,7 +81,7 @@ export class DatabaseClass {
     return this.metadata ? this.metadata.abilities : {};
   }
 
-  get archetypes(): Archetype[] {
+  get archetypes(): Metadata["archetypes"] {
     return this.metadata ? this.metadata.archetypes : [];
   }
 

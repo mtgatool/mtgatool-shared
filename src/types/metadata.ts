@@ -3,7 +3,6 @@ import {
   RATINGS_MTGCSR,
   RATINGS_LOLA,
 } from "../shared/constants";
-import { Archetype } from "./metagame";
 
 export interface Metadata {
   cards: { [id: number]: DbCardData };
@@ -18,7 +17,14 @@ export interface Metadata {
   limited_ranked_events: string[];
   standard_ranked_events: string[];
   single_match_events: string[];
-  archetypes: Archetype[];
+  archetypes: {
+    average: {
+      mainDeck: Record<string, number | undefined>;
+      sideboard: Record<string, number | undefined>;
+    };
+    name: string;
+    format?: string;
+  }[];
 }
 
 export interface DbCardData {
@@ -31,7 +37,7 @@ export interface DbCardData {
   cost: string[];
   cmc: number;
   rarity: Rarity;
-  cid: number;
+  cid: string;
   frame: number[];
   artist: string;
   dfc: number;
@@ -39,7 +45,7 @@ export interface DbCardData {
   craftable: boolean;
   booster: boolean;
   dfcId: boolean | number;
-  rankSource: -1 | typeof RATINGS_MTGCSR | typeof RATINGS_LOLA;
+  rankSource?: -1 | typeof RATINGS_MTGCSR | typeof RATINGS_LOLA;
   rank: number;
   rank_values: string[] | number[] | number;
   rank_controversy?: number[] | number;

@@ -1,11 +1,11 @@
 import Deck from "../deck";
 import calculateDeviation from "./calculateDeviation";
 import database from "../database";
-import { Archetype } from "../../types/metagame";
+import { Metadata } from "../../types";
 
 export default function getBestArchetype(
   deck: Deck,
-  archetypes: Archetype[]
+  archetypes: Metadata["archetypes"]
 ): string {
   let bestMatch = "-";
   if (deck.getMainboard().get().length === 0) return bestMatch;
@@ -23,7 +23,7 @@ export default function getBestArchetype(
   let lowestDeviation = calculateDeviation(mainDeviations);
   const highest = lowestDeviation; //err..
 
-  archetypes.forEach((arch: Archetype) => {
+  archetypes.forEach((arch) => {
     mainDeviations = [];
     deck
       .getMainboard()
