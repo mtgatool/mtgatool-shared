@@ -11,6 +11,7 @@ export * from "./jumpstart";
 export * from "./logDecoder";
 export * from "./match";
 export * from "./metadata";
+export * from "./metagame";
 export * from "./postmatch";
 export * from "./progression";
 export * from "./rank";
