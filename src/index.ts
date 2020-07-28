@@ -30,7 +30,8 @@ import Colors from "./shared/colors";
 import * as constants from "./shared/constants";
 import database, { DatabaseClass } from "./shared/database";
 import Deck from "./shared/deck";
-import * as Types from "../types";
+
+export * from "./types";
 
 export {
   calculateDeviation,
@@ -66,5 +67,4 @@ export {
   database,
   DatabaseClass,
   Deck,
-  Types,
 };

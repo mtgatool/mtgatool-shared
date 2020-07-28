@@ -1,5 +1,5 @@
 import { Chances } from "./chances";
-import Deck from "../src/shared/deck";
+import Deck from "../shared/deck";
 import {
   GameObject,
   ZoneType,

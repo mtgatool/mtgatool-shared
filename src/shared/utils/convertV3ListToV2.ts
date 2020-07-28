@@ -1,4 +1,4 @@
-import { v2cardsList, v3cardsList } from "../../../types";
+import { v2cardsList, v3cardsList } from "../../types";
 
 export default function convertV3ListToV2(orig: v3cardsList): v2cardsList {
   const newList: v2cardsList = [];

@@ -1,5 +1,5 @@
 import convertV3ListToV2 from "./convertV3ListToV2";
-import { ArenaV3Deck, InternalDeck } from "../../../types";
+import { ArenaV3Deck, InternalDeck } from "../../types";
 import Deck from "../deck";
 
 export default function convertDeckFromV3(v3deck: ArenaV3Deck): InternalDeck {

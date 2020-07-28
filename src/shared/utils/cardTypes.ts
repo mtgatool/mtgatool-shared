@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { DbCardData } from "../../../types/metadata";
+import { DbCardData } from "../../types/metadata";
 import { CARD_SUPERTYPES } from "../constants";
 
 export function cardHasType(card: DbCardData, type: string): boolean {

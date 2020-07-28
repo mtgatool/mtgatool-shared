@@ -3,7 +3,7 @@
 import Deck from "../../deck";
 import database from "../../database";
 import compareCards from "../compareCards";
-import { v2cardsList } from "../../../../types/deck";
+import { v2cardsList } from "../../../types/deck";
 import loadDbFromCache from "../loadDbFromCache";
 
 loadDbFromCache();

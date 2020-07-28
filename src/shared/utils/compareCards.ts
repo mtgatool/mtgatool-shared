@@ -1,4 +1,4 @@
-import { CardObject } from "../../../types/deck";
+import { CardObject } from "../../types/deck";
 import database from "../database";
 import getCardTypeSort from "./getCardTypeSort";
 

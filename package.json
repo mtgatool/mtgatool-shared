@@ -3,7 +3,7 @@
   "version": "1.0.16",
   "description": "",
   "main": "dist/index.js",
-  "types": "types/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "eslint:fix": "eslint --fix . --ext .ts,.tsx",
     "proto:model": "node node_modules/protobufjs/bin/pbjs src/proto/messages.proto > src/proto/model.json",

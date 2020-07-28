@@ -11,10 +11,9 @@
     "noImplicitThis": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "types" : ["jest"],
-    "typeRoots" : ["./types", "node_modules/@types"],
+    "types": ["jest"],
     "outDir": "./dist",
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src", "types"]
+  "include": ["src"]
 }

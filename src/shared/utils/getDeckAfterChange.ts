@@ -1,4 +1,4 @@
-import { DeckChange } from "../../../types/deck";
+import { DeckChange } from "../../types/deck";
 import Deck from "../deck";
 
 export default function getDeckAfterChange(change: DeckChange): Deck {
