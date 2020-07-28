@@ -1,4 +1,9 @@
-import { CARD_RARITIES } from "../shared/constants";
+import {
+  CARD_RARITIES,
+  RATINGS_MTGCSR,
+  RATINGS_LOLA,
+} from "../shared/constants";
+import { Archetype } from "./metagame";
 
 export interface Metadata {
   cards: { [id: number]: DbCardData };
@@ -26,7 +31,7 @@ export interface DbCardData {
   cost: string[];
   cmc: number;
   rarity: Rarity;
-  cid: string;
+  cid: number;
   frame: number[];
   artist: string;
   dfc: number;
@@ -34,6 +39,7 @@ export interface DbCardData {
   craftable: boolean;
   booster: boolean;
   dfcId: boolean | number;
+  rankSource: -1 | typeof RATINGS_MTGCSR | typeof RATINGS_LOLA;
   rank: number;
   rank_values: string[] | number[] | number;
   rank_controversy?: number[] | number;
@@ -53,24 +59,13 @@ interface ImageLinks {
 }
 
 export interface CardSet {
-  collation: number | boolean;
+  collation: number | false;
   scryfall: string;
   code: string;
   arenacode: string;
   tile: number;
   release: string;
-  svg: string;
-}
-
-export interface Archetype {
-  average: ArchetypeAverage;
-  name: string;
-  format?: string;
-}
-
-interface ArchetypeAverage {
-  mainDeck: any; // Record<string, number>
-  sideboard: any; // Record<string, number>
+  svg?: string;
 }
 
 export interface RewardsDate {

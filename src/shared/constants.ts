@@ -699,6 +699,9 @@ export const ARENA_MODE_IDLE = 0;
 export const ARENA_MODE_MATCH = 1;
 export const ARENA_MODE_DRAFT = 2;
 
+export const RATINGS_MTGCSR = 0;
+export const RATINGS_LOLA = 1;
+
 export const DRAFT_RANKS = [
   "F",
   "D-",
