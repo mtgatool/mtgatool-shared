@@ -1,5 +1,6 @@
 import _ from "lodash";
-import { Metadata, DbCardData, CardSet, Archetype } from "../types/metadata";
+import { Metadata, DbCardData, CardSet } from "../types/metadata";
+import { Archetype } from "../types/metagame";
 
 export class DatabaseClass {
   private static instance: DatabaseClass;
