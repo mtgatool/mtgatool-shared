@@ -1,4 +1,4 @@
-import { CARD_RARITIES } from "../shared/constants";
+import { CARD_RARITIES } from "../src/shared/constants";
 
 export interface Metadata {
   cards: { [id: number]: DbCardData };

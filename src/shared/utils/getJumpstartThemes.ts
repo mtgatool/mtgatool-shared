@@ -1,5 +1,5 @@
 import Deck from "../deck";
-import { JumpstartThemes } from "../../types/jumpstart";
+import { JumpstartThemes } from "../../../types/jumpstart";
 
 export const themeCards: Record<JumpstartThemes, number> = {
   Basri: 74641,

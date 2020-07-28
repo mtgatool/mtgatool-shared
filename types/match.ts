@@ -12,7 +12,7 @@ import {
   Phase,
 } from "./greTypes";
 import { Chances } from "./chances";
-import Deck from "../shared/deck";
+import Deck from "../src/shared/deck";
 
 export interface Heat {
   seat: number;

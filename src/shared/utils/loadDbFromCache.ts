@@ -1,5 +1,5 @@
 import cachedJson from "../../resources/database.json";
-import { Metadata } from "../../types/metadata";
+import { Metadata } from "../../../types/metadata";
 import database from "../database";
 
 export default function loadDbFromCache(): void {

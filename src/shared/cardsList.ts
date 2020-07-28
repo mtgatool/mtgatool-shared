@@ -4,7 +4,7 @@ import {
   CardObject,
   isV2CardsList,
   v2cardsList,
-} from "../types/deck";
+} from "../../types/deck";
 import Colors from "./colors";
 import db from "./database";
 

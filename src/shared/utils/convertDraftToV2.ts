@@ -2,7 +2,7 @@ import {
   InternalDraft,
   InternalDraftv2,
   InternalDraftPackPick,
-} from "../../types/draft";
+} from "../../../types/draft";
 import database from "../database";
 import getSetCodeInEventId from "./getSetInEventId";
 
