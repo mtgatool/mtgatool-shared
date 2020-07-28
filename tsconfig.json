@@ -12,7 +12,7 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "types" : ["jest"],
-    "typeRoots" : ["./types"],
+    "typeRoots" : ["./types", "node_modules/@types"],
     "outDir": "./dist",
     "forceConsistentCasingInFileNames": true
   },
