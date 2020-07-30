@@ -20,6 +20,12 @@ export const SYNC_FETCH = 4;
 export const SYNC_PUSH = 5;
 export const SYNC_ERR = 6;
 
+// Server roles
+export const ROLE_USER = 1;
+export const ROLE_PATREON = 2;
+export const ROLE_DEVELOPER = 4;
+export const ROLE_ADMIN = 8;
+
 // Colour indices
 export const WHITE = 1;
 
@@ -862,6 +868,7 @@ export const SETTINGS_SHORTCUTS = 5;
 export const SETTINGS_PRIVACY = 6;
 export const SETTINGS_ABOUT = 7;
 export const SETTINGS_LOGIN = 8;
+export const SETTINGS_ADMIN = 9;
 
 // Date constants
 export const DATE_LAST_DAY = "Last 24 Hours";
