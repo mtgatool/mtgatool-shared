@@ -62,6 +62,7 @@ export type HttpMethod =
   | "getDatabase"
   | "getDatabaseVersion"
   | "shareDraft"
+  | "shareMatch"
   | "shareLog"
   | "shareDeck"
   | "getHome"
@@ -213,28 +214,17 @@ export interface HttpGetDatabaseVersion extends BaseHttpTask {
 
 export interface HttpShareDraft extends BaseHttpTask {
   method: "shareDraft";
-  data: {
-    id: string;
-    draft: InternalDraftv2;
-    expire: number;
-  };
+  data: InternalDraftv2;
 }
 
-export interface HttpShareLog extends BaseHttpTask {
-  method: "shareLog";
-  data: {
-    id: string;
-    log: string;
-    expire: number;
-  };
+export interface HttpShareMatch extends BaseHttpTask {
+  method: "shareMatch";
+  data: InternalMatch;
 }
 
 export interface HttpShareDeck extends BaseHttpTask {
   method: "shareDeck";
-  data: {
-    deck: InternalDeck;
-    expire: number;
-  };
+  data: InternalDeck;
 }
 
 export interface HttpGetHome extends BaseHttpTask {
@@ -286,7 +276,7 @@ export type HttpTask =
   | HttpGetDatabase
   | HttpGetDatabaseVersion
   | HttpShareDraft
-  | HttpShareLog
+  | HttpShareMatch
   | HttpShareDeck
   | HttpGetHome
   | HttpPostMythicRank
