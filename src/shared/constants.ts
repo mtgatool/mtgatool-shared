@@ -639,13 +639,15 @@ export const Color: Record<string, string> = {
 
 export const LANDS_HACK = -100;
 
-//export const FACE_NONE = 0;
+export const FACE_NONE = 0;
 export const FACE_DFC_BACK = 1;
 export const FACE_DFC_FRONT = 2;
 export const FACE_SPLIT_FULL = 6;
-//export const FACE_SPLIT = 5;
-//export const FACE_ADVENTURE = 7;
+export const FACE_SPLIT = 5;
+export const FACE_ADVENTURE = 7;
 export const FACE_ADVENTURE_MAIN = 8;
+export const FACE_MODAL_BACK = 9;
+export const FACE_MODAL_FRONT = 10;
 
 export const FORMATS: Record<string, string> = {
   Standard: "Standard",
