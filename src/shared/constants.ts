@@ -875,6 +875,7 @@ export const SETTINGS_ADMIN = 9;
 // Date constants
 export const DATE_LAST_DAY = "Last 24 Hours";
 
+export const DATE_LAST_7 = "Last 7 days";
 export const DATE_LAST_30 = "Last 30 Days";
 export const DATE_SEASON = "Current Season";
 export const DATE_ALL_TIME = "All Time";
