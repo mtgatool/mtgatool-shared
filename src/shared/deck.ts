@@ -283,12 +283,12 @@ class Deck {
       }
 
       const cardName = cardObj.name;
-      const cardSet = cardObj.set;
-      const cardCn = cardObj.cid;
+      // const cardSet = cardObj.set;
+      // const cardCn = cardObj.cid;
       const cardQ = card.measurable ? card.quantity : 1;
 
-      const setCode = db.sets[cardSet].arenacode || getSetCode(cardSet);
-      str += `${cardQ} ${cardName} (${setCode}) ${cardCn}\r\n`;
+      // const setCode = db.sets[cardSet].arenacode || getSetCode(cardSet);
+      str += `${cardQ} ${cardName}\r\n`;
     });
 
     return str;
