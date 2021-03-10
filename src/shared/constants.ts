@@ -754,6 +754,7 @@ export const CARD_TYPE_CODES = [
 ] as const;
 
 export const CARD_SUPERTYPES = [
+  "Basic Snow Land",
   "Basic Land",
   "Land",
   "Creature",
