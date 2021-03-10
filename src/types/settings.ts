@@ -17,6 +17,7 @@ export interface OverlaySettingsData {
   title: boolean;
   top: boolean;
   type_counts: boolean;
+  collapsed: boolean;
 }
 
 export type CardQuality = "small" | "normal" | "large";
