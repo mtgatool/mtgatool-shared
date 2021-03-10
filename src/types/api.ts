@@ -68,7 +68,11 @@ export type HttpMethod =
   | "getHome"
   | "postMythicRank"
   | "getExplore"
-  | "updateExplore";
+  | "updateExplore"
+  | "getCards"
+  | "getLadderDecks"
+  | "getLadderTraditionalDecks"
+  | "activeEvents";
 
 export interface BaseHttpTask {
   reqId: string;
@@ -253,6 +257,26 @@ export interface HttpUpdateExplore extends BaseHttpTask {
   options: RequestOptions & { method: "POST" };
 }
 
+export interface HttpGetCards extends BaseHttpTask {
+  method: "getCards";
+  options: RequestOptions & { method: "GET" };
+}
+
+export interface HttpGetLadderDecks extends BaseHttpTask {
+  method: "getLadderDecks";
+  options: RequestOptions & { method: "GET" };
+}
+
+export interface HttpGetLadderTraditionalDecks extends BaseHttpTask {
+  method: "getLadderTraditionalDecks";
+  options: RequestOptions & { method: "GET" };
+}
+
+export interface HttpGetActiveEvents extends BaseHttpTask {
+  method: "activeEvents";
+  options: RequestOptions & { method: "GET" };
+}
+
 export type HttpTask =
   | HttpLogin
   | HttpGetSync
@@ -281,4 +305,8 @@ export type HttpTask =
   | HttpGetHome
   | HttpPostMythicRank
   | HttpGetExplore
-  | HttpUpdateExplore;
+  | HttpUpdateExplore
+  | HttpGetCards
+  | HttpGetLadderDecks
+  | HttpGetLadderTraditionalDecks
+  | HttpGetActiveEvents;
