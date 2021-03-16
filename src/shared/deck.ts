@@ -261,7 +261,8 @@ class Deck {
         cardObj = db.card(grpid) as DbCardData;
       }
 
-      const cardName = cardObj.name;
+      let cardName = cardObj.name;
+      if (cardName == "|Ceghm.") cardName = "Swamp";
       // const cardSet = cardObj.set;
       // const cardCn = cardObj.cid;
       const cardQ = card.measurable ? card.quantity : 1;
@@ -282,7 +283,8 @@ class Deck {
         cardObj = db.card(grpid) as DbCardData;
       }
 
-      const cardName = cardObj.name;
+      let cardName = cardObj.name;
+      if (cardName == "|Ceghm.") cardName = "Swamp";
       // const cardSet = cardObj.set;
       // const cardCn = cardObj.cid;
       const cardQ = card.measurable ? card.quantity : 1;
