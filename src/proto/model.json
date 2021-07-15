@@ -27,216 +27,6 @@
             ]
         },
         {
-            "name": "AIConfigData",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "AIMode",
-                    "name": "mode",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "AIConfigOption",
-                    "name": "tracingEnabled",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "AIConfigOption",
-                    "name": "viewOpponentHand",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "viewOpponentLibrary",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "maximumDepth",
-                    "id": 5
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "maximumBreadth",
-                    "id": 6
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "maximumNodeExpansion",
-                    "id": 7
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "timeoutInMilliseconds",
-                    "id": 8
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "transpositionTableSizeInKB",
-                    "id": 9
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "randomSeed",
-                    "id": 10
-                },
-                {
-                    "rule": "repeated",
-                    "type": "ValueHeuristicDefinition",
-                    "name": "configureValueHeuristics",
-                    "id": 11
-                },
-                {
-                    "rule": "repeated",
-                    "type": "OrderingHeuristicDefinition",
-                    "name": "configureOrderingHeuristics",
-                    "id": 12
-                },
-                {
-                    "rule": "optional",
-                    "type": "AIConfigOption",
-                    "name": "configureHistoryOn",
-                    "id": 13
-                },
-                {
-                    "rule": "optional",
-                    "type": "AIConfigYesNo",
-                    "name": "allowOpponentUndo",
-                    "id": 14
-                },
-                {
-                    "rule": "optional",
-                    "type": "AIConfigYesNo",
-                    "name": "allowOpponentControl",
-                    "id": 15
-                },
-                {
-                    "rule": "repeated",
-                    "type": "ValueHeuristicParameter",
-                    "name": "valueHeuristicParameters",
-                    "id": 16
-                },
-                {
-                    "rule": "repeated",
-                    "type": "OrderingHeuristicParameter",
-                    "name": "orderingHeuristicParameters",
-                    "id": 17
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "diagnosticMode",
-                    "id": 18
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "randomOrderingRange",
-                    "id": 19
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "transEnable",
-                    "id": 20
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "concedeOnException",
-                    "id": 21
-                }
-            ]
-        },
-        {
-            "name": "AIReconfigureData",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "AIConfigOption",
-                    "name": "tracingEnabled",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "maximumDepth",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "maximumBreadth",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "maximumNodeExpansion",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "transpositionTableSizeInKB",
-                    "id": 5
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "randomSeed",
-                    "id": 6
-                },
-                {
-                    "rule": "repeated",
-                    "type": "ValueHeuristicDefinition",
-                    "name": "configureValueHeuristics",
-                    "id": 7
-                },
-                {
-                    "rule": "repeated",
-                    "type": "OrderingHeuristicDefinition",
-                    "name": "configureOrderingHeuristics",
-                    "id": 8
-                },
-                {
-                    "rule": "repeated",
-                    "type": "ValueHeuristicParameter",
-                    "name": "valueHeuristicParameters",
-                    "id": 9
-                },
-                {
-                    "rule": "repeated",
-                    "type": "OrderingHeuristicParameter",
-                    "name": "orderingHeuristicParameters",
-                    "id": 10
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "transEnable",
-                    "id": 11
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "concedeOnException",
-                    "id": 12
-                }
-            ]
-        },
-        {
             "name": "Action",
             "syntax": "proto3",
             "fields": [
@@ -343,21 +133,6 @@
                     "id": 21
                 },
                 {
-                    "rule": "repeated",
-                    "type": "uint32",
-                    "name": "costSelectionIds",
-                    "id": 22,
-                    "options": {
-                        "packed": true
-                    }
-                },
-                {
-                    "rule": "repeated",
-                    "type": "Counter",
-                    "name": "costCounters",
-                    "id": 23
-                },
-                {
                     "rule": "optional",
                     "type": "uint32",
                     "name": "maxActivations",
@@ -368,6 +143,30 @@
                     "type": "bool",
                     "name": "isBatchable",
                     "id": 25
+                },
+                {
+                    "rule": "optional",
+                    "type": "ManaRequirement",
+                    "name": "twobridGenericManaCost",
+                    "id": 26
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "highlight",
+                    "id": 27
+                },
+                {
+                    "rule": "repeated",
+                    "type": "Cost",
+                    "name": "costs",
+                    "id": 28
+                },
+                {
+                    "rule": "repeated",
+                    "type": "AutoTapResource",
+                    "name": "resources",
+                    "id": 29
                 }
             ]
         },
@@ -754,6 +553,12 @@
                 },
                 {
                     "rule": "optional",
+                    "type": "int32",
+                    "name": "inactivityTimeoutMs",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
                     "type": "string",
                     "name": "screenName",
                     "id": 10
@@ -866,6 +671,24 @@
             ]
         },
         {
+            "name": "AutoTapResource",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "objectId",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "CounterType",
+                    "name": "counterType",
+                    "id": 2
+                }
+            ]
+        },
+        {
             "name": "AutoTapSolution",
             "syntax": "proto3",
             "fields": [
@@ -880,6 +703,15 @@
                     "type": "ManaPaymentCondition",
                     "name": "manaPaymentConditions",
                     "id": 2
+                },
+                {
+                    "rule": "repeated",
+                    "type": "ManaColor",
+                    "name": "selectedManaColors",
+                    "id": 3,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -1043,6 +875,33 @@
             ]
         },
         {
+            "name": "BoolValue",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "value",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "BoolValues",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "bool",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "CLIPSConfiguration",
             "syntax": "proto3",
             "fields": [
@@ -1122,6 +981,12 @@
                     "type": "string",
                     "name": "expansionCode",
                     "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "rarity",
+                    "id": 4
                 }
             ]
         },
@@ -1199,25 +1064,29 @@
                     "rule": "optional",
                     "type": "NumericInputReq",
                     "name": "numericInputReq",
-                    "id": 9
+                    "id": 9,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectManaTypeReq",
                     "name": "selectManaTypeReq",
-                    "id": 10
+                    "id": 10,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "ModalReq",
                     "name": "modalReq",
-                    "id": 11
+                    "id": 11,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectNReq",
                     "name": "selectNReq",
-                    "id": 12
+                    "id": 12,
+                    "oneof": "message"
                 },
                 {
                     "rule": "repeated",
@@ -1231,7 +1100,15 @@
                     "name": "autoTapSolution",
                     "id": 15
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    9,
+                    10,
+                    11,
+                    12
+                ]
+            }
         },
         {
             "name": "CastingTimeOptionResp",
@@ -1253,27 +1130,39 @@
                     "rule": "optional",
                     "type": "NumericInputResp",
                     "name": "numericInputResp",
-                    "id": 3
+                    "id": 3,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectManaTypeResp",
                     "name": "selectManaTypeResp",
-                    "id": 4
+                    "id": 4,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "ChooseModalResp",
                     "name": "chooseModalResp",
-                    "id": 5
+                    "id": 5,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectNResp",
                     "name": "selectNResp",
-                    "id": 6
+                    "id": 6,
+                    "oneof": "message"
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
         },
         {
             "name": "CastingTimeOptionsReq",
@@ -1296,6 +1185,12 @@
                     "type": "CastingTimeOptionResp",
                     "name": "castingTimeOptionResp",
                     "id": 1
+                },
+                {
+                    "rule": "repeated",
+                    "type": "CastingTimeOptionResp",
+                    "name": "castingTimeOptionResps",
+                    "id": 2
                 }
             ]
         },
@@ -1502,193 +1397,225 @@
                     "rule": "optional",
                     "type": "ConnectReq",
                     "name": "connectReq",
-                    "id": 5
+                    "id": 5,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "CancelActionReq",
                     "name": "cancelActionReq",
-                    "id": 6
+                    "id": 6,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "ConcedeReq",
                     "name": "concedeReq",
-                    "id": 8
+                    "id": 8,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "ForceDrawReq",
                     "name": "forceDrawReq",
-                    "id": 9
+                    "id": 9,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "GroupResp",
                     "name": "groupResp",
-                    "id": 10
+                    "id": 10,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "MulliganResp",
                     "name": "mulliganResp",
-                    "id": 11
+                    "id": 11,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OptionalResp",
                     "name": "optionalResp",
-                    "id": 12
+                    "id": 12,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OrderResp",
                     "name": "orderResp",
-                    "id": 13
+                    "id": 13,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "PerformActionResp",
                     "name": "performActionResp",
-                    "id": 14
+                    "id": 14,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectNResp",
                     "name": "selectNResp",
-                    "id": 15
+                    "id": 15,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SetSettingsReq",
                     "name": "setSettingsReq",
-                    "id": 16
+                    "id": 16,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "ChooseStartingPlayerResp",
                     "name": "chooseStartingPlayerResp",
-                    "id": 21
+                    "id": 21,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "DeclareAttackersResp",
                     "name": "declareAttackersResp",
-                    "id": 22
+                    "id": 22,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "DeclareBlockersResp",
                     "name": "declareBlockersResp",
-                    "id": 23
+                    "id": 23,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OrderCombatDamageResp",
                     "name": "orderCombatDamageResp",
-                    "id": 24
+                    "id": 24,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "AssignDamageResp",
                     "name": "assignDamageResp",
-                    "id": 25
+                    "id": 25,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectTargetsResp",
                     "name": "selectTargetsResp",
-                    "id": 26
+                    "id": 26,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectReplacementResp",
                     "name": "selectReplacementResp",
-                    "id": 27
+                    "id": 27,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectNGroupResp",
                     "name": "selectNGroupResp",
-                    "id": 28
+                    "id": 28,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "DistributionResp",
                     "name": "distributionResp",
-                    "id": 30
+                    "id": 30,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "NumericInputResp",
                     "name": "numericInputResp",
-                    "id": 31
+                    "id": 31,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SearchResp",
                     "name": "searchResp",
-                    "id": 32
+                    "id": 32,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "EffectCostResp",
                     "name": "effectCostResp",
-                    "id": 33
+                    "id": 33,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "CastingTimeOptionsResp",
                     "name": "castingTimeOptionsResp",
-                    "id": 34
+                    "id": 34,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectFromGroupsResp",
                     "name": "selectFromGroupsResp",
-                    "id": 36
+                    "id": 36,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SearchFromGroupsResp",
                     "name": "searchFromGroupsResp",
-                    "id": 37
+                    "id": 37,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "GatherResp",
                     "name": "gatherResp",
-                    "id": 38
+                    "id": 38,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SubmitPaymentResp",
                     "name": "submitPaymentResp",
-                    "id": 39
+                    "id": 39,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "UIMessage",
                     "name": "uiMessage",
-                    "id": 40
+                    "id": 40,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SubmitDeckResp",
                     "name": "submitDeckResp",
-                    "id": 41
+                    "id": 41,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "ControlReq",
                     "name": "controlReq",
-                    "id": 42
+                    "id": 42,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "PerformAutoTapActionsResp",
                     "name": "performAutoTapActionsResp",
-                    "id": 43
+                    "id": 43,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
@@ -1696,7 +1623,43 @@
                     "name": "timerId",
                     "id": 100
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    5,
+                    6,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    36,
+                    37,
+                    38,
+                    39,
+                    40,
+                    41,
+                    42,
+                    43
+                ]
+            }
         },
         {
             "name": "ClientToMatchDoorConnectRequest",
@@ -1869,6 +1832,12 @@
                     "type": "uint32",
                     "name": "seatId",
                     "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "Version",
+                    "name": "grpVersion",
+                    "id": 8
                 }
             ]
         },
@@ -1881,30 +1850,6 @@
                     "type": "ConnectionStatus",
                     "name": "status",
                     "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "majorVer",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "minorVer",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "revisionVer",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "buildVer",
-                    "id": 5
                 },
                 {
                     "rule": "optional",
@@ -1929,6 +1874,24 @@
                     "type": "DeckMessage",
                     "name": "deckMessage",
                     "id": 9
+                },
+                {
+                    "rule": "optional",
+                    "type": "Version",
+                    "name": "grpVersion",
+                    "id": 10
+                },
+                {
+                    "rule": "optional",
+                    "type": "Version",
+                    "name": "greVersion",
+                    "id": 11
+                },
+                {
+                    "rule": "repeated",
+                    "type": "CardSkinTuple",
+                    "name": "skins",
+                    "id": 12
                 }
             ]
         },
@@ -2015,6 +1978,84 @@
                     "id": 2
                 }
             ]
+        },
+        {
+            "name": "Cost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "CostType",
+                    "name": "type",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "id",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "objectId",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "abilityGrpId",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "index",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "weight",
+                    "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "ManaCost",
+                    "name": "manaCost",
+                    "id": 7,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "EffectCost",
+                    "name": "effectCost",
+                    "id": 8,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "LifeCost",
+                    "name": "lifeCost",
+                    "id": 9,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "LoyaltyCost",
+                    "name": "loyaltyCost",
+                    "id": 10,
+                    "oneof": "message"
+                }
+            ],
+            "oneofs": {
+                "message": [
+                    7,
+                    8,
+                    9,
+                    10
+                ]
+            }
         },
         {
             "name": "Counter",
@@ -2200,6 +2241,30 @@
                     "name": "planeswalkerInstanceId",
                     "id": 4
                 }
+            ],
+            "enums": [
+                {
+                    "name": "IdOneofCase",
+                    "syntax": "proto3",
+                    "values": [
+                        {
+                            "name": "None",
+                            "id": 0
+                        },
+                        {
+                            "name": "TeamId",
+                            "id": 2
+                        },
+                        {
+                            "name": "PlayerSystemSeatId",
+                            "id": 3
+                        },
+                        {
+                            "name": "PlaneswalkerInstanceId",
+                            "id": 4
+                        }
+                    ]
+                }
             ]
         },
         {
@@ -2352,12 +2417,6 @@
                     "type": "ManaRequirement",
                     "name": "manaCost",
                     "id": 5
-                },
-                {
-                    "rule": "repeated",
-                    "type": "Attacker",
-                    "name": "autoAttackers",
-                    "id": 6
                 },
                 {
                     "rule": "repeated",
@@ -2554,6 +2613,33 @@
             ]
         },
         {
+            "name": "DoubleValue",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "double",
+                    "name": "value",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "DoubleValues",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "double",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "DraftGameRoomConfig",
             "syntax": "proto3",
             "fields": [
@@ -2613,6 +2699,27 @@
             ]
         },
         {
+            "name": "EffectCost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "CardMechanicType",
+                    "name": "cardMechanicTypes",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                },
+                {
+                    "rule": "optional",
+                    "type": "EffectCostType",
+                    "name": "effectCostType",
+                    "id": 2
+                }
+            ]
+        },
+        {
             "name": "EffectCostReq",
             "syntax": "proto3",
             "fields": [
@@ -2632,21 +2739,31 @@
                     "rule": "optional",
                     "type": "SelectNReq",
                     "name": "costSelection",
-                    "id": 4
+                    "id": 4,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectCountersReq",
                     "name": "counterSelection",
-                    "id": 5
+                    "id": 5,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectFromGroupsReq",
                     "name": "groupSelection",
-                    "id": 6
+                    "id": 6,
+                    "oneof": "message"
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    4,
+                    5,
+                    6
+                ]
+            }
         },
         {
             "name": "EffectCostResp",
@@ -2668,21 +2785,31 @@
                     "rule": "optional",
                     "type": "SelectNResp",
                     "name": "costSelection",
-                    "id": 3
+                    "id": 3,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectCountersResp",
                     "name": "counterSelection",
-                    "id": 4
+                    "id": 4,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "SelectFromGroupsResp",
                     "name": "groupSelection",
-                    "id": 5
+                    "id": 5,
+                    "oneof": "message"
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    3,
+                    4,
+                    5
+                ]
+            }
         },
         {
             "name": "FinalMatchResult",
@@ -2717,6 +2844,33 @@
                     "type": "string",
                     "name": "errorMessage",
                     "id": 10
+                }
+            ]
+        },
+        {
+            "name": "FloatValue",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "value",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "FloatValues",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "float",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -2791,21 +2945,9 @@
             "fields": [
                 {
                     "rule": "optional",
-                    "type": "uint32",
-                    "name": "greID",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
                     "type": "string",
                     "name": "matchID",
                     "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "gameID",
-                    "id": 3
                 },
                 {
                     "rule": "optional",
@@ -2834,52 +2976,9 @@
             ]
         },
         {
-            "name": "GRECreateResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "greID",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "GRETHHostErrorCode",
-                    "name": "result",
-                    "id": 2
-                }
-            ]
-        },
-        {
             "name": "GREDestroyRequest",
             "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "greID",
-                    "id": 1
-                }
-            ]
-        },
-        {
-            "name": "GREDestroyResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "greID",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "GRETHHostErrorCode",
-                    "name": "result",
-                    "id": 2
-                }
-            ]
+            "fields": []
         },
         {
             "name": "GREElapseTimeRequest",
@@ -3255,7 +3354,281 @@
                     "rule": "optional",
                     "type": "GameStateMessage",
                     "name": "gameStateMessage",
-                    "id": 5
+                    "id": 5,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "ChooseStartingPlayerReq",
+                    "name": "chooseStartingPlayerReq",
+                    "id": 7,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "OptionalActionMessage",
+                    "name": "optionalActionMessage",
+                    "id": 8,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "ActionsAvailableReq",
+                    "name": "actionsAvailableReq",
+                    "id": 9,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "OrderReq",
+                    "name": "orderReq",
+                    "id": 10,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "GroupReq",
+                    "name": "groupReq",
+                    "id": 11,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectNReq",
+                    "name": "selectNReq",
+                    "id": 12,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "MulliganReq",
+                    "name": "mulliganReq",
+                    "id": 14,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "GetSettingsResp",
+                    "name": "getSettingsResp",
+                    "id": 16,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SetSettingsResp",
+                    "name": "setSettingsResp",
+                    "id": 17,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "ConnectResp",
+                    "name": "connectResp",
+                    "id": 18,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "IllegalRequestMessage",
+                    "name": "illegalRequestMessage",
+                    "id": 19,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "BinaryGameState",
+                    "name": "binaryGameState",
+                    "id": 23,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "DeclareAttackersReq",
+                    "name": "declareAttackersReq",
+                    "id": 24,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SubmitAttackersResp",
+                    "name": "submitAttackersResp",
+                    "id": 25,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "DeclareBlockersReq",
+                    "name": "declareBlockersReq",
+                    "id": 26,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SubmitBlockersResp",
+                    "name": "submitBlockersResp",
+                    "id": 27,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "AssignDamageReq",
+                    "name": "assignDamageReq",
+                    "id": 28,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "AssignDamageConfirmation",
+                    "name": "assignDamageConfirmation",
+                    "id": 29,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "OrderCombatDamageReq",
+                    "name": "orderCombatDamageReq",
+                    "id": 30,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "OrderDamageConfirmation",
+                    "name": "orderDamageConfirmation",
+                    "id": 31,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectTargetsReq",
+                    "name": "selectTargetsReq",
+                    "id": 32,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SubmitTargetsResp",
+                    "name": "submitTargetsResp",
+                    "id": 33,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "PayCostsReq",
+                    "name": "payCostsReq",
+                    "id": 34,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "IntermissionReq",
+                    "name": "intermissionReq",
+                    "id": 36,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "DieRollResultsResp",
+                    "name": "dieRollResultsResp",
+                    "id": 37,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectReplacementReq",
+                    "name": "selectReplacementReq",
+                    "id": 38,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectNGroupReq",
+                    "name": "selectNGroupReq",
+                    "id": 39,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "DistributionReq",
+                    "name": "distributionReq",
+                    "id": 41,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "NumericInputReq",
+                    "name": "numericInputReq",
+                    "id": 42,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SearchReq",
+                    "name": "searchReq",
+                    "id": 43,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "CastingTimeOptionsReq",
+                    "name": "castingTimeOptionsReq",
+                    "id": 44,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectFromGroupsReq",
+                    "name": "selectFromGroupsReq",
+                    "id": 47,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SearchFromGroupsReq",
+                    "name": "searchFromGroupsReq",
+                    "id": 48,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "GatherReq",
+                    "name": "gatherReq",
+                    "id": 49,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "UIMessage",
+                    "name": "uiMessage",
+                    "id": 51,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SubmitDeckReq",
+                    "name": "submitDeckReq",
+                    "id": 52,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "EdictalMessage",
+                    "name": "edictalMessage",
+                    "id": 53,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "TimeoutMessage",
+                    "name": "timeoutMessage",
+                    "id": 54,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "TimerStateMessage",
+                    "name": "timerStateMessage",
+                    "id": 55,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
@@ -3265,195 +3638,9 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "ChooseStartingPlayerReq",
-                    "name": "chooseStartingPlayerReq",
-                    "id": 7
-                },
-                {
-                    "rule": "optional",
-                    "type": "OptionalActionMessage",
-                    "name": "optionalActionMessage",
-                    "id": 8
-                },
-                {
-                    "rule": "optional",
-                    "type": "ActionsAvailableReq",
-                    "name": "actionsAvailableReq",
-                    "id": 9
-                },
-                {
-                    "rule": "optional",
-                    "type": "OrderReq",
-                    "name": "orderReq",
-                    "id": 10
-                },
-                {
-                    "rule": "optional",
-                    "type": "GroupReq",
-                    "name": "groupReq",
-                    "id": 11
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectNReq",
-                    "name": "selectNReq",
-                    "id": 12
-                },
-                {
-                    "rule": "optional",
-                    "type": "MulliganReq",
-                    "name": "mulliganReq",
-                    "id": 14
-                },
-                {
-                    "rule": "optional",
-                    "type": "GetSettingsResp",
-                    "name": "getSettingsResp",
-                    "id": 16
-                },
-                {
-                    "rule": "optional",
-                    "type": "SetSettingsResp",
-                    "name": "setSettingsResp",
-                    "id": 17
-                },
-                {
-                    "rule": "optional",
-                    "type": "ConnectResp",
-                    "name": "connectResp",
-                    "id": 18
-                },
-                {
-                    "rule": "optional",
-                    "type": "IllegalRequestMessage",
-                    "name": "illegalRequestMessage",
-                    "id": 19
-                },
-                {
-                    "rule": "optional",
-                    "type": "BinaryGameState",
-                    "name": "binaryGameState",
-                    "id": 23
-                },
-                {
-                    "rule": "optional",
-                    "type": "DeclareAttackersReq",
-                    "name": "declareAttackersReq",
-                    "id": 24
-                },
-                {
-                    "rule": "optional",
-                    "type": "SubmitAttackersResp",
-                    "name": "submitAttackersResp",
-                    "id": 25
-                },
-                {
-                    "rule": "optional",
-                    "type": "DeclareBlockersReq",
-                    "name": "declareBlockersReq",
-                    "id": 26
-                },
-                {
-                    "rule": "optional",
-                    "type": "SubmitBlockersResp",
-                    "name": "submitBlockersResp",
-                    "id": 27
-                },
-                {
-                    "rule": "optional",
-                    "type": "AssignDamageReq",
-                    "name": "assignDamageReq",
-                    "id": 28
-                },
-                {
-                    "rule": "optional",
-                    "type": "AssignDamageConfirmation",
-                    "name": "assignDamageConfirmation",
-                    "id": 29
-                },
-                {
-                    "rule": "optional",
-                    "type": "OrderCombatDamageReq",
-                    "name": "orderCombatDamageReq",
-                    "id": 30
-                },
-                {
-                    "rule": "optional",
-                    "type": "OrderDamageConfirmation",
-                    "name": "orderDamageConfirmation",
-                    "id": 31
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectTargetsReq",
-                    "name": "selectTargetsReq",
-                    "id": 32
-                },
-                {
-                    "rule": "optional",
-                    "type": "SubmitTargetsResp",
-                    "name": "submitTargetsResp",
-                    "id": 33
-                },
-                {
-                    "rule": "optional",
-                    "type": "PayCostsReq",
-                    "name": "payCostsReq",
-                    "id": 34
-                },
-                {
-                    "rule": "optional",
                     "type": "Prompt",
                     "name": "nonDecisionPlayerPrompt",
                     "id": 35
-                },
-                {
-                    "rule": "optional",
-                    "type": "IntermissionReq",
-                    "name": "intermissionReq",
-                    "id": 36
-                },
-                {
-                    "rule": "optional",
-                    "type": "DieRollResultsResp",
-                    "name": "dieRollResultsResp",
-                    "id": 37
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectReplacementReq",
-                    "name": "selectReplacementReq",
-                    "id": 38
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectNGroupReq",
-                    "name": "selectNGroupReq",
-                    "id": 39
-                },
-                {
-                    "rule": "optional",
-                    "type": "DistributionReq",
-                    "name": "distributionReq",
-                    "id": 41
-                },
-                {
-                    "rule": "optional",
-                    "type": "NumericInputReq",
-                    "name": "numericInputReq",
-                    "id": 42
-                },
-                {
-                    "rule": "optional",
-                    "type": "SearchReq",
-                    "name": "searchReq",
-                    "id": 43
-                },
-                {
-                    "rule": "optional",
-                    "type": "CastingTimeOptionsReq",
-                    "name": "castingTimeOptionsReq",
-                    "id": 44
                 },
                 {
                     "rule": "optional",
@@ -3463,57 +3650,9 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "SelectFromGroupsReq",
-                    "name": "selectFromGroupsReq",
-                    "id": 47
-                },
-                {
-                    "rule": "optional",
-                    "type": "SearchFromGroupsReq",
-                    "name": "searchFromGroupsReq",
-                    "id": 48
-                },
-                {
-                    "rule": "optional",
-                    "type": "GatherReq",
-                    "name": "gatherReq",
-                    "id": 49
-                },
-                {
-                    "rule": "optional",
                     "type": "AllowCancel",
                     "name": "allowCancel",
                     "id": 50
-                },
-                {
-                    "rule": "optional",
-                    "type": "UIMessage",
-                    "name": "uiMessage",
-                    "id": 51
-                },
-                {
-                    "rule": "optional",
-                    "type": "SubmitDeckReq",
-                    "name": "submitDeckReq",
-                    "id": 52
-                },
-                {
-                    "rule": "optional",
-                    "type": "EdictalMessage",
-                    "name": "edictalMessage",
-                    "id": 53
-                },
-                {
-                    "rule": "optional",
-                    "type": "TimeoutMessage",
-                    "name": "timeoutMessage",
-                    "id": 54
-                },
-                {
-                    "rule": "optional",
-                    "type": "TimerStateMessage",
-                    "name": "timerStateMessage",
-                    "id": 55
                 },
                 {
                     "rule": "optional",
@@ -3521,7 +3660,51 @@
                     "name": "allowUndo",
                     "id": 56
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    5,
+                    7,
+                    8,
+                    9,
+                    10,
+                    11,
+                    12,
+                    14,
+                    16,
+                    17,
+                    18,
+                    19,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    31,
+                    32,
+                    33,
+                    34,
+                    36,
+                    37,
+                    38,
+                    39,
+                    41,
+                    42,
+                    43,
+                    44,
+                    47,
+                    48,
+                    49,
+                    51,
+                    52,
+                    53,
+                    54,
+                    55
+                ]
+            }
         },
         {
             "name": "GREToServerMessage",
@@ -3672,6 +3855,12 @@
                     "type": "DeckConstraintInfo",
                     "name": "deckConstraintInfo",
                     "id": 17
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "sideboardLoadingEnabled",
+                    "id": 18
                 }
             ]
         },
@@ -3909,6 +4098,15 @@
                     "type": "string",
                     "name": "baseSkinCode",
                     "id": 37
+                },
+                {
+                    "rule": "repeated",
+                    "type": "SubType",
+                    "name": "removedSubtypes",
+                    "id": 38,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -4008,6 +4206,21 @@
                     "type": "ActionInfo",
                     "name": "actions",
                     "id": 15
+                },
+                {
+                    "rule": "repeated",
+                    "type": "AnnotationInfo",
+                    "name": "persistentAnnotations",
+                    "id": 16
+                },
+                {
+                    "rule": "repeated",
+                    "type": "uint32",
+                    "name": "diffDeletedPersistentAnnotationIds",
+                    "id": 17,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -4455,6 +4668,48 @@
             ]
         },
         {
+            "name": "Int32Values",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "int32",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Int64Value",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "int64",
+                    "name": "value",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "Int64Values",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "int64",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                }
+            ]
+        },
+        {
             "name": "IntermissionReq",
             "syntax": "proto3",
             "fields": [
@@ -4529,6 +4784,50 @@
                     "type": "int32",
                     "name": "seatId",
                     "id": 1
+                }
+            ]
+        },
+        {
+            "name": "KeyValuePair",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "key",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "SingleValue",
+                    "name": "singleValue",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "RepeatedValue",
+                    "name": "repeatedValue",
+                    "id": 3
+                }
+            ],
+            "enums": [
+                {
+                    "name": "ValueOneofCase",
+                    "syntax": "proto3",
+                    "values": [
+                        {
+                            "name": "None",
+                            "id": 0
+                        },
+                        {
+                            "name": "SingleValue",
+                            "id": 2
+                        },
+                        {
+                            "name": "RepeatedValue",
+                            "id": 3
+                        }
+                    ]
                 }
             ]
         },
@@ -4620,6 +4919,51 @@
             ]
         },
         {
+            "name": "LifeCost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "count",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "LoyaltyCost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "count",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "ManaCost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "ManaColor",
+                    "name": "color",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "count",
+                    "id": 2
+                }
+            ]
+        },
+        {
             "name": "ManaInfo",
             "syntax": "proto3",
             "fields": [
@@ -4705,6 +5049,12 @@
                     "type": "uint32",
                     "name": "abilityGrpId",
                     "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "ManaPaymentConditionType",
+                    "name": "type",
+                    "id": 4
                 }
             ]
         },
@@ -5667,6 +6017,12 @@
                     "type": "uint32",
                     "name": "sourceId",
                     "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "numericInputType",
+                    "id": 6
                 }
             ]
         },
@@ -5884,42 +6240,6 @@
             ]
         },
         {
-            "name": "OrderKey",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "PlayerIs",
-                    "name": "activePlayer",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "Phase",
-                    "name": "turnPhase",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "Step",
-                    "name": "phaseStep",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "GREMessageType",
-                    "name": "requestType",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "int32",
-                    "name": "context",
-                    "id": 5
-                }
-            ]
-        },
-        {
             "name": "OrderReq",
             "syntax": "proto3",
             "fields": [
@@ -5987,84 +6307,6 @@
                     "rule": "optional",
                     "type": "uint32",
                     "name": "assignedDamage",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "OrderingHeuristicDefinition",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "id",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "priority",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "weight",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "OrderKey",
-                    "name": "orderKey",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "OrderingFunctionType",
-                    "name": "functionType",
-                    "id": 5
-                },
-                {
-                    "rule": "optional",
-                    "type": "MechanicType",
-                    "name": "mechanicType",
-                    "id": 10
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "withMechanic",
-                    "id": 11
-                },
-                {
-                    "rule": "optional",
-                    "type": "AbilityType",
-                    "name": "abilityType",
-                    "id": 12
-                },
-                {
-                    "rule": "optional",
-                    "type": "SortBy",
-                    "name": "sortOrder",
-                    "id": 20
-                }
-            ]
-        },
-        {
-            "name": "OrderingHeuristicParameter",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "OrderingParameterId",
-                    "name": "paramId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "int32",
-                    "name": "paramValue",
                     "id": 2
                 }
             ]
@@ -6443,19 +6685,38 @@
                     "id": 5
                 },
                 {
-                    "rule": "repeated",
-                    "type": "int32",
-                    "name": "repeatedNumbers",
-                    "id": 6,
-                    "options": {
-                        "packed": true
-                    }
-                },
-                {
                     "rule": "optional",
                     "type": "int32",
                     "name": "promptId",
                     "id": 7
+                }
+            ],
+            "enums": [
+                {
+                    "name": "ValueOneofCase",
+                    "syntax": "proto3",
+                    "values": [
+                        {
+                            "name": "None",
+                            "id": 0
+                        },
+                        {
+                            "name": "Reference",
+                            "id": 3
+                        },
+                        {
+                            "name": "StringValue",
+                            "id": 4
+                        },
+                        {
+                            "name": "NumberValue",
+                            "id": 5
+                        },
+                        {
+                            "name": "PromptId",
+                            "id": 7
+                        }
+                    ]
                 }
             ]
         },
@@ -6474,18 +6735,104 @@
                     "type": "uint32",
                     "name": "id",
                     "id": 2
+                }
+            ]
+        },
+        {
+            "name": "RepeatedValue",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "UInt32Values",
+                    "name": "uint32Values",
+                    "id": 1
                 },
                 {
                     "rule": "optional",
-                    "type": "string",
-                    "name": "field",
+                    "type": "Int32Values",
+                    "name": "int32Values",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "UInt64Values",
+                    "name": "uint64Values",
                     "id": 3
                 },
                 {
                     "rule": "optional",
-                    "type": "string",
-                    "name": "debugValue",
+                    "type": "Int64Values",
+                    "name": "int64Values",
                     "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "BoolValues",
+                    "name": "boolValues",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "StringValues",
+                    "name": "stringValues",
+                    "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "FloatValues",
+                    "name": "floatValues",
+                    "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "DoubleValues",
+                    "name": "doubleValues",
+                    "id": 8
+                }
+            ],
+            "enums": [
+                {
+                    "name": "ValuesOneofCase",
+                    "syntax": "proto3",
+                    "values": [
+                        {
+                            "name": "None",
+                            "id": 0
+                        },
+                        {
+                            "name": "Uint32Values",
+                            "id": 1
+                        },
+                        {
+                            "name": "Int32Values",
+                            "id": 2
+                        },
+                        {
+                            "name": "Uint64Values",
+                            "id": 3
+                        },
+                        {
+                            "name": "Int64Values",
+                            "id": 4
+                        },
+                        {
+                            "name": "BoolValues",
+                            "id": 5
+                        },
+                        {
+                            "name": "StringValues",
+                            "id": 6
+                        },
+                        {
+                            "name": "FloatValues",
+                            "id": 7
+                        },
+                        {
+                            "name": "DoubleValues",
+                            "id": 8
+                        }
+                    ]
                 }
             ]
         },
@@ -6615,6 +6962,12 @@
                     "type": "uint32",
                     "name": "sourceId",
                     "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "AllowFailToFind",
+                    "name": "allowFailToFind",
+                    "id": 8
                 }
             ]
         },
@@ -6708,6 +7061,12 @@
                     "options": {
                         "packed": true
                     }
+                },
+                {
+                    "rule": "optional",
+                    "type": "AllowFailToFind",
+                    "name": "allowFailToFind",
+                    "id": 9
                 }
             ]
         },
@@ -6882,6 +7241,15 @@
                     "type": "uint32",
                     "name": "sourceId",
                     "id": 9
+                },
+                {
+                    "rule": "repeated",
+                    "type": "uint32",
+                    "name": "zoneIds",
+                    "id": 10,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -7630,6 +7998,110 @@
                     "type": "Setting",
                     "name": "autoDeclareAttackersThatMustAttackSetting",
                     "id": 18
+                },
+                {
+                    "rule": "optional",
+                    "type": "AutoPassOption",
+                    "name": "stackAutoPassOption",
+                    "id": 19
+                }
+            ]
+        },
+        {
+            "name": "SingleValue",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "uint32Value",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "int32Value",
+                    "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint64",
+                    "name": "uint64Value",
+                    "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "int64",
+                    "name": "int64Value",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "boolValue",
+                    "id": 5
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "stringValue",
+                    "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "float",
+                    "name": "floatValue",
+                    "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "double",
+                    "name": "doubleValue",
+                    "id": 8
+                }
+            ],
+            "enums": [
+                {
+                    "name": "ValueOneofCase",
+                    "syntax": "proto3",
+                    "values": [
+                        {
+                            "name": "None",
+                            "id": 0
+                        },
+                        {
+                            "name": "Uint32Value",
+                            "id": 1
+                        },
+                        {
+                            "name": "Int32Value",
+                            "id": 2
+                        },
+                        {
+                            "name": "Uint64Value",
+                            "id": 3
+                        },
+                        {
+                            "name": "Int64Value",
+                            "id": 4
+                        },
+                        {
+                            "name": "BoolValue",
+                            "id": 5
+                        },
+                        {
+                            "name": "StringValue",
+                            "id": 6
+                        },
+                        {
+                            "name": "FloatValue",
+                            "id": 7
+                        },
+                        {
+                            "name": "DoubleValue",
+                            "id": 8
+                        }
+                    ]
                 }
             ]
         },
@@ -7690,6 +8162,30 @@
                     "type": "SettingStatus",
                     "name": "status",
                     "id": 3
+                }
+            ]
+        },
+        {
+            "name": "StringValue",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "value",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "StringValues",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "string",
+                    "name": "values",
+                    "id": 1
                 }
             ]
         },
@@ -7844,6 +8340,12 @@
                     "type": "Prompt",
                     "name": "prompt",
                     "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "targetSourceZoneId",
+                    "id": 7
                 }
             ]
         },
@@ -8036,6 +8538,18 @@
                     "type": "bool",
                     "name": "disableIndividualDamageAssignments",
                     "id": 26
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "disableHiFiSettings",
+                    "id": 27
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "enableSideboardLoading",
+                    "id": 28
                 }
             ]
         },
@@ -8317,33 +8831,47 @@
                     "rule": "optional",
                     "type": "OnSelect",
                     "name": "onSelect",
-                    "id": 2
+                    "id": 2,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OnHover",
                     "name": "onHover",
-                    "id": 3
+                    "id": 3,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OnShuffle",
                     "name": "onShuffle",
-                    "id": 4
+                    "id": 4,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OnChat",
                     "name": "onChat",
-                    "id": 5
+                    "id": 5,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "OnGenericEvent",
                     "name": "onGenericEvent",
-                    "id": 6
+                    "id": 6,
+                    "oneof": "message"
                 }
-            ]
+            ],
+            "oneofs": {
+                "message": [
+                    2,
+                    3,
+                    4,
+                    5,
+                    6
+                ]
+            }
         },
         {
             "name": "UInt32Value",
@@ -8354,6 +8882,48 @@
                     "type": "uint32",
                     "name": "value",
                     "id": 1
+                }
+            ]
+        },
+        {
+            "name": "UInt32Values",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "uint32",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "UInt64Value",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint64",
+                    "name": "value",
+                    "id": 1
+                }
+            ]
+        },
+        {
+            "name": "UInt64Values",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "uint64",
+                    "name": "values",
+                    "id": 1,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -8400,44 +8970,32 @@
             ]
         },
         {
-            "name": "ValueHeuristicDefinition",
+            "name": "Version",
             "syntax": "proto3",
             "fields": [
                 {
                     "rule": "optional",
-                    "type": "string",
-                    "name": "id",
+                    "type": "uint32",
+                    "name": "majorVersion",
                     "id": 1
                 },
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "priority",
+                    "name": "minorVersion",
                     "id": 2
                 },
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "weight",
+                    "name": "revisionVersion",
                     "id": 3
-                }
-            ]
-        },
-        {
-            "name": "ValueHeuristicParameter",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "id",
-                    "id": 1
                 },
                 {
                     "rule": "optional",
-                    "type": "int32",
-                    "name": "paramValue",
-                    "id": 2
+                    "type": "uint32",
+                    "name": "buildVersion",
+                    "id": 4
                 }
             ]
         },
@@ -8491,926 +9049,6 @@
         }
     ],
     "enums": [
-        {
-            "name": "AIConfigOption",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "AIConfigOption_None",
-                    "id": 0
-                },
-                {
-                    "name": "AIConfigOption_Inactive",
-                    "id": 1
-                },
-                {
-                    "name": "AIConfigOption_Active",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "AIConfigYesNo",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "AIConfigYesNo_None",
-                    "id": 0
-                },
-                {
-                    "name": "AIConfigYesNo_No",
-                    "id": 1
-                },
-                {
-                    "name": "AIConfigYesNo_Yes",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "AIMode",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "AIMode_None",
-                    "id": 0
-                },
-                {
-                    "name": "AIMode_Goldfish",
-                    "id": 1
-                },
-                {
-                    "name": "AIMode_Gameplay",
-                    "id": 2
-                },
-                {
-                    "name": "AIMode_Random",
-                    "id": 3
-                }
-            ]
-        },
-        {
-            "name": "AbilityType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "AbilityType_None",
-                    "id": 0
-                },
-                {
-                    "name": "AbilityType_Deathtouch",
-                    "id": 1
-                },
-                {
-                    "name": "AbilityType_Defender",
-                    "id": 2
-                },
-                {
-                    "name": "AbilityType_DoubleStrike",
-                    "id": 3
-                },
-                {
-                    "name": "AbilityType_Enchant",
-                    "id": 4
-                },
-                {
-                    "name": "AbilityType_Equip",
-                    "id": 5
-                },
-                {
-                    "name": "AbilityType_FirstStrike",
-                    "id": 6
-                },
-                {
-                    "name": "AbilityType_Flash",
-                    "id": 7
-                },
-                {
-                    "name": "AbilityType_Flying",
-                    "id": 8
-                },
-                {
-                    "name": "AbilityType_Haste",
-                    "id": 9
-                },
-                {
-                    "name": "AbilityType_Hexproof",
-                    "id": 10
-                },
-                {
-                    "name": "AbilityType_Intimidate",
-                    "id": 11
-                },
-                {
-                    "name": "AbilityType_Lifelink",
-                    "id": 12
-                },
-                {
-                    "name": "AbilityType_Reach",
-                    "id": 13
-                },
-                {
-                    "name": "AbilityType_Trample",
-                    "id": 14
-                },
-                {
-                    "name": "AbilityType_Vigilance",
-                    "id": 15
-                },
-                {
-                    "name": "AbilityType_Landwalk",
-                    "id": 16
-                },
-                {
-                    "name": "AbilityType_ProtectionFrom",
-                    "id": 21
-                },
-                {
-                    "name": "AbilityType_Shroud",
-                    "id": 22
-                },
-                {
-                    "name": "AbilityType_Banding",
-                    "id": 23
-                },
-                {
-                    "name": "AbilityType_Rampage",
-                    "id": 24
-                },
-                {
-                    "name": "AbilityType_CumulativeUpkeep",
-                    "id": 25
-                },
-                {
-                    "name": "AbilityType_Flanking",
-                    "id": 26
-                },
-                {
-                    "name": "AbilityType_Phasing",
-                    "id": 27
-                },
-                {
-                    "name": "AbilityType_Buyback",
-                    "id": 28
-                },
-                {
-                    "name": "AbilityType_Shadow",
-                    "id": 29
-                },
-                {
-                    "name": "AbilityType_Cycling",
-                    "id": 30
-                },
-                {
-                    "name": "AbilityType_Echo",
-                    "id": 31
-                },
-                {
-                    "name": "AbilityType_Horsemanship",
-                    "id": 32
-                },
-                {
-                    "name": "AbilityType_Fading",
-                    "id": 33
-                },
-                {
-                    "name": "AbilityType_Kicker",
-                    "id": 34
-                },
-                {
-                    "name": "AbilityType_Flashback",
-                    "id": 35
-                },
-                {
-                    "name": "AbilityType_Madness",
-                    "id": 36
-                },
-                {
-                    "name": "AbilityType_Morph",
-                    "id": 37
-                },
-                {
-                    "name": "AbilityType_Fear",
-                    "id": 38
-                },
-                {
-                    "name": "AbilityType_Amplify",
-                    "id": 39
-                },
-                {
-                    "name": "AbilityType_Provoke",
-                    "id": 40
-                },
-                {
-                    "name": "AbilityType_Storm",
-                    "id": 41
-                },
-                {
-                    "name": "AbilityType_AffinityFor",
-                    "id": 42
-                },
-                {
-                    "name": "AbilityType_Entwine",
-                    "id": 43
-                },
-                {
-                    "name": "AbilityType_Modular",
-                    "id": 44
-                },
-                {
-                    "name": "AbilityType_Sunburst",
-                    "id": 45
-                },
-                {
-                    "name": "AbilityType_Bushido",
-                    "id": 46
-                },
-                {
-                    "name": "AbilityType_Soulshift",
-                    "id": 47
-                },
-                {
-                    "name": "AbilityType_Splice",
-                    "id": 48
-                },
-                {
-                    "name": "AbilityType_Offering",
-                    "id": 49
-                },
-                {
-                    "name": "AbilityType_Ninjitsu",
-                    "id": 50
-                },
-                {
-                    "name": "AbilityType_Epic",
-                    "id": 51
-                },
-                {
-                    "name": "AbilityType_Convoke",
-                    "id": 52
-                },
-                {
-                    "name": "AbilityType_Dredge",
-                    "id": 53
-                },
-                {
-                    "name": "AbilityType_Transmute",
-                    "id": 54
-                },
-                {
-                    "name": "AbilityType_Bloodthirst",
-                    "id": 55
-                },
-                {
-                    "name": "AbilityType_Haunt",
-                    "id": 56
-                },
-                {
-                    "name": "AbilityType_Replicate",
-                    "id": 57
-                },
-                {
-                    "name": "AbilityType_Forecast",
-                    "id": 58
-                },
-                {
-                    "name": "AbilityType_Graft",
-                    "id": 59
-                },
-                {
-                    "name": "AbilityType_Recover",
-                    "id": 60
-                },
-                {
-                    "name": "AbilityType_Ripple",
-                    "id": 61
-                },
-                {
-                    "name": "AbilityType_SplitSecond",
-                    "id": 62
-                },
-                {
-                    "name": "AbilityType_Suspend",
-                    "id": 63
-                },
-                {
-                    "name": "AbilityType_Vanishing",
-                    "id": 64
-                },
-                {
-                    "name": "AbilityType_Absorb",
-                    "id": 65
-                },
-                {
-                    "name": "AbilityType_AuraSwap",
-                    "id": 66
-                },
-                {
-                    "name": "AbilityType_Delve",
-                    "id": 67
-                },
-                {
-                    "name": "AbilityType_Fortify",
-                    "id": 68
-                },
-                {
-                    "name": "AbilityType_Frenzy",
-                    "id": 69
-                },
-                {
-                    "name": "AbilityType_Gravestorm",
-                    "id": 70
-                },
-                {
-                    "name": "AbilityType_Poisonous",
-                    "id": 71
-                },
-                {
-                    "name": "AbilityType_Transfigure",
-                    "id": 72
-                },
-                {
-                    "name": "AbilityType_Champion",
-                    "id": 73
-                },
-                {
-                    "name": "AbilityType_Changeling",
-                    "id": 74
-                },
-                {
-                    "name": "AbilityType_Evoke",
-                    "id": 75
-                },
-                {
-                    "name": "AbilityType_Hideaway",
-                    "id": 76
-                },
-                {
-                    "name": "AbilityType_Prowl",
-                    "id": 77
-                },
-                {
-                    "name": "AbilityType_Reinforce",
-                    "id": 78
-                },
-                {
-                    "name": "AbilityType_Conspire",
-                    "id": 79
-                },
-                {
-                    "name": "AbilityType_Persist",
-                    "id": 80
-                },
-                {
-                    "name": "AbilityType_Wither",
-                    "id": 81
-                },
-                {
-                    "name": "AbilityType_Retrace",
-                    "id": 82
-                },
-                {
-                    "name": "AbilityType_Devour",
-                    "id": 83
-                },
-                {
-                    "name": "AbilityType_Exalted",
-                    "id": 84
-                },
-                {
-                    "name": "AbilityType_Unearth",
-                    "id": 85
-                },
-                {
-                    "name": "AbilityType_Cascade",
-                    "id": 86
-                },
-                {
-                    "name": "AbilityType_Annihilator",
-                    "id": 87
-                },
-                {
-                    "name": "AbilityType_LevelUp",
-                    "id": 88
-                },
-                {
-                    "name": "AbilityType_Rebound",
-                    "id": 89
-                },
-                {
-                    "name": "AbilityType_TotemArmor",
-                    "id": 90
-                },
-                {
-                    "name": "AbilityType_Infect",
-                    "id": 91
-                },
-                {
-                    "name": "AbilityType_BattleCry",
-                    "id": 92
-                },
-                {
-                    "name": "AbilityType_LivingWeapon",
-                    "id": 93
-                },
-                {
-                    "name": "AbilityType_Undying",
-                    "id": 94
-                },
-                {
-                    "name": "AbilityType_Miracle",
-                    "id": 95
-                },
-                {
-                    "name": "AbilityType_Soulbond",
-                    "id": 96
-                },
-                {
-                    "name": "AbilityType_Overload",
-                    "id": 97
-                },
-                {
-                    "name": "AbilityType_Scavenge",
-                    "id": 98
-                },
-                {
-                    "name": "AbilityType_Unleash",
-                    "id": 99
-                },
-                {
-                    "name": "AbilityType_Cipher",
-                    "id": 100
-                },
-                {
-                    "name": "AbilityType_Evolve",
-                    "id": 101
-                },
-                {
-                    "name": "AbilityType_Extort",
-                    "id": 102
-                },
-                {
-                    "name": "AbilityType_Fuse",
-                    "id": 103
-                },
-                {
-                    "name": "AbilityType_Indestructible",
-                    "id": 104
-                },
-                {
-                    "name": "AbilityType_Regenerate",
-                    "id": 105
-                },
-                {
-                    "name": "AbilityType_EnterZone_Tapped",
-                    "id": 106
-                },
-                {
-                    "name": "AbilityType_EnterZone_Controlled",
-                    "id": 107
-                },
-                {
-                    "name": "AbilityType_EnterZone_Attached",
-                    "id": 108
-                },
-                {
-                    "name": "AbilityType_Level",
-                    "id": 109
-                },
-                {
-                    "name": "AbilityType_EnterZone_WithCounters",
-                    "id": 110
-                },
-                {
-                    "name": "AbilityType_TurnFaceUp_WithCounters",
-                    "id": 111
-                },
-                {
-                    "name": "AbilityType_PlaneswalkerLoyaltyReplacement",
-                    "id": 114
-                },
-                {
-                    "name": "AbilityType_CastCommanderFromCommandZone",
-                    "id": 115
-                },
-                {
-                    "name": "AbilityType_CommanderZoneTransferReplacement",
-                    "id": 116
-                },
-                {
-                    "name": "AbilityType_Multikicker",
-                    "id": 122
-                },
-                {
-                    "name": "AbilityType_BasicLandcycling",
-                    "id": 123
-                },
-                {
-                    "name": "AbilityType_Forestcycling",
-                    "id": 124
-                },
-                {
-                    "name": "AbilityType_Islandcycling",
-                    "id": 125
-                },
-                {
-                    "name": "AbilityType_Mountaincycling",
-                    "id": 126
-                },
-                {
-                    "name": "AbilityType_Plainscycling",
-                    "id": 127
-                },
-                {
-                    "name": "AbilityType_Slivercycling",
-                    "id": 128
-                },
-                {
-                    "name": "AbilityType_Swampcycling",
-                    "id": 129
-                },
-                {
-                    "name": "AbilityType_Wizardcycling",
-                    "id": 130
-                },
-                {
-                    "name": "AbilityType_Monstrosity",
-                    "id": 134
-                },
-                {
-                    "name": "AbilityType_Tribute",
-                    "id": 135
-                },
-                {
-                    "name": "AbilityType_Outlast",
-                    "id": 136
-                },
-                {
-                    "name": "AbilityType_Prowess",
-                    "id": 137
-                },
-                {
-                    "name": "AbilityType_Bolster",
-                    "id": 138
-                },
-                {
-                    "name": "AbilityType_PlaneswalkerDamageRedirection",
-                    "id": 139
-                },
-                {
-                    "name": "AbilityType_OrderObjectsEnteringGraveyard",
-                    "id": 140
-                },
-                {
-                    "name": "AbilityType_OrderObjectsEnteringLibrary",
-                    "id": 141
-                },
-                {
-                    "name": "AbilityType_Menace",
-                    "id": 142
-                },
-                {
-                    "name": "AbilityType_Skulk",
-                    "id": 143
-                },
-                {
-                    "name": "AbilityType_Ingest",
-                    "id": 144
-                },
-                {
-                    "name": "AbilityType_Manifest",
-                    "id": 145
-                },
-                {
-                    "name": "AbilityType_Emerge",
-                    "id": 147
-                },
-                {
-                    "name": "AbilityType_Deliverance",
-                    "id": 148
-                },
-                {
-                    "name": "AbilityType_CastWithoutPayingManaCost",
-                    "id": 149
-                },
-                {
-                    "name": "AbilityType_Megamorph",
-                    "id": 150
-                },
-                {
-                    "name": "AbilityType_Devoid",
-                    "id": 151
-                },
-                {
-                    "name": "AbilityType_SacrificeClue",
-                    "id": 152
-                },
-                {
-                    "name": "AbilityType_Escalate",
-                    "id": 153
-                },
-                {
-                    "name": "AbilityType_Fabricate",
-                    "id": 154
-                },
-                {
-                    "name": "AbilityType_Crew",
-                    "id": 156
-                },
-                {
-                    "name": "AbilityType_Improvise",
-                    "id": 157
-                },
-                {
-                    "name": "AbilityType_ChooseZoneForMutuallyExclusiveZoneTransfers",
-                    "id": 158
-                },
-                {
-                    "name": "AbilityType_Aftermath",
-                    "id": 159
-                },
-                {
-                    "name": "AbilityType_Embalm",
-                    "id": 160
-                },
-                {
-                    "name": "AbilityType_TapForImprovise",
-                    "id": 161
-                },
-                {
-                    "name": "AbilityType_Exert",
-                    "id": 162
-                },
-                {
-                    "name": "AbilityType_Eternalize",
-                    "id": 163
-                },
-                {
-                    "name": "AbilityType_Afflict",
-                    "id": 164
-                },
-                {
-                    "name": "AbilityType_Ascend",
-                    "id": 165
-                },
-                {
-                    "name": "AbilityType_SagaChapter",
-                    "id": 166
-                },
-                {
-                    "name": "AbilityType_SagaLoreReplacement",
-                    "id": 167
-                },
-                {
-                    "name": "AbilityType_SagaLoreTurn",
-                    "id": 168
-                },
-                {
-                    "name": "AbilityType_Surveil",
-                    "id": 169
-                },
-                {
-                    "name": "AbilityType_Jumpstart",
-                    "id": 170
-                },
-                {
-                    "name": "AbilityType_Mentor",
-                    "id": 171
-                },
-                {
-                    "name": "AbilityType_TapForConvoke",
-                    "id": 172
-                },
-                {
-                    "name": "AbilityType_Afterlife",
-                    "id": 173
-                },
-                {
-                    "name": "AbilityType_Spectacle",
-                    "id": 174
-                },
-                {
-                    "name": "AbilityType_Riot",
-                    "id": 175
-                },
-                {
-                    "name": "AbilityType_Adapt",
-                    "id": 176
-                },
-                {
-                    "name": "AbilityType_AffinityForArtifacts",
-                    "id": 177
-                },
-                {
-                    "name": "AbilityType_Scry1",
-                    "id": 178
-                },
-                {
-                    "name": "AbilityType_Scry2",
-                    "id": 179
-                },
-                {
-                    "name": "AbilityType_Scry3",
-                    "id": 180
-                },
-                {
-                    "name": "AbilityType_Scry4",
-                    "id": 181
-                },
-                {
-                    "name": "AbilityType_ScryX",
-                    "id": 182
-                },
-                {
-                    "name": "AbilityType_SacrificeTreasure",
-                    "id": 183
-                },
-                {
-                    "name": "AbilityType_ProtectionFromChosenColor",
-                    "id": 184
-                },
-                {
-                    "name": "AbilityType_ProtectionFromW",
-                    "id": 185
-                },
-                {
-                    "name": "AbilityType_ProtectionFromU",
-                    "id": 186
-                },
-                {
-                    "name": "AbilityType_ProtectionFromB",
-                    "id": 187
-                },
-                {
-                    "name": "AbilityType_ProtectionFromR",
-                    "id": 188
-                },
-                {
-                    "name": "AbilityType_ProtectionFromG",
-                    "id": 189
-                },
-                {
-                    "name": "AbilityType_HexproofFromChosen",
-                    "id": 190
-                },
-                {
-                    "name": "AbilityType_HexproofFromW",
-                    "id": 191
-                },
-                {
-                    "name": "AbilityType_HexproofFromU",
-                    "id": 192
-                },
-                {
-                    "name": "AbilityType_HexproofFromB",
-                    "id": 193
-                },
-                {
-                    "name": "AbilityType_HexproofFromR",
-                    "id": 194
-                },
-                {
-                    "name": "AbilityType_HexproofFromG",
-                    "id": 195
-                },
-                {
-                    "name": "AbilityType_Adventure",
-                    "id": 196
-                },
-                {
-                    "name": "AbilityType_SacrificeFood",
-                    "id": 197
-                },
-                {
-                    "name": "AbilityType_SacrificeGold",
-                    "id": 198
-                },
-                {
-                    "name": "AbilityType_Escape",
-                    "id": 199
-                },
-                {
-                    "name": "AbilityType_Fight",
-                    "id": 200
-                },
-                {
-                    "name": "AbilityType_UntapOptional",
-                    "id": 201
-                },
-                {
-                    "name": "AbilityType_Companion",
-                    "id": 202
-                },
-                {
-                    "name": "AbilityType_Mutate",
-                    "id": 203
-                },
-                {
-                    "name": "AbilityType_ProtectionFromDogs",
-                    "id": 204
-                },
-                {
-                    "name": "AbilityType_Mill",
-                    "id": 205
-                },
-                {
-                    "name": "AbilityType_ProtectionFromChosenName",
-                    "id": 206
-                },
-                {
-                    "name": "AbilityType_Placeholder1",
-                    "id": 207
-                },
-                {
-                    "name": "AbilityType_Placeholder2",
-                    "id": 208
-                },
-                {
-                    "name": "AbilityType_Placeholder3",
-                    "id": 209
-                },
-                {
-                    "name": "AbilityType_Placeholder4",
-                    "id": 210
-                },
-                {
-                    "name": "AbilityType_Placeholder5",
-                    "id": 211
-                },
-                {
-                    "name": "AbilityType_GildCards_Test",
-                    "id": 988
-                },
-                {
-                    "name": "AbilityType_Twiddle_Test",
-                    "id": 989
-                },
-                {
-                    "name": "AbilityType_Donate_Test",
-                    "id": 990
-                },
-                {
-                    "name": "AbilityType_Bounce_Test",
-                    "id": 991
-                },
-                {
-                    "name": "AbilityType_DrawCard_Test",
-                    "id": 992
-                },
-                {
-                    "name": "AbilityType_AddCost_Test",
-                    "id": 993
-                },
-                {
-                    "name": "AbilityType_DeployBears_Test",
-                    "id": 994
-                },
-                {
-                    "name": "AbilityType_EndTurn_Test",
-                    "id": 995
-                },
-                {
-                    "name": "AbilityType_Wish_Test",
-                    "id": 996
-                },
-                {
-                    "name": "AbilityType_PutLibrary_Test",
-                    "id": 997
-                },
-                {
-                    "name": "AbilityType_GainHaste_Test",
-                    "id": 998
-                },
-                {
-                    "name": "AbilityType_AddWUBRG_Test",
-                    "id": 999
-                },
-                {
-                    "name": "AbilityType_IntrinsicMana_W",
-                    "id": 1001
-                },
-                {
-                    "name": "AbilityType_IntrinsicMana_U",
-                    "id": 1002
-                },
-                {
-                    "name": "AbilityType_IntrinsicMana_B",
-                    "id": 1003
-                },
-                {
-                    "name": "AbilityType_IntrinsicMana_R",
-                    "id": 1004
-                },
-                {
-                    "name": "AbilityType_IntrinsicMana_G",
-                    "id": 1005
-                },
-                {
-                    "name": "AbilityType_AutoGen",
-                    "id": 1006
-                }
-            ]
-        },
         {
             "name": "ActionType",
             "syntax": "proto3",
@@ -9468,10 +9106,6 @@
                     "id": 12
                 },
                 {
-                    "name": "ActionType_CastingTimeOption",
-                    "id": 13
-                },
-                {
                     "name": "ActionType_CombatCost",
                     "id": 14
                 },
@@ -9488,24 +9122,32 @@
                     "id": 17
                 },
                 {
-                    "name": "ActionType_Placeholder1",
+                    "name": "ActionType_CastMDFC",
                     "id": 18
                 },
                 {
-                    "name": "ActionType_Placeholder2",
+                    "name": "ActionType_PlayMDFC",
                     "id": 19
                 },
                 {
-                    "name": "ActionType_Placeholder3",
+                    "name": "ActionType_Special_Payment",
                     "id": 20
                 },
                 {
-                    "name": "ActionType_Placeholder4",
+                    "name": "ActionType_Placeholder21",
                     "id": 21
                 },
                 {
-                    "name": "ActionType_Placeholder5",
+                    "name": "ActionType_Placeholder22",
                     "id": 22
+                },
+                {
+                    "name": "ActionType_Placeholder23",
+                    "id": 23
+                },
+                {
+                    "name": "ActionType_Placeholder24",
+                    "id": 24
                 }
             ]
         },
@@ -9528,6 +9170,24 @@
                 {
                     "name": "AllowCancel_No",
                     "id": 3
+                }
+            ]
+        },
+        {
+            "name": "AllowFailToFind",
+            "syntax": "proto3",
+            "values": [
+                {
+                    "name": "AllowFailToFind_None",
+                    "id": 0
+                },
+                {
+                    "name": "AllowFailToFind_Any",
+                    "id": 1
+                },
+                {
+                    "name": "AllowFailToFind_Zero",
+                    "id": 2
                 }
             ]
         },
@@ -9862,6 +9522,34 @@
                 {
                     "name": "AnnotationType_GamewideHistoryCount",
                     "id": 81
+                },
+                {
+                    "name": "AnnotationType_AbilityExhausted",
+                    "id": 82
+                },
+                {
+                    "name": "AnnotationType_MultistepEffectStarted",
+                    "id": 83
+                },
+                {
+                    "name": "AnnotationType_MultistepEffectComplete",
+                    "id": 84
+                },
+                {
+                    "name": "AnnotationType_DieRoll",
+                    "id": 85
+                },
+                {
+                    "name": "AnnotationType_DungeonStatus",
+                    "id": 86
+                },
+                {
+                    "name": "AnnotationType_LinkedDamage",
+                    "id": 87
+                },
+                {
+                    "name": "AnnotationType_ClassLevel",
+                    "id": 88
                 }
             ]
         },
@@ -9960,8 +9648,8 @@
                     "id": 7
                 },
                 {
-                    "name": "AutoPassOption_ArenaDefault",
-                    "id": 8
+                    "name": "AutoPassOption_ResolveAll",
+                    "id": 9
                 }
             ]
         },
@@ -10136,7 +9824,7 @@
                     "id": 9
                 },
                 {
-                    "name": "CardMechanicType_ModifyLife",
+                    "name": "CardMechanicType_PayLife",
                     "id": 10
                 },
                 {
@@ -10296,24 +9984,28 @@
                     "id": 50
                 },
                 {
-                    "name": "CardMechanicType_Placeholder1",
+                    "name": "CardMechanicType_Exert",
                     "id": 51
                 },
                 {
-                    "name": "CardMechanicType_Placeholder2",
+                    "name": "CardMechanicType_Placeholder52",
                     "id": 52
                 },
                 {
-                    "name": "CardMechanicType_Placeholder3",
+                    "name": "CardMechanicType_Placeholder53",
                     "id": 53
                 },
                 {
-                    "name": "CardMechanicType_Placeholder4",
+                    "name": "CardMechanicType_Placeholder54",
                     "id": 54
                 },
                 {
-                    "name": "CardMechanicType_Placeholder5",
+                    "name": "CardMechanicType_Placeholder55",
                     "id": 55
+                },
+                {
+                    "name": "CardMechanicType_Placeholder56",
+                    "id": 56
                 }
             ]
         },
@@ -10372,6 +10064,18 @@
                 {
                     "name": "CardType_Vanguard",
                     "id": 12
+                },
+                {
+                    "name": "CardType_Dungeon",
+                    "id": 13
+                },
+                {
+                    "name": "CardType_CardTypePlaceholder14",
+                    "id": 14
+                },
+                {
+                    "name": "CardType_CardTypePlaceholder15",
+                    "id": 15
                 }
             ]
         },
@@ -10804,6 +10508,56 @@
                 {
                     "name": "CostCategory_Manual",
                     "id": 3
+                }
+            ]
+        },
+        {
+            "name": "CostType",
+            "syntax": "proto3",
+            "values": [
+                {
+                    "name": "CostType_None",
+                    "id": 0
+                },
+                {
+                    "name": "CostType_Mana",
+                    "id": 1
+                },
+                {
+                    "name": "CostType_TapSelf",
+                    "id": 2
+                },
+                {
+                    "name": "CostType_SacSelf",
+                    "id": 3
+                },
+                {
+                    "name": "CostType_Action",
+                    "id": 4
+                },
+                {
+                    "name": "CostType_Loyalty",
+                    "id": 5
+                },
+                {
+                    "name": "CostType_DiscardSelf",
+                    "id": 6
+                },
+                {
+                    "name": "CostType_Life",
+                    "id": 7
+                },
+                {
+                    "name": "CostType_ExileSelf",
+                    "id": 8
+                },
+                {
+                    "name": "CostType_UntapSelf",
+                    "id": 9
+                },
+                {
+                    "name": "CostType_Or",
+                    "id": 10
                 }
             ]
         },
@@ -11396,56 +11150,80 @@
                     "id": 146
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType15",
+                    "name": "CounterType_Voyage",
                     "id": 147
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType1",
+                    "name": "CounterType_Ghostform",
                     "id": 148
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType2",
+                    "name": "CounterType_Night",
                     "id": 149
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType3",
+                    "name": "CounterType_Indestructible",
                     "id": 150
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType4",
+                    "name": "CounterType_Hone",
                     "id": 151
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType5",
+                    "name": "CounterType_Book",
                     "id": 152
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType6",
+                    "name": "CounterType_Point",
                     "id": 153
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType7",
+                    "name": "CounterType_Enlightened",
                     "id": 154
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType8",
+                    "name": "CounterType_Harmony",
                     "id": 155
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType9",
+                    "name": "CounterType_Void",
                     "id": 156
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType10",
+                    "name": "CounterType_PHCT157",
                     "id": 157
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType11",
+                    "name": "CounterType_PHCT158",
                     "id": 158
                 },
                 {
-                    "name": "CounterType_PlaceholderCounterType12",
+                    "name": "CounterType_PHCT159",
                     "id": 159
+                },
+                {
+                    "name": "CounterType_PHCT160",
+                    "id": 160
+                },
+                {
+                    "name": "CounterType_PHCT161",
+                    "id": 161
+                },
+                {
+                    "name": "CounterType_PHCT162",
+                    "id": 162
+                },
+                {
+                    "name": "CounterType_PHCT163",
+                    "id": 163
+                },
+                {
+                    "name": "CounterType_PHCT164",
+                    "id": 164
+                },
+                {
+                    "name": "CounterType_PHCT165",
+                    "id": 165
                 }
             ]
         },
@@ -11910,56 +11688,10 @@
                 {
                     "name": "GREMessageType_TimerStateMessage",
                     "id": 56
-                }
-            ]
-        },
-        {
-            "name": "GRETHHostErrorCode",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "GRETHHostErrorCode_Success",
-                    "id": 0
                 },
                 {
-                    "name": "GRETHHostErrorCode_NullPayload",
-                    "id": 1
-                },
-                {
-                    "name": "GRETHHostErrorCode_ParseFailed",
-                    "id": 2
-                },
-                {
-                    "name": "GRETHHostErrorCode_IncompletePayload",
-                    "id": 3
-                },
-                {
-                    "name": "GRETHHostErrorCode_GreCreateFailed",
-                    "id": 4
-                },
-                {
-                    "name": "GRETHHostErrorCode_GreDestroyFailed",
-                    "id": 5
-                },
-                {
-                    "name": "GRETHHostErrorCode_AICreateFailed",
-                    "id": 6
-                },
-                {
-                    "name": "GRETHHostErrorCode_AIDestroyFailed",
-                    "id": 7
-                },
-                {
-                    "name": "GRETHHostErrorCode_UnrecognizedGreID",
-                    "id": 8
-                },
-                {
-                    "name": "GRETHHostErrorCode_InvalidPointer",
-                    "id": 9
-                },
-                {
-                    "name": "GRETHHostErrorCode_UnknownError",
-                    "id": 10
+                    "name": "GREMessageType_SubmitDeckConfirmation",
+                    "id": 57
                 }
             ]
         },
@@ -12010,6 +11742,30 @@
                 {
                     "name": "GameObjectType_Adventure",
                     "id": 10
+                },
+                {
+                    "name": "GameObjectType_MDFCBack",
+                    "id": 11
+                },
+                {
+                    "name": "GameObjectType_Placeholder12",
+                    "id": 12
+                },
+                {
+                    "name": "GameObjectType_Placeholder13",
+                    "id": 13
+                },
+                {
+                    "name": "GameObjectType_Placeholder14",
+                    "id": 14
+                },
+                {
+                    "name": "GameObjectType_Placeholder15",
+                    "id": 15
+                },
+                {
+                    "name": "GameObjectType_Placeholder16",
+                    "id": 16
                 }
             ]
         },
@@ -12168,23 +11924,23 @@
                     "id": 8
                 },
                 {
-                    "name": "GameVariant_Placeholder1",
+                    "name": "GameVariant_Placeholder9",
                     "id": 9
                 },
                 {
-                    "name": "GameVariant_Placeholder2",
+                    "name": "GameVariant_Placeholder10",
                     "id": 10
                 },
                 {
-                    "name": "GameVariant_Placeholder3",
+                    "name": "GameVariant_Placeholder11",
                     "id": 11
                 },
                 {
-                    "name": "GameVariant_Placeholder4",
+                    "name": "GameVariant_Placeholder12",
                     "id": 12
                 },
                 {
-                    "name": "GameVariant_Placeholder5",
+                    "name": "GameVariant_Placeholder13",
                     "id": 13
                 }
             ]
@@ -12300,6 +12056,14 @@
                 {
                     "name": "IdType_ZoneInstanceId",
                     "id": 3
+                },
+                {
+                    "name": "IdType_CardGrpId",
+                    "id": 4
+                },
+                {
+                    "name": "IdType_AbilityGrpId",
+                    "id": 5
                 }
             ]
         },
@@ -12400,6 +12164,32 @@
                 {
                     "name": "ManaColor_Colorless",
                     "id": 12
+                },
+                {
+                    "name": "ManaColor_Snow",
+                    "id": 13
+                }
+            ]
+        },
+        {
+            "name": "ManaPaymentConditionType",
+            "syntax": "proto3",
+            "values": [
+                {
+                    "name": "ManaPaymentConditionType_None",
+                    "id": 0
+                },
+                {
+                    "name": "ManaPaymentConditionType_Threshold",
+                    "id": 1
+                },
+                {
+                    "name": "ManaPaymentConditionType_Maximum",
+                    "id": 2
+                },
+                {
+                    "name": "ManaPaymentConditionType_Diversity",
+                    "id": 3
                 }
             ]
         },
@@ -12482,6 +12272,10 @@
                 {
                     "name": "ManaSpecType_AdditionalEffect",
                     "id": 8
+                },
+                {
+                    "name": "ManaSpecType_FromTreasure",
+                    "id": 9
                 }
             ]
         },
@@ -12782,92 +12576,6 @@
             ]
         },
         {
-            "name": "MechanicType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "MechanicType_None",
-                    "id": 0
-                },
-                {
-                    "name": "MechanicType_CombatEnhancingSorcery",
-                    "id": 1
-                },
-                {
-                    "name": "MechanicType_CombatEnhancingInstant",
-                    "id": 2
-                },
-                {
-                    "name": "MechanicType_Haste",
-                    "id": 3
-                },
-                {
-                    "name": "MechanicType_Flash",
-                    "id": 4
-                },
-                {
-                    "name": "MechanicType_ReplaceOpponentBeginningPhase",
-                    "id": 5
-                },
-                {
-                    "name": "MechanicType_ReplaceAIBeginningPhase",
-                    "id": 6
-                },
-                {
-                    "name": "MechanicType_DirectDamagePlayer",
-                    "id": 7
-                },
-                {
-                    "name": "MechanicType_Evasion",
-                    "id": 9
-                },
-                {
-                    "name": "MechanicType_MustAttack",
-                    "id": 10
-                },
-                {
-                    "name": "MechanicType_MustBlock",
-                    "id": 11
-                },
-                {
-                    "name": "MechanicType_CombatEnhancingAbility",
-                    "id": 12
-                },
-                {
-                    "name": "MechanicType_Main2Creature",
-                    "id": 13
-                },
-                {
-                    "name": "MechanicType_DirectDamageCreature_Sorcery",
-                    "id": 14
-                },
-                {
-                    "name": "MechanicType_DirectDamageCreature_Instant",
-                    "id": 15
-                },
-                {
-                    "name": "MechanicType_Placeholder1",
-                    "id": 16
-                },
-                {
-                    "name": "MechanicType_Placeholder2",
-                    "id": 17
-                },
-                {
-                    "name": "MechanicType_Placeholder3",
-                    "id": 18
-                },
-                {
-                    "name": "MechanicType_Placeholder4",
-                    "id": 19
-                },
-                {
-                    "name": "MechanicType_Placeholder5",
-                    "id": 20
-                }
-            ]
-        },
-        {
             "name": "MulliganOption",
             "syntax": "proto3",
             "values": [
@@ -12948,7 +12656,7 @@
                     "id": 8
                 },
                 {
-                    "name": "OptionContext_TurnFaceUp",
+                    "name": "OptionContext_Special",
                     "id": 9
                 }
             ]
@@ -12960,6 +12668,10 @@
                 {
                     "name": "OptionResponse_None",
                     "id": 0
+                },
+                {
+                    "name": "OptionResponse_Cancel",
+                    "id": -1
                 },
                 {
                     "name": "OptionResponse_Allow_Yes",
@@ -13086,138 +12798,6 @@
             ]
         },
         {
-            "name": "OrderingFunctionType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "OrderingFunctionType_None",
-                    "id": 0
-                },
-                {
-                    "name": "OrderingFunctionType_ConstantValue",
-                    "id": 1
-                },
-                {
-                    "name": "OrderingFunctionType_ObjectScore",
-                    "id": 2
-                },
-                {
-                    "name": "OrderingFunctionType_CheckCardMechanic",
-                    "id": 3
-                },
-                {
-                    "name": "OrderingFunctionType_CheckBlockers",
-                    "id": 4
-                },
-                {
-                    "name": "OrderingFunctionType_CheckAttackers",
-                    "id": 5
-                },
-                {
-                    "name": "OrderingFunctionType_CheckCardMechanicIfNoAttackers",
-                    "id": 6
-                },
-                {
-                    "name": "OrderingFunctionType_CheckAbilityMechanic",
-                    "id": 7
-                },
-                {
-                    "name": "OrderingFunctionType_CheckAbilityMechanicIfNoAttackers",
-                    "id": 8
-                },
-                {
-                    "name": "OrderingFunctionType_CheckPredefinedCardMechanics",
-                    "id": 9
-                },
-                {
-                    "name": "OrderingFunctionType_CheckPredefinedAbilityMechanics",
-                    "id": 10
-                },
-                {
-                    "name": "OrderingFunctionType_CheckPredefinedCardMechanicsIfNoAttackers",
-                    "id": 11
-                },
-                {
-                    "name": "OrderingFunctionType_CheckPredefinedAbilityMechanicsIfNoAttackers",
-                    "id": 12
-                },
-                {
-                    "name": "OrderingFunctionType_Mulligan",
-                    "id": 13
-                },
-                {
-                    "name": "OrderingFunctionType_PlayLand",
-                    "id": 14
-                },
-                {
-                    "name": "OrderingFunctionType_CheckHasAbility",
-                    "id": 15
-                },
-                {
-                    "name": "OrderingFunctionType_ManaSelect",
-                    "id": 16
-                }
-            ]
-        },
-        {
-            "name": "OrderingParameterId",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "OrderingParameterId_None",
-                    "id": 0
-                },
-                {
-                    "name": "OrderingParameterId_BestSingleBlock",
-                    "id": 1
-                },
-                {
-                    "name": "OrderingParameterId_GoodSingleBlock",
-                    "id": 2
-                },
-                {
-                    "name": "OrderingParameterId_GoodSingleTrade",
-                    "id": 3
-                },
-                {
-                    "name": "OrderingParameterId_GoodMultiTrade",
-                    "id": 4
-                },
-                {
-                    "name": "OrderingParameterId_ChumpBlock",
-                    "id": 5
-                },
-                {
-                    "name": "OrderingParameterId_PlayerDeath",
-                    "id": 6
-                },
-                {
-                    "name": "OrderingParameterId_MustBlock",
-                    "id": 7
-                },
-                {
-                    "name": "OrderingParameterId_AttackWithEvasion",
-                    "id": 9
-                },
-                {
-                    "name": "OrderingParameterId_MustAttack",
-                    "id": 10
-                },
-                {
-                    "name": "OrderingParameterId_FavorableTrade",
-                    "id": 11
-                },
-                {
-                    "name": "OrderingParameterId_UnfavorableTrade",
-                    "id": 12
-                },
-                {
-                    "name": "OrderingParameterId_OpponentDamage",
-                    "id": 13
-                }
-            ]
-        },
-        {
             "name": "OrderingType",
             "syntax": "proto3",
             "values": [
@@ -13296,28 +12876,6 @@
                 {
                     "name": "Phase_Ending",
                     "id": 5
-                }
-            ]
-        },
-        {
-            "name": "PlayerIs",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "PlayerIs_None",
-                    "id": 0
-                },
-                {
-                    "name": "PlayerIs_DontCare",
-                    "id": 1
-                },
-                {
-                    "name": "PlayerIs_AI",
-                    "id": 2
-                },
-                {
-                    "name": "PlayerIs_Opponent",
-                    "id": 3
                 }
             ]
         },
@@ -13468,6 +13026,10 @@
                 {
                     "name": "ProtoVersion_SelectFromGroupRespGroups",
                     "id": 35
+                },
+                {
+                    "name": "ProtoVersion_PersistentAnnotations",
+                    "id": 36
                 }
             ]
         },
@@ -13840,24 +13402,6 @@
             ]
         },
         {
-            "name": "SortBy",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "SortBy_None",
-                    "id": 0
-                },
-                {
-                    "name": "SortBy_HighToLow",
-                    "id": 1
-                },
-                {
-                    "name": "SortBy_LowToHigh",
-                    "id": 2
-                }
-            ]
-        },
-        {
             "name": "StaticList",
             "syntax": "proto3",
             "values": [
@@ -13920,6 +13464,10 @@
                 {
                     "name": "StaticList_Parities",
                     "id": 14
+                },
+                {
+                    "name": "StaticList_TypeKinds",
+                    "id": 15
                 }
             ]
         },
@@ -15552,24 +15100,96 @@
                     "id": 380
                 },
                 {
-                    "name": "SubType_PlaceholderSubType3",
+                    "name": "SubType_Rune",
                     "id": 381
                 },
                 {
-                    "name": "SubType_PlaceholderSubType4",
+                    "name": "SubType_Tyvar",
                     "id": 382
                 },
                 {
-                    "name": "SubType_PlaceholderSubType5",
+                    "name": "SubType_Phyrexian",
                     "id": 383
                 },
                 {
-                    "name": "SubType_PlaceholderSubType6",
+                    "name": "SubType_Niko",
                     "id": 384
                 },
                 {
-                    "name": "SubType_PlaceholderSubType10",
+                    "name": "SubType_Shard",
                     "id": 385
+                },
+                {
+                    "name": "SubType_Inkling",
+                    "id": 386
+                },
+                {
+                    "name": "SubType_Fractal",
+                    "id": 387
+                },
+                {
+                    "name": "SubType_Lesson",
+                    "id": 388
+                },
+                {
+                    "name": "SubType_Bard",
+                    "id": 389
+                },
+                {
+                    "name": "SubType_Beholder",
+                    "id": 390
+                },
+                {
+                    "name": "SubType_Gnoll",
+                    "id": 391
+                },
+                {
+                    "name": "SubType_Hamster",
+                    "id": 392
+                },
+                {
+                    "name": "SubType_Halfling",
+                    "id": 393
+                },
+                {
+                    "name": "SubType_Tiefling",
+                    "id": 394
+                },
+                {
+                    "name": "SubType_Bahamut",
+                    "id": 395
+                },
+                {
+                    "name": "SubType_Ellywick",
+                    "id": 396
+                },
+                {
+                    "name": "SubType_Lolth",
+                    "id": 397
+                },
+                {
+                    "name": "SubType_Mordenkainen",
+                    "id": 398
+                },
+                {
+                    "name": "SubType_Zariel",
+                    "id": 399
+                },
+                {
+                    "name": "SubType_Class",
+                    "id": 400
+                },
+                {
+                    "name": "SubType_Ranger",
+                    "id": 401
+                },
+                {
+                    "name": "SubType_PlaceholderSubType402",
+                    "id": 402
+                },
+                {
+                    "name": "SubType_PlaceholderSubType403",
+                    "id": 403
                 }
             ]
         },
@@ -15916,6 +15536,10 @@
                 {
                     "name": "TimerPackage_BestOfThree",
                     "id": 8
+                },
+                {
+                    "name": "TimerPackage_BestOfOneMatchClock",
+                    "id": 9
                 }
             ]
         },
