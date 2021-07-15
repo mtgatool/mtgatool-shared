@@ -8,45 +8,6 @@ export interface AIConfig {
   deckConfigs: DeckConfig[];
 }
 
-export interface AIConfigData {
-  mode?: AIMode;
-  tracingEnabled?: AIConfigOption;
-  viewOpponentHand?: AIConfigOption;
-  viewOpponentLibrary?: number;
-  maximumDepth?: number;
-  maximumBreadth?: number;
-  maximumNodeExpansion?: number;
-  timeoutInMilliseconds?: number;
-  transpositionTableSizeInKB?: number;
-  randomSeed?: number;
-  configureValueHeuristics: ValueHeuristicDefinition[];
-  configureOrderingHeuristics: OrderingHeuristicDefinition[];
-  configureHistoryOn?: AIConfigOption;
-  allowOpponentUndo?: AIConfigYesNo;
-  allowOpponentControl?: AIConfigYesNo;
-  valueHeuristicParameters: ValueHeuristicParameter[];
-  orderingHeuristicParameters: OrderingHeuristicParameter[];
-  diagnosticMode?: number;
-  randomOrderingRange?: number;
-  transEnable?: boolean;
-  concedeOnException?: boolean;
-}
-
-export interface AIReconfigureData {
-  tracingEnabled?: AIConfigOption;
-  maximumDepth?: number;
-  maximumBreadth?: number;
-  maximumNodeExpansion?: number;
-  transpositionTableSizeInKB?: number;
-  randomSeed?: number;
-  configureValueHeuristics: ValueHeuristicDefinition[];
-  configureOrderingHeuristics: OrderingHeuristicDefinition[];
-  valueHeuristicParameters: ValueHeuristicParameter[];
-  orderingHeuristicParameters: OrderingHeuristicParameter[];
-  transEnable?: boolean;
-  concedeOnException?: boolean;
-}
-
 export interface Action {
   actionType?: ActionType;
   grpId?: number;
@@ -65,10 +26,12 @@ export interface Action {
   targets: TargetSelection[];
   manaPaymentConditions: ManaPaymentCondition[];
   autoTapSolution?: AutoTapSolution;
-  costSelectionIds: number[];
-  costCounters: Counter[];
   maxActivations?: number;
   isBatchable?: boolean;
+  twobridGenericManaCost?: ManaRequirement;
+  highlight?: number;
+  costs: Cost[];
+  resources: AutoTapResource[];
 }
 
 export interface ActionInfo {
@@ -154,6 +117,7 @@ export interface AuthenticateRequest {
 export interface AuthenticateResponse {
   clientId?: string;
   sessionId?: string;
+  inactivityTimeoutMs?: number;
   screenName?: string;
 }
 
@@ -182,9 +146,15 @@ export interface AutoTapActionsAvailableReq {
   autoTapSolutions: AutoTapSolution[];
 }
 
+export interface AutoTapResource {
+  objectId?: number;
+  counterType?: CounterType;
+}
+
 export interface AutoTapSolution {
   autoTapActions: AutoTapAction[];
   manaPaymentConditions: ManaPaymentCondition[];
+  selectedManaColors: ManaColor[];
 }
 
 export interface AutoYield {
@@ -222,6 +192,14 @@ export interface Blocker {
   mustBlock?: boolean;
 }
 
+export interface BoolValue {
+  value?: boolean;
+}
+
+export interface BoolValues {
+  values: boolean[];
+}
+
 export interface CLIPSConfiguration {
   enableWatch?: boolean;
   enableMetrics?: boolean;
@@ -239,6 +217,7 @@ export interface CardConfig {
   count?: number;
   title?: string;
   expansionCode?: string;
+  rarity?: string;
 }
 
 export interface CardSkinTuple {
@@ -278,6 +257,7 @@ export interface CastingTimeOptionsReq {
 
 export interface CastingTimeOptionsResp {
   castingTimeOptionResp?: CastingTimeOptionResp;
+  castingTimeOptionResps: CastingTimeOptionResp[];
 }
 
 export interface CheckpointConfiguration {
@@ -398,18 +378,18 @@ export interface ConnectReq {
   defaultSettings?: SettingsMessage;
   protoVer?: ProtoVersion;
   seatId?: number;
+  grpVersion?: Version;
 }
 
 export interface ConnectResp {
   status?: ConnectionStatus;
-  majorVer?: number;
-  minorVer?: number;
-  revisionVer?: number;
-  buildVer?: number;
   protoVer?: ProtoVersion;
   seatId?: number;
   settings?: SettingsMessage;
   deckMessage?: DeckMessage;
+  grpVersion?: Version;
+  greVersion?: Version;
+  skins: CardSkinTuple[];
 }
 
 export interface ContinuationToken {
@@ -433,6 +413,19 @@ export interface CosmeticConfig {
 export interface CosmeticInfo {
   seatId?: number;
   data?: string;
+}
+
+export interface Cost {
+  type?: CostType;
+  id?: number;
+  objectId?: number;
+  abilityGrpId?: number;
+  index?: number;
+  weight?: number;
+  manaCost?: ManaCost;
+  effectCost?: EffectCost;
+  lifeCost?: LifeCost;
+  loyaltyCost?: LoyaltyCost;
 }
 
 export interface Counter {
@@ -481,6 +474,14 @@ export interface DamageRecipient {
   playerSystemSeatId?: number;
   planeswalkerInstanceId?: number;
 }
+export enum EnumIdOneofCase {
+  None = 0,
+  TeamId = 2,
+  PlayerSystemSeatId = 3,
+  PlaneswalkerInstanceId = 4,
+}
+
+export type IdOneofCase = keyof typeof EnumIdOneofCase;
 
 export interface DeckConfig {
   seatId?: number;
@@ -512,7 +513,6 @@ export interface DeclareAttackersReq {
   hasRestrictions?: boolean;
   attackWarnings: AttackWarning[];
   manaCost: ManaRequirement[];
-  autoAttackers: Attacker[];
   qualifiedAttackers: Attacker[];
 }
 
@@ -559,6 +559,14 @@ export interface DistributionResp {
   distributions: Distribution[];
 }
 
+export interface DoubleValue {
+  value?: number;
+}
+
+export interface DoubleValues {
+  values: number[];
+}
+
 export interface DraftGameRoomConfig {
   gameRoomId?: string;
   eventId?: string;
@@ -576,6 +584,11 @@ export interface EchoResponse {
 
 export interface EdictalMessage {
   edictMessage?: ClientToGREMessage;
+}
+
+export interface EffectCost {
+  cardMechanicTypes: CardMechanicType[];
+  effectCostType?: EffectCostType;
 }
 
 export interface EffectCostReq {
@@ -602,6 +615,14 @@ export interface FinalMatchResult {
   errorMessage?: string;
 }
 
+export interface FloatValue {
+  value?: number;
+}
+
+export interface FloatValues {
+  values: number[];
+}
+
 export interface ForceDrawReq {
   scope?: MatchScope;
 }
@@ -623,28 +644,14 @@ export interface GREConfiguration {
 }
 
 export interface GRECreateRequest {
-  greID?: number;
   matchID?: string;
-  gameID?: number;
   majorVer?: number;
   minorVer?: number;
   revisionVer?: number;
   buildVer?: number;
 }
 
-export interface GRECreateResponse {
-  greID?: number;
-  result?: GRETHHostErrorCode;
-}
-
-export interface GREDestroyRequest {
-  greID?: number;
-}
-
-export interface GREDestroyResponse {
-  greID?: number;
-  result?: GRETHHostErrorCode;
-}
+export interface GREDestroyRequest {}
 
 export interface GREElapseTimeRequest {
   timerId?: number;
@@ -737,7 +744,6 @@ export interface GREToClientMessage {
   msgId?: number;
   gameStateId?: number;
   gameStateMessage?: GameStateMessage;
-  prompt?: Prompt;
   chooseStartingPlayerReq?: ChooseStartingPlayerReq;
   optionalActionMessage?: OptionalActionMessage;
   actionsAvailableReq?: ActionsAvailableReq;
@@ -761,7 +767,6 @@ export interface GREToClientMessage {
   selectTargetsReq?: SelectTargetsReq;
   submitTargetsResp?: SubmitTargetsResp;
   payCostsReq?: PayCostsReq;
-  nonDecisionPlayerPrompt?: Prompt;
   intermissionReq?: IntermissionReq;
   dieRollResultsResp?: DieRollResultsResp;
   selectReplacementReq?: SelectReplacementReq;
@@ -770,16 +775,18 @@ export interface GREToClientMessage {
   numericInputReq?: NumericInputReq;
   searchReq?: SearchReq;
   castingTimeOptionsReq?: CastingTimeOptionsReq;
-  informationalUseOnly?: boolean;
   selectFromGroupsReq?: SelectFromGroupsReq;
   searchFromGroupsReq?: SearchFromGroupsReq;
   gatherReq?: GatherReq;
-  allowCancel?: AllowCancel;
   uiMessage?: UIMessage;
   submitDeckReq?: SubmitDeckReq;
   edictalMessage?: EdictalMessage;
   timeoutMessage?: TimeoutMessage;
   timerStateMessage?: TimerStateMessage;
+  prompt?: Prompt;
+  nonDecisionPlayerPrompt?: Prompt;
+  informationalUseOnly?: boolean;
+  allowCancel?: AllowCancel;
   allowUndo?: boolean;
 }
 
@@ -808,6 +815,7 @@ export interface GameInfo {
   mulliganType?: MulliganType;
   freeMulliganCount?: number;
   deckConstraintInfo?: DeckConstraintInfo;
+  sideboardLoadingEnabled?: boolean;
 }
 
 export interface GameMetrics {
@@ -848,6 +856,7 @@ export interface GameObjectInfo {
   loyaltyUsed?: UInt32Value;
   abilityOriginalCardGrpIds: number[];
   baseSkinCode?: string;
+  removedSubtypes: SubType[];
 }
 
 export interface GameStateMessage {
@@ -866,6 +875,8 @@ export interface GameStateMessage {
   timers: TimerInfo[];
   update?: GameStateUpdate;
   actions: ActionInfo[];
+  persistentAnnotations: AnnotationInfo[];
+  diffDeletedPersistentAnnotationIds: number[];
 }
 
 export interface GameStateRedactorConfiguration {
@@ -975,6 +986,18 @@ export interface Int32Value {
   value?: number;
 }
 
+export interface Int32Values {
+  values: number[];
+}
+
+export interface Int64Value {
+  value?: number;
+}
+
+export interface Int64Values {
+  values: number[];
+}
+
 export interface IntermissionReq {
   options: UserOption[];
   intermissionPrompt?: Prompt;
@@ -996,6 +1019,19 @@ export interface JoinMatchGameRoomResponseV2 {
   seatId?: number;
 }
 
+export interface KeyValuePair {
+  key?: string;
+  singleValue?: SingleValue;
+  repeatedValue?: RepeatedValue;
+}
+export enum EnumValueOneofCaseRepeated {
+  None = 0,
+  SingleValue = 2,
+  RepeatedValue = 3,
+}
+
+export type ValueOneofCaseRepeated = keyof typeof EnumValueOneofCaseRepeated;
+
 export interface KeyValuePairInfo {
   key?: string;
   type?: KeyValuePairValueType;
@@ -1007,6 +1043,19 @@ export interface KeyValuePairInfo {
   valueString: string[];
   valueFloat: number[];
   valueDouble: number[];
+}
+
+export interface LifeCost {
+  count?: number;
+}
+
+export interface LoyaltyCost {
+  count?: number;
+}
+
+export interface ManaCost {
+  color: ManaColor[];
+  count?: number;
 }
 
 export interface ManaInfo {
@@ -1025,6 +1074,7 @@ export interface ManaPaymentCondition {
   colors: ManaColor[];
   specs: ManaSpecType[];
   abilityGrpId?: number;
+  type?: ManaPaymentConditionType;
 }
 
 export interface ManaPaymentOption {
@@ -1230,6 +1280,7 @@ export interface NumericInputReq {
   maxValue?: number;
   stepSize?: number;
   sourceId?: number;
+  numericInputType?: number;
 }
 
 export interface NumericInputResp {
@@ -1288,14 +1339,6 @@ export interface OrderDamageConfirmation {
   orderDamageType?: OrderCombatDamageType;
 }
 
-export interface OrderKey {
-  activePlayer?: PlayerIs;
-  turnPhase?: Phase;
-  phaseStep?: Step;
-  requestType?: GREMessageType;
-  context?: number;
-}
-
 export interface OrderReq {
   ids: number[];
   idx?: number;
@@ -1311,23 +1354,6 @@ export interface OrderResp {
 export interface OrderedDamageAssignment {
   instanceId?: number;
   assignedDamage?: number;
-}
-
-export interface OrderingHeuristicDefinition {
-  id?: string;
-  priority?: number;
-  weight?: number;
-  orderKey?: OrderKey;
-  functionType?: OrderingFunctionType;
-  mechanicType?: MechanicType;
-  withMechanic?: boolean;
-  abilityType?: AbilityType;
-  sortOrder?: SortBy;
-}
-
-export interface OrderingHeuristicParameter {
-  paramId?: OrderingParameterId;
-  paramValue?: number;
 }
 
 export interface PayCostsReq {
@@ -1408,16 +1434,46 @@ export interface PromptParameter {
   reference?: Reference;
   stringValue?: string;
   numberValue?: number;
-  repeatedNumbers: number[];
   promptId?: number;
 }
+export enum EnumValueOneofCaseRef {
+  None = 0,
+  Reference = 3,
+  StringValue = 4,
+  NumberValue = 5,
+  PromptId = 7,
+}
+
+export type ValueOneofCaseRef = keyof typeof EnumValueOneofCaseRef;
 
 export interface Reference {
   type?: ReferenceType;
   id?: number;
-  field?: string;
-  debugValue?: string;
 }
+
+export interface RepeatedValue {
+  uint32Values?: UInt32Values;
+  int32Values?: Int32Values;
+  uint64Values?: UInt64Values;
+  int64Values?: Int64Values;
+  boolValues?: BoolValues;
+  stringValues?: StringValues;
+  floatValues?: FloatValues;
+  doubleValues?: DoubleValues;
+}
+export enum EnumValuesOneofCase {
+  None = 0,
+  Uint32Values = 1,
+  Int32Values = 2,
+  Uint64Values = 3,
+  Int64Values = 4,
+  BoolValues = 5,
+  StringValues = 6,
+  FloatValues = 7,
+  DoubleValues = 8,
+}
+
+export type ValuesOneofCase = keyof typeof EnumValuesOneofCase;
 
 export interface ReplacementEffect {
   objectInstance?: number;
@@ -1446,6 +1502,7 @@ export interface SearchFromGroupsReq {
   groups: Group[];
   groupingStyle?: GroupingStyle;
   sourceId?: number;
+  allowFailToFind?: AllowFailToFind;
 }
 
 export interface SearchFromGroupsResp {
@@ -1463,6 +1520,7 @@ export interface SearchReq {
   itemsSought: number[];
   sourceId?: number;
   additionalZones: number[];
+  allowFailToFind?: AllowFailToFind;
 }
 
 export interface SearchResp {
@@ -1499,6 +1557,7 @@ export interface SelectFromGroupsReq {
   groupingStyle?: GroupingStyle;
   unfilteredIds: number[];
   sourceId?: number;
+  zoneIds: number[];
 }
 
 export interface SelectFromGroupsResp {
@@ -1651,7 +1710,32 @@ export interface SettingsMessage {
   cosmetics: CosmeticInfo[];
   autoSelectReplacementSetting?: Setting;
   autoDeclareAttackersThatMustAttackSetting?: Setting;
+  stackAutoPassOption?: AutoPassOption;
 }
+
+export interface SingleValue {
+  uint32Value?: number;
+  int32Value?: number;
+  uint64Value?: number;
+  int64Value?: number;
+  boolValue?: boolean;
+  stringValue?: string;
+  floatValue?: number;
+  doubleValue?: number;
+}
+export enum EnumValueOneofCase {
+  None = 0,
+  Uint32Value = 1,
+  Int32Value = 2,
+  Uint64Value = 3,
+  Int64Value = 4,
+  BoolValue = 5,
+  StringValue = 6,
+  FloatValue = 7,
+  DoubleValue = 8,
+}
+
+export type ValueOneofCase = keyof typeof EnumValueOneofCase;
 
 export interface SortFilterPagingOptions {
   sort?: string;
@@ -1665,6 +1749,14 @@ export interface Stop {
   stopType?: StopType;
   appliesTo?: SettingScope;
   status?: SettingStatus;
+}
+
+export interface StringValue {
+  value?: string;
+}
+
+export interface StringValues {
+  values: string[];
 }
 
 export interface SubmitAttackersResp {
@@ -1709,6 +1801,7 @@ export interface TargetSelection {
   maxTargets?: number;
   selectedTargets?: number;
   prompt?: Prompt;
+  targetSourceZoneId?: number;
 }
 
 export interface TeamConfig {
@@ -1746,6 +1839,8 @@ export interface TestConfig {
   autoRespondPermission?: AutoRespondPermission;
   disableDeferredActionCostPayment?: boolean;
   disableIndividualDamageAssignments?: boolean;
+  disableHiFiSettings?: boolean;
+  enableSideboardLoading?: boolean;
 }
 
 export interface TimeoutConfig {
@@ -1820,6 +1915,18 @@ export interface UInt32Value {
   value?: number;
 }
 
+export interface UInt32Values {
+  values: number[];
+}
+
+export interface UInt64Value {
+  value?: number;
+}
+
+export interface UInt64Values {
+  values: number[];
+}
+
 export interface UserConnectionInfo {
   connectionState?: ConnectionState;
   lastConnectTimestamp?: number;
@@ -1831,15 +1938,11 @@ export interface UserOption {
   responseType?: ClientMessageType;
 }
 
-export interface ValueHeuristicDefinition {
-  id?: string;
-  priority?: number;
-  weight?: number;
-}
-
-export interface ValueHeuristicParameter {
-  id?: string;
-  paramValue?: number;
+export interface Version {
+  majorVersion?: number;
+  minorVersion?: number;
+  revisionVersion?: number;
+  buildVersion?: number;
 }
 
 export interface ZoneInfo {
@@ -1850,250 +1953,6 @@ export interface ZoneInfo {
   objectInstanceIds: number[];
   viewers: number[];
 }
-
-export enum EnumAIConfigOption {
-  AIConfigOption_None = 0,
-  AIConfigOption_Inactive = 1,
-  AIConfigOption_Active = 2,
-}
-
-export type AIConfigOption = keyof typeof EnumAIConfigOption;
-
-export enum EnumAIConfigYesNo {
-  AIConfigYesNo_None = 0,
-  AIConfigYesNo_No = 1,
-  AIConfigYesNo_Yes = 2,
-}
-
-export type AIConfigYesNo = keyof typeof EnumAIConfigYesNo;
-
-export enum EnumAIMode {
-  AIMode_None = 0,
-  AIMode_Goldfish = 1,
-  AIMode_Gameplay = 2,
-  AIMode_Random = 3,
-}
-
-export type AIMode = keyof typeof EnumAIMode;
-
-export enum EnumAbilityType {
-  AbilityType_None = 0,
-  AbilityType_Deathtouch = 1,
-  AbilityType_Defender = 2,
-  AbilityType_DoubleStrike = 3,
-  AbilityType_Enchant = 4,
-  AbilityType_Equip = 5,
-  AbilityType_FirstStrike = 6,
-  AbilityType_Flash = 7,
-  AbilityType_Flying = 8,
-  AbilityType_Haste = 9,
-  AbilityType_Hexproof = 10,
-  AbilityType_Intimidate = 11,
-  AbilityType_Lifelink = 12,
-  AbilityType_Reach = 13,
-  AbilityType_Trample = 14,
-  AbilityType_Vigilance = 15,
-  AbilityType_Landwalk = 16,
-  AbilityType_ProtectionFrom = 21,
-  AbilityType_Shroud = 22,
-  AbilityType_Banding = 23,
-  AbilityType_Rampage = 24,
-  AbilityType_CumulativeUpkeep = 25,
-  AbilityType_Flanking = 26,
-  AbilityType_Phasing = 27,
-  AbilityType_Buyback = 28,
-  AbilityType_Shadow = 29,
-  AbilityType_Cycling = 30,
-  AbilityType_Echo = 31,
-  AbilityType_Horsemanship = 32,
-  AbilityType_Fading = 33,
-  AbilityType_Kicker = 34,
-  AbilityType_Flashback = 35,
-  AbilityType_Madness = 36,
-  AbilityType_Morph = 37,
-  AbilityType_Fear = 38,
-  AbilityType_Amplify = 39,
-  AbilityType_Provoke = 40,
-  AbilityType_Storm = 41,
-  AbilityType_AffinityFor = 42,
-  AbilityType_Entwine = 43,
-  AbilityType_Modular = 44,
-  AbilityType_Sunburst = 45,
-  AbilityType_Bushido = 46,
-  AbilityType_Soulshift = 47,
-  AbilityType_Splice = 48,
-  AbilityType_Offering = 49,
-  AbilityType_Ninjitsu = 50,
-  AbilityType_Epic = 51,
-  AbilityType_Convoke = 52,
-  AbilityType_Dredge = 53,
-  AbilityType_Transmute = 54,
-  AbilityType_Bloodthirst = 55,
-  AbilityType_Haunt = 56,
-  AbilityType_Replicate = 57,
-  AbilityType_Forecast = 58,
-  AbilityType_Graft = 59,
-  AbilityType_Recover = 60,
-  AbilityType_Ripple = 61,
-  AbilityType_SplitSecond = 62,
-  AbilityType_Suspend = 63,
-  AbilityType_Vanishing = 64,
-  AbilityType_Absorb = 65,
-  AbilityType_AuraSwap = 66,
-  AbilityType_Delve = 67,
-  AbilityType_Fortify = 68,
-  AbilityType_Frenzy = 69,
-  AbilityType_Gravestorm = 70,
-  AbilityType_Poisonous = 71,
-  AbilityType_Transfigure = 72,
-  AbilityType_Champion = 73,
-  AbilityType_Changeling = 74,
-  AbilityType_Evoke = 75,
-  AbilityType_Hideaway = 76,
-  AbilityType_Prowl = 77,
-  AbilityType_Reinforce = 78,
-  AbilityType_Conspire = 79,
-  AbilityType_Persist = 80,
-  AbilityType_Wither = 81,
-  AbilityType_Retrace = 82,
-  AbilityType_Devour = 83,
-  AbilityType_Exalted = 84,
-  AbilityType_Unearth = 85,
-  AbilityType_Cascade = 86,
-  AbilityType_Annihilator = 87,
-  AbilityType_LevelUp = 88,
-  AbilityType_Rebound = 89,
-  AbilityType_TotemArmor = 90,
-  AbilityType_Infect = 91,
-  AbilityType_BattleCry = 92,
-  AbilityType_LivingWeapon = 93,
-  AbilityType_Undying = 94,
-  AbilityType_Miracle = 95,
-  AbilityType_Soulbond = 96,
-  AbilityType_Overload = 97,
-  AbilityType_Scavenge = 98,
-  AbilityType_Unleash = 99,
-  AbilityType_Cipher = 100,
-  AbilityType_Evolve = 101,
-  AbilityType_Extort = 102,
-  AbilityType_Fuse = 103,
-  AbilityType_Indestructible = 104,
-  AbilityType_Regenerate = 105,
-  AbilityType_EnterZone_Tapped = 106,
-  AbilityType_EnterZone_Controlled = 107,
-  AbilityType_EnterZone_Attached = 108,
-  AbilityType_Level = 109,
-  AbilityType_EnterZone_WithCounters = 110,
-  AbilityType_TurnFaceUp_WithCounters = 111,
-  AbilityType_PlaneswalkerLoyaltyReplacement = 114,
-  AbilityType_CastCommanderFromCommandZone = 115,
-  AbilityType_CommanderZoneTransferReplacement = 116,
-  AbilityType_Multikicker = 122,
-  AbilityType_BasicLandcycling = 123,
-  AbilityType_Forestcycling = 124,
-  AbilityType_Islandcycling = 125,
-  AbilityType_Mountaincycling = 126,
-  AbilityType_Plainscycling = 127,
-  AbilityType_Slivercycling = 128,
-  AbilityType_Swampcycling = 129,
-  AbilityType_Wizardcycling = 130,
-  AbilityType_Monstrosity = 134,
-  AbilityType_Tribute = 135,
-  AbilityType_Outlast = 136,
-  AbilityType_Prowess = 137,
-  AbilityType_Bolster = 138,
-  AbilityType_PlaneswalkerDamageRedirection = 139,
-  AbilityType_OrderObjectsEnteringGraveyard = 140,
-  AbilityType_OrderObjectsEnteringLibrary = 141,
-  AbilityType_Menace = 142,
-  AbilityType_Skulk = 143,
-  AbilityType_Ingest = 144,
-  AbilityType_Manifest = 145,
-  AbilityType_Emerge = 147,
-  AbilityType_Deliverance = 148,
-  AbilityType_CastWithoutPayingManaCost = 149,
-  AbilityType_Megamorph = 150,
-  AbilityType_Devoid = 151,
-  AbilityType_SacrificeClue = 152,
-  AbilityType_Escalate = 153,
-  AbilityType_Fabricate = 154,
-  AbilityType_Crew = 156,
-  AbilityType_Improvise = 157,
-  AbilityType_ChooseZoneForMutuallyExclusiveZoneTransfers = 158,
-  AbilityType_Aftermath = 159,
-  AbilityType_Embalm = 160,
-  AbilityType_TapForImprovise = 161,
-  AbilityType_Exert = 162,
-  AbilityType_Eternalize = 163,
-  AbilityType_Afflict = 164,
-  AbilityType_Ascend = 165,
-  AbilityType_SagaChapter = 166,
-  AbilityType_SagaLoreReplacement = 167,
-  AbilityType_SagaLoreTurn = 168,
-  AbilityType_Surveil = 169,
-  AbilityType_Jumpstart = 170,
-  AbilityType_Mentor = 171,
-  AbilityType_TapForConvoke = 172,
-  AbilityType_Afterlife = 173,
-  AbilityType_Spectacle = 174,
-  AbilityType_Riot = 175,
-  AbilityType_Adapt = 176,
-  AbilityType_AffinityForArtifacts = 177,
-  AbilityType_Scry1 = 178,
-  AbilityType_Scry2 = 179,
-  AbilityType_Scry3 = 180,
-  AbilityType_Scry4 = 181,
-  AbilityType_ScryX = 182,
-  AbilityType_SacrificeTreasure = 183,
-  AbilityType_ProtectionFromChosenColor = 184,
-  AbilityType_ProtectionFromW = 185,
-  AbilityType_ProtectionFromU = 186,
-  AbilityType_ProtectionFromB = 187,
-  AbilityType_ProtectionFromR = 188,
-  AbilityType_ProtectionFromG = 189,
-  AbilityType_HexproofFromChosen = 190,
-  AbilityType_HexproofFromW = 191,
-  AbilityType_HexproofFromU = 192,
-  AbilityType_HexproofFromB = 193,
-  AbilityType_HexproofFromR = 194,
-  AbilityType_HexproofFromG = 195,
-  AbilityType_Adventure = 196,
-  AbilityType_SacrificeFood = 197,
-  AbilityType_SacrificeGold = 198,
-  AbilityType_Escape = 199,
-  AbilityType_Fight = 200,
-  AbilityType_UntapOptional = 201,
-  AbilityType_Companion = 202,
-  AbilityType_Mutate = 203,
-  AbilityType_ProtectionFromDogs = 204,
-  AbilityType_Mill = 205,
-  AbilityType_ProtectionFromChosenName = 206,
-  AbilityType_Placeholder1 = 207,
-  AbilityType_Placeholder2 = 208,
-  AbilityType_Placeholder3 = 209,
-  AbilityType_Placeholder4 = 210,
-  AbilityType_Placeholder5 = 211,
-  AbilityType_GildCards_Test = 988,
-  AbilityType_Twiddle_Test = 989,
-  AbilityType_Donate_Test = 990,
-  AbilityType_Bounce_Test = 991,
-  AbilityType_DrawCard_Test = 992,
-  AbilityType_AddCost_Test = 993,
-  AbilityType_DeployBears_Test = 994,
-  AbilityType_EndTurn_Test = 995,
-  AbilityType_Wish_Test = 996,
-  AbilityType_PutLibrary_Test = 997,
-  AbilityType_GainHaste_Test = 998,
-  AbilityType_AddWUBRG_Test = 999,
-  AbilityType_IntrinsicMana_W = 1001,
-  AbilityType_IntrinsicMana_U = 1002,
-  AbilityType_IntrinsicMana_B = 1003,
-  AbilityType_IntrinsicMana_R = 1004,
-  AbilityType_IntrinsicMana_G = 1005,
-  AbilityType_AutoGen = 1006,
-}
-
-export type AbilityType = keyof typeof EnumAbilityType;
 
 export enum EnumActionType {
   ActionType_None = 0,
@@ -2109,16 +1968,17 @@ export enum EnumActionType {
   ActionType_CastLeft = 10,
   ActionType_CastRight = 11,
   ActionType_Make_Payment = 12,
-  ActionType_CastingTimeOption = 13,
   ActionType_CombatCost = 14,
   ActionType_OpeningHandAction = 15,
   ActionType_CastAdventure = 16,
   ActionType_FloatMana = 17,
-  ActionType_Placeholder1 = 18,
-  ActionType_Placeholder2 = 19,
-  ActionType_Placeholder3 = 20,
-  ActionType_Placeholder4 = 21,
-  ActionType_Placeholder5 = 22,
+  ActionType_CastMDFC = 18,
+  ActionType_PlayMDFC = 19,
+  ActionType_Special_Payment = 20,
+  ActionType_Placeholder21 = 21,
+  ActionType_Placeholder22 = 22,
+  ActionType_Placeholder23 = 23,
+  ActionType_Placeholder24 = 24,
 }
 
 export type ActionType = keyof typeof EnumActionType;
@@ -2131,6 +1991,14 @@ export enum EnumAllowCancel {
 }
 
 export type AllowCancel = keyof typeof EnumAllowCancel;
+
+export enum EnumAllowFailToFind {
+  AllowFailToFind_None = 0,
+  AllowFailToFind_Any = 1,
+  AllowFailToFind_Zero = 2,
+}
+
+export type AllowFailToFind = keyof typeof EnumAllowFailToFind;
 
 export enum EnumAnnotationType {
   AnnotationType_None = 0,
@@ -2215,6 +2083,13 @@ export enum EnumAnnotationType {
   AnnotationType_ChoosingAttachments = 79,
   AnnotationType_TemporaryPermanent = 80,
   AnnotationType_GamewideHistoryCount = 81,
+  AnnotationType_AbilityExhausted = 82,
+  AnnotationType_MultistepEffectStarted = 83,
+  AnnotationType_MultistepEffectComplete = 84,
+  AnnotationType_DieRoll = 85,
+  AnnotationType_DungeonStatus = 86,
+  AnnotationType_LinkedDamage = 87,
+  AnnotationType_ClassLevel = 88,
 }
 
 export type AnnotationType = keyof typeof EnumAnnotationType;
@@ -2253,7 +2128,7 @@ export enum EnumAutoPassOption {
   AutoPassOption_UnlessOpponentAction = 5,
   AutoPassOption_ResolveMyStackEffects = 6,
   AutoPassOption_FullControl = 7,
-  AutoPassOption_ArenaDefault = 8,
+  AutoPassOption_ResolveAll = 9,
 }
 
 export type AutoPassOption = keyof typeof EnumAutoPassOption;
@@ -2318,7 +2193,7 @@ export enum EnumCardMechanicType {
   CardMechanicType_DrawCard = 7,
   CardMechanicType_LossOfGame = 8,
   CardMechanicType_SetColor = 9,
-  CardMechanicType_ModifyLife = 10,
+  CardMechanicType_PayLife = 10,
   CardMechanicType_ModifyPower = 11,
   CardMechanicType_ModifyToughness = 12,
   CardMechanicType_PhaseOrStepTransition = 13,
@@ -2358,11 +2233,12 @@ export enum EnumCardMechanicType {
   CardMechanicType_Riot = 48,
   CardMechanicType_Mutate = 49,
   CardMechanicType_GraveyardExile = 50,
-  CardMechanicType_Placeholder1 = 51,
-  CardMechanicType_Placeholder2 = 52,
-  CardMechanicType_Placeholder3 = 53,
-  CardMechanicType_Placeholder4 = 54,
-  CardMechanicType_Placeholder5 = 55,
+  CardMechanicType_Exert = 51,
+  CardMechanicType_Placeholder52 = 52,
+  CardMechanicType_Placeholder53 = 53,
+  CardMechanicType_Placeholder54 = 54,
+  CardMechanicType_Placeholder55 = 55,
+  CardMechanicType_Placeholder56 = 56,
 }
 
 export type CardMechanicType = keyof typeof EnumCardMechanicType;
@@ -2381,6 +2257,9 @@ export enum EnumCardType {
   CardType_Sorcery = 10,
   CardType_Tribal = 11,
   CardType_Vanguard = 12,
+  CardType_Dungeon = 13,
+  CardType_CardTypePlaceholder14 = 14,
+  CardType_CardTypePlaceholder15 = 15,
 }
 
 export type CardType = keyof typeof EnumCardType;
@@ -2527,6 +2406,22 @@ export enum EnumCostCategory {
 }
 
 export type CostCategory = keyof typeof EnumCostCategory;
+
+export enum EnumCostType {
+  CostType_None = 0,
+  CostType_Mana = 1,
+  CostType_TapSelf = 2,
+  CostType_SacSelf = 3,
+  CostType_Action = 4,
+  CostType_Loyalty = 5,
+  CostType_DiscardSelf = 6,
+  CostType_Life = 7,
+  CostType_ExileSelf = 8,
+  CostType_UntapSelf = 9,
+  CostType_Or = 10,
+}
+
+export type CostType = keyof typeof EnumCostType;
 
 export enum EnumCounterType {
   CounterType_None = 0,
@@ -2675,19 +2570,25 @@ export enum EnumCounterType {
   CounterType_Foreshadow = 144,
   CounterType_Incarnation = 145,
   CounterType_Soul = 146,
-  CounterType_PlaceholderCounterType15 = 147,
-  CounterType_PlaceholderCounterType1 = 148,
-  CounterType_PlaceholderCounterType2 = 149,
-  CounterType_PlaceholderCounterType3 = 150,
-  CounterType_PlaceholderCounterType4 = 151,
-  CounterType_PlaceholderCounterType5 = 152,
-  CounterType_PlaceholderCounterType6 = 153,
-  CounterType_PlaceholderCounterType7 = 154,
-  CounterType_PlaceholderCounterType8 = 155,
-  CounterType_PlaceholderCounterType9 = 156,
-  CounterType_PlaceholderCounterType10 = 157,
-  CounterType_PlaceholderCounterType11 = 158,
-  CounterType_PlaceholderCounterType12 = 159,
+  CounterType_Voyage = 147,
+  CounterType_Ghostform = 148,
+  CounterType_Night = 149,
+  CounterType_Indestructible = 150,
+  CounterType_Hone = 151,
+  CounterType_Book = 152,
+  CounterType_Point = 153,
+  CounterType_Enlightened = 154,
+  CounterType_Harmony = 155,
+  CounterType_Void = 156,
+  CounterType_PHCT157 = 157,
+  CounterType_PHCT158 = 158,
+  CounterType_PHCT159 = 159,
+  CounterType_PHCT160 = 160,
+  CounterType_PHCT161 = 161,
+  CounterType_PHCT162 = 162,
+  CounterType_PHCT163 = 163,
+  CounterType_PHCT164 = 164,
+  CounterType_PHCT165 = 165,
 }
 
 export type CounterType = keyof typeof EnumCounterType;
@@ -2818,25 +2719,10 @@ export enum EnumGREMessageType {
   GREMessageType_EdictalMessage = 54,
   GREMessageType_TimeoutMessage = 55,
   GREMessageType_TimerStateMessage = 56,
+  GREMessageType_SubmitDeckConfirmation = 57,
 }
 
 export type GREMessageType = keyof typeof EnumGREMessageType;
-
-export enum EnumGRETHHostErrorCode {
-  GRETHHostErrorCode_Success = 0,
-  GRETHHostErrorCode_NullPayload = 1,
-  GRETHHostErrorCode_ParseFailed = 2,
-  GRETHHostErrorCode_IncompletePayload = 3,
-  GRETHHostErrorCode_GreCreateFailed = 4,
-  GRETHHostErrorCode_GreDestroyFailed = 5,
-  GRETHHostErrorCode_AICreateFailed = 6,
-  GRETHHostErrorCode_AIDestroyFailed = 7,
-  GRETHHostErrorCode_UnrecognizedGreID = 8,
-  GRETHHostErrorCode_InvalidPointer = 9,
-  GRETHHostErrorCode_UnknownError = 10,
-}
-
-export type GRETHHostErrorCode = keyof typeof EnumGRETHHostErrorCode;
 
 export enum EnumGameObjectType {
   GameObjectType_None = 0,
@@ -2850,6 +2736,12 @@ export enum EnumGameObjectType {
   GameObjectType_RevealedCard = 8,
   GameObjectType_TriggerHolder = 9,
   GameObjectType_Adventure = 10,
+  GameObjectType_MDFCBack = 11,
+  GameObjectType_Placeholder12 = 12,
+  GameObjectType_Placeholder13 = 13,
+  GameObjectType_Placeholder14 = 14,
+  GameObjectType_Placeholder15 = 15,
+  GameObjectType_Placeholder16 = 16,
 }
 
 export type GameObjectType = keyof typeof EnumGameObjectType;
@@ -2910,11 +2802,11 @@ export enum EnumGameVariant {
   GameVariant_TeamVsTeam = 6,
   GameVariant_TwoHeadedGiant = 7,
   GameVariant_Brawl = 8,
-  GameVariant_Placeholder1 = 9,
-  GameVariant_Placeholder2 = 10,
-  GameVariant_Placeholder3 = 11,
-  GameVariant_Placeholder4 = 12,
-  GameVariant_Placeholder5 = 13,
+  GameVariant_Placeholder9 = 9,
+  GameVariant_Placeholder10 = 10,
+  GameVariant_Placeholder11 = 11,
+  GameVariant_Placeholder12 = 12,
+  GameVariant_Placeholder13 = 13,
 }
 
 export type GameVariant = keyof typeof EnumGameVariant;
@@ -2961,6 +2853,8 @@ export enum EnumIdType {
   IdType_InstanceId = 1,
   IdType_PromptParameterIndex = 2,
   IdType_ZoneInstanceId = 3,
+  IdType_CardGrpId = 4,
+  IdType_AbilityGrpId = 5,
 }
 
 export type IdType = keyof typeof EnumIdType;
@@ -2993,9 +2887,19 @@ export enum EnumManaColor {
   ManaColor_TwoGeneric = 10,
   ManaColor_AnyColor = 11,
   ManaColor_Colorless = 12,
+  ManaColor_Snow = 13,
 }
 
 export type ManaColor = keyof typeof EnumManaColor;
+
+export enum EnumManaPaymentConditionType {
+  ManaPaymentConditionType_None = 0,
+  ManaPaymentConditionType_Threshold = 1,
+  ManaPaymentConditionType_Maximum = 2,
+  ManaPaymentConditionType_Diversity = 3,
+}
+
+export type ManaPaymentConditionType = keyof typeof EnumManaPaymentConditionType;
 
 export enum EnumManaPaymentStrategyType {
   ManaPaymentStrategyType_None = 0,
@@ -3024,6 +2928,7 @@ export enum EnumManaSpecType {
   ManaSpecType_FromSnow = 6,
   ManaSpecType_DoesNotEmpty = 7,
   ManaSpecType_AdditionalEffect = 8,
+  ManaSpecType_FromTreasure = 9,
 }
 
 export type ManaSpecType = keyof typeof EnumManaSpecType;
@@ -3130,31 +3035,6 @@ export enum EnumMatchWinCondition {
 
 export type MatchWinCondition = keyof typeof EnumMatchWinCondition;
 
-export enum EnumMechanicType {
-  MechanicType_None = 0,
-  MechanicType_CombatEnhancingSorcery = 1,
-  MechanicType_CombatEnhancingInstant = 2,
-  MechanicType_Haste = 3,
-  MechanicType_Flash = 4,
-  MechanicType_ReplaceOpponentBeginningPhase = 5,
-  MechanicType_ReplaceAIBeginningPhase = 6,
-  MechanicType_DirectDamagePlayer = 7,
-  MechanicType_Evasion = 9,
-  MechanicType_MustAttack = 10,
-  MechanicType_MustBlock = 11,
-  MechanicType_CombatEnhancingAbility = 12,
-  MechanicType_Main2Creature = 13,
-  MechanicType_DirectDamageCreature_Sorcery = 14,
-  MechanicType_DirectDamageCreature_Instant = 15,
-  MechanicType_Placeholder1 = 16,
-  MechanicType_Placeholder2 = 17,
-  MechanicType_Placeholder3 = 18,
-  MechanicType_Placeholder4 = 19,
-  MechanicType_Placeholder5 = 20,
-}
-
-export type MechanicType = keyof typeof EnumMechanicType;
-
 export enum EnumMulliganOption {
   MulliganOption_None = 0,
   MulliganOption_Mulligan = 1,
@@ -3182,13 +3062,14 @@ export enum EnumOptionContext {
   OptionContext_TurnBased = 6,
   OptionContext_Replacement = 7,
   OptionContext_ActivateCast = 8,
-  OptionContext_TurnFaceUp = 9,
+  OptionContext_Special = 9,
 }
 
 export type OptionContext = keyof typeof EnumOptionContext;
 
 export enum EnumOptionResponse {
   OptionResponse_None = 0,
+  OptionResponse_Cancel = -1,
   OptionResponse_Allow_Yes = 1,
   OptionResponse_Cancel_No = 2,
 }
@@ -3234,46 +3115,6 @@ export enum EnumOrderingContext {
 
 export type OrderingContext = keyof typeof EnumOrderingContext;
 
-export enum EnumOrderingFunctionType {
-  OrderingFunctionType_None = 0,
-  OrderingFunctionType_ConstantValue = 1,
-  OrderingFunctionType_ObjectScore = 2,
-  OrderingFunctionType_CheckCardMechanic = 3,
-  OrderingFunctionType_CheckBlockers = 4,
-  OrderingFunctionType_CheckAttackers = 5,
-  OrderingFunctionType_CheckCardMechanicIfNoAttackers = 6,
-  OrderingFunctionType_CheckAbilityMechanic = 7,
-  OrderingFunctionType_CheckAbilityMechanicIfNoAttackers = 8,
-  OrderingFunctionType_CheckPredefinedCardMechanics = 9,
-  OrderingFunctionType_CheckPredefinedAbilityMechanics = 10,
-  OrderingFunctionType_CheckPredefinedCardMechanicsIfNoAttackers = 11,
-  OrderingFunctionType_CheckPredefinedAbilityMechanicsIfNoAttackers = 12,
-  OrderingFunctionType_Mulligan = 13,
-  OrderingFunctionType_PlayLand = 14,
-  OrderingFunctionType_CheckHasAbility = 15,
-  OrderingFunctionType_ManaSelect = 16,
-}
-
-export type OrderingFunctionType = keyof typeof EnumOrderingFunctionType;
-
-export enum EnumOrderingParameterId {
-  OrderingParameterId_None = 0,
-  OrderingParameterId_BestSingleBlock = 1,
-  OrderingParameterId_GoodSingleBlock = 2,
-  OrderingParameterId_GoodSingleTrade = 3,
-  OrderingParameterId_GoodMultiTrade = 4,
-  OrderingParameterId_ChumpBlock = 5,
-  OrderingParameterId_PlayerDeath = 6,
-  OrderingParameterId_MustBlock = 7,
-  OrderingParameterId_AttackWithEvasion = 9,
-  OrderingParameterId_MustAttack = 10,
-  OrderingParameterId_FavorableTrade = 11,
-  OrderingParameterId_UnfavorableTrade = 12,
-  OrderingParameterId_OpponentDamage = 13,
-}
-
-export type OrderingParameterId = keyof typeof EnumOrderingParameterId;
-
 export enum EnumOrderingType {
   OrderingType_None = 0,
   OrderingType_OrderAsIndicated = 1,
@@ -3304,15 +3145,6 @@ export enum EnumPhase {
 }
 
 export type Phase = keyof typeof EnumPhase;
-
-export enum EnumPlayerIs {
-  PlayerIs_None = 0,
-  PlayerIs_DontCare = 1,
-  PlayerIs_AI = 2,
-  PlayerIs_Opponent = 3,
-}
-
-export type PlayerIs = keyof typeof EnumPlayerIs;
 
 export enum EnumProtoVersion {
   ProtoVersion_None = 0,
@@ -3351,6 +3183,7 @@ export enum EnumProtoVersion {
   ProtoVersion_AutoTapSolution = 33,
   ProtoVersion_ManaPaymentDeprecated = 34,
   ProtoVersion_SelectFromGroupRespGroups = 35,
+  ProtoVersion_PersistentAnnotations = 36,
 }
 
 export type ProtoVersion = keyof typeof EnumProtoVersion;
@@ -3496,14 +3329,6 @@ export enum EnumSmartStopsSetting {
 
 export type SmartStopsSetting = keyof typeof EnumSmartStopsSetting;
 
-export enum EnumSortBy {
-  SortBy_None = 0,
-  SortBy_HighToLow = 1,
-  SortBy_LowToHigh = 2,
-}
-
-export type SortBy = keyof typeof EnumSortBy;
-
 export enum EnumStaticList {
   StaticList_None = 0,
   StaticList_CardColors = 1,
@@ -3520,6 +3345,7 @@ export enum EnumStaticList {
   StaticList_Keywords = 12,
   StaticList_CardNames = 13,
   StaticList_Parities = 14,
+  StaticList_TypeKinds = 15,
 }
 
 export type StaticList = keyof typeof EnumStaticList;
@@ -3938,11 +3764,29 @@ export enum EnumSubType {
   SubType_Shark = 378,
   SubType_Dog = 379,
   SubType_Basri = 380,
-  SubType_PlaceholderSubType3 = 381,
-  SubType_PlaceholderSubType4 = 382,
-  SubType_PlaceholderSubType5 = 383,
-  SubType_PlaceholderSubType6 = 384,
-  SubType_PlaceholderSubType10 = 385,
+  SubType_Rune = 381,
+  SubType_Tyvar = 382,
+  SubType_Phyrexian = 383,
+  SubType_Niko = 384,
+  SubType_Shard = 385,
+  SubType_Inkling = 386,
+  SubType_Fractal = 387,
+  SubType_Lesson = 388,
+  SubType_Bard = 389,
+  SubType_Beholder = 390,
+  SubType_Gnoll = 391,
+  SubType_Hamster = 392,
+  SubType_Halfling = 393,
+  SubType_Tiefling = 394,
+  SubType_Bahamut = 395,
+  SubType_Ellywick = 396,
+  SubType_Lolth = 397,
+  SubType_Mordenkainen = 398,
+  SubType_Zariel = 399,
+  SubType_Class = 400,
+  SubType_Ranger = 401,
+  SubType_PlaceholderSubType402 = 402,
+  SubType_PlaceholderSubType403 = 403,
 }
 
 export type SubType = keyof typeof EnumSubType;
@@ -4061,6 +3905,7 @@ export enum EnumTimerPackage {
   TimerPackage_DirectChallenge = 6,
   TimerPackage_Default = 7,
   TimerPackage_BestOfThree = 8,
+  TimerPackage_BestOfOneMatchClock = 9,
 }
 
 export type TimerPackage = keyof typeof EnumTimerPackage;

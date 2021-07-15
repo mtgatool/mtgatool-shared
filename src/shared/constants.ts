@@ -716,6 +716,7 @@ export const CARD_SUPERTYPES = [
   "Instant",
   "Sorcery",
   "Planeswalker",
+  "Dungeon",
 ];
 
 export const CARD_TYPES = [

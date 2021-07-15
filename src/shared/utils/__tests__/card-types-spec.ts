@@ -18,6 +18,7 @@ describe("card-types", () => {
       expect(cardType(cardsByName["God-Pharaoh's Statue"])).toEqual("Artifact");
       expect(cardType(cardsByName["Curious Obsession"])).toEqual("Enchantment");
       expect(cardType(cardsByName["Breeding Pool"])).toEqual("Land");
+      expect(cardType(cardsByName["Tomb of Annihilation"])).toEqual("Dungeon");
     });
 
     it("determines Artifact Creatures to be Creatures", () => {
@@ -29,6 +30,11 @@ describe("card-types", () => {
         if (!_.has(card, "name")) return; // some properties are not cards :(
         if (card.name === "City's Blessing") return; // has no type
         if (card.id === 100) return; // has invalid type
+        try {
+          cardType(card);
+        } catch (e) {
+          console.log(card, e);
+        }
         const act = () => cardType(card);
         expect(act).not.toThrow();
       });

@@ -1,6 +1,6 @@
 {
   "name": "mtgatool-shared",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,6 +11,7 @@
     "proto:eslint": "eslint src/types/greTypes.ts --fix",
     "proto": "npm-run-all proto:model proto:greTypes proto:eslint",
     "build": "tsc",
+    "publish": "np",
     "prepublish": "npm run build",
     "jest:clear": "jest --clearCache",
     "jest:watch": "jest --watch",
@@ -23,7 +24,8 @@
     "http": "0.0.1-security",
     "https": "^1.0.0",
     "lodash": "^4.17.20",
-    "mathjs": "^7.2.0"
+    "mathjs": "^7.2.0",
+    "np": "^7.5.0"
   },
   "devDependencies": {
     "@types/bytebuffer": "^5.0.41",
