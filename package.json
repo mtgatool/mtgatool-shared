@@ -11,6 +11,7 @@
     "proto:eslint": "eslint src/types/greTypes.ts --fix",
     "proto": "npm-run-all proto:model proto:greTypes proto:eslint",
     "build": "tsc",
+    "publish": "np",
     "prepublish": "npm run build",
     "jest:clear": "jest --clearCache",
     "jest:watch": "jest --watch",
