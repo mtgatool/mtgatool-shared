@@ -86,21 +86,8 @@ export interface DeckChanges {
 export interface MatchGameStats {
   time: number;
   winner: number;
-  win: boolean;
-  shuffledOrder: number[];
   handsDrawn: number[][];
-  handLands: number[];
   cardsCast: CardCast[];
-  deckSize: number;
-  landsInDeck: number;
-  multiCardPositions: {
-    [pos: string]: {
-      [grpId: string]: number[];
-    };
-  };
-  librarySize: number;
-  landsInLibrary: number;
-  libraryLands: number[];
   sideboardChanges: DeckChanges;
   deck: InternalDeck;
   cardsSeen: number[];

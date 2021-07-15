@@ -1,6 +1,7 @@
 export interface ArenaV3Deck extends BasicDeck {
   mainDeck: v3cardsList;
   sideboard: v3cardsList;
+  reducedSideboard: v3cardsList | null;
   isValid: boolean;
   lockedForUse: boolean;
   lockedForEdit: boolean;

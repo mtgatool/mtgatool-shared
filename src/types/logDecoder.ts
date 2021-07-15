@@ -5,7 +5,7 @@ export default interface LogEntry {
   arrow: string;
   type: string;
   jsonString?: string;
-  json: () => any;
+  json: any;
 }
 
 export interface ClientSceneChange {

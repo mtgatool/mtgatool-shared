@@ -2,9 +2,12 @@ import convertV3ListToV2 from "./convertV3ListToV2";
 import { ArenaV3Deck, InternalDeck } from "../../types";
 import Deck from "../deck";
 
-export default function convertDeckFromV3(v3deck: ArenaV3Deck): InternalDeck {
+export default function convertDeckFromV3(v3deck: ArenaV3Deck): Deck {
   const newMain = convertV3ListToV2(v3deck.mainDeck);
-  const newSide = convertV3ListToV2(v3deck.sideboard);
+  const newSide = convertV3ListToV2([
+    ...v3deck.sideboard,
+    ...(v3deck.reducedSideboard || []),
+  ]);
   const v2Deck: InternalDeck = {
     mainDeck: newMain,
     sideboard: newSide,
@@ -19,5 +22,5 @@ export default function convertDeckFromV3(v3deck: ArenaV3Deck): InternalDeck {
     type: "InternalDeck",
   };
   const deck = new Deck(v2Deck);
-  return deck.getSave();
+  return deck;
 }

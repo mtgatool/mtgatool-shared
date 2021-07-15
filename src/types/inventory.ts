@@ -5,6 +5,10 @@ interface AetherizedCard {
   set: string;
 }
 
+export interface Cards {
+  [grpId: string]: number;
+}
+
 export interface InventoryDelta {
   gemsDelta: number;
   goldDelta: number;

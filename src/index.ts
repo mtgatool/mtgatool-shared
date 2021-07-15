@@ -22,6 +22,7 @@ import getRankIndex16 from "./shared/utils/getRankIndex16";
 import getRaritySortValue from "./shared/utils/getRaritySortValue";
 import getSetCode from "./shared/utils/getSetCode";
 import getSetInEventId from "./shared/utils/getSetInEventId";
+import loadDbFromCache from "./shared/utils/loadDbFromCache";
 import objectClone from "./shared/utils/objectClone";
 import sha1 from "./shared/utils/sha1";
 import useSet from "./shared/utils/useSet";
@@ -58,6 +59,7 @@ export {
   getRaritySortValue,
   getSetCode,
   getSetInEventId,
+  loadDbFromCache,
   objectClone,
   sha1,
   useSet,
