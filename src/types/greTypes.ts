@@ -597,6 +597,7 @@ export interface EffectCostReq {
   costSelection?: SelectNReq;
   counterSelection?: SelectCountersReq;
   groupSelection?: SelectFromGroupsReq;
+  gatherReq?: GatherReq;
 }
 
 export interface EffectCostResp {
@@ -605,6 +606,7 @@ export interface EffectCostResp {
   costSelection?: SelectNResp;
   counterSelection?: SelectCountersResp;
   groupSelection?: SelectFromGroupsResp;
+  gatherResp?: GatherResp;
 }
 
 export interface FinalMatchResult {
@@ -889,6 +891,7 @@ export interface GatherReq {
   optionIndex?: number;
   destinationId?: number;
   sources: GatherSource[];
+  amountToGather?: number;
 }
 
 export interface GatherResp {
@@ -1024,13 +1027,6 @@ export interface KeyValuePair {
   singleValue?: SingleValue;
   repeatedValue?: RepeatedValue;
 }
-export enum EnumValueOneofCaseRepeated {
-  None = 0,
-  SingleValue = 2,
-  RepeatedValue = 3,
-}
-
-export type ValueOneofCaseRepeated = keyof typeof EnumValueOneofCaseRepeated;
 
 export interface KeyValuePairInfo {
   key?: string;
@@ -1436,15 +1432,6 @@ export interface PromptParameter {
   numberValue?: number;
   promptId?: number;
 }
-export enum EnumValueOneofCaseRef {
-  None = 0,
-  Reference = 3,
-  StringValue = 4,
-  NumberValue = 5,
-  PromptId = 7,
-}
-
-export type ValueOneofCaseRef = keyof typeof EnumValueOneofCaseRef;
 
 export interface Reference {
   type?: ReferenceType;
@@ -2258,8 +2245,6 @@ export enum EnumCardType {
   CardType_Tribal = 11,
   CardType_Vanguard = 12,
   CardType_Dungeon = 13,
-  CardType_CardTypePlaceholder14 = 14,
-  CardType_CardTypePlaceholder15 = 15,
 }
 
 export type CardType = keyof typeof EnumCardType;
@@ -2588,7 +2573,7 @@ export enum EnumCounterType {
   CounterType_PHCT162 = 162,
   CounterType_PHCT163 = 163,
   CounterType_PHCT164 = 164,
-  CounterType_PHCT165 = 165,
+  CounterType_Acorn = 165,
 }
 
 export type CounterType = keyof typeof EnumCounterType;
@@ -2608,6 +2593,7 @@ export enum EnumEffectCostType {
   EffectCostType_SelectCounter = 2,
   EffectCostType_Autoselect = 3,
   EffectCostType_SelectFromGroups = 4,
+  EffectCostType_GatherCounters = 5,
 }
 
 export type EffectCostType = keyof typeof EnumEffectCostType;
@@ -3787,6 +3773,7 @@ export enum EnumSubType {
   SubType_Ranger = 401,
   SubType_PlaceholderSubType402 = 402,
   SubType_PlaceholderSubType403 = 403,
+  SubType_Serra = 404,
 }
 
 export type SubType = keyof typeof EnumSubType;
