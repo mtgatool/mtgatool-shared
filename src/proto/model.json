@@ -1,5 +1,5 @@
 {
-    "package": null,
+    "package": "wotc.mtgo.gre.external.messaging",
     "syntax": "proto2",
     "messages": [
         {
@@ -2755,13 +2755,21 @@
                     "name": "groupSelection",
                     "id": 6,
                     "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "GatherReq",
+                    "name": "gatherReq",
+                    "id": 7,
+                    "oneof": "message"
                 }
             ],
             "oneofs": {
                 "message": [
                     4,
                     5,
-                    6
+                    6,
+                    7
                 ]
             }
         },
@@ -2801,13 +2809,21 @@
                     "name": "groupSelection",
                     "id": 5,
                     "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "GatherResp",
+                    "name": "gatherResp",
+                    "id": 38,
+                    "oneof": "message"
                 }
             ],
             "oneofs": {
                 "message": [
                     3,
                     4,
-                    5
+                    5,
+                    38
                 ]
             }
         },
@@ -4269,6 +4285,12 @@
                     "type": "GatherSource",
                     "name": "sources",
                     "id": 3
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "amountToGather",
+                    "id": 4
                 }
             ]
         },
@@ -10068,14 +10090,6 @@
                 {
                     "name": "CardType_Dungeon",
                     "id": 13
-                },
-                {
-                    "name": "CardType_CardTypePlaceholder14",
-                    "id": 14
-                },
-                {
-                    "name": "CardType_CardTypePlaceholder15",
-                    "id": 15
                 }
             ]
         },
@@ -11222,7 +11236,7 @@
                     "id": 164
                 },
                 {
-                    "name": "CounterType_PHCT165",
+                    "name": "CounterType_Acorn",
                     "id": 165
                 }
             ]
@@ -11272,6 +11286,10 @@
                 {
                     "name": "EffectCostType_SelectFromGroups",
                     "id": 4
+                },
+                {
+                    "name": "EffectCostType_GatherCounters",
+                    "id": 5
                 }
             ]
         },
@@ -15190,6 +15208,10 @@
                 {
                     "name": "SubType_PlaceholderSubType403",
                     "id": 403
+                },
+                {
+                    "name": "SubType_Serra",
+                    "id": 404
                 }
             ]
         },
