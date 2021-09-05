@@ -18,11 +18,7 @@ export interface InternalDeck extends BasicDeck {
   sideboard: v2cardsList;
   arenaMain?: Readonly<v2cardsList>;
   arenaSide?: Readonly<v2cardsList>;
-  custom?: boolean;
-  tags?: string[];
-  colors?: number[];
-  archetype?: string;
-  archived?: boolean;
+  colors?: number;
   type: "InternalDeck";
 }
 
@@ -36,7 +32,6 @@ interface BasicDeck {
   lastUpdated: string;
   deckTileId: number;
   format: string;
-  description: string;
 }
 
 export interface CardObject {
@@ -48,9 +43,16 @@ export interface CardObject {
   measurable?: boolean;
 }
 
+export interface V4CardObject {
+  cardId: number;
+  quantity: number;
+}
+
 export type v2cardsList = Array<CardObject>;
 
 export type v3cardsList = Array<number>;
+
+export type v4cardsList = Array<V4CardObject>;
 
 export function isV2CardsList(
   list: Readonly<anyCardsList>

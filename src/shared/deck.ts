@@ -18,11 +18,7 @@ class Deck {
   public lastUpdated: string;
   public tile: number;
   public _colors: Colors;
-  public tags: string[];
-  public custom: boolean;
-  public archetype: string;
   public format: string;
-  public description: string;
 
   constructor(
     mtgaDeck: Partial<InternalDeck> = {},
@@ -42,11 +38,7 @@ class Deck {
     this.lastUpdated = mtgaDeck.lastUpdated ?? "";
     this.tile = mtgaDeck.deckTileId ? mtgaDeck.deckTileId : DEFAULT_TILE;
     this._colors = this.getColors();
-    this.tags = mtgaDeck.tags ?? [mtgaDeck.format as string];
-    this.custom = mtgaDeck.custom ?? false;
-    this.archetype = mtgaDeck.archetype ?? "";
     this.format = mtgaDeck.format ?? "";
-    this.description = mtgaDeck.description ?? "";
     return this;
   }
 
@@ -139,8 +131,6 @@ class Deck {
       id: this.id,
       lastUpdated: this.lastUpdated,
       deckTileId: this.tile,
-      tags: this.tags,
-      custom: this.custom,
       commandZoneGRPIds: this.commandZoneGRPIds,
     };
 
@@ -264,14 +254,11 @@ class Deck {
       id: this.id,
       lastUpdated: this.lastUpdated,
       deckTileId: this.tile,
-      colors: this.colors.get(),
-      tags: this.tags || [],
-      custom: this.custom,
+      colors: this.colors.getBits(),
       commandZoneGRPIds: this.commandZoneGRPIds,
       companionGRPId: this.companionGRPId || undefined,
       format: this.format,
       type: "InternalDeck",
-      description: this.description,
     };
   }
 
