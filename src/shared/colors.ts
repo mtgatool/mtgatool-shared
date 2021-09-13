@@ -7,6 +7,7 @@ import {
   MULTI,
   COLORLESS,
 } from "../shared/constants";
+
 const colorFlags = {
   NONE: 0,
   W: 1,
@@ -14,25 +15,28 @@ const colorFlags = {
   B: 4,
   R: 8,
   G: 16,
+  C: 32,
 };
 
 class Colors {
-  private w: number;
-  private u: number;
-  private b: number;
-  private r: number;
-  private g: number;
+  private w: boolean;
+  private u: boolean;
+  private b: boolean;
+  private r: boolean;
+  private g: boolean;
+  private c: boolean;
 
   /**
    * Creates a new colors object
    * Colors can be set by properties matching the colors (w, u, b, r, g)
    **/
   constructor() {
-    this.w = 0;
-    this.u = 0;
-    this.b = 0;
-    this.r = 0;
-    this.g = 0;
+    this.w = false;
+    this.u = false;
+    this.b = false;
+    this.r = false;
+    this.g = false;
+    this.c = false;
 
     return this;
   }
@@ -43,11 +47,12 @@ class Colors {
    */
   get(): number[] {
     const _arr: number[] = [];
-    if (this.w !== 0) _arr.push(WHITE);
-    if (this.u !== 0) _arr.push(BLUE);
-    if (this.b !== 0) _arr.push(BLACK);
-    if (this.r !== 0) _arr.push(RED);
-    if (this.g !== 0) _arr.push(GREEN);
+    if (this.w) _arr.push(WHITE);
+    if (this.u) _arr.push(BLUE);
+    if (this.b) _arr.push(BLACK);
+    if (this.r) _arr.push(RED);
+    if (this.g) _arr.push(GREEN);
+    if (this.c) _arr.push(COLORLESS);
     return _arr;
   }
 
@@ -56,11 +61,12 @@ class Colors {
    */
   getBits(): number {
     let bits = 0;
-    if (this.w !== 0) bits |= colorFlags.W;
-    if (this.u !== 0) bits |= colorFlags.U;
-    if (this.b !== 0) bits |= colorFlags.B;
-    if (this.r !== 0) bits |= colorFlags.R;
-    if (this.g !== 0) bits |= colorFlags.G;
+    if (this.w) bits |= colorFlags.W;
+    if (this.u) bits |= colorFlags.U;
+    if (this.b) bits |= colorFlags.B;
+    if (this.r) bits |= colorFlags.R;
+    if (this.g) bits |= colorFlags.G;
+    if (this.c) bits |= colorFlags.C;
     return bits;
   }
 
@@ -81,11 +87,12 @@ class Colors {
    */
   get length(): number {
     let ret = 0;
-    if (this.w > 0) ret += 1;
-    if (this.u > 0) ret += 1;
-    if (this.b > 0) ret += 1;
-    if (this.r > 0) ret += 1;
-    if (this.g > 0) ret += 1;
+    if (this.w) ret += 1;
+    if (this.u) ret += 1;
+    if (this.b) ret += 1;
+    if (this.r) ret += 1;
+    if (this.g) ret += 1;
+    if (this.c) ret += 1;
 
     return ret;
   }
@@ -94,23 +101,88 @@ class Colors {
    * Adds a string mana cost to this class.
    */
   addFromCost(cost: string[]): Colors {
+    if (cost.length === 0) this.c = true;
+
     cost.forEach((symbol) => {
       for (const c of symbol) {
         switch (c) {
           case "w":
-            this.w += 1;
+            this.w = true;
             break;
           case "u":
-            this.u += 1;
+            this.u = true;
             break;
           case "b":
-            this.b += 1;
+            this.b = true;
             break;
           case "r":
-            this.r += 1;
+            this.r = true;
             break;
           case "g":
-            this.g += 1;
+            this.g = true;
+            break;
+          case "x":
+            this.c = true;
+            break;
+          case "1":
+            this.c = true;
+            break;
+          case "2":
+            this.c = true;
+            break;
+          case "3":
+            this.c = true;
+            break;
+          case "4":
+            this.c = true;
+            break;
+          case "5":
+            this.c = true;
+            break;
+          case "6":
+            this.c = true;
+            break;
+          case "7":
+            this.c = true;
+            break;
+          case "8":
+            this.c = true;
+            break;
+          case "9":
+            this.c = true;
+            break;
+          case "10":
+            this.c = true;
+            break;
+          case "11":
+            this.c = true;
+            break;
+          case "12":
+            this.c = true;
+            break;
+          case "13":
+            this.c = true;
+            break;
+          case "14":
+            this.c = true;
+            break;
+          case "15":
+            this.c = true;
+            break;
+          case "16":
+            this.c = true;
+            break;
+          case "17":
+            this.c = true;
+            break;
+          case "17":
+            this.c = true;
+            break;
+          case "17":
+            this.c = true;
+            break;
+          case "17":
+            this.c = true;
             break;
         }
       }
@@ -126,19 +198,22 @@ class Colors {
     cost.forEach((color) => {
       switch (color) {
         case WHITE:
-          this.w += 1;
+          this.w = true;
           break;
         case BLUE:
-          this.u += 1;
+          this.u = true;
           break;
         case BLACK:
-          this.b += 1;
+          this.b = true;
           break;
         case RED:
-          this.r += 1;
+          this.r = true;
           break;
         case GREEN:
-          this.g += 1;
+          this.g = true;
+          break;
+        case COLORLESS:
+          this.c = true;
           break;
       }
     });
@@ -150,11 +225,12 @@ class Colors {
    * Merges another instance of Colors into this one.
    */
   addFromColor(color: Colors): Colors {
-    this.w += color.w;
-    this.u += color.u;
-    this.b += color.b;
-    this.r += color.r;
-    this.g += color.g;
+    this.w = color.w;
+    this.u = color.u;
+    this.b = color.b;
+    this.r = color.r;
+    this.g = color.g;
+    this.c = color.c;
 
     return this;
   }
@@ -163,11 +239,12 @@ class Colors {
    * Merges a "bitshift" integer into this color.
    */
   addFromBits(colorBits: number): Colors {
-    this.w += colorBits & colorFlags.W ? 1 : 0;
-    this.u += colorBits & colorFlags.U ? 1 : 0;
-    this.b += colorBits & colorFlags.B ? 1 : 0;
-    this.r += colorBits & colorFlags.R ? 1 : 0;
-    this.g += colorBits & colorFlags.G ? 1 : 0;
+    this.w = !!(colorBits & colorFlags.W ? 1 : 0);
+    this.u = !!(colorBits & colorFlags.U ? 1 : 0);
+    this.b = !!(colorBits & colorFlags.B ? 1 : 0);
+    this.r = !!(colorBits & colorFlags.R ? 1 : 0);
+    this.g = !!(colorBits & colorFlags.G ? 1 : 0);
+    this.c = !!(colorBits & colorFlags.C ? 1 : 0);
 
     return this;
   }
@@ -181,7 +258,8 @@ class Colors {
       this.u == color.u &&
       this.b == color.b &&
       this.r == color.r &&
-      this.g == color.g
+      this.g == color.g &&
+      this.c == color.c
     );
   }
 
@@ -192,6 +270,9 @@ class Colors {
     if (this.b) currentColorFlags |= colorFlags.B;
     if (this.r) currentColorFlags |= colorFlags.R;
     if (this.g) currentColorFlags |= colorFlags.G;
+    // All flags except colorless and above
+    currentColorFlags =
+      currentColorFlags > 32 ? currentColorFlags - 32 : currentColorFlags;
 
     switch (currentColorFlags) {
       case 1:
@@ -256,6 +337,8 @@ class Colors {
         return "UBRG";
       case 31:
         return "5-color";
+      case 32:
+        return "Colorless";
       default:
         return "";
     }

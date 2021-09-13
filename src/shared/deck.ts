@@ -1,25 +1,16 @@
-import {
-  anyCardsList,
-  CardObject,
-  InternalDeck,
-  isV2CardsList,
-  v2cardsList,
-} from "../types/deck";
+import { anyCardsList, CardObject, InternalDeck } from "../types/deck";
 import { DbCardData } from "../types/metadata";
 import CardsList from "./cardsList";
 import Colors from "./colors";
 import { DEFAULT_TILE } from "../shared/constants";
 import db from "./database";
 import compareCards from "./utils/compareCards";
-import getSetCode from "./utils/getSetCode";
 import objectClone from "./utils/objectClone";
 import sha1 from "./utils/sha1";
 
 class Deck {
   private mainboard: CardsList;
   private sideboard: CardsList;
-  private readonly arenaMain: Readonly<v2cardsList>;
-  private readonly arenaSide: Readonly<v2cardsList>;
   private commandZoneGRPIds: number[];
   private companionGRPId: number | null;
   private name: string;
@@ -27,29 +18,19 @@ class Deck {
   public lastUpdated: string;
   public tile: number;
   public _colors: Colors;
-  public tags: string[];
-  public custom: boolean;
-  public archetype: string;
   public format: string;
-  public description: string;
 
   constructor(
     mtgaDeck: Partial<InternalDeck> = {},
     main?: anyCardsList,
-    side?: anyCardsList,
-    arenaMain?: Readonly<anyCardsList>,
-    arenaSide?: Readonly<anyCardsList>
+    side?: anyCardsList
   ) {
     // Putting these as default argument values works in tests, but throws an
     // undefined reference error in production.
     main = main ?? mtgaDeck.mainDeck ?? [];
     side = side ?? mtgaDeck.sideboard ?? [];
-    arenaMain = arenaMain ?? mtgaDeck.arenaMain ?? main;
-    arenaSide = arenaSide ?? mtgaDeck.arenaSide ?? side;
     this.mainboard = new CardsList(main);
     this.sideboard = new CardsList(side);
-    this.arenaMain = Deck.toLoggedList(arenaMain);
-    this.arenaSide = Deck.toLoggedList(arenaSide);
     this.commandZoneGRPIds = mtgaDeck.commandZoneGRPIds ?? [];
     this.companionGRPId = mtgaDeck.companionGRPId ?? null;
     this.name = mtgaDeck.name ?? "";
@@ -57,41 +38,8 @@ class Deck {
     this.lastUpdated = mtgaDeck.lastUpdated ?? "";
     this.tile = mtgaDeck.deckTileId ? mtgaDeck.deckTileId : DEFAULT_TILE;
     this._colors = this.getColors();
-    this.tags = mtgaDeck.tags ?? [mtgaDeck.format as string];
-    this.custom = mtgaDeck.custom ?? false;
-    this.archetype = mtgaDeck.archetype ?? "";
     this.format = mtgaDeck.format ?? "";
-    this.description = mtgaDeck.description ?? "";
     return this;
-  }
-
-  private static toLoggedList(
-    list: Readonly<anyCardsList>
-  ): Readonly<v2cardsList> {
-    if (isV2CardsList(list)) {
-      return Object.freeze(
-        list.map(({ id, quantity }: CardObject) =>
-          Object.freeze({
-            id,
-            quantity,
-          })
-        )
-      );
-    } else {
-      const loggedList: CardObject[] = [];
-      let lastObj: CardObject | undefined = undefined;
-      for (const id of list) {
-        if (lastObj === undefined || lastObj.id !== id) {
-          Object.freeze(lastObj);
-          lastObj = { id: id, quantity: 1 } as CardObject;
-          loggedList.push(lastObj);
-        } else {
-          lastObj.quantity++;
-        }
-      }
-      Object.freeze(lastObj);
-      return Object.freeze(loggedList);
-    }
   }
 
   /**
@@ -183,18 +131,10 @@ class Deck {
       id: this.id,
       lastUpdated: this.lastUpdated,
       deckTileId: this.tile,
-      tags: this.tags,
-      custom: this.custom,
       commandZoneGRPIds: this.commandZoneGRPIds,
     };
 
-    return new Deck(
-      objectClone(obj),
-      main,
-      side,
-      this.arenaMain,
-      this.arenaSide
-    );
+    return new Deck(objectClone(obj), main, side);
   }
 
   /**
@@ -299,33 +239,26 @@ class Deck {
   /**
    * Returns a copy of this deck as an object.
    */
-  getSave(includeAsLogged = false): InternalDeck {
-    return objectClone(this.getSaveRaw(includeAsLogged));
+  getSave(): InternalDeck {
+    return objectClone(this.getSaveRaw());
   }
 
   /**
    * Returns a copy of this deck as an object, but maintains variables references.
    */
-  getSaveRaw(includeAsLogged = false): InternalDeck {
+  getSaveRaw(): InternalDeck {
     return {
       mainDeck: this.mainboard.get(),
       sideboard: this.sideboard.get(),
-      ...(includeAsLogged && {
-        arenaMain: this.arenaMain,
-        arenaSide: this.arenaSide,
-      }),
       name: this.name,
       id: this.id,
       lastUpdated: this.lastUpdated,
       deckTileId: this.tile,
-      colors: this.colors.get(),
-      tags: this.tags || [],
-      custom: this.custom,
+      colors: this.colors.getBits(),
       commandZoneGRPIds: this.commandZoneGRPIds,
       companionGRPId: this.companionGRPId || undefined,
       format: this.format,
       type: "InternalDeck",
-      description: this.description,
     };
   }
 
@@ -333,20 +266,20 @@ class Deck {
    * Returns a unique string for this deck. (not hashed)
    * @param checkSide whether or not to use the sideboard (default: true)
    */
-  getUniqueString(checkSide = true): string {
+  getUniqueString(_checkSide = true): string {
     this.sortMainboard(compareCards);
-    this.sortSideboard(compareCards);
+    //this.sortSideboard(compareCards);
 
     let str = "";
     this.mainboard.get().forEach((card) => {
       str += card.id + "," + card.quantity + ",";
     });
 
-    if (checkSide) {
-      this.sideboard.get().forEach((card) => {
-        str += card.id + "," + card.quantity + ",";
-      });
-    }
+    //if (checkSide) {
+    //  this.sideboard.get().forEach((card) => {
+    //    str += card.id + "," + card.quantity + ",";
+    //  });
+    //}
 
     return str;
   }
@@ -357,9 +290,9 @@ class Deck {
    */
   getHash(checkSide = true): string {
     this.getMainboard().removeDuplicates(true);
-    this.getSideboard().removeDuplicates(true);
+    //this.getSideboard().removeDuplicates(true);
     this.getMainboard().removeZeros(true);
-    this.getSideboard().removeZeros(true);
+    //this.getSideboard().removeZeros(true);
     return sha1(this.getUniqueString(checkSide));
   }
 }

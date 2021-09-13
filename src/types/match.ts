@@ -144,18 +144,18 @@ interface MatchGameRoomStateTypeMatchCompleted extends GameRoomInfo {
 }
 
 export interface InternalPlayer {
-  userid: string;
-  win: number;
-  step?: number;
+  wins: number;
   seat: number;
-  tier: number;
+  userid: string;
   name: string;
+  commanderGrpIds: any;
+  companionGrpId: number;
+  cardsUsed: number[];
   rank: string;
+  tier: number;
+  step?: number;
   percentile?: number;
   leaderboardPlace?: number;
-  commanderGrpIds: any;
-  companionGRPId: number;
-  cardsUsed: number[];
 }
 
 export interface InternalMatch {
@@ -163,28 +163,18 @@ export interface InternalMatch {
   arenaId: string;
   playerDeck: InternalDeck;
   oppDeck: InternalDeck;
-  tags: any;
   date: string;
-  lastPushedDate?: string; // not set until match is successfully pushed
   onThePlay: number;
   eventId: string;
   bestOf: number;
-  postStats: {
-    statsHeatMap: MatchState["statsHeatMap"];
-    totalTurns: MatchState["totalTurns"];
-    playerStats: MatchState["playerStats"];
-    oppStats: MatchState["oppStats"];
-  };
-  gameStats: MatchGameStats[];
+  gameStats: Record<number, MatchGameStats>;
   toolVersion: number;
-  lastPushedByVersion?: number; // not set until match is successfully pushed
   toolRunFromSource: boolean;
   id: string;
   duration: number;
   player: InternalPlayer;
   opponent: InternalPlayer;
-  archived?: boolean;
-  playerDeckHash?: string;
-  jumpstartTheme?: string;
+  playerDeckHash: string;
+  actionLog: string;
   type: "match";
 }

@@ -4,6 +4,7 @@ import compareCards from "./shared/utils/compareCards";
 import convertDeckFromV3 from "./shared/utils/convertDeckFromV3";
 import convertDraftToV2 from "./shared/utils/convertDraftToV2";
 import convertV3ListToV2 from "./shared/utils/convertV3ListToV2";
+import convertV4ListToV2 from "./shared/utils/convertV4ListToV2";
 import countValues from "./shared/utils/countValues";
 import formatPercent from "./shared/utils/formatPercent";
 import getBestArchetype from "./shared/utils/getBestArchetype";
@@ -22,6 +23,7 @@ import getRankIndex16 from "./shared/utils/getRankIndex16";
 import getRaritySortValue from "./shared/utils/getRaritySortValue";
 import getSetCode from "./shared/utils/getSetCode";
 import getSetInEventId from "./shared/utils/getSetInEventId";
+import loadDbFromCache from "./shared/utils/loadDbFromCache";
 import objectClone from "./shared/utils/objectClone";
 import sha1 from "./shared/utils/sha1";
 import useSet from "./shared/utils/useSet";
@@ -41,6 +43,7 @@ export {
   convertDeckFromV3,
   convertDraftToV2,
   convertV3ListToV2,
+  convertV4ListToV2,
   countValues,
   formatPercent,
   getBestArchetype,
@@ -58,6 +61,7 @@ export {
   getRaritySortValue,
   getSetCode,
   getSetInEventId,
+  loadDbFromCache,
   objectClone,
   sha1,
   useSet,

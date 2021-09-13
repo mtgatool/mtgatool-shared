@@ -1,30 +1,8 @@
-// Should allow binary ops
-export const IPC_NONE = 0;
-export const IPC_MAIN = 1;
-export const IPC_BACKGROUND = 2;
-export const IPC_RENDERER = 4;
-export const IPC_OVERLAY = 8;
-export const IPC_ALL = IPC_BACKGROUND | IPC_RENDERER | IPC_MAIN | IPC_OVERLAY;
-
 // Login states
 export const LOGIN_AUTH = 1;
 export const LOGIN_WAITING = 2;
 export const LOGIN_OK = 3;
 export const LOGIN_FAILED = 4;
-
-// Sync states
-export const SYNC_IDLE = 1;
-export const SYNC_OK = 2;
-export const SYNC_CHECK = 3;
-export const SYNC_FETCH = 4;
-export const SYNC_PUSH = 5;
-export const SYNC_ERR = 6;
-
-// Server roles
-export const ROLE_USER = 1;
-export const ROLE_PATREON = 2;
-export const ROLE_DEVELOPER = 4;
-export const ROLE_ADMIN = 8;
 
 // Colour indices
 export const WHITE = 1;
@@ -35,9 +13,6 @@ export const RED = 4;
 export const GREEN = 5;
 export const COLORLESS = 6;
 export const MULTI = 7;
-
-// Magic constant to represent auth token in form
-export const HIDDEN_PW = "********";
 
 export const CounterType: Record<string, string> = {
   "1": "+1/+1",
@@ -649,30 +624,6 @@ export const FACE_ADVENTURE_MAIN = 8;
 export const FACE_MODAL_BACK = 9;
 export const FACE_MODAL_FRONT = 10;
 
-export const FORMATS: Record<string, string> = {
-  Standard: "Standard",
-  TraditionalStandard: "Traditional Standard",
-  Historic: "Historic",
-  TraditionalHistoric: "Traditional Historic",
-  Renewal: "Standard 2020",
-  Draft: "Draft",
-  Sealed: "Sealed",
-  Pauper: "Pauper",
-  Singleton: "Singleton",
-  Cascade: "Cascade",
-  MoreBans: "Standard Shakeup",
-  Pandemonium: "Pandemonium",
-  NoInstants: "No Instants",
-  DirectGame: "Direct Game",
-  precon: "Preconstructed",
-  Ravnica: "Ravnica Block",
-  Ixalan: "Ixalan Block",
-  GRN: "Ravnica Constructed",
-  XLN: "Ixalan Constructed",
-};
-// TODO use a label handler for PlayerInventory.GetFormats instead of this manual constant
-export const STANDARD_CUTOFF_DATE = "2018-10-04"; // day before GRN release
-
 export const COLORS_ALL = ["w", "u", "b", "r", "g", "c", "m"] as const;
 export const COLORS_BRIEF = ["w", "u", "b", "r", "g"] as const;
 export const COLORS_LONG = [
@@ -684,6 +635,7 @@ export const COLORS_LONG = [
   "colorless",
   "multi",
 ] as const;
+
 export const RANKS = [
   "Bronze",
   "Silver",
@@ -692,6 +644,7 @@ export const RANKS = [
   "Diamond",
   "Mythic",
 ] as const;
+
 export const OVERLAY_FULL = 0;
 export const OVERLAY_LEFT = 1;
 export const OVERLAY_ODDS = 2;
@@ -834,25 +787,6 @@ export const PACK_SIZES: Record<string, number> = {
 export const DEFAULT_TILE = 67003;
 export const EASING_DEFAULT = "cubicBezier(0.570, 0.165, 0.210, 0.990)";
 
-//export const MAIN_OFFLINE = 1;
-//export const MAIN_LOGIN = 2;
-export const MAIN_HOME = 3;
-export const MAIN_DECKS = 4;
-export const MAIN_MATCHES = 5;
-export const MAIN_EVENTS = 6;
-export const MAIN_EXPLORE = 7;
-export const MAIN_ECONOMY = 8;
-export const MAIN_COLLECTION = 9;
-export const MAIN_SETTINGS = 10;
-export const MAIN_TIMELINE = 11;
-//export const MAIN_UPDATE = 12;
-export const MAIN_CONSTRUCTED = 13;
-export const MAIN_LIMITED = 14;
-
-export const SUB_DECK = 1;
-export const SUB_MATCH = 2;
-export const SUB_DRAFT = 3;
-
 export const SHORTCUT_NAMES: Record<string, string> = {
   shortcut_overlay_1: "Toggle Overlay 1",
   shortcut_overlay_2: "Toggle Overlay 2",
@@ -863,16 +797,6 @@ export const SHORTCUT_NAMES: Record<string, string> = {
   shortcut_devtools_main: "Toggle Developer Tools (main)",
   shortcut_devtools_overlay: "Toggle Developer Tools (overlays)",
 } as const;
-
-export const SETTINGS_BEHAVIOUR = 1;
-export const SETTINGS_ARENA_DATA = 2;
-export const SETTINGS_OVERLAY = 3;
-export const SETTINGS_VISUAL = 4;
-export const SETTINGS_SHORTCUTS = 5;
-export const SETTINGS_PRIVACY = 6;
-export const SETTINGS_ABOUT = 7;
-export const SETTINGS_LOGIN = 8;
-export const SETTINGS_ADMIN = 9;
 
 // Date constants
 export const DATE_LAST_DAY = "Last 24 Hours";
