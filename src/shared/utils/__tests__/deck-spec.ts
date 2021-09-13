@@ -12,15 +12,6 @@ describe("deck", () => {
 
   describe("clone", () => {});
 
-  describe("getSave", () => {
-    it("returns a copy", () => {
-      const deck = new Deck({}, [66091]);
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      deck.getSave().arenaMain![0].quantity++;
-      expect(deck.getSave().arenaMain).toEqual([{ id: 66091, quantity: 1 }]);
-    });
-  });
-
   describe("hashing", () => {
     it("returns proper hash", () => {
       const mainA = [
@@ -52,18 +43,18 @@ describe("deck", () => {
       ];
       const side = [68576, 70267, 70267, 68576, 68576];
       const hashTestA = new Deck({}, mainA, side);
-      const hashTestB = new Deck({}, mainB, side);
+      const hashTestB = new Deck({}, side, mainB);
       hashTestB.getMainboard().add(68570, 1, true);
 
       // These test could fail if database-spec fails
       expect(hashTestA.getUniqueString(true)).toBe(
-        "70640,3,70262,3,68570,1,69235,2,70390,1,73132,2,68576,3,70267,2,"
+        "70640,3,70262,3,68570,1,69235,2,70390,1,73132,2,"
       );
       expect(hashTestA.getHash(true)).toBe(
-        "74a5ff0c98dbafb8f3f75302bf48d59ecdad1acc"
+        "866e1513b4ffcdb03e3c9d1b8dab8f9fdabe187c"
       );
       expect(hashTestB.getHash(true)).toBe(
-        "74a5ff0c98dbafb8f3f75302bf48d59ecdad1acc"
+        "a6a5d6abfce9fc0075125e6ca78aeb7d3a902ed6"
       );
     });
   });
