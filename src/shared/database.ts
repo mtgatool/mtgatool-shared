@@ -10,7 +10,6 @@ export class DatabaseClass {
     this.setDatabaseUnsafely = this.setDatabaseUnsafely.bind(this);
     this.card = this.card.bind(this);
     this.ability = this.ability.bind(this);
-    this.eventName = this.eventName.bind(this);
   }
 
   static getInstance(): DatabaseClass {
@@ -81,46 +80,12 @@ export class DatabaseClass {
     return this.metadata ? this.metadata.abilities : {};
   }
 
-  get archetypes(): Metadata["archetypes"] {
-    return this.metadata ? this.metadata.archetypes : [];
-  }
-
   get cards(): { [id: number]: DbCardData } {
     return this.metadata !== undefined ? this.metadata.cards : {};
   }
 
   get cardList(): DbCardData[] {
     return this.cards ? Object.values(this.cards) : ([] as DbCardData[]);
-  }
-
-  get events(): { [id: string]: string } {
-    return this.metadata ? this.metadata.events : {};
-  }
-
-  get eventIds(): string[] {
-    return this.metadata ? Object.keys(this.metadata.events) : ([] as string[]);
-  }
-
-  get eventList(): string[] {
-    return this.metadata
-      ? Object.values(this.metadata.events)
-      : ([] as string[]);
-  }
-
-  get events_format(): { [id: string]: string } {
-    return this.metadata ? this.metadata.events_format : {};
-  }
-
-  get limited_ranked_events(): string[] {
-    return this.metadata ? this.metadata.limited_ranked_events : [];
-  }
-
-  get standard_ranked_events(): string[] {
-    return this.metadata ? this.metadata.standard_ranked_events : [];
-  }
-
-  get single_match_events(): string[] {
-    return this.metadata ? this.metadata.single_match_events : [];
   }
 
   get sets(): { [id: string]: CardSet } {
@@ -150,14 +115,6 @@ export class DatabaseClass {
 
   get lang(): string {
     return this.metadata ? this.metadata.language : "en";
-  }
-
-  event(id: string): string | undefined {
-    return this.metadata?.events[id];
-  }
-
-  eventName(evid: string): string {
-    return this.metadata?.events[evid] ? this.metadata.events[evid] : evid;
   }
 }
 

@@ -7,7 +7,6 @@ import convertV3ListToV2 from "./shared/utils/convertV3ListToV2";
 import convertV4ListToV2 from "./shared/utils/convertV4ListToV2";
 import countValues from "./shared/utils/countValues";
 import formatPercent from "./shared/utils/formatPercent";
-import getBestArchetype from "./shared/utils/getBestArchetype";
 import getBoosterCountEstimate from "./shared/utils/getBoosterCountEstimate";
 import getCardTypeSort from "./shared/utils/getCardTypeSort";
 import getDeckAfterChange from "./shared/utils/getDeckAfterChange";
@@ -46,7 +45,6 @@ export {
   convertV4ListToV2,
   countValues,
   formatPercent,
-  getBestArchetype,
   getBoosterCountEstimate,
   getCardTypeSort,
   getDeckAfterChange,

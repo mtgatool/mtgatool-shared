@@ -1,5 +1,3 @@
-import database from "../database";
-
 const premierMatch = new RegExp(/(PremierDraft)_(.+)_([0-9.]+)/);
 const quickMatch = new RegExp(/(QuickDraft)_(.+)_([0-9.]+)/);
 const compMatch = new RegExp(/(CompDraft)_(.+)_([0-9.]+)/);
@@ -28,9 +26,6 @@ const months = [
 ];
 
 export default function getEventPrettyName(event: string): string {
-  const dbEvent = database.event(event);
-  if (dbEvent) return dbEvent;
-
   const premier = premierMatch.exec(event);
   if (premier) {
     return `Premier Draft ${premier[2]}`;

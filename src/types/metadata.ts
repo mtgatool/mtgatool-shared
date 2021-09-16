@@ -10,21 +10,8 @@ export interface Metadata {
   version: string;
   language: string;
   updated: number;
-  events: { [id: string]: string };
-  events_format: { [id: string]: string };
   sets: { [id: string]: CardSet };
   abilities: { [id: number]: string };
-  limited_ranked_events: string[];
-  standard_ranked_events: string[];
-  single_match_events: string[];
-  archetypes: {
-    average: {
-      mainDeck: Record<string, number | undefined>;
-      sideboard: Record<string, number | undefined>;
-    };
-    name: string;
-    format?: string;
-  }[];
 }
 
 export interface DbCardData {
