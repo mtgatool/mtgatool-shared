@@ -26,6 +26,44 @@ const months = [
 ];
 
 export default function getEventPrettyName(event: string): string {
+  switch (event) {
+    case "Ladder":
+      return "Standard Ranked";
+    case "Play":
+      return "Standard";
+    case "Constructed_BestOf3":
+      return "Traditional Standard";
+    case "Constructed_Event_2020":
+      return "Standard Event 2020";
+    case "Constructed_Event_2021":
+      return "Standard Event";
+    case "Traditional_Cons_Event_2020":
+      return "Traditional Standard Event 2020";
+    case "Traditional_Cons_Event_2021":
+      return "Traditional Standard Event";
+    case "Traditional_Ladder":
+      return "Traditional Ranked Standard";
+
+    case "Historic_Ladder":
+      return "Historic Ranked";
+    case "Historic_Play":
+      return "Historic";
+    case "Historic_Event":
+      return "Historic Event";
+    case "Traditional_Historic_Event":
+      return "Traditional Historic Event";
+    case "Traditional_Historic_Ladder":
+      return "Traditional Ranked Historic";
+
+    case "Future_Play2022":
+      return "Future Standard";
+    case "Future_Ranked2022":
+      return "Ranked Future Standard";
+
+    default:
+      break;
+  }
+
   const premier = premierMatch.exec(event);
   if (premier) {
     return `Premier Draft ${premier[2]}`;

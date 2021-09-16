@@ -95,9 +95,11 @@ describe("utils", () => {
       "Historic Shakeup (June 2020)"
     );
     expect(getEventPrettyName("Play_Brawl")).toBe("Play Brawl");
-    expect(getEventPrettyName("Constructed_Event_2020")).toBe("Standard Event");
+    expect(getEventPrettyName("Constructed_Event_2020")).toBe(
+      "Standard Event 2020"
+    );
     expect(getEventPrettyName("Traditional_Cons_Event_2020")).toBe(
-      "Traditional Standard Event"
+      "Traditional Standard Event 2020"
     );
 
     expect(getEventPrettyName("Pauper_20190315")).toBe("Pauper (March 2019)");
