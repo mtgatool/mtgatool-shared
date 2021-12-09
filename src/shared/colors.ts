@@ -71,15 +71,26 @@ class Colors {
   }
 
   /**
-   * Return the color, multicolor or colorless.
+   * Return the color, multicolor or colorless (as const).
    */
   getBaseColor(): number {
-    if (this.length > 1) {
-      return MULTI;
-    } else if (this.length === 0) {
+    const bits = this.getBits();
+    if (bits === colorFlags.C || bits === colorFlags.NONE) {
       return COLORLESS;
     }
-    return this.get()[0];
+
+    const baseColorBits = bits > 32 ? bits - 32 : bits;
+    if (
+      baseColorBits === colorFlags.W ||
+      baseColorBits === colorFlags.U ||
+      baseColorBits === colorFlags.B ||
+      baseColorBits === colorFlags.R ||
+      baseColorBits === colorFlags.G
+    ) {
+      return this.get().filter((c) => c !== COLORLESS)[0];
+    }
+
+    return MULTI;
   }
 
   /**
