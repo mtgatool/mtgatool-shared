@@ -44,6 +44,17 @@ export default function getEventPrettyName(event: string): string {
     case "Traditional_Ladder":
       return "Traditional Ranked Standard";
 
+    case "Alchemy_Ladder":
+      return "Alchemy Ranked";
+    case "Alchemy_Play":
+      return "Alchemy";
+    case "Alchemy_Event":
+      return "Alchemy Event";
+    case "Traditional_Alchemy_Event":
+      return "Traditional Alchemy Event";
+    case "Traditional_Alchemy_Ladder":
+      return "Traditional Ranked Alchemy";
+
     case "Historic_Ladder":
       return "Historic Ranked";
     case "Historic_Play":
