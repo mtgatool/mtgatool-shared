@@ -19,6 +19,7 @@ export interface DbCardData {
   name: string;
   titleId: number;
   set: string;
+  set_digital: string;
   artid: number;
   type: string;
   cost: string[];
