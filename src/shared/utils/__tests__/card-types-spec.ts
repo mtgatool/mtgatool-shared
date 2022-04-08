@@ -30,6 +30,8 @@ describe("card-types", () => {
         if (!_.has(card, "name")) return; // some properties are not cards :(
         if (card.name === "City's Blessing") return; // has no type
         if (card.id === 100) return; // has invalid type
+        if (card.id === 79412) return; // Day
+        if (card.id === 79413) return; // Night
         try {
           cardType(card);
         } catch (e) {
