@@ -99,6 +99,17 @@ export class DatabaseClass {
     );
   }
 
+  get digitalSets(): { [id: string]: CardSet } {
+    if (!this.metadata) {
+      return {};
+    }
+
+    return _.pickBy(
+      this.metadata.digitalSets,
+      (set: CardSet, setName: string) => set && setName && set.code
+    );
+  }
+
   get sortedSetCodes(): string[] {
     const setCodes = Object.keys(this.sets);
     setCodes.sort(
