@@ -11,7 +11,7 @@ export interface Metadata {
   language: string;
   updated: number;
   sets: { [id: string]: CardSet };
-  digitalSets: { [id: string]: CardSet };
+  digitalSets: string[];
   abilities: { [id: number]: string };
 }
 
