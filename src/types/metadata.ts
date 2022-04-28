@@ -11,6 +11,7 @@ export interface Metadata {
   language: string;
   updated: number;
   sets: { [id: string]: CardSet };
+  setNames: Record<string, string>;
   digitalSets: string[];
   abilities: { [id: number]: string };
 }
@@ -30,9 +31,6 @@ export interface DbCardData {
   frame: number[];
   artist: string;
   dfc: number;
-  collectible: boolean;
-  craftable: boolean;
-  booster: boolean;
   dfcId: boolean | number;
   rankSource?: -1 | typeof RATINGS_MTGCSR | typeof RATINGS_LOLA;
   rank: number;

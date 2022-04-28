@@ -93,10 +93,15 @@ export class DatabaseClass {
       return {};
     }
 
-    return _.pickBy(
-      this.metadata.sets,
-      (set: CardSet, setName: string) => set && setName && set.code
-    );
+    return this.metadata.sets;
+  }
+
+  get setNames(): Record<string, string> {
+    if (!this.metadata) {
+      return {};
+    }
+
+    return this.metadata.setNames;
   }
 
   get digitalSets(): string[] {
