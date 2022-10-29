@@ -1,15 +1,23 @@
 import _ from "lodash";
-import { DbCardData } from "../../types/metadata";
-import { CARD_SUPERTYPES } from "../constants";
+import { DbCardDataV2 } from "../../types/metadata";
+import { CARD_TYPE } from "../constants";
 
-export function cardHasType(card: DbCardData, type: string): boolean {
-  if (!_.has(card, "type"))
+export function cardHasType(card: DbCardDataV2, type: string): boolean {
+  if (
+    !_.has(card, "Types") ||
+    !_.has(card, "Subtypes") ||
+    !_.has(card, "Supertypes")
+  )
     throw new Error("The specified card object does not have a type property");
-  return card.type.toLowerCase().includes(type.toLowerCase() + " ");
+  return (
+    card.Types.toLowerCase().includes(type.toLowerCase()) ||
+    card.Subtypes.toLowerCase().includes(type.toLowerCase()) ||
+    card.Supertypes.toLowerCase().includes(type.toLowerCase())
+  );
 }
 
-export const cardType = (card: DbCardData): string => {
-  const result = CARD_SUPERTYPES.find((ct) => cardHasType(card, ct));
+export const cardType = (card: DbCardDataV2): string => {
+  const result = CARD_TYPE.find((ct) => cardHasType(card, ct));
   if (!result) throw new Error("Card type could not be determined");
   return result;
 };

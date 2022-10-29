@@ -16,10 +16,10 @@ export default function getDeckRaritiesCount(deck: Deck): RaritiesCount {
     const quantity = c.quantity;
     const card = db.card(c.id);
     if (quantity > 0 && card) {
-      if (card.rarity == "common") rarities.c += quantity;
-      else if (card.rarity == "uncommon") rarities.u += quantity;
-      else if (card.rarity == "rare") rarities.r += quantity;
-      else if (card.rarity == "mythic") rarities.m += quantity;
+      if (card.Rarity == "common") rarities.c += quantity;
+      else if (card.Rarity == "uncommon") rarities.u += quantity;
+      else if (card.Rarity == "rare") rarities.r += quantity;
+      else if (card.Rarity == "mythic") rarities.m += quantity;
     }
   });
 

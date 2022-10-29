@@ -10,8 +10,8 @@ export default function compareCards(a: CardObject, b: CardObject): number {
   if (!aObj) return 1;
   if (!bObj) return -1;
 
-  const _as = getCardTypeSort(aObj.type);
-  const _bs = getCardTypeSort(bObj.type);
+  const _as = getCardTypeSort(aObj.Types);
+  const _bs = getCardTypeSort(bObj.Types);
 
   // Order by type?
   if (_as < _bs) {
@@ -22,18 +22,18 @@ export default function compareCards(a: CardObject, b: CardObject): number {
   }
 
   // by cmc
-  if (aObj.cmc < bObj.cmc) {
+  if (aObj.Cmc < bObj.Cmc) {
     return -1;
   }
-  if (aObj.cmc > bObj.cmc) {
+  if (aObj.Cmc > bObj.Cmc) {
     return 1;
   }
 
   // then by name
-  if (aObj.name < bObj.name) {
+  if (aObj.Name < bObj.Name) {
     return -1;
   }
-  if (aObj.name > bObj.name) {
+  if (aObj.Name > bObj.Name) {
     return 1;
   }
 

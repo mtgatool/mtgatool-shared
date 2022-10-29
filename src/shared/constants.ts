@@ -719,6 +719,17 @@ export const CARD_SUPERTYPES = [
   "Dungeon",
 ];
 
+export const CARD_TYPE = [
+  "Creature",
+  "Land",
+  "Instant",
+  "Sorcery",
+  "Enchantment",
+  "Artifact",
+  "Planeswalker",
+  "Dungeon",
+] as const;
+
 export const CARD_TYPES = [
   "Creatures",
   "Lands",
@@ -737,7 +748,6 @@ export const WILDCARD_RARITIES = [
 ] as const;
 
 export const CARD_RARITIES = [
-  "token",
   "common",
   "uncommon",
   "rare",

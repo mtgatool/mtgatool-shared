@@ -1,5 +1,5 @@
 import { anyCardsList, CardObject, InternalDeck } from "../types/deck";
-import { DbCardData } from "../types/metadata";
+import { DbCardDataV2 } from "../types/metadata";
 import CardsList from "./cardsList";
 import Colors from "./colors";
 import { DEFAULT_TILE } from "../shared/constants";
@@ -168,7 +168,7 @@ class Deck {
     const mainList = this.mainboard.removeDuplicates(false);
     mainList.forEach(function (card) {
       const grpid = card.id;
-      const cardName = (db.card(grpid) as DbCardData).name;
+      const cardName = (db.card(grpid) as DbCardDataV2).Name;
 
       str += (card.measurable ? card.quantity : 1) + " " + cardName + "\r\n";
     });
@@ -178,7 +178,7 @@ class Deck {
     const sideList = this.sideboard.removeDuplicates(false);
     sideList.forEach(function (card) {
       const grpid = card.id;
-      const cardName = (db.card(grpid) as DbCardData).name;
+      const cardName = (db.card(grpid) as DbCardDataV2).Name;
 
       str += (card.measurable ? card.quantity : 1) + " " + cardName + "\r\n";
     });
@@ -194,14 +194,14 @@ class Deck {
     const listMain = this.mainboard.removeDuplicates(false);
     listMain.forEach(function (card) {
       let grpid = card.id;
-      let cardObj = db.card(grpid) as DbCardData;
+      let cardObj = db.card(grpid) as DbCardDataV2;
 
-      if (cardObj.set == "Mythic Edition") {
-        grpid = (cardObj.reprints as number[])[0];
-        cardObj = db.card(grpid) as DbCardData;
+      if (cardObj.Set == "MED") {
+        grpid = (cardObj.Reprints as number[])[0];
+        cardObj = db.card(grpid) as DbCardDataV2;
       }
 
-      let cardName = cardObj.name;
+      let cardName = cardObj.Name;
       if (cardName == "|Ceghm.") cardName = "Swamp";
       // const cardSet = cardObj.set;
       // const cardCn = cardObj.cid;
@@ -216,14 +216,14 @@ class Deck {
     const listSide = this.sideboard.removeDuplicates(false);
     listSide.forEach(function (card) {
       let grpid = card.id;
-      let cardObj = db.card(grpid) as DbCardData;
+      let cardObj = db.card(grpid) as DbCardDataV2;
 
-      if (cardObj.set == "Mythic Edition") {
-        grpid = (cardObj.reprints as number[])[0];
-        cardObj = db.card(grpid) as DbCardData;
+      if (cardObj.Set == "MED") {
+        grpid = (cardObj.Reprints as number[])[0];
+        cardObj = db.card(grpid) as DbCardDataV2;
       }
 
-      let cardName = cardObj.name;
+      let cardName = cardObj.Name;
       if (cardName == "|Ceghm.") cardName = "Swamp";
       // const cardSet = cardObj.set;
       // const cardCn = cardObj.cid;

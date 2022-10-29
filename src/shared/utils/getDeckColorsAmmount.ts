@@ -10,7 +10,7 @@ export default function getDeckColorsAmmount(deck: Deck): ColorsAmmount {
     .get()
     .forEach(function (card: CardObject) {
       if (card.quantity > 0) {
-        database.card(card.id)?.cost.forEach((c: string) => {
+        database.card(card.id)?.ManaCost.forEach((c: string) => {
           if (c.indexOf("w") !== -1) {
             colors.w += card.quantity;
             colors.total += card.quantity;

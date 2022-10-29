@@ -6,7 +6,7 @@ import loadDbFromCache from "../loadDbFromCache";
 
 loadDbFromCache();
 
-const cardsByName = _.keyBy(database.cards, "name");
+const cardsByName = _.keyBy(database.cards, "Name");
 
 describe("card-types", () => {
   describe("cardType", () => {
@@ -28,10 +28,10 @@ describe("card-types", () => {
     it("can determine the card type of any card except City's Blessing", () => {
       database.cardList.forEach((card) => {
         if (!_.has(card, "name")) return; // some properties are not cards :(
-        if (card.name === "City's Blessing") return; // has no type
-        if (card.id === 100) return; // has invalid type
-        if (card.id === 79412) return; // Day
-        if (card.id === 79413) return; // Night
+        if (card.Name === "City's Blessing") return; // has no type
+        if (card.GrpId === 100) return; // has invalid type
+        if (card.GrpId === 79412) return; // Day
+        if (card.GrpId === 79413) return; // Night
         try {
           cardType(card);
         } catch (e) {

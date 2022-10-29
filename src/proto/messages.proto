@@ -14,6 +14,7 @@ message Action {
 	ActionType actionType = 1;
 	uint32 grpId = 2;
 	uint32 instanceId = 3;
+	uint32 facetId = 4;
 	uint32 abilityGrpId = 6;
 	uint32 sourceId = 8;
 	uint32 alternativeGrpId = 9;
@@ -33,7 +34,9 @@ message Action {
 	ManaRequirement twobridGenericManaCost = 26;
 	uint32 highlight = 27;
 	repeated Cost costs = 28;
-	repeated AutoTapResource resources = 29;
+	uint32 timingSourceGrpid = 30;
+	uint32 uniqueAbilityId = 31;
+	repeated uint32 consumableCostAdjustmentQualificationIds = 32;
 }
 
 message ActionInfo {
@@ -87,13 +90,17 @@ enum AllowFailToFind {
 	AllowFailToFind_Zero = 2;
 }
 
+message AndCost {
+	repeated Cost costs = 1;
+}
+
 message AnnotationInfo {
 	uint32 id = 1;
 	uint32 affectorId = 2;
 	repeated uint32 affectedIds = 3;
 	repeated AnnotationType type = 4;
 	repeated KeyValuePairInfo details = 6;
-	bool allowRedaction = 7;
+	bool redactAffector = 7;
 	repeated uint32 ignoreForSeatIds = 8;
 	bool redactAffected = 9;
 }
@@ -188,6 +195,14 @@ enum AnnotationType {
 	AnnotationType_DungeonStatus = 86;
 	AnnotationType_LinkedDamage = 87;
 	AnnotationType_ClassLevel = 88;
+	AnnotationType_TokenImmediatelyDied = 89;
+	AnnotationType_DamagedThisTurn = 90;
+	AnnotationType_ReferencedCardNames = 91;
+	AnnotationType_PlayerSelectingTargets = 92;
+	AnnotationType_PlayerSubmittedTargets = 93;
+	AnnotationType_CrewedThisTurn = 94;
+	AnnotationType_PhasedOut = 95;
+	AnnotationType_PhasedIn = 96;
 }
 
 enum Answer {
@@ -251,6 +266,7 @@ enum AttackWarningType {
 	AttackWarningType_MustAttackWithAtLeastOne = 1;
 	AttackWarningType_CannotAttackAlone = 2;
 	AttackWarningType_MustAttack = 3;
+	AttackWarningType_UnpayableEffectCost = 4;
 }
 
 message Attacker {
@@ -314,16 +330,10 @@ message AutoTapAction {
 	uint32 abilityGrpId = 2;
 	uint32 manaId = 3;
 	ManaPaymentOption manaPaymentOption = 4;
-	CostCategory costCategory = 5;
 }
 
 message AutoTapActionsAvailableReq {
 	repeated AutoTapSolution autoTapSolutions = 2;
-}
-
-message AutoTapResource {
-	uint32 objectId = 1;
-	CounterType counterType = 2;
 }
 
 message AutoTapSolution {
@@ -407,6 +417,8 @@ message CLIPSConfiguration {
 	int32 warningFiringLimit = 6;
 	string metricsFile = 7;
 	string logFile = 8;
+	bool metricsFileAppend = 9;
+	bool logFileAppend = 10;
 }
 
 message CancelActionReq {
@@ -555,6 +567,9 @@ enum CastingTimeOptionType {
 	CastingTimeOptionType_ChooseOrCost = 11;
 	CastingTimeOptionType_Selection = 12;
 	CastingTimeOptionType_CastThroughAbility = 13;
+	CastingTimeOptionType_TimingPermission = 14;
+	CastingTimeOptionType_Casualty = 15;
+	CastingTimeOptionType_Specialize = 16;
 }
 
 message CastingTimeOptionsReq {
@@ -577,7 +592,6 @@ enum ChoicePersistence {
 }
 
 message ChooseModalResp {
-	uint32 abilityGrpId = 1;
 	repeated uint32 grpIds = 2;
 }
 
@@ -641,12 +655,13 @@ enum ClientMessageType {
 	ClientMessageType_SelectFromGroupsResp = 48;
 	ClientMessageType_SearchFromGroupsResp = 49;
 	ClientMessageType_GatherResp = 50;
-	ClientMessageType_SubmitPaymentResp = 51;
 	ClientMessageType_AutoResp = 52;
 	ClientMessageType_UIMessage = 53;
 	ClientMessageType_SubmitDeckResp = 54;
 	ClientMessageType_TakeTimeoutReq = 55;
 	ClientMessageType_PerformAutoTapActionsResp = 56;
+	ClientMessageType_StringInputResp = 57;
+	ClientMessageType_SelectCountersResp = 58;
 }
 
 message ClientSessionInfo {
@@ -691,11 +706,12 @@ message ClientToGREMessage {
 		SelectFromGroupsResp selectFromGroupsResp = 36;
 		SearchFromGroupsResp searchFromGroupsResp = 37;
 		GatherResp gatherResp = 38;
-		SubmitPaymentResp submitPaymentResp = 39;
 		UIMessage uiMessage = 40;
 		SubmitDeckResp submitDeckResp = 41;
 		ControlReq controlReq = 42;
 		PerformAutoTapActionsResp performAutoTapActionsResp = 43;
+		StringInputResp stringInputResp = 44;
+		SelectCountersResp selectCountersResp = 45;
 	}
 	uint32 timerId = 100;
 }
@@ -749,20 +765,14 @@ message ConcedeReq {
 }
 
 message ConnectReq {
-	uint32 majorVer = 1;
-	uint32 minorVer = 2;
-	uint32 revisionVer = 3;
-	uint32 buildVer = 4;
 	SettingsMessage defaultSettings = 5;
 	ProtoVersion protoVer = 6;
-	uint32 seatId = 7;
 	Version grpVersion = 8;
 }
 
 message ConnectResp {
 	ConnectionStatus status = 1;
 	ProtoVersion protoVer = 6;
-	uint32 seatId = 7;
 	SettingsMessage settings = 8;
 	DeckMessage deckMessage = 9;
 	Version grpVersion = 10;
@@ -830,20 +840,14 @@ message Cost {
 	uint32 objectId = 3;
 	uint32 abilityGrpId = 4;
 	uint32 index = 5;
-	uint32 weight = 6;
 	oneof message {
 		ManaCost manaCost = 7;
 		EffectCost effectCost = 8;
 		LifeCost lifeCost = 9;
 		LoyaltyCost loyaltyCost = 10;
+		OrCost orCost = 11;
+		AndCost andCost = 12;
 	}
-}
-
-enum CostCategory {
-	CostCategory_None = 0;
-	CostCategory_Automatic = 1;
-	CostCategory_Confirmation = 2;
-	CostCategory_Manual = 3;
 }
 
 enum CostType {
@@ -851,13 +855,14 @@ enum CostType {
 	CostType_Mana = 1;
 	CostType_TapSelf = 2;
 	CostType_SacSelf = 3;
-	CostType_Action = 4;
+	CostType_Effect = 4;
 	CostType_Loyalty = 5;
 	CostType_DiscardSelf = 6;
 	CostType_Life = 7;
 	CostType_ExileSelf = 8;
 	CostType_UntapSelf = 9;
 	CostType_Or = 10;
+	CostType_And = 11;
 }
 
 message Counter {
@@ -1029,15 +1034,23 @@ enum CounterType {
 	CounterType_Enlightened = 154;
 	CounterType_Harmony = 155;
 	CounterType_Void = 156;
-	CounterType_PHCT157 = 157;
-	CounterType_PHCT158 = 158;
-	CounterType_PHCT159 = 159;
-	CounterType_PHCT160 = 160;
-	CounterType_PHCT161 = 161;
-	CounterType_PHCT162 = 162;
-	CounterType_PHCT163 = 163;
-	CounterType_PHCT164 = 164;
+	CounterType_Ember = 157;
+	CounterType_Ritual = 158;
+	CounterType_Valor = 159;
+	CounterType_Judgment = 160;
+	CounterType_Invitation = 161;
+	CounterType_Croak = 162;
+	CounterType_Bloodline = 163;
+	CounterType_Suspect = 164;
 	CounterType_Acorn = 165;
+	CounterType_Hatching = 166;
+	CounterType_Stash = 167;
+	CounterType_Collection = 168;
+	CounterType_Rope = 169;
+	CounterType_Ingenuity = 170;
+	CounterType_Phyresis = 171;
+	CounterType_Stun = 172;
+	CounterType_PHCT173 = 173;
 }
 
 message CreateMatchGameRoomRequest {
@@ -1120,6 +1133,7 @@ message DeclareAttackersReq {
 	repeated AttackWarning attackWarnings = 4;
 	repeated ManaRequirement manaCost = 5;
 	repeated Attacker qualifiedAttackers = 7;
+	bool canSubmitAttackers = 8;
 }
 
 message DeclareAttackersResp {
@@ -1149,7 +1163,6 @@ message Distribution {
 }
 
 message DistributionReq {
-	uint32 optionIndex = 1;
 	uint32 minAmount = 2;
 	uint32 maxAmount = 3;
 	uint32 minPerTarget = 4;
@@ -1161,7 +1174,6 @@ message DistributionReq {
 }
 
 message DistributionResp {
-	uint32 optionIndex = 1;
 	repeated Distribution distributions = 2;
 }
 
@@ -1196,10 +1208,10 @@ message EdictalMessage {
 message EffectCost {
 	repeated CardMechanicType cardMechanicTypes = 1;
 	EffectCostType effectCostType = 2;
+	int32 count = 3;
 }
 
 message EffectCostReq {
-	uint32 index = 1;
 	EffectCostType effectCostType = 3;
 	oneof message {
 		SelectNReq costSelection = 4;
@@ -1210,7 +1222,6 @@ message EffectCostReq {
 }
 
 message EffectCostResp {
-	uint32 index = 1;
 	EffectCostType effectCostType = 2;
 	oneof message {
 		SelectNResp costSelection = 3;
@@ -1286,6 +1297,9 @@ enum FailureReason {
 	FailureReason_UnexpectedAttackers = 53;
 	FailureReason_InvalidParity = 54;
 	FailureReason_InvalidAlternativeAttackModification = 55;
+	FailureReason_DisallowedValue = 56;
+	FailureReason_InvalidTypeKind = 57;
+	FailureReason_InvalidWishCard = 58;
 }
 
 message FinalMatchResult {
@@ -1327,10 +1341,6 @@ message GREConfiguration {
 
 message GRECreateRequest {
 	string matchID = 2;
-	uint32 majorVer = 4;
-	uint32 minorVer = 5;
-	uint32 revisionVer = 6;
-	uint32 buildVer = 7;
 }
 
 message GREDestroyRequest {
@@ -1400,6 +1410,8 @@ enum GREMessageType {
 	GREMessageType_TimeoutMessage = 55;
 	GREMessageType_TimerStateMessage = 56;
 	GREMessageType_SubmitDeckConfirmation = 57;
+	GREMessageType_StringInputReq = 58;
+	GREMessageType_SelectCountersReq = 59;
 }
 
 message GREResumeMatchRequest {
@@ -1418,37 +1430,6 @@ message GREStartDelayedTimerMessage {
 
 message GREStartMatchRequest {
 	MatchConfig matchConfig = 1;
-}
-
-message GRETHHostEmulatorLaunch {
-	string programName = 1;
-	string executablePath = 2;
-	string sharedLibraryFilename = 3;
-	string greIRFilename = 4;
-	uint32 linkID = 5;
-	uint32 hostID = 6;
-	uint32 sutID = 7;
-	string logFilename = 8;
-	string syslogIPAddress = 9;
-	string syslogTCPPort = 10;
-	string syslogProcID = 11;
-	string outFilename = 12;
-	bool enableRedaction = 13;
-}
-
-message GRETHHostEmulatorLaunchResp {
-	uint32 result = 1;
-	uint32 hostID = 2;
-	int32 pID = 3;
-}
-
-message GRETHHostEmulatorShutdown {
-	uint32 shutdownHostID = 1;
-}
-
-message GRETHHostEmulatorShutdownResp {
-	uint32 result = 1;
-	uint32 shutdownHostID = 2;
 }
 
 message GRETickMessage {
@@ -1521,9 +1502,10 @@ message GREToClientMessage {
 		EdictalMessage edictalMessage = 53;
 		TimeoutMessage timeoutMessage = 54;
 		TimerStateMessage timerStateMessage = 55;
+		StringInputReq stringInputReq = 57;
+		SelectCountersReq selectCountersReq = 58;
 	}
 	Prompt prompt = 6;
-	Prompt nonDecisionPlayerPrompt = 35;
 	bool informationalUseOnly = 45;
 	AllowCancel allowCancel = 50;
 	bool allowUndo = 56;
@@ -1613,8 +1595,8 @@ enum GameObjectType {
 	GameObjectType_TriggerHolder = 9;
 	GameObjectType_Adventure = 10;
 	GameObjectType_MDFCBack = 11;
-	GameObjectType_Placeholder12 = 12;
-	GameObjectType_Placeholder13 = 13;
+	GameObjectType_DisturbBack = 12;
+	GameObjectType_Boon = 13;
 	GameObjectType_Placeholder14 = 14;
 	GameObjectType_Placeholder15 = 15;
 	GameObjectType_Placeholder16 = 16;
@@ -1700,14 +1682,12 @@ enum GameVariant {
 }
 
 message GatherReq {
-	uint32 optionIndex = 1;
 	uint32 destinationId = 2;
 	repeated GatherSource sources = 3;
 	uint32 amountToGather = 4;
 }
 
 message GatherResp {
-	uint32 optionIndex = 1;
 	repeated Gathering gatherings = 2;
 }
 
@@ -1769,7 +1749,6 @@ message GroupReq {
 	repeated uint32 instanceIds = 1;
 	repeated GroupSpecification groupSpecs = 2;
 	uint32 totalSelected = 3;
-	uint32 idx = 4;
 	GroupType groupType = 5;
 	GroupingContext context = 6;
 	uint32 sourceId = 7;
@@ -1777,7 +1756,6 @@ message GroupReq {
 
 message GroupResp {
 	repeated Group groups = 1;
-	uint32 idx = 2;
 	GroupType groupType = 3;
 }
 
@@ -1786,7 +1764,6 @@ message GroupSpecification {
 	uint32 upperBound = 2;
 	ZoneType zoneType = 3;
 	SubZoneType subZoneType = 4;
-	Prompt prompt = 5;
 	bool isFacedown = 6;
 }
 
@@ -1830,6 +1807,8 @@ enum IdType {
 	IdType_ZoneInstanceId = 3;
 	IdType_CardGrpId = 4;
 	IdType_AbilityGrpId = 5;
+	IdType_CardGrpIdIndex = 6;
+	IdType_ManaId = 7;
 }
 
 message IllegalRequestMessage {
@@ -1856,8 +1835,6 @@ message Int64Values {
 message IntermissionReq {
 	repeated UserOption options = 1;
 	Prompt intermissionPrompt = 2;
-	ResultType gameResultType = 3;
-	uint32 winningTeamId = 4;
 	ResultSpec result = 5;
 }
 
@@ -2152,6 +2129,10 @@ message MatchGameRoomPlayerInfo {
 	string courseId = 10;
 	string deckId = 11;
 	string clientAuthToken = 12;
+	string sessionId = 13;
+	bool isWotc = 14;
+	string platformId = 15;
+	bool isBotPlayer = 16;
 	int64 joinTimestamp = 20;
 	int64 inactivityTimeoutTimestamp = 21;
 	int64 disconnectTimeoutTimestamp = 22;
@@ -2293,17 +2274,24 @@ enum MulliganType {
 }
 
 message NumericInputReq {
-	uint32 optionIndex = 1;
 	uint32 minValue = 2;
 	uint32 maxValue = 3;
 	uint32 stepSize = 4;
 	uint32 sourceId = 5;
-	uint32 numericInputType = 6;
+	NumericInputType numericInputType = 6;
+	repeated uint32 disallowedValues = 7;
 }
 
 message NumericInputResp {
-	uint32 optionIndex = 1;
 	uint32 numericInputValue = 2;
+}
+
+enum NumericInputType {
+	NumericInputType_None = 0;
+	NumericInputType_ChooseX = 1;
+	NumericInputType_ChooseAnyAmount = 2;
+	NumericInputType_DebugCode = 3;
+	NumericInputType_ChooseDieRoll = 4;
 }
 
 message OnChat {
@@ -2347,27 +2335,6 @@ enum OptionResponse {
 	OptionResponse_Cancel_No = 2;
 }
 
-enum OptionType {
-	OptionType_None = 0;
-	OptionType_Modal = 1;
-	OptionType_Splice = 2;
-	OptionType_AlternativeCost = 3;
-	OptionType_Numeric = 4;
-	OptionType_VariableCost = 5;
-	OptionType_ManaType = 6;
-	OptionType_Order = 7;
-	OptionType_Search = 8;
-	OptionType_Group = 9;
-	OptionType_Select = 10;
-	OptionType_SelectGroup = 11;
-	OptionType_Distribution = 12;
-	OptionType_OptionalAction = 13;
-	OptionType_ActionsAvailable = 14;
-	OptionType_SelectFromGroups = 15;
-	OptionType_SearchFromGroups = 16;
-	OptionType_Gathering = 17;
-}
-
 message OptionalActionMessage {
 	Prompt prompt = 1;
 	uint32 sourceId = 3;
@@ -2381,6 +2348,11 @@ message OptionalResp {
 	ChoicePersistence persistence = 2;
 	SettingScope appliesTo = 3;
 	SettingKey mapTo = 4;
+}
+
+message OrCost {
+	repeated Cost costs = 1;
+	bool isOptional = 2;
 }
 
 message OrderCombatDamageReq {
@@ -2406,14 +2378,12 @@ message OrderDamageConfirmation {
 
 message OrderReq {
 	repeated uint32 ids = 1;
-	uint32 idx = 2;
 	OrderingContext orderingContext = 3;
 }
 
 message OrderResp {
 	repeated uint32 ids = 1;
 	OrderingType ordering = 2;
-	uint32 idx = 3;
 }
 
 message OrderedDamageAssignment {
@@ -2448,7 +2418,6 @@ message PayCostsReq {
 	ActionsAvailableReq paymentActions = 2;
 	SelectNReq paymentSelection = 3;
 	EffectCostReq effectCostReq = 4;
-	SubmitPaymentReq submitPaymentReq = 5;
 	AutoTapActionsAvailableReq autoTapActionsReq = 6;
 }
 
@@ -2623,6 +2592,7 @@ message ReplacementEffect {
 	uint32 abilityGrpId = 4;
 	uint32 affectedObject = 5;
 	uint32 replacementEffectId = 6;
+	uint32 conferringObjectZcid = 7;
 }
 
 message ReportResultMessage {
@@ -2673,7 +2643,6 @@ enum ResultType {
 }
 
 message SearchFromGroupsReq {
-	uint32 optionIndex = 1;
 	uint32 minFind = 2;
 	uint32 maxFind = 3;
 	repeated uint32 zonesToSearch = 4;
@@ -2684,13 +2653,10 @@ message SearchFromGroupsReq {
 }
 
 message SearchFromGroupsResp {
-	uint32 optionIndex = 1;
-	repeated uint32 itemsFound = 2;
 	repeated Group groups = 3;
 }
 
 message SearchReq {
-	uint32 optionIndex = 1;
 	uint32 minFind = 2;
 	uint32 maxFind = 3;
 	repeated uint32 zonesToSearch = 4;
@@ -2702,7 +2668,6 @@ message SearchReq {
 }
 
 message SearchResp {
-	uint32 optionIndex = 1;
 	repeated uint32 itemsFound = 2;
 	uint32 addZoneToSearchScope = 3;
 }
@@ -2717,25 +2682,18 @@ message SelectCountersReq {
 	uint32 minSel = 1;
 	uint32 maxSel = 2;
 	SelectionContext context = 3;
-	OptionType optionType = 4;
 	OptionContext optionContext = 5;
 	SelectionListType listType = 6;
 	repeated CounterPair counterPairs = 7;
-	uint32 idx = 8;
 	uint32 sourceId = 9;
 }
 
 message SelectCountersResp {
-	uint32 idx = 1;
-	SelectionContext context = 2;
-	OptionContext optionContext = 3;
-	OptionType optionType = 4;
 	repeated CounterPair selections = 5;
 }
 
 message SelectFromGroupsReq {
 	repeated Group groups = 3;
-	uint32 idx = 4;
 	uint32 minTotalSel = 5;
 	uint32 maxTotalSel = 6;
 	GroupingStyle groupingStyle = 7;
@@ -2745,19 +2703,15 @@ message SelectFromGroupsReq {
 }
 
 message SelectFromGroupsResp {
-	uint32 idx = 1;
-	repeated uint32 ids = 2;
 	repeated Group groups = 3;
 }
 
 message SelectManaTypeReq {
-	uint32 index = 1;
 	repeated ManaColor manaColors = 2;
 	uint32 sourceId = 3;
 }
 
 message SelectManaTypeResp {
-	uint32 index = 1;
 	ManaColor manaColor = 3;
 }
 
@@ -2765,12 +2719,10 @@ message SelectNGroupReq {
 	uint32 minSel = 1;
 	uint32 maxSel = 2;
 	repeated Group groups = 3;
-	uint32 idx = 4;
 	uint32 sourceId = 5;
 }
 
 message SelectNGroupResp {
-	uint32 idx = 1;
 	repeated uint32 selectedgroupids = 2;
 }
 
@@ -2778,13 +2730,11 @@ message SelectNReq {
 	int32 minSel = 1;
 	uint32 maxSel = 2;
 	SelectionContext context = 3;
-	OptionType optionType = 4;
 	OptionContext optionContext = 5;
 	SelectionListType listType = 6;
 	repeated uint32 ids = 7;
 	repeated int32 weights = 8;
 	StaticList staticList = 9;
-	uint32 idx = 10;
 	Prompt prompt = 11;
 	IdType idType = 12;
 	bool choicesAreRepeatable = 13;
@@ -2796,10 +2746,6 @@ message SelectNReq {
 }
 
 message SelectNResp {
-	uint32 idx = 1;
-	SelectionContext context = 2;
-	OptionContext optionContext = 3;
-	OptionType optionType = 4;
 	repeated uint32 ids = 5;
 	OrderingType useArbitrary = 6;
 }
@@ -2821,7 +2767,6 @@ message SelectTargetsReq {
 
 message SelectTargetsResp {
 	TargetSelection target = 1;
-	SelectAction action = 2;
 }
 
 enum SelectionContext {
@@ -3047,6 +2992,14 @@ enum StopType {
 	StopType_PostcombatMainPhase = 9;
 	StopType_EndStep = 10;
 	StopType_FirstStrikeDamageStep = 11;
+}
+
+message StringInputReq {
+	uint32 sourceId = 2;
+}
+
+message StringInputResp {
+	string inputValue = 1;
 }
 
 message StringValue {
@@ -3458,9 +3411,19 @@ enum SubType {
 	SubType_Zariel = 399;
 	SubType_Class = 400;
 	SubType_Ranger = 401;
-	SubType_PlaceholderSubType402 = 402;
-	SubType_PlaceholderSubType403 = 403;
+	SubType_Wrenn = 402;
+	SubType_Blood = 403;
 	SubType_Serra = 404;
+	SubType_Kaito = 405;
+	SubType_Raccoon = 406;
+	SubType_Gith = 407;
+	SubType_Minsc = 408;
+	SubType_Tasha = 409;
+	SubType_Walrus = 410;
+	SubType_Powerstone = 411;
+	SubType_PlaceholderSubType412 = 412;
+	SubType_PlaceholderSubType413 = 413;
+	SubType_PlaceholderSubType414 = 414;
 }
 
 enum SubZoneType {
@@ -3483,12 +3446,6 @@ message SubmitDeckReq {
 
 message SubmitDeckResp {
 	DeckMessage deck = 1;
-}
-
-message SubmitPaymentReq {
-}
-
-message SubmitPaymentResp {
 }
 
 message SubmitTargetsResp {
@@ -3580,6 +3537,7 @@ message TestConfig {
 	bool disableIndividualDamageAssignments = 26;
 	bool disableHiFiSettings = 27;
 	bool enableSideboardLoading = 28;
+	bool disableUniqueAbilityActivations = 29;
 }
 
 message TimeoutConfig {

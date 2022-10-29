@@ -65,9 +65,9 @@ describe("utils", () => {
   it("Card types are detected preperly", () => {
     const phSwamp = database.card(72578);
     if (phSwamp) {
-      expect(cardType(phSwamp)).toBe("Basic Land");
-      expect(cardHasType(phSwamp, "basic land")).toBeTruthy();
-      expect(cardHasType(phSwamp, "Basic Land")).toBeTruthy();
+      expect(cardType(phSwamp)).toBe("Land");
+      expect(cardHasType(phSwamp, "basic")).toBeTruthy();
+      expect(cardHasType(phSwamp, "land")).toBeTruthy();
       expect(cardHasType(phSwamp, "Land")).toBeTruthy();
     }
     const ornithopter = database.card(32951);

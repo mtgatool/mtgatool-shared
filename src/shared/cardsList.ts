@@ -92,7 +92,7 @@ class CardsList {
       const cardToFind = db.card(grpId);
       this.list.forEach(function (card) {
         const cardInList = db.card(card.id);
-        if (cardToFind?.name === cardInList?.name) {
+        if (cardToFind?.Name === cardInList?.Name) {
           const remove = Math.min(card.quantity, quantity);
           card.quantity -= remove;
           quantity -= remove;
@@ -133,19 +133,19 @@ class CardsList {
     this.list.forEach(function (card) {
       const c = db.card(card.id);
       if (c !== undefined) {
-        if (c.type.includes("Land", 0))
+        if (c.Types.includes("Land", 0))
           types.lan += card.measurable ? card.quantity : 1;
-        else if (c.type.includes("Creature", 0))
+        else if (c.Types.includes("Creature", 0))
           types.cre += card.measurable ? card.quantity : 1;
-        else if (c.type.includes("Artifact", 0))
+        else if (c.Types.includes("Artifact", 0))
           types.art += card.measurable ? card.quantity : 1;
-        else if (c.type.includes("Enchantment", 0))
+        else if (c.Types.includes("Enchantment", 0))
           types.enc += card.measurable ? card.quantity : 1;
-        else if (c.type.includes("Instant", 0))
+        else if (c.Types.includes("Instant", 0))
           types.ins += card.measurable ? card.quantity : 1;
-        else if (c.type.includes("Sorcery", 0))
+        else if (c.Types.includes("Sorcery", 0))
           types.sor += card.measurable ? card.quantity : 1;
-        else if (c.type.includes("Planeswalker", 0))
+        else if (c.Types.includes("Planeswalker", 0))
           types.pla += card.measurable ? card.quantity : 1;
       }
     });
@@ -179,7 +179,7 @@ class CardsList {
       if (card.quantity > 0) {
         const dbCard = db.card(card.id);
         if (dbCard !== undefined) {
-          dbCard.cost.forEach(function (c) {
+          dbCard.ManaCost.forEach(function (c) {
             if (c.indexOf("w") !== -1) {
               colors.w += card.quantity;
               colors.total += card.quantity;
@@ -223,11 +223,11 @@ class CardsList {
       const card = db.card(cardEntry.id);
       if (card !== undefined && quantity > 0) {
         if (
-          card.type.indexOf("Land") != -1 ||
-          card.type.indexOf("land") != -1
+          card.Types.indexOf("Land") != -1 ||
+          card.Types.indexOf("land") != -1
         ) {
-          if (card.frame.length < 5) {
-            card.frame.forEach(function (c) {
+          if (card.FrameColors.length < 5) {
+            card.FrameColors.forEach(function (c) {
               if (c == 1) {
                 colors.w += quantity;
                 colors.total += quantity;
@@ -278,11 +278,11 @@ class CardsList {
     this.list.forEach((card) => {
       const cardData = db.card(card.id);
       if (cardData !== undefined) {
-        const isLand = cardData.type.indexOf("Land") !== -1;
-        if (isLand && cardData.frame.length < 3) {
-          colors.addFromArray(cardData.frame);
+        const isLand = cardData.Types.indexOf("Land") !== -1;
+        if (isLand && cardData.FrameColors.length < 3) {
+          colors.addFromArray(cardData.FrameColors);
         }
-        colors.addFromCost(cardData.cost);
+        colors.addFromCost(cardData.ManaCost);
       }
     });
 
@@ -301,7 +301,7 @@ class CardsList {
       const cardObj = db.card(card.id);
       const found = newList.find((c: CardObject) => {
         const dbCard = db.card(c.id);
-        return dbCard?.name === cardObj?.name;
+        return dbCard?.Name === cardObj?.Name;
       });
       if (found) {
         if (found.measurable) {

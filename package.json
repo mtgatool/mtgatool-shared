@@ -43,5 +43,9 @@
     "protobufjs": "~5.0.3",
     "ts-jest": "^26.3.0",
     "typescript": "^3.9.7"
+  },
+  "watch": {
+    "build": {
+    }
   }
 }

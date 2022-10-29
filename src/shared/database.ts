@@ -1,5 +1,4 @@
-import _ from "lodash";
-import { Metadata, DbCardData, CardSet } from "../types/metadata";
+import { Metadata, DbCardDataV2, CardSet } from "../types/metadata";
 
 export class DatabaseClass {
   private static instance: DatabaseClass;
@@ -36,37 +35,22 @@ export class DatabaseClass {
     }
   }
 
-  card(grpId: number): DbCardData | undefined {
+  card(grpId: number): DbCardDataV2 | undefined {
     return this.metadata && this.metadata.cards
       ? this.metadata.cards[grpId]
       : undefined;
   }
 
-  cardByName(name: string): DbCardData | undefined {
+  cardByName(name: string): DbCardDataV2 | undefined {
     if (this.metadata && this.metadata.cards) {
       const keys = Object.keys(this.metadata.cards);
       for (let index = 0; index < keys.length; index++) {
         const card = this.metadata.cards[parseInt(keys[index])];
-        if (card.name == name) {
+        if (card.Name == name) {
           return card;
         }
       }
     }
-    return undefined;
-  }
-
-  cardFromArt(artId: number | string): DbCardData | undefined {
-    const numArtId = typeof artId === "number" ? artId : parseInt(artId);
-    if (this.metadata && this.metadata.cards) {
-      const keys = Object.keys(this.metadata.cards);
-      for (let index = 0; index < keys.length; index++) {
-        const card = this.metadata.cards[parseInt(keys[index])];
-        if (card.artid == numArtId) {
-          return card;
-        }
-      }
-    }
-
     return undefined;
   }
 
@@ -80,12 +64,12 @@ export class DatabaseClass {
     return this.metadata ? this.metadata.abilities : {};
   }
 
-  get cards(): { [id: number]: DbCardData } {
+  get cards(): { [id: number]: DbCardDataV2 } {
     return this.metadata !== undefined ? this.metadata.cards : {};
   }
 
-  get cardList(): DbCardData[] {
-    return this.cards ? Object.values(this.cards) : ([] as DbCardData[]);
+  get cardList(): DbCardDataV2[] {
+    return this.cards ? Object.values(this.cards) : ([] as DbCardDataV2[]);
   }
 
   get sets(): { [id: string]: CardSet } {

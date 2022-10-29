@@ -1,11 +1,11 @@
-import {
-  CARD_RARITIES,
-  RATINGS_MTGCSR,
-  RATINGS_LOLA,
-} from "../shared/constants";
+import { CARD_RARITIES } from "../shared/constants";
+
+export const RATING_SOURCE_MTGCSR = 0;
+export const RATING_SOURCE_LOLA = 1;
+export const RATING_SOURCE_LOLA_B = 2;
 
 export interface Metadata {
-  cards: { [id: number]: DbCardData };
+  cards: { [id: number]: DbCardDataV2 };
   ok: boolean;
   version: string;
   language: string;
@@ -16,39 +16,68 @@ export interface Metadata {
   abilities: { [id: number]: string };
 }
 
-export interface DbCardData {
-  id: number;
-  name: string;
-  titleId: number;
-  set: string;
-  set_digital: string;
-  artid: number;
-  type: string;
-  cost: string[];
-  cmc: number;
-  rarity: Rarity;
-  cid: string;
-  frame: number[];
-  artist: string;
-  dfc: number;
-  dfcId: boolean | number;
-  rankSource?: -1 | typeof RATINGS_MTGCSR | typeof RATINGS_LOLA;
+interface RankDataLola {
+  rankSource: typeof RATING_SOURCE_LOLA | typeof RATING_SOURCE_LOLA_B;
   rank: number;
-  rank_values: string[] | number[] | number;
-  rank_controversy?: number[] | number;
-  images: ImageLinks;
-  reprints: boolean | number[];
-  isPrimary: boolean;
-  side?: boolean;
-  ceil?: number | null;
-  source?: number;
-  abilities: number[];
+  side: boolean;
+  ceil: number;
+  values: number[];
 }
+
+interface RankDataMTGCSR {
+  rankSource: typeof RATING_SOURCE_MTGCSR;
+  rank: number;
+  cont: number;
+  values: number[];
+}
+
+interface RankDataNone {
+  rankSource: -1;
+}
+
+export type RankData = RankDataLola | RankDataMTGCSR | RankDataNone;
 
 export type Rarity = typeof CARD_RARITIES[number];
 
-interface ImageLinks {
-  [key: string]: string;
+export interface DbCardDataV2 {
+  GrpId: number;
+  TitleId: number;
+  Name: string;
+  AltName: string;
+  FlavorText: string;
+  ArtistCredit: string;
+  Rarity: Rarity;
+  Set: string;
+  DigitalSet: string | null;
+  IsToken: boolean;
+  IsPrimaryCard: boolean;
+  IsDigitalOnly: boolean;
+  IsRebalanced: boolean;
+  RebalancedCardGrpId: number;
+  DefunctRebalancedCardGrpId: number;
+  CollectorNumber: string;
+  CollectorMax: string;
+  UsesSideboard: number;
+  ManaCost: string[];
+  Cmc: number;
+  LinkedFaceType: number;
+  RawFrameDetail: string;
+  Power: number | null;
+  Toughness: number | null;
+  Colors: number[];
+  ColorIdentity: number[];
+  FrameColors: number[];
+  Types: string;
+  Subtypes: string;
+  Supertypes: string;
+  AbilityIds: number[];
+  HiddenAbilityIds: number[];
+  LinkedFaceGrpIds: number[];
+  AbilityIdToLinkedTokenGrpId: Record<string, string>;
+  AbilityIdToLinkedConjurations: Record<string, string>;
+  AdditionalFrameDetails: string[];
+  RankData: RankData;
+  Reprints: number[];
 }
 
 export interface CardSet {

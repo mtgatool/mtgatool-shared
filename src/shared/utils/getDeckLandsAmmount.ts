@@ -13,11 +13,11 @@ export default function getDeckLandsAmmount(deck: Deck): ColorsAmmount {
       const card = database.card(c.id);
       if (quantity > 0 && card) {
         if (
-          card.type.indexOf("Land") != -1 ||
-          card.type.indexOf("land") != -1
+          card.Types.indexOf("Land") != -1 ||
+          card.Types.indexOf("land") != -1
         ) {
-          if (card.frame.length < 5) {
-            card.frame.forEach(function (c) {
+          if (card.FrameColors.length < 5) {
+            card.FrameColors.forEach(function (c) {
               if (c == 1) {
                 colors.w += quantity;
                 colors.total += quantity;
