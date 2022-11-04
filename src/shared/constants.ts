@@ -748,6 +748,7 @@ export const WILDCARD_RARITIES = [
 ] as const;
 
 export const CARD_RARITIES = [
+  "token",
   "common",
   "uncommon",
   "rare",
