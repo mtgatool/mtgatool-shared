@@ -51,6 +51,12 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
+                    "name": "facetId",
+                    "id": 4
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
                     "name": "abilityGrpId",
                     "id": 6
                 },
@@ -163,10 +169,25 @@
                     "id": 28
                 },
                 {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "timingSourceGrpid",
+                    "id": 30
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "uniqueAbilityId",
+                    "id": 31
+                },
+                {
                     "rule": "repeated",
-                    "type": "AutoTapResource",
-                    "name": "resources",
-                    "id": 29
+                    "type": "uint32",
+                    "name": "consumableCostAdjustmentQualificationIds",
+                    "id": 32,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -213,6 +234,18 @@
             ]
         },
         {
+            "name": "AndCost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "Cost",
+                    "name": "costs",
+                    "id": 1
+                }
+            ]
+        },
+        {
             "name": "AnnotationInfo",
             "syntax": "proto3",
             "fields": [
@@ -255,7 +288,7 @@
                 {
                     "rule": "optional",
                     "type": "bool",
-                    "name": "allowRedaction",
+                    "name": "redactAffector",
                     "id": 7
                 },
                 {
@@ -649,12 +682,6 @@
                     "type": "ManaPaymentOption",
                     "name": "manaPaymentOption",
                     "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "CostCategory",
-                    "name": "costCategory",
-                    "id": 5
                 }
             ]
         },
@@ -671,19 +698,19 @@
             ]
         },
         {
-            "name": "AutoTapResource",
+            "name": "AutoTapManaPayment",
             "syntax": "proto3",
             "fields": [
                 {
                     "rule": "optional",
-                    "type": "uint32",
-                    "name": "objectId",
+                    "type": "ManaColor",
+                    "name": "manaColor",
                     "id": 1
                 },
                 {
                     "rule": "optional",
-                    "type": "CounterType",
-                    "name": "counterType",
+                    "type": "uint32",
+                    "name": "manaSpecTypeBits",
                     "id": 2
                 }
             ]
@@ -712,6 +739,12 @@
                     "options": {
                         "packed": true
                     }
+                },
+                {
+                    "rule": "repeated",
+                    "type": "AutoTapManaPayment",
+                    "name": "manaPayments",
+                    "id": 4
                 }
             ]
         },
@@ -952,6 +985,18 @@
                     "type": "string",
                     "name": "logFile",
                     "id": 8
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "metricsFileAppend",
+                    "id": 9
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "logFileAppend",
+                    "id": 10
                 }
             ]
         },
@@ -1210,12 +1255,6 @@
             "name": "ChooseModalResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "abilityGrpId",
-                    "id": 1
-                },
                 {
                     "rule": "repeated",
                     "type": "uint32",
@@ -1584,13 +1623,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "SubmitPaymentResp",
-                    "name": "submitPaymentResp",
-                    "id": 39,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
                     "type": "UIMessage",
                     "name": "uiMessage",
                     "id": 40,
@@ -1615,6 +1647,20 @@
                     "type": "PerformAutoTapActionsResp",
                     "name": "performAutoTapActionsResp",
                     "id": 43,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "StringInputResp",
+                    "name": "stringInputResp",
+                    "id": 44,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectCountersResp",
+                    "name": "selectCountersResp",
+                    "id": 45,
                     "oneof": "message"
                 },
                 {
@@ -1653,11 +1699,12 @@
                     36,
                     37,
                     38,
-                    39,
                     40,
                     41,
                     42,
-                    43
+                    43,
+                    44,
+                    45
                 ]
             }
         },
@@ -1793,30 +1840,6 @@
             "fields": [
                 {
                     "rule": "optional",
-                    "type": "uint32",
-                    "name": "majorVer",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "minorVer",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "revisionVer",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "buildVer",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
                     "type": "SettingsMessage",
                     "name": "defaultSettings",
                     "id": 5
@@ -1826,12 +1849,6 @@
                     "type": "ProtoVersion",
                     "name": "protoVer",
                     "id": 6
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "seatId",
-                    "id": 7
                 },
                 {
                     "rule": "optional",
@@ -1856,12 +1873,6 @@
                     "type": "ProtoVersion",
                     "name": "protoVer",
                     "id": 6
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "seatId",
-                    "id": 7
                 },
                 {
                     "rule": "optional",
@@ -2015,12 +2026,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "uint32",
-                    "name": "weight",
-                    "id": 6
-                },
-                {
-                    "rule": "optional",
                     "type": "ManaCost",
                     "name": "manaCost",
                     "id": 7,
@@ -2046,6 +2051,20 @@
                     "name": "loyaltyCost",
                     "id": 10,
                     "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "OrCost",
+                    "name": "orCost",
+                    "id": 11,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "AndCost",
+                    "name": "andCost",
+                    "id": 12,
+                    "oneof": "message"
                 }
             ],
             "oneofs": {
@@ -2053,7 +2072,9 @@
                     7,
                     8,
                     9,
-                    10
+                    10,
+                    11,
+                    12
                 ]
             }
         },
@@ -2102,6 +2123,12 @@
                     "type": "CounterType",
                     "name": "counterType",
                     "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "count",
+                    "id": 3
                 }
             ]
         },
@@ -2423,6 +2450,12 @@
                     "type": "Attacker",
                     "name": "qualifiedAttackers",
                     "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "canSubmitAttackers",
+                    "id": 8
                 }
             ]
         },
@@ -2529,12 +2562,6 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
                     "name": "minAmount",
                     "id": 2
                 },
@@ -2598,12 +2625,6 @@
             "name": "DistributionResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
                 {
                     "rule": "repeated",
                     "type": "Distribution",
@@ -2716,6 +2737,12 @@
                     "type": "EffectCostType",
                     "name": "effectCostType",
                     "id": 2
+                },
+                {
+                    "rule": "optional",
+                    "type": "int32",
+                    "name": "count",
+                    "id": 3
                 }
             ]
         },
@@ -2723,12 +2750,6 @@
             "name": "EffectCostReq",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "index",
-                    "id": 1
-                },
                 {
                     "rule": "optional",
                     "type": "EffectCostType",
@@ -2777,12 +2798,6 @@
             "name": "EffectCostResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "index",
-                    "id": 1
-                },
                 {
                     "rule": "optional",
                     "type": "EffectCostType",
@@ -2964,30 +2979,6 @@
                     "type": "string",
                     "name": "matchID",
                     "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "majorVer",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "minorVer",
-                    "id": 5
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "revisionVer",
-                    "id": 6
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "buildVer",
-                    "id": 7
                 }
             ]
         },
@@ -3107,144 +3098,6 @@
                     "type": "MatchConfig",
                     "name": "matchConfig",
                     "id": 1
-                }
-            ]
-        },
-        {
-            "name": "GRETHHostEmulatorLaunch",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "programName",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "executablePath",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "sharedLibraryFilename",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "greIRFilename",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "linkID",
-                    "id": 5
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "hostID",
-                    "id": 6
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "sutID",
-                    "id": 7
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "logFilename",
-                    "id": 8
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "syslogIPAddress",
-                    "id": 9
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "syslogTCPPort",
-                    "id": 10
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "syslogProcID",
-                    "id": 11
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "outFilename",
-                    "id": 12
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "enableRedaction",
-                    "id": 13
-                }
-            ]
-        },
-        {
-            "name": "GRETHHostEmulatorLaunchResp",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "result",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "hostID",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "int32",
-                    "name": "pID",
-                    "id": 3
-                }
-            ]
-        },
-        {
-            "name": "GRETHHostEmulatorShutdown",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "shutdownHostID",
-                    "id": 1
-                }
-            ]
-        },
-        {
-            "name": "GRETHHostEmulatorShutdownResp",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "result",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "shutdownHostID",
-                    "id": 2
                 }
             ]
         },
@@ -3648,15 +3501,23 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "Prompt",
-                    "name": "prompt",
-                    "id": 6
+                    "type": "StringInputReq",
+                    "name": "stringInputReq",
+                    "id": 57,
+                    "oneof": "message"
+                },
+                {
+                    "rule": "optional",
+                    "type": "SelectCountersReq",
+                    "name": "selectCountersReq",
+                    "id": 58,
+                    "oneof": "message"
                 },
                 {
                     "rule": "optional",
                     "type": "Prompt",
-                    "name": "nonDecisionPlayerPrompt",
-                    "id": 35
+                    "name": "prompt",
+                    "id": 6
                 },
                 {
                     "rule": "optional",
@@ -3718,7 +3579,9 @@
                     52,
                     53,
                     54,
-                    55
+                    55,
+                    57,
+                    58
                 ]
             }
         },
@@ -4271,12 +4134,6 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
                     "name": "destinationId",
                     "id": 2
                 },
@@ -4298,12 +4155,6 @@
             "name": "GatherResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
                 {
                     "rule": "repeated",
                     "type": "Gathering",
@@ -4557,12 +4408,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
                     "type": "GroupType",
                     "name": "groupType",
                     "id": 5
@@ -4590,12 +4435,6 @@
                     "type": "Group",
                     "name": "groups",
                     "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 2
                 },
                 {
                     "rule": "optional",
@@ -4632,12 +4471,6 @@
                     "type": "SubZoneType",
                     "name": "subZoneType",
                     "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "Prompt",
-                    "name": "prompt",
-                    "id": 5
                 },
                 {
                     "rule": "optional",
@@ -4746,18 +4579,6 @@
                     "type": "Prompt",
                     "name": "intermissionPrompt",
                     "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "ResultType",
-                    "name": "gameResultType",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "winningTeamId",
-                    "id": 4
                 },
                 {
                     "rule": "optional",
@@ -5662,6 +5483,36 @@
                 },
                 {
                     "rule": "optional",
+                    "type": "string",
+                    "name": "sessionId",
+                    "id": 13
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "isWotc",
+                    "id": 14
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "platformId",
+                    "id": 15
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "isBotPlayer",
+                    "id": 16
+                },
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "eventId",
+                    "id": 17
+                },
+                {
+                    "rule": "optional",
                     "type": "int64",
                     "name": "joinTimestamp",
                     "id": 20
@@ -6013,12 +5864,6 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
                     "name": "minValue",
                     "id": 2
                 },
@@ -6042,9 +5887,18 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "uint32",
+                    "type": "NumericInputType",
                     "name": "numericInputType",
                     "id": 6
+                },
+                {
+                    "rule": "repeated",
+                    "type": "uint32",
+                    "name": "disallowedValues",
+                    "id": 7,
+                    "options": {
+                        "packed": true
+                    }
                 }
             ]
         },
@@ -6052,12 +5906,6 @@
             "name": "NumericInputResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
                 {
                     "rule": "optional",
                     "type": "uint32",
@@ -6208,6 +6056,24 @@
             ]
         },
         {
+            "name": "OrCost",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "repeated",
+                    "type": "Cost",
+                    "name": "costs",
+                    "id": 1
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "isOptional",
+                    "id": 2
+                }
+            ]
+        },
+        {
             "name": "OrderCombatDamageReq",
             "syntax": "proto3",
             "fields": [
@@ -6276,12 +6142,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
                     "type": "OrderingContext",
                     "name": "orderingContext",
                     "id": 3
@@ -6306,12 +6166,6 @@
                     "type": "OrderingType",
                     "name": "ordering",
                     "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 3
                 }
             ]
         },
@@ -6360,12 +6214,6 @@
                     "type": "EffectCostReq",
                     "name": "effectCostReq",
                     "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "SubmitPaymentReq",
-                    "name": "submitPaymentReq",
-                    "id": 5
                 },
                 {
                     "rule": "optional",
@@ -6891,6 +6739,12 @@
                     "type": "uint32",
                     "name": "replacementEffectId",
                     "id": 6
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "conferringObjectZcid",
+                    "id": 7
                 }
             ]
         },
@@ -6943,12 +6797,6 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
                     "name": "minFind",
                     "id": 2
                 },
@@ -6998,21 +6846,6 @@
             "syntax": "proto3",
             "fields": [
                 {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
-                {
-                    "rule": "repeated",
-                    "type": "uint32",
-                    "name": "itemsFound",
-                    "id": 2,
-                    "options": {
-                        "packed": true
-                    }
-                },
-                {
                     "rule": "repeated",
                     "type": "Group",
                     "name": "groups",
@@ -7024,12 +6857,6 @@
             "name": "SearchReq",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
                 {
                     "rule": "optional",
                     "type": "uint32",
@@ -7097,12 +6924,6 @@
             "syntax": "proto3",
             "fields": [
                 {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "optionIndex",
-                    "id": 1
-                },
-                {
                     "rule": "repeated",
                     "type": "uint32",
                     "name": "itemsFound",
@@ -7143,12 +6964,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "OptionType",
-                    "name": "optionType",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
                     "type": "OptionContext",
                     "name": "optionContext",
                     "id": 5
@@ -7168,12 +6983,6 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "idx",
-                    "id": 8
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
                     "name": "sourceId",
                     "id": 9
                 }
@@ -7183,30 +6992,6 @@
             "name": "SelectCountersResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectionContext",
-                    "name": "context",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "OptionContext",
-                    "name": "optionContext",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "OptionType",
-                    "name": "optionType",
-                    "id": 4
-                },
                 {
                     "rule": "repeated",
                     "type": "CounterPair",
@@ -7224,12 +7009,6 @@
                     "type": "Group",
                     "name": "groups",
                     "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 4
                 },
                 {
                     "rule": "optional",
@@ -7280,21 +7059,6 @@
             "syntax": "proto3",
             "fields": [
                 {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 1
-                },
-                {
-                    "rule": "repeated",
-                    "type": "uint32",
-                    "name": "ids",
-                    "id": 2,
-                    "options": {
-                        "packed": true
-                    }
-                },
-                {
                     "rule": "repeated",
                     "type": "Group",
                     "name": "groups",
@@ -7306,12 +7070,6 @@
             "name": "SelectManaTypeReq",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "index",
-                    "id": 1
-                },
                 {
                     "rule": "repeated",
                     "type": "ManaColor",
@@ -7333,12 +7091,6 @@
             "name": "SelectManaTypeResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "index",
-                    "id": 1
-                },
                 {
                     "rule": "optional",
                     "type": "ManaColor",
@@ -7372,12 +7124,6 @@
                 {
                     "rule": "optional",
                     "type": "uint32",
-                    "name": "idx",
-                    "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
                     "name": "sourceId",
                     "id": 5
                 }
@@ -7387,12 +7133,6 @@
             "name": "SelectNGroupResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 1
-                },
                 {
                     "rule": "repeated",
                     "type": "uint32",
@@ -7425,12 +7165,6 @@
                     "type": "SelectionContext",
                     "name": "context",
                     "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "OptionType",
-                    "name": "optionType",
-                    "id": 4
                 },
                 {
                     "rule": "optional",
@@ -7467,12 +7201,6 @@
                     "type": "StaticList",
                     "name": "staticList",
                     "id": 9
-                },
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 10
                 },
                 {
                     "rule": "optional",
@@ -7537,30 +7265,6 @@
             "name": "SelectNResp",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "uint32",
-                    "name": "idx",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectionContext",
-                    "name": "context",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "OptionContext",
-                    "name": "optionContext",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "OptionType",
-                    "name": "optionType",
-                    "id": 4
-                },
                 {
                     "rule": "repeated",
                     "type": "uint32",
@@ -7641,12 +7345,6 @@
                     "type": "TargetSelection",
                     "name": "target",
                     "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "SelectAction",
-                    "name": "action",
-                    "id": 2
                 }
             ]
         },
@@ -8188,6 +7886,30 @@
             ]
         },
         {
+            "name": "StringInputReq",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "sourceId",
+                    "id": 2
+                }
+            ]
+        },
+        {
+            "name": "StringInputResp",
+            "syntax": "proto3",
+            "fields": [
+                {
+                    "rule": "optional",
+                    "type": "string",
+                    "name": "inputValue",
+                    "id": 1
+                }
+            ]
+        },
+        {
             "name": "StringValue",
             "syntax": "proto3",
             "fields": [
@@ -8258,16 +7980,6 @@
                     "id": 1
                 }
             ]
-        },
-        {
-            "name": "SubmitPaymentReq",
-            "syntax": "proto3",
-            "fields": []
-        },
-        {
-            "name": "SubmitPaymentResp",
-            "syntax": "proto3",
-            "fields": []
         },
         {
             "name": "SubmitTargetsResp",
@@ -8572,6 +8284,12 @@
                     "type": "bool",
                     "name": "enableSideboardLoading",
                     "id": 28
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "disableUniqueAbilityActivations",
+                    "id": 29
                 }
             ]
         },
@@ -9156,7 +8874,7 @@
                     "id": 20
                 },
                 {
-                    "name": "ActionType_Placeholder21",
+                    "name": "ActionType_CastPrototype",
                     "id": 21
                 },
                 {
@@ -9572,6 +9290,46 @@
                 {
                     "name": "AnnotationType_ClassLevel",
                     "id": 88
+                },
+                {
+                    "name": "AnnotationType_TokenImmediatelyDied",
+                    "id": 89
+                },
+                {
+                    "name": "AnnotationType_DamagedThisTurn",
+                    "id": 90
+                },
+                {
+                    "name": "AnnotationType_ReferencedCardNames",
+                    "id": 91
+                },
+                {
+                    "name": "AnnotationType_PlayerSelectingTargets",
+                    "id": 92
+                },
+                {
+                    "name": "AnnotationType_PlayerSubmittedTargets",
+                    "id": 93
+                },
+                {
+                    "name": "AnnotationType_CrewedThisTurn",
+                    "id": 94
+                },
+                {
+                    "name": "AnnotationType_PhasedOut",
+                    "id": 95
+                },
+                {
+                    "name": "AnnotationType_PhasedIn",
+                    "id": 96
+                },
+                {
+                    "name": "AnnotationType_LoyaltyActivationsRemaining",
+                    "id": 97
+                },
+                {
+                    "name": "AnnotationType_GroupedIds",
+                    "id": 98
                 }
             ]
         },
@@ -9630,6 +9388,10 @@
                 {
                     "name": "AttackWarningType_MustAttack",
                     "id": 3
+                },
+                {
+                    "name": "AttackWarningType_UnpayableEffectCost",
+                    "id": 4
                 }
             ]
         },
@@ -10010,7 +9772,7 @@
                     "id": 51
                 },
                 {
-                    "name": "CardMechanicType_Placeholder52",
+                    "name": "CardMechanicType_PutTopOrBottom",
                     "id": 52
                 },
                 {
@@ -10152,6 +9914,18 @@
                 {
                     "name": "CastingTimeOptionType_CastThroughAbility",
                     "id": 13
+                },
+                {
+                    "name": "CastingTimeOptionType_TimingPermission",
+                    "id": 14
+                },
+                {
+                    "name": "CastingTimeOptionType_Casualty",
+                    "id": 15
+                },
+                {
+                    "name": "CastingTimeOptionType_Specialize",
+                    "id": 16
                 }
             ]
         },
@@ -10330,10 +10104,6 @@
                     "id": 50
                 },
                 {
-                    "name": "ClientMessageType_SubmitPaymentResp",
-                    "id": 51
-                },
-                {
                     "name": "ClientMessageType_AutoResp",
                     "id": 52
                 },
@@ -10352,6 +10122,14 @@
                 {
                     "name": "ClientMessageType_PerformAutoTapActionsResp",
                     "id": 56
+                },
+                {
+                    "name": "ClientMessageType_StringInputResp",
+                    "id": 57
+                },
+                {
+                    "name": "ClientMessageType_SelectCountersResp",
+                    "id": 58
                 }
             ]
         },
@@ -10504,28 +10282,6 @@
             ]
         },
         {
-            "name": "CostCategory",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "CostCategory_None",
-                    "id": 0
-                },
-                {
-                    "name": "CostCategory_Automatic",
-                    "id": 1
-                },
-                {
-                    "name": "CostCategory_Confirmation",
-                    "id": 2
-                },
-                {
-                    "name": "CostCategory_Manual",
-                    "id": 3
-                }
-            ]
-        },
-        {
             "name": "CostType",
             "syntax": "proto3",
             "values": [
@@ -10546,7 +10302,7 @@
                     "id": 3
                 },
                 {
-                    "name": "CostType_Action",
+                    "name": "CostType_Effect",
                     "id": 4
                 },
                 {
@@ -10572,6 +10328,10 @@
                 {
                     "name": "CostType_Or",
                     "id": 10
+                },
+                {
+                    "name": "CostType_And",
+                    "id": 11
                 }
             ]
         },
@@ -11204,40 +10964,100 @@
                     "id": 156
                 },
                 {
-                    "name": "CounterType_PHCT157",
+                    "name": "CounterType_Ember",
                     "id": 157
                 },
                 {
-                    "name": "CounterType_PHCT158",
+                    "name": "CounterType_Ritual",
                     "id": 158
                 },
                 {
-                    "name": "CounterType_PHCT159",
+                    "name": "CounterType_Valor",
                     "id": 159
                 },
                 {
-                    "name": "CounterType_PHCT160",
+                    "name": "CounterType_Judgment",
                     "id": 160
                 },
                 {
-                    "name": "CounterType_PHCT161",
+                    "name": "CounterType_Invitation",
                     "id": 161
                 },
                 {
-                    "name": "CounterType_PHCT162",
+                    "name": "CounterType_Croak",
                     "id": 162
                 },
                 {
-                    "name": "CounterType_PHCT163",
+                    "name": "CounterType_Bloodline",
                     "id": 163
                 },
                 {
-                    "name": "CounterType_PHCT164",
+                    "name": "CounterType_Suspect",
                     "id": 164
                 },
                 {
                     "name": "CounterType_Acorn",
                     "id": 165
+                },
+                {
+                    "name": "CounterType_Hatching",
+                    "id": 166
+                },
+                {
+                    "name": "CounterType_Stash",
+                    "id": 167
+                },
+                {
+                    "name": "CounterType_Collection",
+                    "id": 168
+                },
+                {
+                    "name": "CounterType_Rope",
+                    "id": 169
+                },
+                {
+                    "name": "CounterType_Ingenuity",
+                    "id": 170
+                },
+                {
+                    "name": "CounterType_Phyresis",
+                    "id": 171
+                },
+                {
+                    "name": "CounterType_Stun",
+                    "id": 172
+                },
+                {
+                    "name": "CounterType_PHCT173",
+                    "id": 173
+                },
+                {
+                    "name": "CounterType_PHCT174",
+                    "id": 174
+                },
+                {
+                    "name": "CounterType_Experience",
+                    "id": 175
+                },
+                {
+                    "name": "CounterType_Slumber",
+                    "id": 176
+                },
+                {
+                    "name": "CounterType_PHCT177",
+                    "id": 177
+                },
+                {
+                    "name": "CounterType_PHCT178",
+                    "id": 178
+                },
+                {
+                    "name": "CounterType_PHCT179",
+                    "id": 179
+                },
+                {
+                    "name": "CounterType_PHCT180",
+                    "id": 180
                 }
             ]
         },
@@ -11520,6 +11340,18 @@
                 {
                     "name": "FailureReason_InvalidAlternativeAttackModification",
                     "id": 55
+                },
+                {
+                    "name": "FailureReason_DisallowedValue",
+                    "id": 56
+                },
+                {
+                    "name": "FailureReason_InvalidTypeKind",
+                    "id": 57
+                },
+                {
+                    "name": "FailureReason_InvalidWishCard",
+                    "id": 58
                 }
             ]
         },
@@ -11710,6 +11542,14 @@
                 {
                     "name": "GREMessageType_SubmitDeckConfirmation",
                     "id": 57
+                },
+                {
+                    "name": "GREMessageType_StringInputReq",
+                    "id": 58
+                },
+                {
+                    "name": "GREMessageType_SelectCountersReq",
+                    "id": 59
                 }
             ]
         },
@@ -11766,15 +11606,15 @@
                     "id": 11
                 },
                 {
-                    "name": "GameObjectType_Placeholder12",
+                    "name": "GameObjectType_DisturbBack",
                     "id": 12
                 },
                 {
-                    "name": "GameObjectType_Placeholder13",
+                    "name": "GameObjectType_Boon",
                     "id": 13
                 },
                 {
-                    "name": "GameObjectType_Placeholder14",
+                    "name": "GameObjectType_PrototypeFacet",
                     "id": 14
                 },
                 {
@@ -12082,6 +11922,14 @@
                 {
                     "name": "IdType_AbilityGrpId",
                     "id": 5
+                },
+                {
+                    "name": "IdType_CardGrpIdIndex",
+                    "id": 6
+                },
+                {
+                    "name": "IdType_ManaId",
+                    "id": 7
                 }
             ]
         },
@@ -12208,6 +12056,10 @@
                 {
                     "name": "ManaPaymentConditionType_Diversity",
                     "id": 3
+                },
+                {
+                    "name": "ManaPaymentConditionType_Uniformity",
+                    "id": 4
                 }
             ]
         },
@@ -12634,6 +12486,32 @@
             ]
         },
         {
+            "name": "NumericInputType",
+            "syntax": "proto3",
+            "values": [
+                {
+                    "name": "NumericInputType_None",
+                    "id": 0
+                },
+                {
+                    "name": "NumericInputType_ChooseX",
+                    "id": 1
+                },
+                {
+                    "name": "NumericInputType_ChooseAnyAmount",
+                    "id": 2
+                },
+                {
+                    "name": "NumericInputType_DebugCode",
+                    "id": 3
+                },
+                {
+                    "name": "NumericInputType_ChooseDieRoll",
+                    "id": 4
+                }
+            ]
+        },
+        {
             "name": "OptionContext",
             "syntax": "proto3",
             "values": [
@@ -12698,84 +12576,6 @@
                 {
                     "name": "OptionResponse_Cancel_No",
                     "id": 2
-                }
-            ]
-        },
-        {
-            "name": "OptionType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "OptionType_None",
-                    "id": 0
-                },
-                {
-                    "name": "OptionType_Modal",
-                    "id": 1
-                },
-                {
-                    "name": "OptionType_Splice",
-                    "id": 2
-                },
-                {
-                    "name": "OptionType_AlternativeCost",
-                    "id": 3
-                },
-                {
-                    "name": "OptionType_Numeric",
-                    "id": 4
-                },
-                {
-                    "name": "OptionType_VariableCost",
-                    "id": 5
-                },
-                {
-                    "name": "OptionType_ManaType",
-                    "id": 6
-                },
-                {
-                    "name": "OptionType_Order",
-                    "id": 7
-                },
-                {
-                    "name": "OptionType_Search",
-                    "id": 8
-                },
-                {
-                    "name": "OptionType_Group",
-                    "id": 9
-                },
-                {
-                    "name": "OptionType_Select",
-                    "id": 10
-                },
-                {
-                    "name": "OptionType_SelectGroup",
-                    "id": 11
-                },
-                {
-                    "name": "OptionType_Distribution",
-                    "id": 12
-                },
-                {
-                    "name": "OptionType_OptionalAction",
-                    "id": 13
-                },
-                {
-                    "name": "OptionType_ActionsAvailable",
-                    "id": 14
-                },
-                {
-                    "name": "OptionType_SelectFromGroups",
-                    "id": 15
-                },
-                {
-                    "name": "OptionType_SearchFromGroups",
-                    "id": 16
-                },
-                {
-                    "name": "OptionType_Gathering",
-                    "id": 17
                 }
             ]
         },
@@ -15202,16 +15002,64 @@
                     "id": 401
                 },
                 {
-                    "name": "SubType_PlaceholderSubType402",
+                    "name": "SubType_Wrenn",
                     "id": 402
                 },
                 {
-                    "name": "SubType_PlaceholderSubType403",
+                    "name": "SubType_Blood",
                     "id": 403
                 },
                 {
                     "name": "SubType_Serra",
                     "id": 404
+                },
+                {
+                    "name": "SubType_Kaito",
+                    "id": 405
+                },
+                {
+                    "name": "SubType_Raccoon",
+                    "id": 406
+                },
+                {
+                    "name": "SubType_Gith",
+                    "id": 407
+                },
+                {
+                    "name": "SubType_Minsc",
+                    "id": 408
+                },
+                {
+                    "name": "SubType_Tasha",
+                    "id": 409
+                },
+                {
+                    "name": "SubType_Walrus",
+                    "id": 410
+                },
+                {
+                    "name": "SubType_Powerstone",
+                    "id": 411
+                },
+                {
+                    "name": "SubType_Urza",
+                    "id": 412
+                },
+                {
+                    "name": "SubType_PlaceholderSubType413",
+                    "id": 413
+                },
+                {
+                    "name": "SubType_PlaceholderSubType414",
+                    "id": 414
+                },
+                {
+                    "name": "SubType_PlaceholderSubType415",
+                    "id": 415
+                },
+                {
+                    "name": "SubType_PlaceholderSubType416",
+                    "id": 416
                 }
             ]
         },
