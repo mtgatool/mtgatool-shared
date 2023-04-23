@@ -704,6 +704,8 @@ export const CARD_TYPE_CODES = [
   "enc",
   "art",
   "pla",
+  "dun",
+  "bat",
 ] as const;
 
 export const CARD_SUPERTYPES = [
@@ -728,6 +730,7 @@ export const CARD_TYPE = [
   "Artifact",
   "Planeswalker",
   "Dungeon",
+  "Battle",
 ] as const;
 
 export const CARD_TYPES = [
@@ -738,6 +741,8 @@ export const CARD_TYPES = [
   "Enchantments",
   "Artifacts",
   "Planeswalkers",
+  "Dungeons",
+  "Battles",
 ] as const;
 
 export const WILDCARD_RARITIES = [

@@ -158,7 +158,7 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "uint32",
+                    "type": "HighlightType",
                     "name": "highlight",
                     "id": 27
                 },
@@ -188,6 +188,12 @@
                     "options": {
                         "packed": true
                     }
+                },
+                {
+                    "rule": "optional",
+                    "type": "bool",
+                    "name": "isManaAbilityWithSideEffect",
+                    "id": 33
                 }
             ]
         },
@@ -511,12 +517,6 @@
                     "type": "uint32",
                     "name": "alternativeGrpId",
                     "id": 4
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "autoAttacked",
-                    "id": 5
                 },
                 {
                     "rule": "optional",
@@ -2145,18 +2145,6 @@
             ]
         },
         {
-            "name": "CreateMatchGameRoomResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchGameRoomInfo",
-                    "name": "gameRoomInfo",
-                    "id": 1
-                }
-            ]
-        },
-        {
             "name": "CreateMatchGameRoomResponseV2",
             "syntax": "proto3",
             "fields": [
@@ -2659,29 +2647,6 @@
                     }
                 }
             ]
-        },
-        {
-            "name": "DraftGameRoomConfig",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "gameRoomId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "eventId",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "DraftGameRoomInfo",
-            "syntax": "proto3",
-            "fields": []
         },
         {
             "name": "EchoRequest",
@@ -3986,6 +3951,12 @@
                     "options": {
                         "packed": true
                     }
+                },
+                {
+                    "rule": "optional",
+                    "type": "UInt32Value",
+                    "name": "defense",
+                    "id": 39
                 }
             ]
         },
@@ -4204,107 +4175,6 @@
                     "id": 2
                 }
             ]
-        },
-        {
-            "name": "GetGameRoomIdsRequest",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "eventId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "GameRoomType",
-                    "name": "gameRoomType",
-                    "id": 2
-                },
-                {
-                    "rule": "repeated",
-                    "type": "MatchGameRoomStateType",
-                    "name": "gameRoomStateTypeFilter",
-                    "id": 5,
-                    "options": {
-                        "packed": true
-                    }
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "includeInvisibleRooms",
-                    "id": 7
-                },
-                {
-                    "rule": "optional",
-                    "type": "bool",
-                    "name": "includeReservedRooms",
-                    "id": 8
-                },
-                {
-                    "rule": "optional",
-                    "type": "SortFilterPagingOptions",
-                    "name": "sortFilterPagingOptions",
-                    "id": 10
-                }
-            ]
-        },
-        {
-            "name": "GetGameRoomIdsResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "repeated",
-                    "type": "string",
-                    "name": "gameRoomIds",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "ContinuationToken",
-                    "name": "continuationToken",
-                    "id": 10
-                }
-            ]
-        },
-        {
-            "name": "GetGameRoomInfoRequest",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "gameRoomId",
-                    "id": 1
-                }
-            ]
-        },
-        {
-            "name": "GetGameRoomInfoResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchGameRoomInfo",
-                    "name": "matchRoomInfo",
-                    "id": 1,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "DraftGameRoomInfo",
-                    "name": "draftRoomInfo",
-                    "id": 2,
-                    "oneof": "message"
-                }
-            ],
-            "oneofs": {
-                "message": [
-                    1,
-                    2
-                ]
-            }
         },
         {
             "name": "GetSettingsResp",
@@ -4585,48 +4455,6 @@
                     "type": "ResultSpec",
                     "name": "result",
                     "id": 5
-                }
-            ]
-        },
-        {
-            "name": "JoinMatchGameRoomRequest",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "gameRoomId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "gameRoomPassword",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "JoinMatchGameRoomResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchGameRoomInfo",
-                    "name": "gameRoomInfo",
-                    "id": 1
-                }
-            ]
-        },
-        {
-            "name": "JoinMatchGameRoomResponseV2",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "int32",
-                    "name": "seatId",
-                    "id": 1
                 }
             ]
         },
@@ -5061,180 +4889,9 @@
             ]
         },
         {
-            "name": "MatchControllerClientSessionSettings",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "repeated",
-                    "type": "MatchControllerEventType",
-                    "name": "subscribedEventTypes",
-                    "id": 10,
-                    "options": {
-                        "packed": true
-                    }
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerGetSettingsRequest",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "repeated",
-                    "type": "string",
-                    "name": "propertyNames",
-                    "id": 1
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerGetSettingsResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerSettings",
-                    "name": "matchControllerSettings",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerClientSessionSettings",
-                    "name": "clientSessionSettings",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerHealthReport",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerServiceInfo",
-                    "name": "serviceInfo",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "timestamp",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerServiceInfo",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "ServiceFabricServiceInfo",
-                    "name": "serviceFabricServiceInfo",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "environmentId",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerState",
-                    "name": "matchControllerState",
-                    "id": 3
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerSetSettingsRequest",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerSettings",
-                    "name": "settings",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerClientSessionSettings",
-                    "name": "clientSessionSettings",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerSetSettingsResponse",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerSettings",
-                    "name": "settings",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerClientSessionSettings",
-                    "name": "clientSessionSettings",
-                    "id": 2
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerSettings",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "greIrBin",
-                    "id": 5
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "grpdXml",
-                    "id": 6
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "currentSeason",
-                    "id": 20
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerStateChangedEvent",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerServiceInfo",
-                    "name": "serviceInfo",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "timestamp",
-                    "id": 2
-                }
-            ]
-        },
-        {
             "name": "MatchGameRoomConfig",
             "syntax": "proto3",
             "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "gameRoomId",
-                    "id": 1
-                },
                 {
                     "rule": "optional",
                     "type": "string",
@@ -5274,26 +4931,8 @@
                 {
                     "rule": "optional",
                     "type": "string",
-                    "name": "password",
-                    "id": 21
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "greIrBinPath",
-                    "id": 30
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
                     "name": "greHostLoggerLevel",
                     "id": 31
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "greRecorderConfig",
-                    "id": 32
                 },
                 {
                     "rule": "optional",
@@ -5315,12 +4954,6 @@
             "fields": [
                 {
                     "rule": "optional",
-                    "type": "string",
-                    "name": "gameRoomId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
                     "type": "MatchGameRoomConfig",
                     "name": "gameRoomConfig",
                     "id": 2
@@ -5339,12 +4972,6 @@
                 },
                 {
                     "rule": "repeated",
-                    "type": "ResultSpec",
-                    "name": "interimMatchResultList",
-                    "id": 5
-                },
-                {
-                    "rule": "repeated",
                     "type": "MatchGameRoomPlayerInfo",
                     "name": "players",
                     "id": 6
@@ -5354,78 +4981,6 @@
                     "type": "MatchPlayerMetrics",
                     "name": "playerMetrics",
                     "id": 7
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "matchControllerUri",
-                    "id": 8
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "matchClusterUri",
-                    "id": 9
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "createdTimestamp",
-                    "id": 10
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "updatedTimestamp",
-                    "id": 11
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "matchResultSavedTimestamp",
-                    "id": 12
-                },
-                {
-                    "rule": "optional",
-                    "type": "ClientType",
-                    "name": "creatorClientType",
-                    "id": 20
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "creatorId",
-                    "id": 21
-                }
-            ]
-        },
-        {
-            "name": "MatchGameRoomOpponentConnectionStateChangedEvent",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "matchId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "int32",
-                    "name": "systemSeatId",
-                    "id": 2
-                },
-                {
-                    "rule": "optional",
-                    "type": "ConnectionStateChangedEventType",
-                    "name": "eventType",
-                    "id": 3
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "timestamp",
-                    "id": 10
                 }
             ]
         },
@@ -5478,12 +5033,6 @@
                 {
                     "rule": "optional",
                     "type": "string",
-                    "name": "clientAuthToken",
-                    "id": 12
-                },
-                {
-                    "rule": "optional",
-                    "type": "string",
                     "name": "sessionId",
                     "id": 13
                 },
@@ -5510,24 +5059,6 @@
                     "type": "string",
                     "name": "eventId",
                     "id": 17
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "joinTimestamp",
-                    "id": 20
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "inactivityTimeoutTimestamp",
-                    "id": 21
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "disconnectTimeoutTimestamp",
-                    "id": 22
                 }
             ]
         },
@@ -5540,12 +5071,6 @@
                     "type": "MatchGameRoomInfo",
                     "name": "gameRoomInfo",
                     "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "timestamp",
-                    "id": 2
                 }
             ]
         },
@@ -5564,24 +5089,6 @@
                     "type": "PlayerMetricKeyValuePair",
                     "name": "metrics",
                     "id": 2
-                }
-            ]
-        },
-        {
-            "name": "MatchResultSaved",
-            "syntax": "proto3",
-            "fields": [
-                {
-                    "rule": "optional",
-                    "type": "string",
-                    "name": "matchId",
-                    "id": 1
-                },
-                {
-                    "rule": "optional",
-                    "type": "int64",
-                    "name": "timestamp",
-                    "id": 10
                 }
             ]
         },
@@ -5648,27 +5155,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "MatchControllerStateChangedEvent",
-                    "name": "matchControllerStateChangedEvent",
-                    "id": 10,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerHealthReport",
-                    "name": "matchControllerHealthReport",
-                    "id": 11,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchGameRoomOpponentConnectionStateChangedEvent",
-                    "name": "opponentConnectionStateChangedEvent",
-                    "id": 12,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
                     "type": "AuthenticateResponse",
                     "name": "authenticateResponse",
                     "id": 100,
@@ -5676,65 +5162,9 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "MatchControllerServiceInfo",
-                    "name": "serviceInfoResponse",
-                    "id": 101,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerGetSettingsResponse",
-                    "name": "getSettingsResponse",
-                    "id": 110,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "MatchControllerSetSettingsResponse",
-                    "name": "setSettingsResponse",
-                    "id": 111,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "CreateMatchGameRoomResponse",
-                    "name": "createMatchGameRoomResponse",
-                    "id": 200,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
                     "type": "CreateMatchGameRoomResponseV2",
                     "name": "createMatchGameRoomResponseV2",
                     "id": 201,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "JoinMatchGameRoomResponse",
-                    "name": "joinMatchGameRoomResponse",
-                    "id": 210,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "JoinMatchGameRoomResponseV2",
-                    "name": "joinMatchGameRoomResponseV2",
-                    "id": 211,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "GetGameRoomIdsResponse",
-                    "name": "getGameRoomIdsResponse",
-                    "id": 240,
-                    "oneof": "message"
-                },
-                {
-                    "rule": "optional",
-                    "type": "GetGameRoomInfoResponse",
-                    "name": "getGameRoomInfoResponse",
-                    "id": 241,
                     "oneof": "message"
                 },
                 {
@@ -5750,19 +5180,8 @@
                     7,
                     8,
                     9,
-                    10,
-                    11,
-                    12,
                     100,
-                    101,
-                    110,
-                    111,
-                    200,
                     201,
-                    210,
-                    211,
-                    240,
-                    241,
                     1000
                 ]
             }
@@ -5896,6 +5315,15 @@
                     "type": "uint32",
                     "name": "disallowedValues",
                     "id": 7,
+                    "options": {
+                        "packed": true
+                    }
+                },
+                {
+                    "rule": "repeated",
+                    "type": "uint32",
+                    "name": "suggestedValues",
+                    "id": 8,
                     "options": {
                         "packed": true
                     }
@@ -7715,12 +7143,6 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "Setting",
-                    "name": "autoDeclareAttackersThatMustAttackSetting",
-                    "id": 18
-                },
-                {
-                    "rule": "optional",
                     "type": "AutoPassOption",
                     "name": "stackAutoPassOption",
                     "id": 19
@@ -8011,7 +7433,7 @@
                 },
                 {
                     "rule": "optional",
-                    "type": "uint32",
+                    "type": "HighlightType",
                     "name": "highlight",
                     "id": 3
                 }
@@ -8080,6 +7502,12 @@
                     "type": "uint32",
                     "name": "targetSourceZoneId",
                     "id": 7
+                },
+                {
+                    "rule": "optional",
+                    "type": "uint32",
+                    "name": "targetingAbilityGrpId",
+                    "id": 8
                 }
             ]
         },
@@ -9330,6 +8758,18 @@
                 {
                     "name": "AnnotationType_GroupedIds",
                     "id": 98
+                },
+                {
+                    "name": "AnnotationType_RegeneratePending",
+                    "id": 99
+                },
+                {
+                    "name": "AnnotationType_PermanentRegenerated",
+                    "id": 100
+                },
+                {
+                    "name": "AnnotationType_ObjectsToDistinguish",
+                    "id": 101
                 }
             ]
         },
@@ -9392,6 +8832,10 @@
                 {
                     "name": "AttackWarningType_UnpayableEffectCost",
                     "id": 4
+                },
+                {
+                    "name": "AttackWarningType_CannotBeAttackedByMoreThanOne",
+                    "id": 5
                 }
             ]
         },
@@ -9852,6 +9296,10 @@
                 {
                     "name": "CardType_Dungeon",
                     "id": 13
+                },
+                {
+                    "name": "CardType_Battle",
+                    "id": 14
                 }
             ]
         },
@@ -10212,24 +9660,6 @@
                 {
                     "name": "ConnectionState_Closing",
                     "id": 4
-                }
-            ]
-        },
-        {
-            "name": "ConnectionStateChangedEventType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "ConnectionStateChangedEventType_Invalid",
-                    "id": 0
-                },
-                {
-                    "name": "ConnectionStateChangedEventType_Connected",
-                    "id": 1
-                },
-                {
-                    "name": "ConnectionStateChangedEventType_Disconnected",
-                    "id": 2
                 }
             ]
         },
@@ -11028,11 +10458,11 @@
                     "id": 172
                 },
                 {
-                    "name": "CounterType_PHCT173",
+                    "name": "CounterType_Oil",
                     "id": 173
                 },
                 {
-                    "name": "CounterType_PHCT174",
+                    "name": "CounterType_Defense",
                     "id": 174
                 },
                 {
@@ -11058,6 +10488,26 @@
                 {
                     "name": "CounterType_PHCT180",
                     "id": 180
+                },
+                {
+                    "name": "CounterType_PHCT181",
+                    "id": 181
+                },
+                {
+                    "name": "CounterType_PHCT182",
+                    "id": 182
+                },
+                {
+                    "name": "CounterType_PHCT183",
+                    "id": 183
+                },
+                {
+                    "name": "CounterType_PHCT184",
+                    "id": 184
+                },
+                {
+                    "name": "CounterType_PHCT185",
+                    "id": 185
                 }
             ]
         },
@@ -11352,6 +10802,14 @@
                 {
                     "name": "FailureReason_InvalidWishCard",
                     "id": 58
+                },
+                {
+                    "name": "FailureReason_InvalidController",
+                    "id": 59
+                },
+                {
+                    "name": "FailureReason_InvalidCardColor",
+                    "id": 60
                 }
             ]
         },
@@ -11628,24 +11086,6 @@
             ]
         },
         {
-            "name": "GameRoomType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "GameRoomType_Invalid",
-                    "id": 0
-                },
-                {
-                    "name": "GameRoomType_Match",
-                    "id": 1
-                },
-                {
-                    "name": "GameRoomType_Draft",
-                    "id": 2
-                }
-            ]
-        },
-        {
             "name": "GameStage",
             "syntax": "proto3",
             "values": [
@@ -11892,6 +11332,10 @@
                 {
                     "name": "HighlightType_Random",
                     "id": 5
+                },
+                {
+                    "name": "HighlightType_CopySpell",
+                    "id": 6
                 }
             ]
         },
@@ -12200,62 +11644,6 @@
                 {
                     "name": "MatchCompletedReasonType_UnknownServerError",
                     "id": 40
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerEventType",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "MatchControllerEventType_Invalid",
-                    "id": 0
-                },
-                {
-                    "name": "MatchControllerEventType_MatchGameRoomStateChanged",
-                    "id": 1
-                },
-                {
-                    "name": "MatchControllerEventType_MatchControllerStateChanged",
-                    "id": 2
-                },
-                {
-                    "name": "MatchControllerEventType_MatchControllerHealthReport",
-                    "id": 3
-                }
-            ]
-        },
-        {
-            "name": "MatchControllerState",
-            "syntax": "proto3",
-            "values": [
-                {
-                    "name": "MatchControllerState_Invalid",
-                    "id": 0
-                },
-                {
-                    "name": "MatchControllerState_Opening",
-                    "id": 1
-                },
-                {
-                    "name": "MatchControllerState_Running",
-                    "id": 2
-                },
-                {
-                    "name": "MatchControllerState_Recovering",
-                    "id": 3
-                },
-                {
-                    "name": "MatchControllerState_Draining",
-                    "id": 4
-                },
-                {
-                    "name": "MatchControllerState_Closing",
-                    "id": 20
-                },
-                {
-                    "name": "MatchControllerState_Closed",
-                    "id": 21
                 }
             ]
         },
@@ -15046,20 +14434,48 @@
                     "id": 412
                 },
                 {
-                    "name": "SubType_PlaceholderSubType413",
+                    "name": "SubType_Mite",
                     "id": 413
                 },
                 {
-                    "name": "SubType_PlaceholderSubType414",
+                    "name": "SubType_Sphere",
                     "id": 414
                 },
                 {
-                    "name": "SubType_PlaceholderSubType415",
+                    "name": "SubType_Incubator",
                     "id": 415
                 },
                 {
-                    "name": "SubType_PlaceholderSubType416",
+                    "name": "SubType_Siege",
                     "id": 416
+                },
+                {
+                    "name": "SubType_PlaceholderSubType417",
+                    "id": 417
+                },
+                {
+                    "name": "SubType_PlaceholderSubType418",
+                    "id": 418
+                },
+                {
+                    "name": "SubType_PlaceholderSubType419",
+                    "id": 419
+                },
+                {
+                    "name": "SubType_PlaceholderSubType420",
+                    "id": 420
+                },
+                {
+                    "name": "SubType_PlaceholderSubType421",
+                    "id": 421
+                },
+                {
+                    "name": "SubType_PlaceholderSubType422",
+                    "id": 422
+                },
+                {
+                    "name": "SubType_PlaceholderSubType423",
+                    "id": 423
                 }
             ]
         },

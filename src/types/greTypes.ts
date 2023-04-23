@@ -30,11 +30,12 @@ export interface Action {
   maxActivations?: number;
   isBatchable?: boolean;
   twobridGenericManaCost?: ManaRequirement;
-  highlight?: number;
+  highlight?: HighlightType;
   costs: Cost[];
   timingSourceGrpid?: number;
   uniqueAbilityId?: number;
   consumableCostAdjustmentQualificationIds: number[];
+  isManaAbilityWithSideEffect?: boolean;
 }
 
 export interface ActionInfo {
@@ -108,7 +109,6 @@ export interface Attacker {
   legalDamageRecipients: DamageRecipient[];
   selectedDamageRecipient?: DamageRecipient;
   alternativeGrpId?: number;
-  autoAttacked?: boolean;
   mustAttack?: boolean;
 }
 
@@ -449,10 +449,6 @@ export interface CreateMatchGameRoomRequest {
   gameRoomConfig?: MatchGameRoomConfig;
 }
 
-export interface CreateMatchGameRoomResponse {
-  gameRoomInfo?: MatchGameRoomInfo;
-}
-
 export interface CreateMatchGameRoomResponseV2 {
   mcFabricUri?: string;
 }
@@ -570,13 +566,6 @@ export interface DoubleValue {
 export interface DoubleValues {
   values: number[];
 }
-
-export interface DraftGameRoomConfig {
-  gameRoomId?: string;
-  eventId?: string;
-}
-
-export interface DraftGameRoomInfo {}
 
 export interface EchoRequest {
   message?: string;
@@ -828,6 +817,7 @@ export interface GameObjectInfo {
   abilityOriginalCardGrpIds: number[];
   baseSkinCode?: string;
   removedSubtypes: SubType[];
+  defense?: UInt32Value;
 }
 
 export interface GameStateMessage {
@@ -875,29 +865,6 @@ export interface GatherSource {
 export interface Gathering {
   instanceId?: number;
   amount?: number;
-}
-
-export interface GetGameRoomIdsRequest {
-  eventId?: string;
-  gameRoomType?: GameRoomType;
-  gameRoomStateTypeFilter: MatchGameRoomStateType[];
-  includeInvisibleRooms?: boolean;
-  includeReservedRooms?: boolean;
-  sortFilterPagingOptions?: SortFilterPagingOptions;
-}
-
-export interface GetGameRoomIdsResponse {
-  gameRoomIds: string[];
-  continuationToken?: ContinuationToken;
-}
-
-export interface GetGameRoomInfoRequest {
-  gameRoomId?: string;
-}
-
-export interface GetGameRoomInfoResponse {
-  matchRoomInfo?: MatchGameRoomInfo;
-  draftRoomInfo?: DraftGameRoomInfo;
 }
 
 export interface GetSettingsResp {
@@ -971,31 +938,11 @@ export interface IntermissionReq {
   result?: ResultSpec;
 }
 
-export interface JoinMatchGameRoomRequest {
-  gameRoomId?: string;
-  gameRoomPassword?: string;
-}
-
-export interface JoinMatchGameRoomResponse {
-  gameRoomInfo?: MatchGameRoomInfo;
-}
-
-export interface JoinMatchGameRoomResponseV2 {
-  seatId?: number;
-}
-
 export interface KeyValuePair {
   key?: string;
   singleValue?: SingleValue;
   repeatedValue?: RepeatedValue;
 }
-export enum EnumValueOneofCaseA {
-  None = 0,
-  SingleValue = 2,
-  RepeatedValue = 3,
-}
-
-export type ValueOneofCaseA = keyof typeof EnumValueOneofCaseA;
 
 export interface KeyValuePairInfo {
   key?: string;
@@ -1074,89 +1021,24 @@ export interface MatchConfig {
   deckConstraintInfo?: DeckConstraintInfo;
 }
 
-export interface MatchControllerClientSessionSettings {
-  subscribedEventTypes: MatchControllerEventType[];
-}
-
-export interface MatchControllerGetSettingsRequest {
-  propertyNames: string[];
-}
-
-export interface MatchControllerGetSettingsResponse {
-  matchControllerSettings?: MatchControllerSettings;
-  clientSessionSettings?: MatchControllerClientSessionSettings;
-}
-
-export interface MatchControllerHealthReport {
-  serviceInfo?: MatchControllerServiceInfo;
-  timestamp?: number;
-}
-
-export interface MatchControllerServiceInfo {
-  serviceFabricServiceInfo?: ServiceFabricServiceInfo;
-  environmentId?: string;
-  matchControllerState?: MatchControllerState;
-}
-
-export interface MatchControllerSetSettingsRequest {
-  settings?: MatchControllerSettings;
-  clientSessionSettings?: MatchControllerClientSessionSettings;
-}
-
-export interface MatchControllerSetSettingsResponse {
-  settings?: MatchControllerSettings;
-  clientSessionSettings?: MatchControllerClientSessionSettings;
-}
-
-export interface MatchControllerSettings {
-  greIrBin?: string;
-  grpdXml?: string;
-  currentSeason?: string;
-}
-
-export interface MatchControllerStateChangedEvent {
-  serviceInfo?: MatchControllerServiceInfo;
-  timestamp?: number;
-}
-
 export interface MatchGameRoomConfig {
-  gameRoomId?: string;
   eventId?: string;
   reservedPlayers: MatchGameRoomPlayerInfo[];
   matchId?: string;
   matchConfig?: MatchConfig;
   greConfig?: GREConfiguration;
   isVisible?: boolean;
-  password?: string;
-  greIrBinPath?: string;
   greHostLoggerLevel?: string;
-  greRecorderConfig?: string;
   joinRoomTimeoutSecs?: number;
   playerDisconnectTimeoutSecs?: number;
 }
 
 export interface MatchGameRoomInfo {
-  gameRoomId?: string;
   gameRoomConfig?: MatchGameRoomConfig;
   stateType?: MatchGameRoomStateType;
   finalMatchResult?: FinalMatchResult;
-  interimMatchResultList: ResultSpec[];
   players: MatchGameRoomPlayerInfo[];
   playerMetrics: MatchPlayerMetrics[];
-  matchControllerUri?: string;
-  matchClusterUri?: string;
-  createdTimestamp?: number;
-  updatedTimestamp?: number;
-  matchResultSavedTimestamp?: number;
-  creatorClientType?: ClientType;
-  creatorId?: string;
-}
-
-export interface MatchGameRoomOpponentConnectionStateChangedEvent {
-  matchId?: string;
-  systemSeatId?: number;
-  eventType?: ConnectionStateChangedEventType;
-  timestamp?: number;
 }
 
 export interface MatchGameRoomPlayerInfo {
@@ -1167,30 +1049,20 @@ export interface MatchGameRoomPlayerInfo {
   connectionInfo?: UserConnectionInfo;
   courseId?: string;
   deckId?: string;
-  clientAuthToken?: string;
   sessionId?: string;
   isWotc?: boolean;
   platformId?: string;
   isBotPlayer?: boolean;
   eventId?: string;
-  joinTimestamp?: number;
-  inactivityTimeoutTimestamp?: number;
-  disconnectTimeoutTimestamp?: number;
 }
 
 export interface MatchGameRoomStateChangedEvent {
   gameRoomInfo?: MatchGameRoomInfo;
-  timestamp?: number;
 }
 
 export interface MatchPlayerMetrics {
   userId?: string;
   metrics: PlayerMetricKeyValuePair[];
-}
-
-export interface MatchResultSaved {
-  matchId?: string;
-  timestamp?: number;
 }
 
 export interface MatchServiceError {
@@ -1205,19 +1077,8 @@ export interface MatchServiceToClientMessage {
   error?: MatchServiceError;
   greToClientEvent?: GreToClientEvent;
   matchGameRoomStateChangedEvent?: MatchGameRoomStateChangedEvent;
-  matchControllerStateChangedEvent?: MatchControllerStateChangedEvent;
-  matchControllerHealthReport?: MatchControllerHealthReport;
-  opponentConnectionStateChangedEvent?: MatchGameRoomOpponentConnectionStateChangedEvent;
   authenticateResponse?: AuthenticateResponse;
-  serviceInfoResponse?: MatchControllerServiceInfo;
-  getSettingsResponse?: MatchControllerGetSettingsResponse;
-  setSettingsResponse?: MatchControllerSetSettingsResponse;
-  createMatchGameRoomResponse?: CreateMatchGameRoomResponse;
   createMatchGameRoomResponseV2?: CreateMatchGameRoomResponseV2;
-  joinMatchGameRoomResponse?: JoinMatchGameRoomResponse;
-  joinMatchGameRoomResponseV2?: JoinMatchGameRoomResponseV2;
-  getGameRoomIdsResponse?: GetGameRoomIdsResponse;
-  getGameRoomInfoResponse?: GetGameRoomInfoResponse;
   echoResponse?: EchoResponse;
 }
 
@@ -1251,6 +1112,7 @@ export interface NumericInputReq {
   sourceId?: number;
   numericInputType?: NumericInputType;
   disallowedValues: number[];
+  suggestedValues: number[];
 }
 
 export interface NumericInputResp {
@@ -1407,15 +1269,6 @@ export interface PromptParameter {
   numberValue?: number;
   promptId?: number;
 }
-export enum EnumValueOneofCaseB {
-  None = 0,
-  Reference = 3,
-  StringValue = 4,
-  NumberValue = 5,
-  PromptId = 7,
-}
-
-export type ValueOneofCaseB = keyof typeof EnumValueOneofCaseB;
 
 export interface Reference {
   type?: ReferenceType;
@@ -1656,7 +1509,6 @@ export interface SettingsMessage {
   transientStops: Stop[];
   cosmetics: CosmeticInfo[];
   autoSelectReplacementSetting?: Setting;
-  autoDeclareAttackersThatMustAttackSetting?: Setting;
   stackAutoPassOption?: AutoPassOption;
 }
 
@@ -1670,8 +1522,7 @@ export interface SingleValue {
   floatValue?: number;
   doubleValue?: number;
 }
-
-export enum EnumValueOneofCaseC {
+export enum EnumValueOneofCase {
   None = 0,
   Uint32Value = 1,
   Int32Value = 2,
@@ -1683,7 +1534,8 @@ export enum EnumValueOneofCaseC {
   DoubleValue = 8,
 }
 
-export type ValueOneofCaseC = keyof typeof EnumValueOneofCaseC;
+export type ValueOneofCase = keyof typeof EnumValueOneofCase;
+
 export interface SortFilterPagingOptions {
   sort?: string;
   filter?: string;
@@ -1737,7 +1589,7 @@ export interface SubmitTargetsResp {
 export interface Target {
   targetInstanceId?: number;
   legalAction?: SelectAction;
-  highlight?: number;
+  highlight?: HighlightType;
 }
 
 export interface TargetInfo {
@@ -1753,6 +1605,7 @@ export interface TargetSelection {
   selectedTargets?: number;
   prompt?: Prompt;
   targetSourceZoneId?: number;
+  targetingAbilityGrpId?: number;
 }
 
 export interface TeamConfig {
@@ -2052,6 +1905,9 @@ export enum EnumAnnotationType {
   AnnotationType_PhasedIn = 96,
   AnnotationType_LoyaltyActivationsRemaining = 97,
   AnnotationType_GroupedIds = 98,
+  AnnotationType_RegeneratePending = 99,
+  AnnotationType_PermanentRegenerated = 100,
+  AnnotationType_ObjectsToDistinguish = 101,
 }
 
 export type AnnotationType = keyof typeof EnumAnnotationType;
@@ -2078,6 +1934,7 @@ export enum EnumAttackWarningType {
   AttackWarningType_CannotAttackAlone = 2,
   AttackWarningType_MustAttack = 3,
   AttackWarningType_UnpayableEffectCost = 4,
+  AttackWarningType_CannotBeAttackedByMoreThanOne = 5,
 }
 
 export type AttackWarningType = keyof typeof EnumAttackWarningType;
@@ -2221,6 +2078,7 @@ export enum EnumCardType {
   CardType_Tribal = 11,
   CardType_Vanguard = 12,
   CardType_Dungeon = 13,
+  CardType_Battle = 14,
 }
 
 export type CardType = keyof typeof EnumCardType;
@@ -2335,14 +2193,6 @@ export enum EnumConnectionState {
 }
 
 export type ConnectionState = keyof typeof EnumConnectionState;
-
-export enum EnumConnectionStateChangedEventType {
-  ConnectionStateChangedEventType_Invalid = 0,
-  ConnectionStateChangedEventType_Connected = 1,
-  ConnectionStateChangedEventType_Disconnected = 2,
-}
-
-export type ConnectionStateChangedEventType = keyof typeof EnumConnectionStateChangedEventType;
 
 export enum EnumConnectionStatus {
   ConnectionStatus_None = 0,
@@ -2553,14 +2403,19 @@ export enum EnumCounterType {
   CounterType_Ingenuity = 170,
   CounterType_Phyresis = 171,
   CounterType_Stun = 172,
-  CounterType_PHCT173 = 173,
-  CounterType_PHCT174 = 174,
+  CounterType_Oil = 173,
+  CounterType_Defense = 174,
   CounterType_Experience = 175,
   CounterType_Slumber = 176,
   CounterType_PHCT177 = 177,
   CounterType_PHCT178 = 178,
   CounterType_PHCT179 = 179,
   CounterType_PHCT180 = 180,
+  CounterType_PHCT181 = 181,
+  CounterType_PHCT182 = 182,
+  CounterType_PHCT183 = 183,
+  CounterType_PHCT184 = 184,
+  CounterType_PHCT185 = 185,
 }
 
 export type CounterType = keyof typeof EnumCounterType;
@@ -2645,6 +2500,8 @@ export enum EnumFailureReason {
   FailureReason_DisallowedValue = 56,
   FailureReason_InvalidTypeKind = 57,
   FailureReason_InvalidWishCard = 58,
+  FailureReason_InvalidController = 59,
+  FailureReason_InvalidCardColor = 60,
 }
 
 export type FailureReason = keyof typeof EnumFailureReason;
@@ -2723,14 +2580,6 @@ export enum EnumGameObjectType {
 }
 
 export type GameObjectType = keyof typeof EnumGameObjectType;
-
-export enum EnumGameRoomType {
-  GameRoomType_Invalid = 0,
-  GameRoomType_Match = 1,
-  GameRoomType_Draft = 2,
-}
-
-export type GameRoomType = keyof typeof EnumGameRoomType;
 
 export enum EnumGameStage {
   GameStage_None = 0,
@@ -2822,6 +2671,7 @@ export enum EnumHighlightType {
   HighlightType_Hot = 3,
   HighlightType_Counterspell = 4,
   HighlightType_Random = 5,
+  HighlightType_CopySpell = 6,
 }
 
 export type HighlightType = keyof typeof EnumHighlightType;
@@ -2930,27 +2780,6 @@ export enum EnumMatchCompletedReasonType {
 }
 
 export type MatchCompletedReasonType = keyof typeof EnumMatchCompletedReasonType;
-
-export enum EnumMatchControllerEventType {
-  MatchControllerEventType_Invalid = 0,
-  MatchControllerEventType_MatchGameRoomStateChanged = 1,
-  MatchControllerEventType_MatchControllerStateChanged = 2,
-  MatchControllerEventType_MatchControllerHealthReport = 3,
-}
-
-export type MatchControllerEventType = keyof typeof EnumMatchControllerEventType;
-
-export enum EnumMatchControllerState {
-  MatchControllerState_Invalid = 0,
-  MatchControllerState_Opening = 1,
-  MatchControllerState_Running = 2,
-  MatchControllerState_Recovering = 3,
-  MatchControllerState_Draining = 4,
-  MatchControllerState_Closing = 20,
-  MatchControllerState_Closed = 21,
-}
-
-export type MatchControllerState = keyof typeof EnumMatchControllerState;
 
 export enum EnumMatchGameRoomStateType {
   MatchGameRoomStateType_Invalid = 0,
@@ -3764,10 +3593,17 @@ export enum EnumSubType {
   SubType_Walrus = 410,
   SubType_Powerstone = 411,
   SubType_Urza = 412,
-  SubType_PlaceholderSubType413 = 413,
-  SubType_PlaceholderSubType414 = 414,
-  SubType_PlaceholderSubType415 = 415,
-  SubType_PlaceholderSubType416 = 416,
+  SubType_Mite = 413,
+  SubType_Sphere = 414,
+  SubType_Incubator = 415,
+  SubType_Siege = 416,
+  SubType_PlaceholderSubType417 = 417,
+  SubType_PlaceholderSubType418 = 418,
+  SubType_PlaceholderSubType419 = 419,
+  SubType_PlaceholderSubType420 = 420,
+  SubType_PlaceholderSubType421 = 421,
+  SubType_PlaceholderSubType422 = 422,
+  SubType_PlaceholderSubType423 = 423,
 }
 
 export type SubType = keyof typeof EnumSubType;

@@ -11,6 +11,7 @@ export class Chances {
   chancePla: number;
   chanceArt: number;
   chanceEnc: number;
+  chanceBat: number;
   chanceLan: number;
   deckSize: number;
   cardsLeft: number;
@@ -28,6 +29,7 @@ export class Chances {
     this.chancePla = 0;
     this.chanceArt = 0;
     this.chanceEnc = 0;
+    this.chanceBat = 0;
     this.chanceLan = 0;
     this.deckSize = 0;
     this.cardsLeft = 0;
